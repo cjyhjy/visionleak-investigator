@@ -1,0 +1,36 @@
+{
+  "verified_at": "2026-10-26T19:04:40.617744+00:00",
+  "repository": "https://github.com/cjyhjy/visionleak-investigator",
+  "visibility": "PUBLIC",
+  "branch": "main",
+  "verified_implementation_commit": "2a7bfb5222e24e3e247566fe6182fb4d4bb53c79",
+  "checks": [
+    {
+      "command": "git push -u origin main",
+      "exit_code": 0,
+      "result": "main -> main; upstream origin/main configured"
+    },
+    {
+      "command": "gh repo view cjyhjy/visionleak-investigator --json url,visibility,defaultBranchRef",
+      "exit_code": 0,
+      "result": {
+        "url": "https://github.com/cjyhjy/visionleak-investigator",
+        "visibility": "PUBLIC",
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      }
+    },
+    {
+      "command": "git ls-remote origin refs/heads/main",
+      "exit_code": 0,
+      "result": "2a7bfb5222e24e3e247566fe6182fb4d4bb53c79 refs/heads/main"
+    }
+  ],
+  "scope": "Source, original design snapshot, synthetic fixtures and actual engineering evidence; no dependency environments or original Core checkout",
+  "model_calls": 0,
+  "notes": [
+    "This receipt verifies the implementation commit; the documentation commit containing the receipt is a descendant.",
+    "Original design snapshots and raw logs retain their original whitespace; implementation diff whitespace check passed."
+  ]
+}
