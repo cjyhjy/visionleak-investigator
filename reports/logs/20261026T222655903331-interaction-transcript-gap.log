@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ test_foreign_question_transcript_cannot_be_scored_with_another_valid_run ___
+
+case = (PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-131/test_foreign_question_tr...private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-131/test_foreign_question_transcri0/run'))
+
+    def test_foreign_question_transcript_cannot_be_scored_with_another_valid_run(case):
+        root,task,registry,truth,run=case
+        other_task=read_json(root/'tasks/t003/task.json');other_reg=read_json(root/'tasks/t003/registry.json')
+        other=run_task(other_task,other_reg,run.parent/'other-run')
+        transcript=[{'run':'other-run','report_digest':digest(other),'questions':other['questions'],
+                     'answered_questions':[],'answer_path':None,'answer_result':None}]
+        score=score_interaction(task,registry,truth,run,transcript)
+>       assert not score['usable_output']
+E       assert not True
+
+tests/acceptance/test_interaction_binding.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_interaction_binding.py::test_foreign_question_transcript_cannot_be_scored_with_another_valid_run
+1 failed in 1.14s

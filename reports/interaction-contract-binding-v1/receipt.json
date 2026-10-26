@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "commands": [
+    {
+      "partition": "development",
+      "record": "commands/development/result.json",
+      "exit_code": 0
+    },
+    {
+      "partition": "validation",
+      "record": "commands/validation/result.json",
+      "exit_code": 0
+    },
+    {
+      "partition": "test",
+      "record": "commands/test/result.json",
+      "exit_code": 0
+    },
+    {
+      "case": "duplicate-test-rejected",
+      "record": "commands/duplicate-test/result.json",
+      "exit_code": 1
+    }
+  ],
+  "real_C_runs": 12,
+  "D_blocked": 12,
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "human_participants": 0,
+  "human_time_saved_seconds": null,
+  "binding_negative_cases": 6,
+  "metadata_missing_columns_recorded": true,
+  "data_kind": "controlled synthetic, scripted answers, separate interaction benchmark",
+  "observed": {
+    "goal_correct": 10,
+    "questions_asked": 11,
+    "excessive_questions": 1,
+    "missed_necessary_questions": 2,
+    "risk_false_negatives": 27
+  }
+}

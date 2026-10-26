@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "limits": {
+    "max_agent_steps": 8,
+    "max_tool_calls": 16,
+    "max_core_audit_runs": 3,
+    "max_comparisons_total": 1000000,
+    "max_images": 1000,
+    "max_pairs_per_audit": 2000,
+    "max_questions": 2,
+    "max_review_pairs": 2,
+    "max_llm_requests": 8,
+    "max_tool_wall_seconds": 300,
+    "remote_budget_usd": 0,
+    "max_decode_pixels_per_image": 64000000,
+    "max_sample_pixels_per_image": 4194304,
+    "max_file_bytes": 33554432,
+    "max_total_decoded_pixels": 300000000,
+    "max_index_operations_total": 16000000,
+    "max_llm_output_tokens": 1024,
+    "finalization_reserve_tool_calls": 2,
+    "finalization_reserve_seconds": 10
+  },
+  "spent": {
+    "tool_calls": 8,
+    "audit_runs": 1,
+    "comparisons": 17,
+    "index_operations": 0,
+    "decoded_pixels": 82944,
+    "wall_seconds": 0.46414549881592393,
+    "llm_requests": 0,
+    "review_pairs": 0,
+    "questions": 1
+  },
+  "model_usage": "not_run",
+  "model_cost_usd": 0,
+  "entries": [
+    {
+      "call_id": "call-0001",
+      "kind": "preflight",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.271670+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 290
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.1115831658244133
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.376556+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.8884168341756
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0002",
+      "kind": "audit",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.378883+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.8884168341756,
+        "comparisons": 1000000,
+        "decoded_pixels": 100000000,
+        "index_operations": 16000000,
+        "audit_runs": 1
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.15925979102030396,
+        "comparisons": 17,
+        "decoded_pixels": 55296,
+        "index_operations": 0,
+        "audit_runs": 1
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.538774+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.7291570431553,
+        "comparisons": 999983,
+        "decoded_pixels": 99944704,
+        "index_operations": 16000000,
+        "audit_runs": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0003",
+      "kind": "verify",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.540748+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.7291570431553,
+        "decoded_pixels": 27648
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.09310720907524228,
+        "decoded_pixels": 27648
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.634425+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.63604983408004,
+        "decoded_pixels": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0004",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.637919+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.63604983408004,
+        "questions": 1
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.001493833027780056,
+        "questions": 1
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.639402+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.63455600105226,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0005",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.640264+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.63455600105226
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0032247076742351055
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.643485+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.631331293378
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0006",
+      "kind": "resume_identity_check",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.952813+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.631331293378
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.09280720818787813
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.953211+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.53852408519015
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0007",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.957163+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.53852408519015,
+        "questions": 0
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0018257922492921352,
+        "questions": 0
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.958983+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.53669829294086,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0008",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-26T22:32:02.966016+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.53669829294086
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0008437917567789555
+      },
+      "error": null,
+      "settled_at": "2026-10-26T22:32:02.967227+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.5358545011841
+      },
+      "overrun": {}
+    }
+  ]
+}

@@ -38,6 +38,8 @@ Registry 是宿主文件，包含：
 
 元数据 CSV 必须有 `file_id,relative_path`，可附 `image_split,entity_id,capture_session_id,provenance_ref`。目录决定 split；CSV 只补充声明，不覆盖目录。字段冲突、缺行、缺实体或未确认语义都保留为覆盖问题。
 
+`coverage.metadata` 记录实际 `columns`、`missing_optional_columns` 和逐字段 `field_coverage`（包含自定义实体列）。计数覆盖映射校验前的全部 CSV 数据行，区分缺列、短行缺值、空白值和非空值；空表显示 `no_rows`。这些是字段存在性记录，不证明来源或实体身份。实体映射 `state=complete` 可以与未提供采集会话/来源列同时成立，HTML 也分别显示缺列和缺值。缺失的成员 `provenance_ref` 为 null，不补造来源引用；额外 CSV 单元格作为输入问题保留。
+
 ## 回答、复核和修订
 
 Answers JSON 只允许非空 `actor` 以及 `goal`、`entity_key` 中至少一项。字段确认要求已经登记相应 CSV。

@@ -89,3 +89,9 @@ CSV/交互评测：新增 proposal-export JSON/CSV，重算有效建议、保留
 CSV/交互/人审实现 `1ef1732e19f37ecdfd5e98b2031413abd623f0cd` 的 CI 40409535123 已完成：Ubuntu 24.04 与 macOS 14 各 149 passed、零测试 skip。两份原始 ZIP 的 SHA-256 与 GitHub artifact 元数据一致；interaction-review-ci-integrity 退出 0，独立复核 114 份宿主报告、36 份资源收据、18 份 catalog 评分、24 份交互评分、8 份人审生命周期报告、12 行 CSV，以及此前的 plan-check/半写报告证据。实际命令和日志保存在 reports/commands.jsonl；完整回执 reports/ci-history/40409535123/verification.json。模型调用 0；原 Core 的目录范围 git status 为空。
 
 后续条款核对发现两项尚未修复的问题：交互评分器直接 API 会接纳另一任务的已验证报告，需要补任务/输入/预算绑定（正常运行器路径受约束，已有 CI 结果逐项复核）；元数据覆盖尚未逐项列明可选列/值缺失，不能由实体映射完整推定会话/来源字段完整。复现分别保存在 reports/delivery-audit-v1/interaction-score-binding-gap.json、metadata-field-gap.json。下一步先修复并回归这两项，再完成全量条款与交付物核对。此记录不将整体交付或真实 Agent 标为完成。
+
+交互评分/元数据条款修复：评分器现在核对初始 TaskSpec、registry、输入摘要、不可变预算/隐私和全部修订父子摘要。合法目标/字段回答可改变解释，其他任务或预算的合法报告不能混入。继续检查发现问答轨迹也可串用；先保存 interaction-transcript-gap 的预期失败，再将轨迹逐步绑定同一修订链、问题、实际回答文件及进程结果。评分拒绝后整次记 FAILED，已知正例完整保留为 FN，未知结论/成本不写零成功。
+
+元数据新增逐字段存在性覆盖，区分缺列、短行缺值、空白值和非空值；空表、自定义实体列及多余单元格有验收。缺会话/来源列不伪装为字段完整，也不自动否定完整实体映射；缺失的成员 provenance_ref 写 null，HTML 显示缺列/缺值。最终 contract-binding-final-regression 为 164 passed、零 skip；源快照 reports/source-manifests/contract-binding.json。新的 reports/interaction-contract-binding-v1 保存 12 个真实 C 运行、12 个 blocked D 和 6 个评分边界拒绝；仍为合成数据和脚本回答，模型调用 0。
+
+全量条款核对继续：真实双运行复现 rules-v1 的上下文路由缺口（reports/rules-context-gap-v1/receipt.json）。同一旋转/镜像说明只放登记 Markdown 时仅执行 base；移入 request_text 才执行 base+transform。源图不变，说明已实际读取。这尚不满足规划中强 C 基线根据可见说明/元数据/覆盖选择补充检查的范围，保留下一步实施；不把本轮测试通过写成全部本地工作完成。当前修复等待推送后的跨平台 CI，原 Core scoped git status 为空。

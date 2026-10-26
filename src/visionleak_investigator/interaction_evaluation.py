@@ -160,6 +160,8 @@ def run_interaction(catalog: dict, root: Path, protocol: dict, frozen_path: Path
             row.update(scorer_record=str(scorer.relative_to(out)),scoring_resources=scored.get('resources'))
             if scored['exit_code']==0 and scored['error'] is None:
                 row['score']=read_json(scorepath)
+                if not row['score']['usable_output']:
+                    row.update(state='FAILED',failure=row['score']['failure'] or 'Interaction output rejected',costs_complete=False)
             else:
                 row.update(state='FAILED',failure='Interaction scorer failed; no success-only aggregate')
             save(row);gate('after_task',item)

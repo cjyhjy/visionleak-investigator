@@ -78,7 +78,8 @@
       "status": "passed",
       "source": "tests/acceptance/test_interaction.py",
       "test": "test_T11_T32_metadata_conflict_no_assertion",
-      "verified_scope": "缺行与矛盾保留范围问题"
+      "verified_scope": "缺行与矛盾保留范围问题",
+      "field_presence_subcheck": "passed: six actual CSV scenarios, optional-column/value absence and custom entity field; metadata-fields acceptance in 164-test regression"
     },
     {
       "requirement": "T12",
@@ -268,12 +269,15 @@
     "reports/logs/20261026T220110779182-interaction-review-final-regression.log",
     "reports/ci-history/40409535123/verification.json",
     "reports/delivery-audit-v1/interaction-score-binding-gap.json",
-    "reports/delivery-audit-v1/metadata-field-gap.json"
+    "reports/delivery-audit-v1/metadata-field-gap.json",
+    "reports/delivery-audit-v1/contract-binding-resolution.json",
+    "reports/interaction-contract-binding-v1/receipt.json",
+    "reports/logs/20261026T222956082465-contract-binding-final-regression.log",
+    "reports/rules-context-gap-v1/receipt.json"
   ],
   "remaining_local": [
-    "Bind interaction scorer output to expected task/input/limits; negative-test evidence: interaction-score-binding-gap.json.",
-    "Explicit metadata optional-column/value missingness under contract §3.2; evidence: metadata-field-gap.json.",
-    "Complete the full clause-by-clause requirements and artifact audit; test-matrix coverage is not proof of every delivery requirement."
+    "Complete and freeze strong C routing using registered descriptions, metadata/coverage and budget; preserve prompt-injection boundaries.",
+    "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim."
   ],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
@@ -281,8 +285,8 @@
     "Owner-selected Investigator license and any competition submission authorization.",
     "M4/E deferred until the real Agent is stable."
   ],
-  "reviewed_code_commit": "1ef1732e19f37ecdfd5e98b2031413abd623f0cd",
+  "reviewed_code_commit": null,
   "latest_ci_tests_per_platform": 149,
-  "reviewed_worktree_code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
-  "current_code_ci": "passed with scope; two reproduced implementation gaps and the full clause audit remain open"
+  "reviewed_worktree_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "current_code_ci": "pending"
 }

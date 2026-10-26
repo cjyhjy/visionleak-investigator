@@ -106,6 +106,10 @@ def render(report: dict,evidence: list[dict]) -> str:
     scope+='<p>元数据：'+esc(metadata.get('state','未记录'))
     if 'mapped_rows' in metadata:scope+='；映射 '+esc(number(metadata['mapped_rows']))+' 行，未覆盖 '+esc(number(metadata.get('unmapped_image_count')))+' 张图像'
     scope+='。元数据中的实体身份来自登记声明。</p>'
+    if 'field_coverage' in metadata:
+        missing=metadata['missing_optional_columns']
+        sparse=[name+'（'+str(c['missing_rows'])+' 行）' for name,c in metadata['field_coverage'].items() if c['column_present'] and c['missing_rows']]
+        scope+='<p>未提供的可选列：'+esc('、'.join(missing) if missing else '无')+'；已有列中的缺失值：'+esc('、'.join(sparse) if sparse else '无')+'。字段存在性不代表来源真实性已核验。</p>'
     scope+=raw_details('展开完整覆盖记录',coverage)
 
     conclusions=''

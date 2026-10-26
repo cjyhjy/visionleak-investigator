@@ -7,6 +7,24 @@ from .budget import BudgetExceeded
 from .reporting import ClaimValidator
 from .plan_check import check_manifest
 
+OPTIONAL_FIELDS = ('image_split', 'entity_id', 'capture_session_id', 'provenance_ref')
+
+def field_coverage(fields: list[str], rows: list[dict], entity_key: str | None) -> dict:
+    """Presence counts over all parsed CSV rows, before mapping or identity checks."""
+    names = list(dict.fromkeys(['file_id', 'relative_path', *OPTIONAL_FIELDS, *([entity_key] if entity_key else [])]))
+    coverage = {}
+    for name in names:
+        present = name in fields
+        absent = sum(row.get(name) is None for row in rows)
+        empty = sum(isinstance(row.get(name), str) and not row[name].strip() for row in rows)
+        coverage[name] = {'column_present': present, 'nonempty_rows': len(rows)-absent-empty,
+                          'absent_value_rows': absent, 'empty_value_rows': empty,
+                          'missing_rows': absent+empty,
+                          'state': 'missing_column' if not present else 'no_rows' if not rows else 'partial' if absent+empty else 'complete'}
+    return {'columns': fields, 'missing_optional_columns': [name for name in OPTIONAL_FIELDS if name not in fields],
+            'field_coverage': coverage,
+            'field_coverage_scope': 'All parsed CSV rows before mapping validation; presence only, not provenance or physical-identity verification.'}
+
 def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_questions: bool=True) -> dict:
     """Deterministic interpretation. Context text is data, never instructions."""
     tick=time.monotonic();entry=ledger.reserve('interpret_context')
@@ -32,8 +50,11 @@ def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_ques
             if not {'file_id','relative_path'}<=set(fields) or len(fields)!=len(set(fields)):raise ValueError('CSV requires unique columns file_id and relative_path')
             rows=list(reader)
             if len(rows)>10000:raise ValueError('Metadata row limit')
+            field_info=field_coverage(fields,rows,task['entity_key'])
+            result['metadata'].update(field_info)
             bypath={r['path']:r for r in manifest['files'] if r['supported_image']};seen_ids={};seen_paths={};valid=[];problems=[];missing_entity=0
             for index,row in enumerate(rows,2):
+                if None in row:problems.append({'row':index,'code':'extra_csv_values'});continue
                 rel=row.get('relative_path');file_id=row.get('file_id')
                 try:safe_child(registry.dataset(task['dataset_ref']),rel)
                 except ValueError:problems.append({'row':index,'code':'unsafe_path'});continue
@@ -45,13 +66,14 @@ def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_ques
                 if declared and declared!=actual:problems.append({'row':index,'code':'split_conflict'});continue
                 entity=(row.get(task['entity_key'] or '', '') or '').strip()
                 if not entity:missing_entity+=1
-                valid.append({'file_id':file_id,'path':rel,'image_split':actual,'entity_id':entity,'csv_line':index,'provenance_ref':row.get('provenance_ref') or 'registered-user-csv'})
+                valid.append({'file_id':file_id,'path':rel,'image_split':actual,'entity_id':entity,'csv_line':index,'provenance_ref':(row.get('provenance_ref') or '').strip() or None})
             unmapped=set(bypath)-set(seen_paths)
-            cov={'state':'partial' if problems or unmapped or missing_entity else 'complete','sha256':file_hash(path),'rows':len(rows),'mapped_rows':len(valid),'unmapped_image_count':len(unmapped),'unmapped_images':sorted(unmapped),'missing_entity_rows':missing_entity,'issues':problems,'entity_key':task['entity_key'],'entity_key_confirmed':task['entity_key_confirmed'],'trust':'user-declared metadata, not independently verified physical identity'}
+            cov={'state':'partial' if problems or unmapped or missing_entity else 'complete','sha256':file_hash(path),'rows':len(rows),'mapped_rows':len(valid),'unmapped_image_count':len(unmapped),'unmapped_images':sorted(unmapped),'missing_entity_rows':missing_entity,'issues':problems,'entity_key':task['entity_key'],'entity_key_confirmed':task['entity_key_confirmed'],'trust':'user-declared metadata, not independently verified physical identity',**field_info}
             result['metadata']=cov
             if problems:result['issues'].append('Metadata has path/split/identity conflicts; entity claims withheld')
             if entity_goal and (unmapped or missing_entity):result['issues'].append('Entity metadata does not cover all images')
-            if task['entity_key_confirmed'] and task['entity_key'] not in fields:result['issues'].append('Confirmed entity column missing');problems.append({'code':'missing_entity_column'})
+            if task['entity_key_confirmed'] and task['entity_key'] not in fields:
+                result['issues'].append('Confirmed entity column missing');problems.append({'code':'missing_entity_column'});cov['state']='partial'
             if task['goal_confirmed'] and task['entity_key_confirmed'] and not problems:
                 groups=defaultdict(list)
                 for row in valid:

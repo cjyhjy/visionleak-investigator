@@ -1,0 +1,55 @@
+{
+  "argv": [
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/.venv-clean/bin/python",
+    "-m",
+    "visionleak_investigator.cli",
+    "resume",
+    "--run",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-contract-binding-v1/results/development/runs/t002/r01/C/run",
+    "--answers",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-contract-binding-v1/results/development/runs/t002/r01/C/answers/00.json"
+  ],
+  "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+  "started_at": "2026-10-26T22:32:04.797379+00:00",
+  "timeout_seconds": 329.3453393331729,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.1791871669702232,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.123057,
+    "cpu_system_seconds": 0.046284,
+    "cpu_seconds": 0.169341,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 63225856,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 88784896,
+    "observed_rss_peak_bytes": 88784896,
+    "root_rss_peak_bytes": 33652736,
+    "sample_interval_seconds": 0.02,
+    "samples": 3,
+    "observed_process_count": 2,
+    "peak_members": [
+      {
+        "pid": 77138,
+        "rss_bytes": 33652736
+      },
+      {
+        "pid": 77140,
+        "rss_bytes": 55132160
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 1,
+    "sampler_wall_seconds": 0.1776192500256002,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

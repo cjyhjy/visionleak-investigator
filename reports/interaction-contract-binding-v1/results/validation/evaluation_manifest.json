@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T22:32:18.689253+00:00",
+  "metric_definition": "interaction-v1",
+  "freeze_digest": "fe86c548843dc71292d3cb633bfdb122518bb6039de9f9699254537c04a269f2",
+  "benchmark_partition": "validation",
+  "schedule": [
+    {
+      "task_id": "t010",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t010",
+      "condition": "D",
+      "repetition": 1
+    }
+  ],
+  "status": "completed",
+  "model_calls": 0,
+  "evaluation_role": "evaluation",
+  "replay_of": null,
+  "answer_policy": "Identical frozen answerable questions for C and future D; broker releases only answers to actually requested questions.",
+  "truth_isolation": "Workers receive task/registry or a requested answer payload only; scorer receives truth. Application boundary, not OS secrecy.",
+  "human_inputs": "scripted contract, no human participants",
+  "review_policy": "Backlog and actual review charges recorded; no unsolicited simulated reviews supplied.",
+  "cache": "fresh Core process per task; no shared fingerprints; OS cache not flushed",
+  "finished_at": "2026-10-26T22:32:20.040298+00:00",
+  "rejection": null
+}

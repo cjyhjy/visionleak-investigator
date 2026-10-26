@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T22:16:26.302148+00:00",
+  "updated_at": "2026-10-26T22:33:49.502053+00:00",
   "project_version": "0.1.0",
-  "code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -43,19 +43,20 @@
       "M2-demo",
       "plan-check-targeted",
       "proposal-export-targeted",
-      "review-consistency-targeted"
+      "review-consistency-targeted",
+      "contract-binding-final-regression"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
       "reports/lifecycle-v1/receipt.json",
       "reports/plan-check-v1/receipt.json",
       "reports/proposal-export-v1/receipt.json",
-      "reports/review-lifecycle-v1/receipt.json"
+      "reports/review-lifecycle-v1/receipt.json",
+      "reports/interaction-contract-binding-v1/receipt.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
-      "Review backlog is visible; import requires bound audit/input/reviewer.",
-      "Optional metadata columns/values are not yet individually inventoried; tracked in reports/delivery-audit-v1/metadata-field-gap.json."
+      "Review backlog is visible; import requires bound audit/input/reviewer."
     ]
   },
   "M3": {
@@ -93,7 +94,10 @@
       "reports/visual-review/report-v2-final/receipt.json",
       "reports/catalog-execution-v1/receipt.json",
       "reports/delivery-audit-v1/requirements.json",
-      "reports/interaction-evaluation-v1-first/receipt.json"
+      "reports/interaction-evaluation-v1-first/receipt.json",
+      "reports/interaction-contract-binding-v1/receipt.json",
+      "reports/delivery-audit-v1/contract-binding-resolution.json",
+      "reports/rules-context-gap-v1/receipt.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -104,30 +108,30 @@
       "live_model_D": "blocked",
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
       "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded",
-      "interaction_evaluation": "passed with scope for recorded confined runner outputs; direct scorer API task/input/limits binding gap reproduced and remains open. Synthetic C only, D blocked, no human time measurement."
+      "interaction_evaluation": "passed with scope: expected task/input/registry/limits and exact revision/question/answer history bound; 12 new synthetic C runs and 6 rejected direct API substitutions, D blocked; no human time measurement",
+      "strong_rule_context_routing": "incomplete: registered descriptions are read but rules-v1 routes profiles only from request_text; real two-run reproduction in reports/rules-context-gap-v1/receipt.json"
     },
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "interaction-review-final-regression: 149 passed, zero skipped",
+    "test_suite": "contract-binding-final-regression: 164 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T220110779182-interaction-review-final-regression.log",
+    "final_log": "reports/logs/20261026T222956082465-contract-binding-final-regression.log",
     "ci_evidence": "reports/ci-history/40409535123/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40409535123",
     "tested_commit": "1ef1732e19f37ecdfd5e98b2031413abd623f0cd",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 149 tests, zero test skips; downloaded artifacts independently verified"
+    "ci_for_current_code": "pending: contract, transcript and metadata fixes await CI; previous 1ef1732 CI remains historical"
   },
-  "next_local_command": ".venv-clean/bin/python -m pytest -q tests/acceptance/test_interaction_evaluation.py",
+  "next_local_command": ".venv-clean/bin/python -m pytest -q tests/acceptance/test_loop.py tests/acceptance/test_planned_loop.py",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "40409535123 passed on both platforms; 114 host reports, 36 resource receipts, 18 catalog scores, 24 interaction scores and review/export/plan-check/partial-report evidence reverified.",
+    "ci": "Current implementation pending CI; previous 40409535123 verified 149 tests per platform.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Fix reproduced interaction scorer task/input/limits binding gap; preserve full failure denominators.",
-      "Record explicit optional metadata column/value missingness under contract §3.2.",
+      "Complete and freeze strong C routing using registered descriptions, metadata/coverage and budget; preserve prompt-injection boundaries.",
       "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim.",
       "Authorized independent natural data experiments and real provider/D trajectories.",
       "Owner-selected project license and external submission decisions.",
@@ -136,5 +140,5 @@
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
   },
-  "next_local_work": "Repair and negative-test the direct interaction scorer binding, then metadata field missingness and the full clause audit."
+  "next_local_work": "Repair the reproduced strong-rule context routing gap, with a frozen policy version and real routing/budget/injection tests; then continue full clause audit."
 }

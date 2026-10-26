@@ -1,0 +1,26 @@
+{
+  "status": "passed_for_recorded_local_scope",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "resolved_findings": [
+    "reports/delivery-audit-v1/interaction-score-binding-gap.json",
+    "reports/delivery-audit-v1/metadata-field-gap.json"
+  ],
+  "additional_reproduced_gap": "reports/logs/20261026T222655903331-interaction-transcript-gap.log",
+  "regression": {
+    "tests": 164,
+    "skipped": 0,
+    "log": "reports/logs/20261026T222956082465-contract-binding-final-regression.log"
+  },
+  "smoke": "reports/interaction-contract-binding-v1/receipt.json",
+  "tests": [
+    "tests/acceptance/test_interaction_binding.py",
+    "tests/acceptance/test_metadata_fields.py",
+    "tests/acceptance/test_interaction_evaluation.py"
+  ],
+  "scope": "Expected initial task, dataset, registry, limits, revision parents and exact question/answer chain bound before scoring. Explicit metadata column/value absence, no invented member provenance. Real Core; no model/human experiment.",
+  "ci_status": "pending",
+  "remaining_local": [
+    "Complete strong C routing from registered descriptions, metadata and coverage; preserve untrusted-data/budget gates.",
+    "Finish full clause and delivery artifact audit."
+  ]
+}

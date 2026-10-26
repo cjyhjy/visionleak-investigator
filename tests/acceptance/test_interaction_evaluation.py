@@ -104,6 +104,28 @@ def test_interaction_freeze_drift_retains_attempt_and_suppresses_quality(tmp_pat
     assert rows[1]['state']=='blocked'
 
 
+def test_real_worker_contract_substitution_is_a_failed_scored_attempt(tmp_path,monkeypatch):
+    from visionleak_investigator import interaction_evaluation as runner
+    root,catalog,protocol,frozen=suite(tmp_path,single=True)
+    substituted=read_json(root/'tasks/t000/task.json')
+    substituted['limits']['max_questions']+=1
+    path=tmp_path/'controlled-wrong-worker-task.json';write_json(path,substituted)
+    original=runner.execute
+    def wrong_real_worker(argv,cwd,directory,timeout):
+        if 'visionleak_investigator.evaluation_worker' in argv:
+            argv=list(argv);argv[argv.index('--task')+1]=str(path)
+        return original(argv,cwd,directory,timeout)
+    monkeypatch.setattr(runner,'execute',wrong_real_worker)
+    out=tmp_path/'results';result=runner.run_interaction(catalog,root,protocol,frozen,out,partition='validation')
+    assert result['status']=='completed_with_failures'
+    assert result['quality']['C']['failed_runs_in_denominator']==1
+    assert result['quality']['C']['risk']['fn']==8
+    row=json.loads((out/'per_run.jsonl').read_text().splitlines()[0])
+    assert row['state']=='FAILED' and 'task/limits' in row['failure']
+    assert row['processes'] and row['costs'] and not row['costs_complete']
+    assert row['score']['unsupported_confirmed_claims'] is None
+
+
 def test_interaction_test_requires_explicit_replay_and_keeps_d_blocked(tmp_path):
     root,catalog,protocol,frozen=suite(tmp_path)
     first=run_interaction(catalog,root,protocol,frozen,tmp_path/'first',partition='test')
