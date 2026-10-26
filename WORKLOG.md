@@ -27,3 +27,9 @@ M5：12 个合成任务 x A/B/C = 36 次真实 Core 条件运行（30 COMPLETED�
 自主推进 / 复现与 CI：显式平台运行锁迁移、SHA 验证下载、双平台无模型 CI 已实现。本地 platform-regression 46 passed；platform-current-lock 确认旧运行锁未变化。Linux/macOS 远端结果待实际运行；模型仍为 not_run。
 
 CI 首次运行 40384746048：Linux/macOS 均在安装后被 symlink 门禁拒绝。实际 npm ci 会创建未使用的 .bin/semver 软链接，而早期本地 staging 副本未带此链接。安装增加 --bin-links=false，保留原有禁止 symlink 的运行边界；原始失败日志存 reports/ci-history/40384746048-failed.log。真实契约测试尚未在该次 CI 执行，不记通过。
+
+CI 第二次运行 40384953736：macOS 完整通过；Linux 46 项测试和全新 base+all 审计通过，但上传 root 拥有的 0600 checkpoint 文件失败。修正为创建隔离网络后降回 runner UID/GID 执行，保留文件最小权限。失败日志原样保留。
+
+M3 本地后续：新增独立持久化模型预算账本（无模型客户端）。decimal 费用、调用前预留、usage 缺失保守结算、超额停止、绑定不变的恢复与无重放恢复均有专项测试。完整回归 59 passed；尚未接入实际 Planner 循环/提供商，不能作为真实 Agent 验收。状态生成脚本首次误用系统 Python 3.9 导入项目失败，已改用项目 Python 3.12，不影响已完成测试。
+
+CI 第三次 40385473497（6f823de）完整通过：Ubuntu 24.04 与 macOS 14 各 59 项测试，新 base+all 真实审计完成且产物上传成功。下载实际产物后，本地再次验证 JUnit、checkpoint/report digest、evidence hash 和四份真实 Core 报告身份。完整证据与校验回执位于 reports/ci-history/40385473497。模型调用仍为 0。

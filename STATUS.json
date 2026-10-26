@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T19:04:40.617744+00:00",
+  "updated_at": "2026-10-26T19:20:04.880371+00:00",
   "project_version": "0.1.0",
-  "code_digest": "ad0a4e0dd3a5f376389ceb2a81508a50575637d490caa2f1eb90bddfab91cdd1",
+  "code_digest": "10e1b9694e75467039a6c23a57dd46d843b73add2c74c82f33e68fd24f9b65c0",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -79,13 +79,27 @@
     "research_gain": "not_established"
   },
   "verification": {
-    "test_suite": "delivery-regression: 41 passed in clean Python environment",
+    "test_suite": "autonomous-regression: 59 passed in clean Python environment",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T174146419809-delivery-regression.log"
+    "final_log": "reports/logs/20261026T191658899141-autonomous-regression.log",
+    "ci_evidence": "reports/ci-history/40385473497/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40385473497",
+    "tested_commit": "6f823de810a958f4defd31fb214ce7dc5afce1d3"
   },
   "next_local_command": ".venv/bin/vli demo --out runs/next-fixture",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
-  "publication_evidence": "reports/publication.json"
+  "publication_evidence": "reports/publication.json",
+  "follow_up": {
+    "ci": "passed: Ubuntu 24.04 and macOS 14, 59 tests each, fresh base+all audit and artifacts",
+    "model_accounting": "13 local unit tests only; not wired to provider/planner",
+    "remaining": [
+      "Production single-planner loop and provider-neutral dispatch integration",
+      "Real provider authorization, adapter and live trajectories",
+      "Resource measurement and independent evaluation source/partition tooling",
+      "Delivery review, license inventory and demo verification",
+      "M4 deferred until real Agent stabilizes"
+    ]
+  }
 }

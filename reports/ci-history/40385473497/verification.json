@@ -1,0 +1,24 @@
+{
+  "verified_at": "2026-10-26T19:20:04.879737+00:00",
+  "tested_commit": "6f823de810a958f4defd31fb214ce7dc5afce1d3",
+  "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40385473497",
+  "results": [
+    {
+      "platform": "macos-14",
+      "tests": 59,
+      "state": "COMPLETED",
+      "model_execution": "not_run",
+      "artifact_content_identity": "locally_reverified",
+      "runtime_lock_sha256": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1"
+    },
+    {
+      "platform": "ubuntu-24.04",
+      "tests": 59,
+      "state": "COMPLETED",
+      "model_execution": "not_run",
+      "artifact_content_identity": "locally_reverified",
+      "runtime_lock_sha256": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7"
+    }
+  ],
+  "method": "download actual CI artifacts; verify JUnit, checkpoint/report digest, evidence hash and real Core report identities locally; this is verification, not a new experiment"
+}
