@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "visionleak-report-v1",
+  "identityVersion": "vl-report-sha256-v2",
+  "normalization": "vl-rgb-v1",
+  "decoder": {
+    "name": "sharp",
+    "version": "0.35.5",
+    "libvips": "8.18.7"
+  },
+  "engine": {
+    "name": "visionleak-moonbit",
+    "artifactDigest": "ad556a709752b9add24a71fed5943442428e277b3b588c1a1692a7c2e4379507"
+  },
+  "ok": true,
+  "complete": true,
+  "status": "complete",
+  "pairs": [
+    {
+      "left": "test/002.png",
+      "right": "train/001.png",
+      "evidence": "perceptual-candidate",
+      "distance": 0,
+      "lowContrast": true,
+      "review": "unreviewed"
+    },
+    {
+      "left": "test/004.png",
+      "right": "train/003.png",
+      "evidence": "perceptual-candidate",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    }
+  ],
+  "groups": [],
+  "options": {
+    "threshold": 6,
+    "maxImages": 1000,
+    "maxDecodePixels": 64000000,
+    "maxPixels": 4194304,
+    "maxTotalPixels": 100000000,
+    "maxFileBytes": 33554432,
+    "maxComparisons": 1000000,
+    "maxPairs": 2000,
+    "includeMirrors": false,
+    "includeRotations": false,
+    "includeCrops": false
+  },
+  "stats": {
+    "inputImages": 4,
+    "processedImages": 4,
+    "comparisons": 10,
+    "distanceEvaluations": 8,
+    "pairChecks": 2,
+    "emittedPairs": 2,
+    "indexNodes": 2,
+    "reason": ""
+  },
+  "images": [
+    {
+      "id": "test/002.png",
+      "path": "test/002.png",
+      "split": "test",
+      "byteDigest": "15103d6f78743c924e2b5f936b4e58d13829e56566cc01f6bd22b5ed73aeae84",
+      "pixelDigest": "96f5a70cacae918ff4f50ee0df2ac95754f1e77fb6ffd7d27a5388935b68ee37",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 48,
+        "height": 48,
+        "downsampled": false
+      },
+      "dhash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "width": 48,
+      "height": 48,
+      "contrast": 0,
+      "thumbnail": "thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg",
+      "thumbnailDigest": "267a191431cb60633568bb7b20217ca26e1aea8a346f89c4f1fa7b4b6f930bc8",
+      "format": "png"
+    },
+    {
+      "id": "test/004.png",
+      "path": "test/004.png",
+      "split": "test",
+      "byteDigest": "9a9105acada5881fd9284a560fcea0c084600cc4f9a0d799c7a87b79e8cadf39",
+      "pixelDigest": "ce2eb76b79cf162957a93cc57211dd59aa94b334324e47a8eff4028b4e043233",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 48,
+        "height": 48,
+        "downsampled": false
+      },
+      "dhash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "width": 48,
+      "height": 48,
+      "contrast": 188,
+      "thumbnail": "thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg",
+      "thumbnailDigest": "b89ba114dff9b2d52f4ced2460b2e7388cedeb328d437c5ab236ead91d034c74",
+      "format": "png"
+    },
+    {
+      "id": "train/001.png",
+      "path": "train/001.png",
+      "split": "train",
+      "byteDigest": "b8bd9d2249882635f297541ab7b9fa3dcf7949c7d845a4b7a398f2ae55fbfa44",
+      "pixelDigest": "d172618f110ab941b745818908e53a37d3a2937e0c07d236ea49d060d2cc897f",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 48,
+        "height": 48,
+        "downsampled": false
+      },
+      "dhash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "width": 48,
+      "height": 48,
+      "contrast": 0,
+      "thumbnail": "thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg",
+      "thumbnailDigest": "639541c6ca18d0418ede474ea76cec3244093990a0cd98aa454f6babd207ba48",
+      "format": "png"
+    },
+    {
+      "id": "train/003.png",
+      "path": "train/003.png",
+      "split": "train",
+      "byteDigest": "a84a5c89e9c1229cf7fab93af92cb172436ea22e0b3f07a2cc3fe11456d85a48",
+      "pixelDigest": "7fce093be8b7720f3e6c9826fc389df9d583dcccf4ae5419120a2dfb1cfb9539",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 48,
+        "height": 48,
+        "downsampled": false
+      },
+      "dhash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "width": 48,
+      "height": 48,
+      "contrast": 188,
+      "thumbnail": "thumbnails/e6592064714bc36059f916c7cc8b2e9e9bd1ffe72a977c758a7de7a27003fca0.jpg",
+      "thumbnailDigest": "627237c9859e658bdc969ea0510accb5140875a13f328fe94e883910ee53b3b7",
+      "format": "png"
+    }
+  ],
+  "errors": [],
+  "scope": {
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "splitDirectories": {
+      "train": "train",
+      "test": "test"
+    },
+    "missingSplits": [
+      "validation"
+    ],
+    "supportedExtensions": [
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".webp",
+      ".avif",
+      ".tif",
+      ".tiff",
+      ".gif"
+    ],
+    "ignoredFiles": 0,
+    "entriesScanned": 4,
+    "discoveredAtLeast": 4,
+    "acceptedImages": 4,
+    "totalDecodedPixels": 9216,
+    "maxDirectoryEntries": 100000,
+    "source": "local-files",
+    "allPairsAreCrossSplit": true,
+    "perceptualMatchesRequireReview": true
+  },
+  "coverage": {
+    "splits": {
+      "train": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "validation": {
+        "audited": 0,
+        "fingerprinted": 0,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "test": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "unknown": {
+        "audited": 0,
+        "fingerprinted": 0,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      }
+    },
+    "budgetExhaustion": [],
+    "enumerationComplete": true,
+    "rejectedOrErrorCount": 0,
+    "ignoredFiles": 0,
+    "unprocessedKnownFiles": 0,
+    "summary": "已审计 train 2 / validation 0 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+  },
+  "candidateGroups": [
+    {
+      "id": "candidate-2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7",
+      "members": [
+        "test/002.png",
+        "train/001.png"
+      ],
+      "evidence": "perceptual-component"
+    },
+    {
+      "id": "candidate-6ad2719f9b90875ba9624082d7415db73b7e80ebd036c442a556d544bb20ef5d",
+      "members": [
+        "test/004.png",
+        "train/003.png"
+      ],
+      "evidence": "perceptual-component"
+    }
+  ],
+  "auditId": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+  "createdAt": "2026-10-26T21:14:02.376Z",
+  "timing": {
+    "elapsedMs": 58
+  }
+}

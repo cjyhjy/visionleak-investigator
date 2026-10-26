@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "data_kind": "self-generated controlled fixtures",
+  "human_inputs": "scripted fixtures, not real participants",
+  "cases": [
+    {
+      "case": "complete",
+      "state": "COMPLETED",
+      "report": "complete/run/report.html",
+      "sha256": "c4814a3fbaf2520c378526afefe60f26747cc239ddf2368c05f4625c9ff1c98a",
+      "audit_runs": 2
+    },
+    {
+      "case": "review_revision",
+      "state": "COMPLETED",
+      "report": "complete/run/revisions/98257fa2ac1811803a83286d01f76f2f702e9380807314765acf39306bee3fca/report.html",
+      "sha256": "d2cddc849a244c36dcd98110c6748d0dd0b92d25ee28450e56280d1e7c9ab907",
+      "core_reexecuted": false
+    },
+    {
+      "case": "partial",
+      "state": "PARTIAL",
+      "report": "partial/run/report.html",
+      "sha256": "61e94841ff529a6d52282c22abc71267142ceb02e862995ccf18e7e0ff16653c",
+      "audit_runs": 1
+    },
+    {
+      "case": "clarification",
+      "state": "WAITING_USER",
+      "report": "clarification/run/report.html",
+      "sha256": "03bc4dcb436689801ec06b98d8eeca9071eb46c9a29033fff76a3ab300235cdc",
+      "audit_runs": 1
+    },
+    {
+      "case": "goal_revision",
+      "state": "COMPLETED",
+      "report": "clarification/run/revisions/814e5ef755e039452982fa4844f080d1a70f49ddc567b540b11f318d015d3c47/report.html",
+      "sha256": "56da764734a9cd9d25f74ecfa2f0633ef058ee5f82aee716f185a2d6f008c9a2",
+      "core_reexecuted": false
+    }
+  ],
+  "visual_acceptance": "pending separate browser inspection"
+}

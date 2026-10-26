@@ -1,0 +1,1808 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>VisionLeak Investigator · COMPLETED</title><style>
+:root{color-scheme:light;--ink:#16313c;--muted:#52666f;--line:#d5e1e5;--accent:#126478}
+*{box-sizing:border-box}html{scroll-padding-top:20px}body{margin:0;background:#f2f6f7;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:36px 24px 64px}h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 16px;letter-spacing:-.7px}
+h2{font-size:22px;margin:0 0 16px}h3{font-size:18px;margin:0 0 10px}p{margin:8px 0 14px}a{color:#075e75;text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:3px solid #d47709;outline-offset:4px}small,.muted{color:var(--muted);font-size:14px}
+code,pre,small,dd,td,figcaption,.wrap{overflow-wrap:anywhere}code{font-size:.9em}pre{white-space:pre-wrap;font-size:13px;margin:12px 0}
+.eyebrow{font-weight:700;color:var(--accent);letter-spacing:1.5px;font-size:12px}.mode{border-left:4px solid var(--accent);padding:10px 14px;background:#e4f0f3}
+.status{border:1px solid var(--line);border-left:5px solid #28745e;background:#fff;padding:20px 24px;border-radius:8px;margin:24px 0}
+.status.partial,.status.waiting{border-left-color:#b76a05;background:#fffaf0}.status.failed{border-left-color:#b03035;background:#fff4f4}
+.status h2{margin-bottom:4px}.metrics,.budget-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+.metric{background:#fff;border:1px solid var(--line);padding:16px;border-radius:8px;min-width:0}.metric strong{display:block;font-size:25px;line-height:1.3;margin-top:6px}
+nav{display:flex;flex-wrap:wrap;gap:8px 20px;padding:4px 0 20px}section{margin:20px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}
+article{padding:18px 0;border-top:1px solid var(--line)}article:first-of-type{border-top:0}.badge{display:inline-block;font-size:12px;font-weight:650;padding:3px 9px;border-radius:4px;background:#e8f0f2;color:#365461}
+.badge.confirmed{background:#e4f2eb;color:#245b43}.badge.candidate,.badge.inconclusive{background:#fff0d7;color:#855007}
+.notice{padding:12px 16px;background:#fff3df;border-left:3px solid #b76a05;border-radius:4px}.notice.danger{background:#ffeded;border-color:#b03035}
+ul,ol{padding-left:24px}li{margin:8px 0}dl{display:grid;grid-template-columns:minmax(100px,150px) minmax(0,1fr);gap:8px 18px;margin:12px 0}dt{color:var(--muted)}dd{margin:0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+.pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:620px}figure{margin:8px 0;min-width:0}figure img{width:100%;height:160px;object-fit:contain;background:#eef3f4;border:1px solid var(--line);border-radius:6px}figcaption{font-size:13px;margin-top:4px}
+.evidence:target{outline:3px solid #d18a21;outline-offset:5px;border-radius:4px}.source-links{display:flex;gap:8px 18px;flex-wrap:wrap}.budget-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.budget-grid .metric strong{font-size:20px}
+details{border-top:1px solid var(--line);padding:12px 0}summary{cursor:pointer;color:#245d70;font-weight:600}.raw{background:#f6f9fa;padding:12px;border-radius:6px;max-height:500px;overflow:auto}
+footer{color:var(--muted);font-size:13px;padding-top:12px}@media(max-width:640px){main{padding:22px 14px 40px}section{padding:18px 16px}.status{padding:16px}.metrics,.budget-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:22px}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:10px}th,td{padding:10px 6px}figure img{height:120px}}
+@media print{body{background:white}main{max-width:none;padding:0}nav{display:none}section,article,figure{break-inside:avoid}.raw{max-height:none}a{color:inherit}}
+</style></head><body><main><header><div class="eyebrow">EVIDENCE · COVERAGE · BUDGET</div><h1>VisionLeak Investigator</h1><p class="mode">确定性本地审计 · 真实 Core 0.6.0 · 模型调用：未运行</p><p class="wrap">受控合成演示；用户回答和复核均为脚本输入，无真人参与。请检查图像内容，不修改原始图片。</p></header><div class="status completed"><h2>COMPLETED · 检查已完成</h2><p>已完成列明范围的检查；这不代表数据没有风险。</p></div><div class="metrics"><div class="metric"><small>输入图像</small><strong>6</strong></div><div class="metric"><small>已确认结论条目</small><strong>6</strong></div><div class="metric"><small>不同候选图片对</small><strong>2</strong></div><div class="metric"><small>待复核记录</small><strong>2</strong></div></div><nav aria-label="报告目录"><a href="#next">待办与问题</a><a href="#scope">检查范围</a><a href="#claims">结论</a><a href="#budget">预算</a><a href="#timeline">执行记录</a><a href="#evidence">证据</a><a href="#records">原始记录</a></nav><section id="next" aria-labelledby="next-title"><h2 id="next-title">待办与问题</h2><p>还有 2 条待复核记录，其中 0 条已请求人工处理。候选尚未被确认。</p><div class="table-wrap"><table><thead><tr><th>候选证据</th><th>复核状态</th><th>请求情况</th></tr></thead><tbody><tr><td><a href="#evidence-44cb8090339fffef5f9c65d6">call-0004:pair:1</a></td><td>pending</td><td>未请求</td></tr><tr><td><a href="#evidence-a3c8ee8b6b9d67bfab2e6406">call-0004:pair:4</a></td><td>pending</td><td>未请求</td></tr></tbody></table></div></section><section id="scope" aria-labelledby="scope-title"><h2 id="scope-title">目标与检查范围</h2><dl><dt>审计目标</dt><dd>图像内容审计 · 来源已确认</dd><dt>数据引用</dt><dd>demo-dataset</dd><dt>原始输入</dt><dd>前后摘要一致（非原子快照）</dd></dl><article><h3>base · 已完成</h3><p>已发现至少 6 张；已生成指纹 6 张；已处理 6 张。</p><p>已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。</p><a href="tools/call-0002/output/report.json">查看 base 原始 Core 报告</a></article><article><h3>all · 已完成</h3><p>已发现至少 6 张；已生成指纹 6 张；已处理 6 张。</p><p>已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。</p><a href="tools/call-0004/output/report.json">查看 all 原始 Core 报告</a></article><p>元数据：not_applicable。元数据中的实体身份来自登记声明。</p><details><summary>展开完整覆盖记录</summary><pre class="raw">{
+  &quot;input_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;input_preflight&quot;: {
+    &quot;digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+    &quot;image_count&quot;: 6,
+    &quot;estimated_source_pixels&quot;: 55296,
+    &quot;header_unknown_count&quot;: 0,
+    &quot;snapshot_guarantee&quot;: &quot;before/after hashes; not an atomic filesystem snapshot&quot;
+  },
+  &quot;profiles&quot;: {
+    &quot;base&quot;: {
+      &quot;audit_id&quot;: &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;,
+      &quot;report_ref&quot;: &quot;tools/call-0002/output/report.json&quot;,
+      &quot;report_sha256&quot;: &quot;d16d9be18d5619d7a4ab300da67a39ec3cb1a5040c7284c2ae1cdfb5b28bba5b&quot;,
+      &quot;complete&quot;: true,
+      &quot;discovered_at_least&quot;: 6,
+      &quot;fingerprinted_images&quot;: 6,
+      &quot;processed_images&quot;: 6,
+      &quot;unprocessed_fingerprints&quot;: [],
+      &quot;errors&quot;: [],
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;core_coverage&quot;: {
+        &quot;splits&quot;: {
+          &quot;train&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;validation&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;test&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;unknown&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 0,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          }
+        },
+        &quot;budgetExhaustion&quot;: [],
+        &quot;enumerationComplete&quot;: true,
+        &quot;rejectedOrErrorCount&quot;: 0,
+        &quot;ignoredFiles&quot;: 0,
+        &quot;unprocessedKnownFiles&quot;: 0,
+        &quot;summary&quot;: &quot;已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。&quot;
+      },
+      &quot;scope&quot;: {
+        &quot;splits&quot;: [
+          &quot;train&quot;,
+          &quot;validation&quot;,
+          &quot;test&quot;
+        ],
+        &quot;splitDirectories&quot;: {
+          &quot;train&quot;: &quot;train&quot;,
+          &quot;validation&quot;: &quot;validation&quot;,
+          &quot;test&quot;: &quot;test&quot;
+        },
+        &quot;missingSplits&quot;: [],
+        &quot;supportedExtensions&quot;: [
+          &quot;.png&quot;,
+          &quot;.jpg&quot;,
+          &quot;.jpeg&quot;,
+          &quot;.webp&quot;,
+          &quot;.avif&quot;,
+          &quot;.tif&quot;,
+          &quot;.tiff&quot;,
+          &quot;.gif&quot;
+        ],
+        &quot;ignoredFiles&quot;: 0,
+        &quot;entriesScanned&quot;: 6,
+        &quot;discoveredAtLeast&quot;: 6,
+        &quot;acceptedImages&quot;: 6,
+        &quot;totalDecodedPixels&quot;: 55296,
+        &quot;maxDirectoryEntries&quot;: 100000,
+        &quot;source&quot;: &quot;local-files&quot;,
+        &quot;allPairsAreCrossSplit&quot;: true,
+        &quot;perceptualMatchesRequireReview&quot;: true
+      },
+      &quot;cost&quot;: {
+        &quot;comparisons&quot;: 14,
+        &quot;index_operations&quot;: 0,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;wall_seconds&quot;: 0.30072137899998097
+      },
+      &quot;pixel_cost_measurement&quot;: &quot;core-successful-decode-count&quot;
+    },
+    &quot;all&quot;: {
+      &quot;audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+      &quot;report_ref&quot;: &quot;tools/call-0004/output/report.json&quot;,
+      &quot;report_sha256&quot;: &quot;76661543ad887d814be01bdbda62d99e0a6ca3e302592a9054555de19fa12598&quot;,
+      &quot;complete&quot;: true,
+      &quot;discovered_at_least&quot;: 6,
+      &quot;fingerprinted_images&quot;: 6,
+      &quot;processed_images&quot;: 6,
+      &quot;unprocessed_fingerprints&quot;: [],
+      &quot;errors&quot;: [],
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;core_coverage&quot;: {
+        &quot;splits&quot;: {
+          &quot;train&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;validation&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;test&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;unknown&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 0,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          }
+        },
+        &quot;budgetExhaustion&quot;: [],
+        &quot;enumerationComplete&quot;: true,
+        &quot;rejectedOrErrorCount&quot;: 0,
+        &quot;ignoredFiles&quot;: 0,
+        &quot;unprocessedKnownFiles&quot;: 0,
+        &quot;summary&quot;: &quot;已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。&quot;
+      },
+      &quot;scope&quot;: {
+        &quot;splits&quot;: [
+          &quot;train&quot;,
+          &quot;validation&quot;,
+          &quot;test&quot;
+        ],
+        &quot;splitDirectories&quot;: {
+          &quot;train&quot;: &quot;train&quot;,
+          &quot;validation&quot;: &quot;validation&quot;,
+          &quot;test&quot;: &quot;test&quot;
+        },
+        &quot;missingSplits&quot;: [],
+        &quot;supportedExtensions&quot;: [
+          &quot;.png&quot;,
+          &quot;.jpg&quot;,
+          &quot;.jpeg&quot;,
+          &quot;.webp&quot;,
+          &quot;.avif&quot;,
+          &quot;.tif&quot;,
+          &quot;.tiff&quot;,
+          &quot;.gif&quot;
+        ],
+        &quot;ignoredFiles&quot;: 0,
+        &quot;entriesScanned&quot;: 6,
+        &quot;discoveredAtLeast&quot;: 6,
+        &quot;acceptedImages&quot;: 6,
+        &quot;totalDecodedPixels&quot;: 55296,
+        &quot;maxDirectoryEntries&quot;: 100000,
+        &quot;source&quot;: &quot;local-files&quot;,
+        &quot;allPairsAreCrossSplit&quot;: true,
+        &quot;perceptualMatchesRequireReview&quot;: true
+      },
+      &quot;cost&quot;: {
+        &quot;comparisons&quot;: 2528,
+        &quot;index_operations&quot;: 0,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;wall_seconds&quot;: 0.3603874529999871
+      },
+      &quot;pixel_cost_measurement&quot;: &quot;core-successful-decode-count&quot;
+    }
+  },
+  &quot;metadata&quot;: {
+    &quot;state&quot;: &quot;not_applicable&quot;,
+    &quot;issues&quot;: []
+  },
+  &quot;human_review&quot;: {
+    &quot;state&quot;: &quot;not_run&quot;
+  },
+  &quot;verification&quot;: {
+    &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;: {
+      &quot;state&quot;: &quot;passed&quot;,
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;auditId&quot;: &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;,
+        &quot;pairs&quot;: [
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;train/001.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;train/001.png&quot;,
+            &quot;evidence&quot;: &quot;byte-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;train/001.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;train/001.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          }
+        ],
+        &quot;counts&quot;: {
+          &quot;valid&quot;: 3,
+          &quot;invalid&quot;: 0,
+          &quot;missing&quot;: 0,
+          &quot;skippedCandidates&quot;: 0
+        },
+        &quot;exitCode&quot;: 0,
+        &quot;verificationScope&quot;: {
+          &quot;evidenceTypes&quot;: [
+            &quot;byte-identical&quot;,
+            &quot;pixel-identical&quot;
+          ],
+          &quot;candidatesRecomputed&quot;: false,
+          &quot;wholeDatasetReaudited&quot;: false
+        }
+      },
+      &quot;candidates_recomputed&quot;: false
+    },
+    &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;: {
+      &quot;state&quot;: &quot;passed&quot;,
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;auditId&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+        &quot;pairs&quot;: [
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;train/001.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;train/001.png&quot;,
+            &quot;evidence&quot;: &quot;byte-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;train/001.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;train/001.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+              &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;
+            }
+          }
+        ],
+        &quot;counts&quot;: {
+          &quot;valid&quot;: 3,
+          &quot;invalid&quot;: 0,
+          &quot;missing&quot;: 0,
+          &quot;skippedCandidates&quot;: 2
+        },
+        &quot;exitCode&quot;: 0,
+        &quot;verificationScope&quot;: {
+          &quot;evidenceTypes&quot;: [
+            &quot;byte-identical&quot;,
+            &quot;pixel-identical&quot;
+          ],
+          &quot;candidatesRecomputed&quot;: false,
+          &quot;wholeDatasetReaudited&quot;: false
+        }
+      },
+      &quot;candidates_recomputed&quot;: false
+    }
+  },
+  &quot;source_unchanged&quot;: true
+}</pre></details></section><section id="claims" aria-labelledby="claims-title"><h2 id="claims-title">有证据支撑的结论</h2><article><h3>字节相同 <span class="badge confirmed">confirmed</span></h3><p>两文件字节摘要相同且已复验；不据此推断训练使用。</p><div class="source-links"><a href="#evidence-f7f1352e0dbe665407a155fb">call-0002:pair:0</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-3c91c6214d730b7a815ee5d6">call-0002:pair:1</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-b5aa8d2ee9303575741f8021">call-0002:pair:2</a></div></article><article><h3>字节相同 <span class="badge confirmed">confirmed</span></h3><p>两文件字节摘要相同且已复验；不据此推断训练使用。</p><div class="source-links"><a href="#evidence-b21bb96c232c7e97eaf5c207">call-0004:pair:0</a></div></article><article><h3>待复核的相似线索 <span class="badge candidate">candidate</span></h3><p>在所列 profile 和阈值下存在待复核的相似线索。</p><div class="source-links"><a href="#evidence-44cb8090339fffef5f9c65d6">call-0004:pair:1</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-37a07561eca24f6f857dcc17">call-0004:pair:2</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-3c3daec6a05c3dcddc9b2cc9">call-0004:pair:3</a></div></article><article><h3>待复核的相似线索 <span class="badge candidate">candidate</span></h3><p>在所列 profile 和阈值下存在待复核的相似线索。</p><div class="source-links"><a href="#evidence-a3c8ee8b6b9d67bfab2e6406">call-0004:pair:4</a></div></article><details><summary>结论边界</summary><ul><li>相似候选不证明同源或实验泄漏。</li><li>图像关系不证明模型实际训练使用。</li><li>覆盖仅适用于列明的 profile、输入与阈值。</li><li>本次未调用模型；不是 Agent 性能实验。</li></ul></details></section><section id="budget" aria-labelledby="budget-title"><h2 id="budget-title">预算与成本</h2><p>累计已扣账 / 上限。各维度独立计量，不换算为未定价的金额。</p><div class="budget-grid"><div class="metric"><small>工具调用</small><strong>7 / 16</strong></div><div class="metric"><small>审计扫描调用</small><strong>2 / 3</strong></div><div class="metric"><small>比较次数</small><strong>2,542 / 1,000,000</strong></div><div class="metric"><small>索引操作</small><strong>0 / 16,000,000</strong></div><div class="metric"><small>解码源像素</small><strong>165,888 / 300,000,000</strong></div><div class="metric"><small>累计工具时间 / 秒</small><strong>1.227 / 300</strong></div><div class="metric"><small>澄清请求</small><strong>0 / 2</strong></div><div class="metric"><small>复核请求</small><strong>0 / 30</strong></div></div><p>模型执行：not_run。脚本规划请求不作为真实模型调用。</p><details><summary>展开完整预算账本</summary><pre class="raw">{
+  &quot;schema_version&quot;: 1,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1000000,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 300000000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;spent&quot;: {
+    &quot;tool_calls&quot;: 7,
+    &quot;audit_runs&quot;: 2,
+    &quot;comparisons&quot;: 2542,
+    &quot;index_operations&quot;: 0,
+    &quot;decoded_pixels&quot;: 165888,
+    &quot;wall_seconds&quot;: 1.2265717469999515,
+    &quot;llm_requests&quot;: 0,
+    &quot;review_pairs&quot;: 0,
+    &quot;questions&quot;: 0
+  },
+  &quot;model_usage&quot;: &quot;not_run&quot;,
+  &quot;model_cost_usd&quot;: 0,
+  &quot;entries&quot;: [
+    {
+      &quot;call_id&quot;: &quot;call-0001&quot;,
+      &quot;kind&quot;: &quot;preflight&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:34.533386+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 290
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.1779859260000194
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:34.701623+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.822014074
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0002&quot;,
+      &quot;kind&quot;: &quot;audit&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:34.706066+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.822014074,
+        &quot;comparisons&quot;: 1000000,
+        &quot;decoded_pixels&quot;: 100000000,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.30072137899998097,
+        &quot;comparisons&quot;: 14,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;index_operations&quot;: 0,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.008495+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.521292695,
+        &quot;comparisons&quot;: 999986,
+        &quot;decoded_pixels&quot;: 99944704,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0003&quot;,
+      &quot;kind&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:35.012148+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.521292695,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.17329686899998364,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.187199+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.347995826,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0004&quot;,
+      &quot;kind&quot;: &quot;audit&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:35.195232+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.347995826,
+        &quot;comparisons&quot;: 999986,
+        &quot;decoded_pixels&quot;: 100000000,
+        &quot;index_operations&quot;: 15999776,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.3603874529999871,
+        &quot;comparisons&quot;: 2528,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;index_operations&quot;: 0,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.557384+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 288.987608373,
+        &quot;comparisons&quot;: 997458,
+        &quot;decoded_pixels&quot;: 99944704,
+        &quot;index_operations&quot;: 15999776,
+        &quot;audit_runs&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0005&quot;,
+      &quot;kind&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:35.561274+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 298.98760837300006,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.19942588699998964,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.762373+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 298.7881824860001,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0006&quot;,
+      &quot;kind&quot;: &quot;interpret_context&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:35.771156+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 288.78818248600004,
+        &quot;questions&quot;: 0
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.0008758479999926294,
+        &quot;questions&quot;: 0
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.772021+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 288.787306638,
+        &quot;questions&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0007&quot;,
+      &quot;kind&quot;: &quot;finalize&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T21:13:35.774003+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 298.787306638
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.013878384999998161
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T21:13:35.787874+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 298.773428253
+      },
+      &quot;overrun&quot;: {}
+    }
+  ]
+}</pre></details></section><section id="timeline" aria-labelledby="timeline-title"><h2 id="timeline-title">执行记录</h2><p class="muted">按预算账本顺序显示预留与结算。unknown 表示保守扣账；修订报告包含复用证据的历史调用。</p><div class="table-wrap"><table><thead><tr><th>步骤</th><th>动作</th><th>状态</th><th>预留 / 结算时间</th><th>已扣账秒数</th></tr></thead><tbody><tr><td><code>call-0001</code></td><td>核对输入与 Core</td><td>settled</td><td><small>2026-10-26T21:13:34.533386+00:00<br>2026-10-26T21:13:34.701623+00:00</small></td><td>0.178</td></tr><tr><td><code>call-0002</code></td><td>图像审计</td><td>settled</td><td><small>2026-10-26T21:13:34.706066+00:00<br>2026-10-26T21:13:35.008495+00:00</small></td><td>0.301</td></tr><tr><td><code>call-0003</code></td><td>精确关系复验</td><td>settled</td><td><small>2026-10-26T21:13:35.012148+00:00<br>2026-10-26T21:13:35.187199+00:00</small></td><td>0.173</td></tr><tr><td><code>call-0004</code></td><td>图像审计</td><td>settled</td><td><small>2026-10-26T21:13:35.195232+00:00<br>2026-10-26T21:13:35.557384+00:00</small></td><td>0.360</td></tr><tr><td><code>call-0005</code></td><td>精确关系复验</td><td>settled</td><td><small>2026-10-26T21:13:35.561274+00:00<br>2026-10-26T21:13:35.762373+00:00</small></td><td>0.199</td></tr><tr><td><code>call-0006</code></td><td>解释目标与元数据</td><td>settled</td><td><small>2026-10-26T21:13:35.771156+00:00<br>2026-10-26T21:13:35.772021+00:00</small></td><td>0.001</td></tr><tr><td><code>call-0007</code></td><td>生成结论与报告</td><td>settled</td><td><small>2026-10-26T21:13:35.774003+00:00<br>2026-10-26T21:13:35.787874+00:00</small></td><td>0.014</td></tr></tbody></table></div></section><section id="evidence" aria-labelledby="evidence-title"><h2 id="evidence-title">证据明细</h2><p class="muted">证据类型与复验范围保持原样。指纹相似候选未被精确复验，不会自动升级为同源或泄漏。</p><article class="evidence" id="evidence-f7f1352e0dbe665407a155fb"><h3>core.byte_identical</h3><p><code>call-0002:pair:0</code></p><p class="wrap">test/002.png ↔ train/001.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/0</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:0&quot;,
+  &quot;kind&quot;: &quot;core.byte_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;train/001.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/0&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;0ec3d070bc7fd17e8122b62e13ed9724fd942e0c48992f6801318fe1d73253c0&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.190381+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;train/001.png&quot;,
+    &quot;evidence&quot;: &quot;byte-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-3c91c6214d730b7a815ee5d6"><h3>core.pixel_identical</h3><p><code>call-0002:pair:1</code></p><p class="wrap">test/002.png ↔ validation/003.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/1</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:1&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;3057eb341165589f3cef971a3d9fb5c8a3ee675f48ab50836101a937fab58f98&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/1&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;0ec3d070bc7fd17e8122b62e13ed9724fd942e0c48992f6801318fe1d73253c0&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.190870+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-b5aa8d2ee9303575741f8021"><h3>core.pixel_identical</h3><p><code>call-0002:pair:2</code></p><p class="wrap">train/001.png ↔ validation/003.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/2</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:2&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;b208115aafcb96810ceaa5630f99673dd2732a01181f44a9ec2b8fb1204f1c53&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;train/001.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;a4b2584737026d9951735297ef5aadc66301b2285a6b621986f3d573ba86b72f&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/2&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;0ec3d070bc7fd17e8122b62e13ed9724fd942e0c48992f6801318fe1d73253c0&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.191214+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;train/001.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-b21bb96c232c7e97eaf5c207"><h3>core.byte_identical</h3><p><code>call-0004:pair:0</code></p><p class="wrap">test/002.png ↔ train/001.png</p><p><a href="tools/call-0004/output/report.json">查看原始 Core JSON</a> <small>/pairs/0</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0004:pair:0&quot;,
+  &quot;kind&quot;: &quot;core.byte_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0004&quot;,
+  &quot;core_audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;train/001.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0004/output/report.json#/pairs/0&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;a8792c4f75834f0f42dd4a59b9f3108f4227cd5d91d317fb6dc9775ddd9487ef&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.766048+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;train/001.png&quot;,
+    &quot;evidence&quot;: &quot;byte-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-44cb8090339fffef5f9c65d6"><h3>core.perceptual_candidate</h3><p><code>call-0004:pair:1</code></p><p class="wrap">test/004.png ↔ train/001.png</p><p><a href="tools/call-0004/output/report.json">查看原始 Core JSON</a> <small>/pairs/1</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg" alt="test/004.png 的 Core 缩略图"><figcaption>test/004.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;not_applicable&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0004:pair:1&quot;,
+  &quot;kind&quot;: &quot;core.perceptual_candidate&quot;,
+  &quot;produced_by&quot;: &quot;call-0004&quot;,
+  &quot;core_audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/004.png&quot;,
+    &quot;train/001.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;b9a5edd81f480b714d009bdc2043a33e6eb2d49934b42f03d85820640228e391&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0004/output/report.json#/pairs/1&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;a8792c4f75834f0f42dd4a59b9f3108f4227cd5d91d317fb6dc9775ddd9487ef&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.766579+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;not_applicable&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/004.png&quot;,
+      &quot;path&quot;: &quot;test/004.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;0889c5d42469415d1a5b4b95c8ebc138a43e55d43342a10e9f864e17f7b6080f&quot;,
+      &quot;pixelDigest&quot;: &quot;ddb2e5e5d205f3f2c8c0d7683a35204099dc363c8585b1e218f4e2389a986c82&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;,
+      &quot;dhashMirror&quot;: &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;,
+        &quot;0001100000010010101001000001010110011110101100100110001110100110&quot;,
+        &quot;0011010000100100010010010010101000111001011001011100001001001100&quot;,
+        &quot;1101001110100100100101001001110010110010011000111000011011100010&quot;,
+        &quot;0010011001001001001010000011100101100101110000110000110010000100&quot;,
+        &quot;0101001011101110010011001010010001001001110001010110010110000010&quot;,
+        &quot;1001010010100001001100111010001010110001101010110110100100101011&quot;,
+        &quot;1010010000001101100111010001010110001010010110010100101101011011&quot;,
+        &quot;1010001000110010101010111001000101101011101010010001010111100010&quot;,
+        &quot;0001010110010001010110111000101101011011010010111010101000010110&quot;,
+        &quot;0010011011011100001011010001010011101001010001011101000110011110&quot;,
+        &quot;1010010111011010010101100101011101011000010110000101001011000011&quot;,
+        &quot;1101011000010101101100001010101001101011101010011110100101010101&quot;,
+        &quot;0101110010110110101010110001101101011010010100101011011010011010&quot;,
+        &quot;1010011010100110011010101010010100101010011101100100101011010101&quot;,
+        &quot;0001011000010100010000100111000110001001110010011010100100110010&quot;,
+        &quot;1001010000010001101000101010100110110001011010010110010110100010&quot;,
+        &quot;1010010010001101000101010100101110001010010010110010100100010110&quot;,
+        &quot;0011010011000110010101010110100010100100100011010100000101010101&quot;,
+        &quot;0100010000101010100111011010100101010111111001010001010011000011&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        19,
+        19,
+        17,
+        19,
+        18,
+        21,
+        29,
+        26,
+        30,
+        28,
+        23,
+        40,
+        40,
+        49,
+        39,
+        38,
+        26,
+        24,
+        16,
+        23
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;cc349693073b4d7d39f23684a9f49fed94229eb7719d086483cd900fe0e20ae6&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/004.png&quot;,
+    &quot;right&quot;: &quot;train/001.png&quot;,
+    &quot;evidence&quot;: &quot;perceptual-candidate&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;,
+    &quot;matchOrientation&quot;: &quot;rotate90/original&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-37a07561eca24f6f857dcc17"><h3>core.pixel_identical</h3><p><code>call-0004:pair:2</code></p><p class="wrap">test/002.png ↔ validation/003.png</p><p><a href="tools/call-0004/output/report.json">查看原始 Core JSON</a> <small>/pairs/2</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0004:pair:2&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0004&quot;,
+  &quot;core_audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;3057eb341165589f3cef971a3d9fb5c8a3ee675f48ab50836101a937fab58f98&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0004/output/report.json#/pairs/2&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;a8792c4f75834f0f42dd4a59b9f3108f4227cd5d91d317fb6dc9775ddd9487ef&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.766958+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-3c3daec6a05c3dcddc9b2cc9"><h3>core.pixel_identical</h3><p><code>call-0004:pair:3</code></p><p class="wrap">train/001.png ↔ validation/003.png</p><p><a href="tools/call-0004/output/report.json">查看原始 Core JSON</a> <small>/pairs/3</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0004:pair:3&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0004&quot;,
+  &quot;core_audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;train/001.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;a4b2584737026d9951735297ef5aadc66301b2285a6b621986f3d573ba86b72f&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0004/output/report.json#/pairs/3&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;a8792c4f75834f0f42dd4a59b9f3108f4227cd5d91d317fb6dc9775ddd9487ef&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.767280+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;51715a4e5d92fc7e5946988975646150eadc21c9442065a51a2de0e404c91e82&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;train/001.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-a3c8ee8b6b9d67bfab2e6406"><h3>core.perceptual_candidate</h3><p><code>call-0004:pair:4</code></p><p class="wrap">test/004.png ↔ validation/003.png</p><p><a href="tools/call-0004/output/report.json">查看原始 Core JSON</a> <small>/pairs/4</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg" alt="test/004.png 的 Core 缩略图"><figcaption>test/004.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0004/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;not_applicable&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0004:pair:4&quot;,
+  &quot;kind&quot;: &quot;core.perceptual_candidate&quot;,
+  &quot;produced_by&quot;: &quot;call-0004&quot;,
+  &quot;core_audit_id&quot;: &quot;53f1a86fdc3f3000d5d503acc00686857a68b7955690940e56a216558d81c280&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [
+    &quot;test/004.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;ef596399da14e1cf82cb296976b1d326b8b2f2d305ff680699b221b0029003d9&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0004/output/report.json#/pairs/4&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;a8792c4f75834f0f42dd4a59b9f3108f4227cd5d91d317fb6dc9775ddd9487ef&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.767619+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;not_applicable&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/004.png&quot;,
+      &quot;path&quot;: &quot;test/004.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;0889c5d42469415d1a5b4b95c8ebc138a43e55d43342a10e9f864e17f7b6080f&quot;,
+      &quot;pixelDigest&quot;: &quot;ddb2e5e5d205f3f2c8c0d7683a35204099dc363c8585b1e218f4e2389a986c82&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;,
+      &quot;dhashMirror&quot;: &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;,
+        &quot;0001100000010010101001000001010110011110101100100110001110100110&quot;,
+        &quot;0011010000100100010010010010101000111001011001011100001001001100&quot;,
+        &quot;1101001110100100100101001001110010110010011000111000011011100010&quot;,
+        &quot;0010011001001001001010000011100101100101110000110000110010000100&quot;,
+        &quot;0101001011101110010011001010010001001001110001010110010110000010&quot;,
+        &quot;1001010010100001001100111010001010110001101010110110100100101011&quot;,
+        &quot;1010010000001101100111010001010110001010010110010100101101011011&quot;,
+        &quot;1010001000110010101010111001000101101011101010010001010111100010&quot;,
+        &quot;0001010110010001010110111000101101011011010010111010101000010110&quot;,
+        &quot;0010011011011100001011010001010011101001010001011101000110011110&quot;,
+        &quot;1010010111011010010101100101011101011000010110000101001011000011&quot;,
+        &quot;1101011000010101101100001010101001101011101010011110100101010101&quot;,
+        &quot;0101110010110110101010110001101101011010010100101011011010011010&quot;,
+        &quot;1010011010100110011010101010010100101010011101100100101011010101&quot;,
+        &quot;0001011000010100010000100111000110001001110010011010100100110010&quot;,
+        &quot;1001010000010001101000101010100110110001011010010110010110100010&quot;,
+        &quot;1010010010001101000101010100101110001010010010110010100100010110&quot;,
+        &quot;0011010011000110010101010110100010100100100011010100000101010101&quot;,
+        &quot;0100010000101010100111011010100101010111111001010001010011000011&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        19,
+        19,
+        17,
+        19,
+        18,
+        21,
+        29,
+        26,
+        30,
+        28,
+        23,
+        40,
+        40,
+        49,
+        39,
+        38,
+        26,
+        24,
+        16,
+        23
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;cc349693073b4d7d39f23684a9f49fed94229eb7719d086483cd900fe0e20ae6&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;5f79bca64808e190eab10803e6ce13fe502e1d8f71c8e73ebdcda010b039b8e8&quot;,
+      &quot;pixelDigest&quot;: &quot;6e63ae94fb9d26d62c1b1681425f59a355db5ed22bae887af8739474cfd3d17d&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+      &quot;dhashMirror&quot;: &quot;0110010000101010110011011010100101010100011101101010010000101000&quot;,
+      &quot;dhashRotations&quot;: [
+        &quot;1010100001011100000101010110100001010100011011011001100111010011&quot;,
+        &quot;0010100010100100011101100101010010101001110011010010101001100100&quot;,
+        &quot;1011001000100100011010001001010111101001010101111100010101100010&quot;
+      ],
+      &quot;dhashMirrorRotations&quot;: [
+        &quot;0110001011000101010101111110100110010101011010000010010010110010&quot;,
+        &quot;1110100101011110101010011101010101101010010001000010101001011010&quot;,
+        &quot;1101001110011001011011010101010001101000000101010101110010101000&quot;
+      ],
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 246,
+      &quot;localHashes&quot;: [
+        &quot;0101101000101010010001000110101011010101101010010101111011101001&quot;,
+        &quot;0010110000011000010011000101010011001010110101001101110110101101&quot;,
+        &quot;0101100100110001100110101010100010010101101010011011101111011010&quot;,
+        &quot;0001010001001100011001001100101011010100110011011010010110101100&quot;,
+        &quot;0010010111011010110010001001010110101001100110101100101011011011&quot;,
+        &quot;0001010100101001110011000110101001010111100010000101011011101010&quot;,
+        &quot;1010011010011100010101100100101101010010110001011001101011010110&quot;,
+        &quot;0011010111100010101101010101100110010110001011101101010110110000&quot;,
+        &quot;0101001101010010101011011101101010110110010010101010101001110100&quot;,
+        &quot;1001101010010010011011011101010010110001010101010101011010100100&quot;,
+        &quot;0110100110000101011010101010010110100111000101001001001111001101&quot;,
+        &quot;1101000100110101010001101011011010100101001010100010011010110010&quot;,
+        &quot;1100100001100111001001011000101100100100110100101100110010011011&quot;,
+        &quot;1010010101010101101010100110010110001001010010010110010101010101&quot;,
+        &quot;0011011001010001110101110011010010101001010101001001101101010110&quot;,
+        &quot;0101011010100111100011010110010001001010011101100101010110010110&quot;,
+        &quot;1010111010010100010010110110001011000100110101101010101011110110&quot;,
+        &quot;0111000110100101010110100001010000100101101100010101011010110100&quot;,
+        &quot;0101101010111100001010110100010101101010110101111011100110101100&quot;,
+        &quot;0100010000101000010000110101000010101001000111101100101011100001&quot;
+      ],
+      &quot;localContrasts&quot;: [
+        18,
+        24,
+        23,
+        23,
+        22,
+        30,
+        26,
+        23,
+        26,
+        26,
+        29,
+        40,
+        39,
+        41,
+        37,
+        49,
+        23,
+        21,
+        23,
+        22
+      ],
+      &quot;localHashVersion&quot;: &quot;vl-local-dhash-v1&quot;,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;a28ec66faa194b381ac4cb92b00c6c04ee0be9dfc56ff0ad3fb6c9a915510cfa&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/004.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;perceptual-candidate&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;,
+    &quot;matchOrientation&quot;: &quot;rotate90/original&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-50d01166d9ca0b1f71cadb22"><h3>user.goal_confirmation</h3><p><code>goal:fc4d676f8a8bfd01abae5e2f3a886ffdc279fe5c0bfe812af2e0119d24736b85</code></p><p class="muted wrap">来源位置：registry.confirmations/user.local-task</p><p class="wrap">复核状态：{&quot;host_confirmation&quot;: &quot;valid&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;goal:fc4d676f8a8bfd01abae5e2f3a886ffdc279fe5c0bfe812af2e0119d24736b85&quot;,
+  &quot;kind&quot;: &quot;user.goal_confirmation&quot;,
+  &quot;produced_by&quot;: &quot;host.registry&quot;,
+  &quot;core_audit_id&quot;: null,
+  &quot;dataset_manifest_digest&quot;: &quot;2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e&quot;,
+  &quot;files&quot;: [],
+  &quot;source_positions&quot;: [
+    &quot;registry.confirmations/user.local-task&quot;
+  ],
+  &quot;tool_version&quot;: &quot;vli-0.1.0&quot;,
+  &quot;params_digest&quot;: &quot;f1eedde59c8a063479fadbc309b0ab19b1c4b8e51014fa9b5b6534e58ff5b6c5&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T21:13:35.772001+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;host_confirmation&quot;: &quot;valid&quot;
+  },
+  &quot;facts&quot;: {
+    &quot;kind&quot;: &quot;user.goal_confirmation&quot;,
+    &quot;goal&quot;: &quot;content_audit&quot;,
+    &quot;actor&quot;: &quot;local synthetic fixture generator&quot;
+  }
+}</pre></details></article></section><section id="records" aria-labelledby="records-title"><h2 id="records-title">原始记录</h2><p>这些文件保留原始身份与记录。输入目录不通过本页提供访问。</p><div class="source-links"><a href="report.json">完整报告 JSON</a><a href="evidence.jsonl">证据账本</a><a href="ledger.json">预算账本</a><a href="coverage.json">覆盖记录</a><a href="manifest.json">运行身份</a><a href="events.jsonl">状态事件</a></div><details><summary>本次任务定义</summary><pre class="raw">{
+  &quot;schema_version&quot;: 1,
+  &quot;task_id&quot;: &quot;demo-task-001&quot;,
+  &quot;dataset_ref&quot;: &quot;demo-dataset&quot;,
+  &quot;request_text&quot;: &quot;受控合成演示；用户回答和复核均为脚本输入，无真人参与。请检查图像内容，不修改原始图片。&quot;,
+  &quot;goal&quot;: &quot;content_audit&quot;,
+  &quot;goal_confirmed&quot;: true,
+  &quot;goal_evidence_refs&quot;: [
+    &quot;user.local-task&quot;
+  ],
+  &quot;metadata_ref&quot;: null,
+  &quot;context_refs&quot;: [],
+  &quot;entity_key&quot;: null,
+  &quot;entity_key_confirmed&quot;: false,
+  &quot;entity_key_evidence_refs&quot;: [],
+  &quot;protect_eval_split&quot;: true,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1000000,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 300000000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;privacy&quot;: {
+    &quot;remote_model_allowed&quot;: false,
+    &quot;disclosure&quot;: &quot;none&quot;,
+    &quot;consent_ref&quot;: null,
+    &quot;approved_context_refs&quot;: [],
+    &quot;remote_images_allowed&quot;: false
+  }
+}</pre></details></section><footer>VisionLeak Investigator · 静态本地报告 · 不修改源数据 · 本页没有模型调用或外部脚本</footer></main></body></html>

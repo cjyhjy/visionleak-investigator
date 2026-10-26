@@ -1,0 +1,51 @@
+{
+  "status": "suggestion_only",
+  "requires_approval": true,
+  "protect_eval_split": true,
+  "source_manifest_digest": "2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e",
+  "proposed_exclusions": [],
+  "new_manifest": [
+    {
+      "path": "test/002.png",
+      "image_split": "test",
+      "included": true
+    },
+    {
+      "path": "test/004.png",
+      "image_split": "test",
+      "included": true
+    },
+    {
+      "path": "train/001.png",
+      "image_split": "train",
+      "included": true
+    },
+    {
+      "path": "train/006.png",
+      "image_split": "train",
+      "included": true
+    },
+    {
+      "path": "validation/003.png",
+      "image_split": "validation",
+      "included": true
+    },
+    {
+      "path": "validation/005.png",
+      "image_split": "validation",
+      "included": true
+    }
+  ],
+  "plan_check": {
+    "structure": "passed",
+    "test_preserved": true,
+    "known_conflicts_remaining": [],
+    "scope": "structure and known evidence only",
+    "image_reaudit": "not_run"
+  },
+  "limitations": [
+    "Requires class/sample-balance review before applying.",
+    "Existing trained models may require retraining and independent evaluation.",
+    "No source files were modified."
+  ]
+}

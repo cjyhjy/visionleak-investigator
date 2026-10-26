@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T21:11:06.971860+00:00",
+  "updated_at": "2026-10-26T21:17:57.299819+00:00",
   "project_version": "0.1.0",
   "code_digest": "e9b6dc5805c1215fc77ca7e33d3c7a1c510a1c5961a61eb751b35a298d639afa",
   "original_core_modified": false,
@@ -103,17 +103,17 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T210243040277-delivery-provenance-regression.log",
-    "ci_evidence": "reports/ci-history/40398281500/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40398281500",
-    "tested_commit": "0d7073c7a0f2186bc91a78216b7a7e53b62678c2",
-    "ci_for_current_code": "not_run; lifecycle changes awaiting new CI"
+    "ci_evidence": "reports/ci-history/40402240904/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40402240904",
+    "tested_commit": "3791ccab9727c4dd9bccdebaa623636a05516bfc",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 125 passed, zero test skips; lifecycle artifacts reverified"
   },
   "next_local_command": ".venv-clean/bin/python scripts/lifecycle_smoke.py --out runs/next-lifecycle-acceptance",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Pending for lifecycle changes; catalog CI 40398281500 remains passed",
+    "ci": "Passed for lifecycle implementation 3791cca; 62 reports, 36 task resource receipts, 18 catalog scores and 10 lifecycle reports reverified",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Standalone plan-check for user-supplied manifests",
