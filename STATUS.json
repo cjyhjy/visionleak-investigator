@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T22:03:42.022839+00:00",
+  "updated_at": "2026-10-26T22:16:26.302148+00:00",
   "project_version": "0.1.0",
   "code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
   "original_core_modified": false,
@@ -54,7 +54,8 @@
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
-      "Review backlog is visible; import requires bound audit/input/reviewer."
+      "Review backlog is visible; import requires bound audit/input/reviewer.",
+      "Optional metadata columns/values are not yet individually inventoried; tracked in reports/delivery-audit-v1/metadata-field-gap.json."
     ]
   },
   "M3": {
@@ -103,7 +104,7 @@
       "live_model_D": "blocked",
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
       "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded",
-      "interaction_evaluation": "passed with scope: independent frozen C/D answer contract, real C subprocesses and separate scoring; 12 synthetic C runs, D 12 blocked, negative/unresolved outcomes retained; human time not measured"
+      "interaction_evaluation": "passed with scope for recorded confined runner outputs; direct scorer API task/input/limits binding gap reproduced and remains open. Synthetic C only, D blocked, no human time measurement."
     },
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
@@ -112,25 +113,28 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T220110779182-interaction-review-final-regression.log",
-    "ci_evidence": "reports/ci-history/40404896802/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40404896802",
-    "tested_commit": "aff5ea6abaf08d138e168954e87d684bb60947bc",
-    "ci_for_current_code": "pending: CSV export, separate interaction evaluation and human-review revision fixes await remote CI"
+    "ci_evidence": "reports/ci-history/40409535123/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40409535123",
+    "tested_commit": "1ef1732e19f37ecdfd5e98b2031413abd623f0cd",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 149 tests, zero test skips; downloaded artifacts independently verified"
   },
-  "next_local_command": ".venv-clean/bin/python scripts/interaction_smoke.py --out runs/next-interaction-acceptance",
+  "next_local_command": ".venv-clean/bin/python -m pytest -q tests/acceptance/test_interaction_evaluation.py",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Current implementation awaiting CI; previous plan-check code had 134 tests per platform.",
+    "ci": "40409535123 passed on both platforms; 114 host reports, 36 resource receipts, 18 catalog scores, 24 interaction scores and review/export/plan-check/partial-report evidence reverified.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim",
-      "Authorized independent natural data experiments and real provider/D trajectories",
-      "Owner-selected project license and external submission decisions",
-      "M4 deferred until real Agent stabilizes"
+      "Fix reproduced interaction scorer task/input/limits binding gap; preserve full failure denominators.",
+      "Record explicit optional metadata column/value missingness under contract §3.2.",
+      "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim.",
+      "Authorized independent natural data experiments and real provider/D trajectories.",
+      "Owner-selected project license and external submission decisions.",
+      "M4 deferred until real Agent stabilizes."
     ],
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
-  }
+  },
+  "next_local_work": "Repair and negative-test the direct interaction scorer binding, then metadata field missingness and the full clause audit."
 }

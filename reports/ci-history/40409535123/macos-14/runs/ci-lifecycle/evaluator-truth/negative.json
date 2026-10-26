@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "task_id": "negative-fixture",
+  "dataset_manifest_digest": "b789ee189f5d176af1617bd1be82f27493f52f63692d6a62aab34b21086b8996",
+  "goal": "content_audit",
+  "basis": {
+    "kind": "synthetic_generation",
+    "description": "Four separately constructed controlled negative records; not natural-scene identity labels."
+  },
+  "exact": {
+    "coverage": "exhaustive",
+    "positive_pairs": [],
+    "negative_pairs": []
+  },
+  "related_excluding_exact": {
+    "coverage": "exhaustive",
+    "positive_pairs": [],
+    "negative_pairs": []
+  },
+  "entity_goal_conflict": {
+    "coverage": "exhaustive",
+    "positive_pairs": [],
+    "negative_pairs": []
+  }
+}

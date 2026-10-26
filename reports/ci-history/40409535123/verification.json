@@ -1,0 +1,624 @@
+{
+  "verified_at": "2026-10-26T22:10:47.852668+00:00",
+  "status": "passed",
+  "tested_commit": "1ef1732e19f37ecdfd5e98b2031413abd623f0cd",
+  "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40409535123",
+  "results": [
+    {
+      "platform": "ubuntu-24.04",
+      "tests": 149,
+      "skipped": 0,
+      "reports_reverified": [
+        {
+          "report": "runs/ci-acceptance/audit/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-controller/additional_evidence/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-controller/clarification/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t000/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t001/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t001/r01/C/run/revisions/907a6c5037d609329b6a59564d8b95f11c8b660aba9ffa4e7993e8f305c0f397/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t002/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t002/r01/C/run/revisions/57517b340accc259cedb3e0d9add5dc5dc59945c9316b3532e7f99d1979f3436/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t003/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t003/r01/C/run/revisions/084e7dfca4d59aa1e1ab2b12332f616b3d2cd02db6a36e131bc42628e4341e1c/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t004/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t004/r01/C/run/revisions/1c2ea4c34b3661317ec747c3b52f04a7239825df37cc9ebda9f7370afb08806e/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t005/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t005/r01/C/run/revisions/ecae29bdc85de1e991c0d07f3b563e559920e5038e640fe7920ccb013d689839/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t006/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t006/r01/C/run/revisions/907a6c5037d609329b6a59564d8b95f11c8b660aba9ffa4e7993e8f305c0f397/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t007/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t008/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t009/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/test/runs/t011/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/test/runs/t011/r01/C/run/revisions/084e7dfca4d59aa1e1ab2b12332f616b3d2cd02db6a36e131bc42628e4341e1c/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/validation/runs/t010/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/fresh/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/fresh/run/revisions/8c838af99a4f579056e23f91eab3301942f12a7b59f5fa765b988c3840d6f1ea/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-lifecycle/negative/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/recovery/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-lifecycle/recovery/run/revisions/595e5092588eea5541451b2cea4cfbc26249a6dd2feb3c4a5f076f90b3353674/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-partial-report/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-plan-check/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-proposal-export/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/clarification/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-report-demo/clarification/run/revisions/814e5ef755e039452982fa4844f080d1a70f49ddc567b540b11f318d015d3c47/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/complete/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/complete/run/revisions/98257fa2ac1811803a83286d01f76f2f702e9380807314765acf39306bee3fca/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/partial/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/8439f612226eee3f8c91fec936fb9da57df874a210a0603647e07a9710021090/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/a9c28ae24bb346f1696d88ca70007e3c2aa26159bd2fb58d9039690837b52162/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/cf005747930cd857ad3340e399cd25d16e9d98e3ba2fd9153088028ca337bec1/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        }
+      ],
+      "gate_cli_commands": 9,
+      "expected_rejections": 3,
+      "resource_measured_runs": 18,
+      "catalog_cli_commands": 5,
+      "catalog_scores_reverified": 9,
+      "lifecycle_reports": 5,
+      "controlled_negative_candidates": 4,
+      "static_report_links_and_thumbnails": "passed",
+      "plan_check_cases": 4,
+      "half_written_core_report": "passed",
+      "csv_export_rows": 6,
+      "interaction_scores": 12,
+      "interaction_D_blocked": 12,
+      "review_lifecycle_reports": 4,
+      "runtime_lock_sha256": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7"
+    },
+    {
+      "platform": "macos-14",
+      "tests": 149,
+      "skipped": 0,
+      "reports_reverified": [
+        {
+          "report": "runs/ci-acceptance/audit/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/development/runs/t000/r01/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/test/runs/t002/r01/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-catalog-execution/results/validation/runs/t001/r01/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-controller/additional_evidence/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-controller/clarification/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t000/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t001/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t001/r01/C/run/revisions/907a6c5037d609329b6a59564d8b95f11c8b660aba9ffa4e7993e8f305c0f397/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t002/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t002/r01/C/run/revisions/57517b340accc259cedb3e0d9add5dc5dc59945c9316b3532e7f99d1979f3436/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t003/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t003/r01/C/run/revisions/084e7dfca4d59aa1e1ab2b12332f616b3d2cd02db6a36e131bc42628e4341e1c/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t004/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t004/r01/C/run/revisions/1c2ea4c34b3661317ec747c3b52f04a7239825df37cc9ebda9f7370afb08806e/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t005/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t005/r01/C/run/revisions/ecae29bdc85de1e991c0d07f3b563e559920e5038e640fe7920ccb013d689839/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t006/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t006/r01/C/run/revisions/907a6c5037d609329b6a59564d8b95f11c8b660aba9ffa4e7993e8f305c0f397/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t007/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t008/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/development/runs/t009/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/test/runs/t011/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-interaction/results/test/runs/t011/r01/C/run/revisions/084e7dfca4d59aa1e1ab2b12332f616b3d2cd02db6a36e131bc42628e4341e1c/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-interaction/results/validation/runs/t010/r01/C/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/fresh/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/fresh/run/revisions/8c838af99a4f579056e23f91eab3301942f12a7b59f5fa765b988c3840d6f1ea/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-lifecycle/negative/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-lifecycle/recovery/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-lifecycle/recovery/run/revisions/595e5092588eea5541451b2cea4cfbc26249a6dd2feb3c4a5f076f90b3353674/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-partial-report/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-plan-check/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-proposal-export/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/clarification/run/report.json",
+          "mode": "rules",
+          "state": "WAITING_USER"
+        },
+        {
+          "report": "runs/ci-report-demo/clarification/run/revisions/814e5ef755e039452982fa4844f080d1a70f49ddc567b540b11f318d015d3c47/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/complete/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/complete/run/revisions/b1f901b5bb5547fef8cab6aaea89a01323ce874f87ac3236f9783d9bffca4b58/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-report-demo/partial/run/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/A/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/B/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t000/C/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t001/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/A/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/B/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-resources/runs/t002/C/report.json",
+          "mode": "rules",
+          "state": "PARTIAL"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/06ffd739970412dc4b771238ce76f1afa417d021573ad2291332efd681a076c6/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/cf005747930cd857ad3340e399cd25d16e9d98e3ba2fd9153088028ca337bec1/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "runs/ci-review-lifecycle/run/revisions/dae96e5c48de13e3538d02eab0771875d41f0c044f1b9e696061324474444b6d/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        }
+      ],
+      "gate_cli_commands": 9,
+      "expected_rejections": 3,
+      "resource_measured_runs": 18,
+      "catalog_cli_commands": 5,
+      "catalog_scores_reverified": 9,
+      "lifecycle_reports": 5,
+      "controlled_negative_candidates": 4,
+      "static_report_links_and_thumbnails": "passed",
+      "plan_check_cases": 4,
+      "half_written_core_report": "passed",
+      "csv_export_rows": 6,
+      "interaction_scores": 12,
+      "interaction_D_blocked": 12,
+      "review_lifecycle_reports": 4,
+      "runtime_lock_sha256": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1"
+    }
+  ],
+  "model_calls": 0,
+  "method": "Reverify downloaded CI artifacts without modifying historical absolute-path registries."
+}

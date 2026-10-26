@@ -1,0 +1,13 @@
+{
+  "status": "gap_reproduced",
+  "scope": "Direct scorer API negative test using two existing controlled synthetic runs; not a benchmark result",
+  "expected_task_id": "t001",
+  "supplied_report_task_id": "t000",
+  "incorrectly_usable_output": true,
+  "expected_input_digest": "ccbd10d3117c912aac0ba4a90531e10d16533d6513aa74d4e9977d778104c581",
+  "supplied_input_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+  "owning_source": "src/visionleak_investigator/interaction_scoring.py",
+  "source_sha256": "4eec1e354a55a3645b57c4368267390402509cea0221a534903296ab94bc438b",
+  "finding": "The normal runner confines output paths, but the separate scorer API itself does not yet reject a verified report from another task/input. Add task/input/limits binding before accepting predictions.",
+  "next_local_work": "Reject mismatched task/input/limits as unusable output, retain full positive denominators; add focused regression and re-run CI."
+}
