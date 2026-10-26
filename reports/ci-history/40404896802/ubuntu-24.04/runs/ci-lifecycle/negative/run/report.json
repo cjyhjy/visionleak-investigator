@@ -1,0 +1,682 @@
+{
+  "state": "COMPLETED",
+  "mode": "rules",
+  "model_execution": "not_run",
+  "task": {
+    "schema_version": 1,
+    "task_id": "negative-fixture",
+    "dataset_ref": "demo-dataset",
+    "request_text": "受控合成工程验收：检查图像内容与旋转、镜像、裁切。",
+    "goal": "content_audit",
+    "goal_confirmed": true,
+    "goal_evidence_refs": [
+      "user.local-task"
+    ],
+    "metadata_ref": null,
+    "context_refs": [],
+    "entity_key": null,
+    "entity_key_confirmed": false,
+    "entity_key_evidence_refs": [],
+    "protect_eval_split": true,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "privacy": {
+      "remote_model_allowed": false,
+      "disclosure": "none",
+      "consent_ref": null,
+      "approved_context_refs": [],
+      "remote_images_allowed": false
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "a69b270ed06c29c68b73d9f707854f43beba0fa8fca56060ed7cf35f500cc527",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0002:pair:0"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "base",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    },
+    {
+      "claim_id": "16ed029e238a79c7044ec9da9d9b3cab525dd8755810b9142c6fb6a27fc4e9f8",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0002:pair:1"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "base",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    },
+    {
+      "claim_id": "175e36a372177828564dd4640166a89f848bf12f2fb64fef351f25df208bab53",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0004:pair:0"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "all",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    },
+    {
+      "claim_id": "1aae75d6c766e67e62594f7467f3af5052ac8b6179a6c5c6b5449d8aa018abbd",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0004:pair:1"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "all",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    },
+    {
+      "claim_id": "4c29ffe3729f20303b889d459f248fc6af70b9177f4b326804e3e2a0bec029f5",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0004:pair:2"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "all",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    },
+    {
+      "claim_id": "bd89ffb541fd5d30a98cb6a18f6ad01f38c53c06086677be36f36772bd2130cc",
+      "claim_type": "perceptual_relation",
+      "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+      "evidence_refs": [
+        "call-0004:pair:3"
+      ],
+      "goal_ref": null,
+      "coverage_ref": "all",
+      "status": "candidate",
+      "limitations": [
+        "相似候选不证明同源或实验泄漏。",
+        "图像关系不证明模型实际训练使用。",
+        "覆盖仅适用于列明的 profile、输入与阈值。",
+        "本次未调用模型；不是 Agent 性能实验。"
+      ],
+      "rule_version": "vli-claims-1"
+    }
+  ],
+  "coverage": {
+    "input_manifest_digest": "8d4c96d0a7974ccfa457208e23f516c392433f1cd4476d1b5299b4a2290b4864",
+    "input_preflight": {
+      "digest": "8d4c96d0a7974ccfa457208e23f516c392433f1cd4476d1b5299b4a2290b4864",
+      "image_count": 4,
+      "estimated_source_pixels": 9216,
+      "header_unknown_count": 0,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "base": {
+        "audit_id": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "68a549face58a84705404182231f6939f830ef21fbefb037690f1a22d81cc200",
+        "complete": true,
+        "discovered_at_least": 4,
+        "fingerprinted_images": 4,
+        "processed_images": 4,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 0 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "test": "test"
+          },
+          "missingSplits": [
+            "validation"
+          ],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 4,
+          "discoveredAtLeast": 4,
+          "acceptedImages": 4,
+          "totalDecodedPixels": 9216,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 10,
+          "index_operations": 0,
+          "decoded_pixels": 9216,
+          "wall_seconds": 0.23607408899999882
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      },
+      "all": {
+        "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+        "report_ref": "tools/call-0004/output/report.json",
+        "report_sha256": "357525eaab01c7de7efe1f27350964141f1bd8526bd55c86fc00db1df12ac234",
+        "complete": true,
+        "discovered_at_least": 4,
+        "fingerprinted_images": 4,
+        "processed_images": 4,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 0 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "test": "test"
+          },
+          "missingSplits": [
+            "validation"
+          ],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 4,
+          "discoveredAtLeast": 4,
+          "acceptedImages": 4,
+          "totalDecodedPixels": 9216,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 156,
+          "index_operations": 0,
+          "decoded_pixels": 9216,
+          "wall_seconds": 0.2802050260000044
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      }
+    },
+    "metadata": {
+      "state": "not_applicable",
+      "issues": []
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {
+      "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+          "pairs": [],
+          "counts": {
+            "valid": 0,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 2
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      },
+      "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+          "pairs": [],
+          "counts": {
+            "valid": 0,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 4
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "budget": {
+    "schema_version": 1,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "spent": {
+      "tool_calls": 7,
+      "audit_runs": 2,
+      "comparisons": 166,
+      "index_operations": 0,
+      "decoded_pixels": 18432,
+      "wall_seconds": 0.970680174999984,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "model_usage": "not_run",
+    "model_cost_usd": 0,
+    "entries": [
+      {
+        "call_id": "call-0001",
+        "kind": "preflight",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.850284+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 290
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.1702891740000041
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.010902+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.829710826
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0002",
+        "kind": "audit",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.014538+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.829710826,
+          "comparisons": 1000000,
+          "decoded_pixels": 100000000,
+          "index_operations": 16000000,
+          "audit_runs": 1
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.23607408899999882,
+          "comparisons": 10,
+          "decoded_pixels": 9216,
+          "index_operations": 0,
+          "audit_runs": 1
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.252326+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.593636737,
+          "comparisons": 999990,
+          "decoded_pixels": 99990784,
+          "index_operations": 16000000,
+          "audit_runs": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0003",
+        "kind": "verify",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.255337+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.593636737,
+          "decoded_pixels": 0
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.12359277199999497,
+          "decoded_pixels": 0
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.380817+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.470043965,
+          "decoded_pixels": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0004",
+        "kind": "audit",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.387328+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.470043965,
+          "comparisons": 999990,
+          "decoded_pixels": 100000000,
+          "index_operations": 15999840,
+          "audit_runs": 1
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.2802050260000044,
+          "comparisons": 156,
+          "decoded_pixels": 9216,
+          "index_operations": 0,
+          "audit_runs": 1
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.669281+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.18983893899997,
+          "comparisons": 999834,
+          "decoded_pixels": 99990784,
+          "index_operations": 15999840,
+          "audit_runs": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0005",
+        "kind": "verify",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.672013+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.18983893899997,
+          "decoded_pixels": 0
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.14845276799999851,
+          "decoded_pixels": 0
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.825266+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.041386171,
+          "decoded_pixels": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0006",
+        "kind": "interpret_context",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.831962+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.041386171,
+          "questions": 0
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.001015318999975534,
+          "questions": 0
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.832968+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.040370852,
+          "questions": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0007",
+        "kind": "finalize",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:55.835158+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.040370852
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.011051027000007707
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:55.846204+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.029319825
+        },
+        "overrun": {}
+      }
+    ]
+  },
+  "questions": [],
+  "reviews": [
+    {
+      "pair_ref": "call-0002:pair:0",
+      "pair_key": "2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7",
+      "audit_id": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+      "status": "pending",
+      "requested": false
+    },
+    {
+      "pair_ref": "call-0002:pair:1",
+      "pair_key": "6ad2719f9b90875ba9624082d7415db73b7e80ebd036c442a556d544bb20ef5d",
+      "audit_id": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+      "status": "pending",
+      "requested": false
+    },
+    {
+      "pair_ref": "call-0004:pair:0",
+      "pair_key": "2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7",
+      "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+      "status": "pending",
+      "requested": false
+    },
+    {
+      "pair_ref": "call-0004:pair:1",
+      "pair_key": "b9a5edd81f480b714d009bdc2043a33e6eb2d49934b42f03d85820640228e391",
+      "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+      "status": "pending",
+      "requested": false
+    },
+    {
+      "pair_ref": "call-0004:pair:2",
+      "pair_key": "6ad2719f9b90875ba9624082d7415db73b7e80ebd036c442a556d544bb20ef5d",
+      "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+      "status": "pending",
+      "requested": false
+    },
+    {
+      "pair_ref": "call-0004:pair:3",
+      "pair_key": "b33e6c1d29a50222c085198044e3354ee7c96a39975cbf42c11171eccfc2ed1d",
+      "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+      "status": "pending",
+      "requested": false
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "相似候选不证明同源或实验泄漏。",
+    "图像关系不证明模型实际训练使用。",
+    "覆盖仅适用于列明的 profile、输入与阈值。",
+    "本次未调用模型；不是 Agent 性能实验。"
+  ],
+  "unique_candidate_pairs": 4
+}

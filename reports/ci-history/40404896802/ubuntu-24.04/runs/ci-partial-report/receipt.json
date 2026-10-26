@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "case": "T17 half-written report acceptance",
+  "faults": [
+    {
+      "kind": "controlled report truncation after real Core exit and before host acceptance",
+      "production_incident": false,
+      "original_report": "run/tools/call-0002/controlled-fault/report-before-truncation.json",
+      "truncated_report": "run/tools/call-0002/output/report.json",
+      "original_sha256": "a9a70bb1790519d90353c9e24cc308376f82ec9ec6a81cc29cce02f7d2684b83",
+      "truncated_sha256": "eef493023e12b3ec979a21add548af50e64ef892399b5abe2e15fd8e43ee03b4",
+      "original_bytes": 8221,
+      "truncated_bytes": 4110,
+      "original_audit_id": "5695aee7b98de595be34af7ce1c744d8a861d7036e0798768aa3aeb50de29d7d",
+      "original_exit_code": 0,
+      "preserved_tool_logs": {
+        "invocation.json": "3d43d3e7d93046302ca1332468a9e12c9ce5178162e5d60eb78aa6a9e18cbf0a",
+        "stdout.log": "ddafb2477a184ff99f829894392e4173ee739efdc38967c373d98f14d59715d0",
+        "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "result.json": "80a7f26614507e1fa72e3c764e250bfa29d16f6291947a742bdbc0eb567da78a"
+      }
+    }
+  ],
+  "host_state": "PARTIAL",
+  "accepted_core_evidence": 0,
+  "accepted_claims": 0,
+  "audit_charge": {
+    "call_id": "call-0002",
+    "kind": "audit",
+    "status": "unknown",
+    "reserved_at": "2026-10-26T21:32:59.081066+00:00",
+    "reservation": {
+      "tool_calls": 1,
+      "wall_seconds": 289.82262020999997,
+      "comparisons": 1000000,
+      "decoded_pixels": 100000000,
+      "index_operations": 16000000,
+      "audit_runs": 1
+    },
+    "actual": {
+      "tool_calls": 1,
+      "wall_seconds": 289.82262020999997,
+      "comparisons": 1000000,
+      "decoded_pixels": 100000000,
+      "index_operations": 16000000,
+      "audit_runs": 1
+    },
+    "error": "Unterminated string starting at: line 140 column 7 (char 4106)",
+    "settled_at": "2026-10-26T21:32:59.313437+00:00",
+    "refund": {
+      "tool_calls": 0,
+      "wall_seconds": 0,
+      "comparisons": 0,
+      "decoded_pixels": 0,
+      "index_operations": 0,
+      "audit_runs": 0
+    },
+    "overrun": {}
+  },
+  "finalization": "settled",
+  "input_manifest_digest": "da039c0f65af7f6bc0632b513e2544f837c14c2585677d59edc27737a649c328",
+  "source_unchanged": true,
+  "manifest_digest": "c3e21d7d7f3aa92dde82420ae73bae064b1fcc671ff17b65651a722b5cbd4c3c",
+  "code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "scope": "controlled synthetic fault injection around a real Core process; detector unchanged"
+}

@@ -1,0 +1,250 @@
+{
+  "input_manifest_digest": "8d4c96d0a7974ccfa457208e23f516c392433f1cd4476d1b5299b4a2290b4864",
+  "input_preflight": {
+    "digest": "8d4c96d0a7974ccfa457208e23f516c392433f1cd4476d1b5299b4a2290b4864",
+    "image_count": 4,
+    "estimated_source_pixels": 9216,
+    "header_unknown_count": 0,
+    "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+  },
+  "profiles": {
+    "base": {
+      "audit_id": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+      "report_ref": "tools/call-0002/output/report.json",
+      "report_sha256": "68a549face58a84705404182231f6939f830ef21fbefb037690f1a22d81cc200",
+      "complete": true,
+      "discovered_at_least": 4,
+      "fingerprinted_images": 4,
+      "processed_images": 4,
+      "unprocessed_fingerprints": [],
+      "errors": [],
+      "reason": "",
+      "core_coverage": {
+        "splits": {
+          "train": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "validation": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "test": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "unknown": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          }
+        },
+        "budgetExhaustion": [],
+        "enumerationComplete": true,
+        "rejectedOrErrorCount": 0,
+        "ignoredFiles": 0,
+        "unprocessedKnownFiles": 0,
+        "summary": "已审计 train 2 / validation 0 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+      },
+      "scope": {
+        "splits": [
+          "train",
+          "validation",
+          "test"
+        ],
+        "splitDirectories": {
+          "train": "train",
+          "test": "test"
+        },
+        "missingSplits": [
+          "validation"
+        ],
+        "supportedExtensions": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".avif",
+          ".tif",
+          ".tiff",
+          ".gif"
+        ],
+        "ignoredFiles": 0,
+        "entriesScanned": 4,
+        "discoveredAtLeast": 4,
+        "acceptedImages": 4,
+        "totalDecodedPixels": 9216,
+        "maxDirectoryEntries": 100000,
+        "source": "local-files",
+        "allPairsAreCrossSplit": true,
+        "perceptualMatchesRequireReview": true
+      },
+      "cost": {
+        "comparisons": 10,
+        "index_operations": 0,
+        "decoded_pixels": 9216,
+        "wall_seconds": 0.23607408899999882
+      },
+      "pixel_cost_measurement": "core-successful-decode-count"
+    },
+    "all": {
+      "audit_id": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+      "report_ref": "tools/call-0004/output/report.json",
+      "report_sha256": "357525eaab01c7de7efe1f27350964141f1bd8526bd55c86fc00db1df12ac234",
+      "complete": true,
+      "discovered_at_least": 4,
+      "fingerprinted_images": 4,
+      "processed_images": 4,
+      "unprocessed_fingerprints": [],
+      "errors": [],
+      "reason": "",
+      "core_coverage": {
+        "splits": {
+          "train": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "validation": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "test": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "unknown": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          }
+        },
+        "budgetExhaustion": [],
+        "enumerationComplete": true,
+        "rejectedOrErrorCount": 0,
+        "ignoredFiles": 0,
+        "unprocessedKnownFiles": 0,
+        "summary": "已审计 train 2 / validation 0 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+      },
+      "scope": {
+        "splits": [
+          "train",
+          "validation",
+          "test"
+        ],
+        "splitDirectories": {
+          "train": "train",
+          "test": "test"
+        },
+        "missingSplits": [
+          "validation"
+        ],
+        "supportedExtensions": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".avif",
+          ".tif",
+          ".tiff",
+          ".gif"
+        ],
+        "ignoredFiles": 0,
+        "entriesScanned": 4,
+        "discoveredAtLeast": 4,
+        "acceptedImages": 4,
+        "totalDecodedPixels": 9216,
+        "maxDirectoryEntries": 100000,
+        "source": "local-files",
+        "allPairsAreCrossSplit": true,
+        "perceptualMatchesRequireReview": true
+      },
+      "cost": {
+        "comparisons": 156,
+        "index_operations": 0,
+        "decoded_pixels": 9216,
+        "wall_seconds": 0.2802050260000044
+      },
+      "pixel_cost_measurement": "core-successful-decode-count"
+    }
+  },
+  "metadata": {
+    "state": "not_applicable",
+    "issues": []
+  },
+  "human_review": {
+    "state": "not_run"
+  },
+  "verification": {
+    "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786": {
+      "state": "passed",
+      "result": {
+        "ok": true,
+        "auditId": "d34fe644d6adffd5924285eab3611e430e6d8b8de760d9029dba807015dbb786",
+        "pairs": [],
+        "counts": {
+          "valid": 0,
+          "invalid": 0,
+          "missing": 0,
+          "skippedCandidates": 2
+        },
+        "exitCode": 0,
+        "verificationScope": {
+          "evidenceTypes": [
+            "byte-identical",
+            "pixel-identical"
+          ],
+          "candidatesRecomputed": false,
+          "wholeDatasetReaudited": false
+        }
+      },
+      "candidates_recomputed": false
+    },
+    "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b": {
+      "state": "passed",
+      "result": {
+        "ok": true,
+        "auditId": "ca43a4e9358b39cf90faf7b63a20618ccc5e895c919a6461e3ad9832345c954b",
+        "pairs": [],
+        "counts": {
+          "valid": 0,
+          "invalid": 0,
+          "missing": 0,
+          "skippedCandidates": 4
+        },
+        "exitCode": 0,
+        "verificationScope": {
+          "evidenceTypes": [
+            "byte-identical",
+            "pixel-identical"
+          ],
+          "candidatesRecomputed": false,
+          "wholeDatasetReaudited": false
+        }
+      },
+      "candidates_recomputed": false
+    }
+  },
+  "source_unchanged": true
+}

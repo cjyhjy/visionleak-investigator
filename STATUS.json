@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T21:29:50.492236+00:00",
+  "updated_at": "2026-10-26T21:35:19.562705+00:00",
   "project_version": "0.1.0",
   "code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
   "original_core_modified": false,
@@ -106,17 +106,17 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T212806003226-plan-and-failure-regression.log",
-    "ci_evidence": "reports/ci-history/40402240904/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40402240904",
-    "tested_commit": "3791ccab9727c4dd9bccdebaa623636a05516bfc",
-    "ci_for_current_code": "pending: standalone plan-check and half-written report acceptance not yet run in remote CI"
+    "ci_evidence": "reports/ci-history/40404896802/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40404896802",
+    "tested_commit": "aff5ea6abaf08d138e168954e87d684bb60947bc",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 134 passed, zero test skips; plan-check and half-written-report artifacts reverified"
   },
   "next_local_command": ".venv-clean/bin/python scripts/plan_check_smoke.py --out runs/next-plan-check-acceptance",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Current implementation awaiting CI; previous lifecycle implementation had 125 tests per platform.",
+    "ci": "Passed for aff5ea6; 66 host reports, 36 resource receipts, 18 catalog scores, 8 plan-check cases and 2 controlled half-written Core outputs reverified",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Separate interaction-evaluation accounting",

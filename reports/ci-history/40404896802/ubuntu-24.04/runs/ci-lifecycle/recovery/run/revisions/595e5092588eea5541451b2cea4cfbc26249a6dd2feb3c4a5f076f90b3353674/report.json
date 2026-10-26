@@ -1,0 +1,386 @@
+{
+  "state": "PARTIAL",
+  "mode": "rules",
+  "model_execution": "not_run",
+  "task": {
+    "schema_version": 1,
+    "task_id": "demo-task-001",
+    "dataset_ref": "demo-dataset",
+    "request_text": "受控合成中断恢复验收；删除本次新建的最终报告以注入故障，无真实业务事故或模型参与。",
+    "goal": "content_audit",
+    "goal_confirmed": true,
+    "goal_evidence_refs": [
+      "user.answer:ef928f96952ebfd5f2280241e22f35ea13339b106f40c3ffcfa51beec16155ae"
+    ],
+    "metadata_ref": null,
+    "context_refs": [],
+    "entity_key": null,
+    "entity_key_confirmed": false,
+    "entity_key_evidence_refs": [],
+    "protect_eval_split": true,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "privacy": {
+      "remote_model_allowed": false,
+      "disclosure": "none",
+      "consent_ref": null,
+      "approved_context_refs": [],
+      "remote_images_allowed": false
+    }
+  },
+  "claims": [],
+  "coverage": {
+    "input_manifest_digest": "6eebb481ac14e936cbfc434c4fb0d52b06efd14b8fd522f235f07974f1ee2ee8",
+    "profiles": {},
+    "metadata": {
+      "state": "not_applicable",
+      "issues": []
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {},
+    "source_unchanged": true,
+    "unaccepted_raw_reports": [
+      "tools/call-0002/output/report.json"
+    ]
+  },
+  "budget": {
+    "schema_version": 1,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "spent": {
+      "tool_calls": 9,
+      "audit_runs": 1,
+      "comparisons": 14,
+      "index_operations": 0,
+      "decoded_pixels": 82944,
+      "wall_seconds": 0.7026114739999514,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "model_usage": "not_run",
+    "model_cost_usd": 0,
+    "entries": [
+      {
+        "call_id": "call-0001",
+        "kind": "preflight",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:53.955858+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 290
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.17003204799999594
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.116333+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.829967952
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0002",
+        "kind": "audit",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.120834+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.829967952,
+          "comparisons": 1000000,
+          "decoded_pixels": 100000000,
+          "index_operations": 16000000,
+          "audit_runs": 1
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.2709554209999965,
+          "comparisons": 14,
+          "decoded_pixels": 55296,
+          "index_operations": 0,
+          "audit_runs": 1
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.394305+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.559012531,
+          "comparisons": 999986,
+          "decoded_pixels": 99944704,
+          "index_operations": 16000000,
+          "audit_runs": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0003",
+        "kind": "verify",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.397987+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.559012531,
+          "decoded_pixels": 27648
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.17176488900000209,
+          "decoded_pixels": 27648
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.571505+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.38724764200003,
+          "decoded_pixels": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0004",
+        "kind": "interpret_context",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.579303+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.38724764200003,
+          "questions": 0
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.0008175769999922977,
+          "questions": 0
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.580133+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.386430065,
+          "questions": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0005",
+        "kind": "finalize",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.582031+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.386430065
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.007085861999996723
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.589110+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.379344203
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0006",
+        "kind": "recovery_finalize",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.596448+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.379344203
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.01421016699998745
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.607698+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.36513403600003
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0007",
+        "kind": "resume_identity_check",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.746213+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.36513403600003
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.06636612600001968
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.747041+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.29876791000004
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0008",
+        "kind": "interpret_context",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.751417+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 289.29876791000004,
+          "questions": 0
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.0008830299999829094,
+          "questions": 0
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.752294+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 289.2978848800001,
+          "questions": 0
+        },
+        "overrun": {}
+      },
+      {
+        "call_id": "call-0009",
+        "kind": "finalize",
+        "status": "settled",
+        "reserved_at": "2026-10-26T21:32:54.760073+00:00",
+        "reservation": {
+          "tool_calls": 1,
+          "wall_seconds": 299.29788488
+        },
+        "actual": {
+          "tool_calls": 1,
+          "wall_seconds": 0.0004963539999778277
+        },
+        "error": null,
+        "settled_at": "2026-10-26T21:32:54.763082+00:00",
+        "refund": {
+          "tool_calls": 0,
+          "wall_seconds": 299.2973885260001
+        },
+        "overrun": {}
+      }
+    ]
+  },
+  "questions": [],
+  "reviews": [],
+  "issues": [
+    "Process interrupted. Pending reservations conservatively charged; raw reports retained. Start a new run for additional image checks."
+  ],
+  "limitations": [
+    "相似候选不证明同源或实验泄漏。",
+    "图像关系不证明模型实际训练使用。",
+    "覆盖仅适用于列明的 profile、输入与阈值。",
+    "本次未调用模型；不是 Agent 性能实验。"
+  ],
+  "unique_candidate_pairs": 0,
+  "recovery": {
+    "schema_version": 1,
+    "kind": "conservative_recovery",
+    "created_at": "2026-10-26T21:32:54.597627+00:00",
+    "original_manifest_digest": "eeedb7771bd110ed54b411409589b60007cc81cd5f7daa3894e031d631526fd9",
+    "original_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+    "processor_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+    "core_reexecuted": false,
+    "accepted_image_evidence_count": 0,
+    "preserved_files": [
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/evidence.jsonl",
+        "sha256": "3c819f0333831a0d80d955f620e9e2c42378d11a0832b13b5994c1a40bc68494"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/coverage.json",
+        "sha256": "9f5e769b16aa12ce7fa53553c53cd93ea37a88aee8586f54acabc4385f2311c9"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/claims.json",
+        "sha256": "467bf2849ae7df27b4308aefe774dc3ebd13fec8f1437896fa9a3ca1a54818d9"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/validation.json",
+        "sha256": "be819235c8f963b64852406993d1ae7efd41cb5479fff668b8f8896ffdcf80da"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/questions.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/reviews.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/proposal.json",
+        "sha256": "dee3d4765a72d89b10bf57499ea6c0d84307f3cb0b40afa74aae3a3efdca8002"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/report.html",
+        "sha256": "1338c0901a13cd6b8a7b2c3ffe5b4c02675dc67e86d6a32f682293e767d8d014"
+      },
+      {
+        "path": "pre-recovery/13c43f63c1fd8d946d8df1ee4e559290d3ee0edbd984876a5026f6ca1408e970/checkpoint.json",
+        "sha256": "9934027ee80be161e3b17ecc20a4a9366f77de9e2d7eb925d6b44c52873749f6"
+      }
+    ]
+  },
+  "revision": {
+    "kind": "answers",
+    "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-lifecycle/recovery/run/revisions/595e5092588eea5541451b2cea4cfbc26249a6dd2feb3c4a5f076f90b3353674",
+    "reused_from": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-lifecycle/recovery/run",
+    "core_reexecuted": false,
+    "processor_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+    "image_evidence_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+    "image_evidence_reused": false,
+    "reused_core_evidence_count": 0
+  }
+}

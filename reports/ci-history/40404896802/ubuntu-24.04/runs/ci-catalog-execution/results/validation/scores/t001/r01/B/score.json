@@ -1,0 +1,269 @@
+{
+  "metric_definition": "catalog-pairs-v1",
+  "task_id": "t001",
+  "truth_digest": "5a4a0add2f08d33a9cbdcff1d3211de9b3f12acb50b083e7c3f8b21393d7a073",
+  "dataset_manifest_digest": "94f5192726b38b4d29913cbd3e25cbd45756e3414846b13263c89a337fe1696a",
+  "usable_output": true,
+  "failure": null,
+  "source_unchanged": true,
+  "state": "COMPLETED",
+  "exact": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 3,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 3,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "meaning": "Full eligible population"
+  },
+  "related_excluding_exact": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 3,
+    "predicted_pairs": 2,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 9,
+    "truth_denominator": 5,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285714,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285714
+    },
+    "meaning": "Full eligible population"
+  },
+  "entity_goal_conflict": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 0,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 0,
+    "truth_denominator_complete": true,
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "labeled_subset": {
+      "precision": null,
+      "recall": null,
+      "f1": null
+    },
+    "meaning": "Full eligible population"
+  },
+  "candidate_burden": 2,
+  "candidate_pairs_per_1000_images": 333.3333333333333,
+  "pending_review_pairs": 2,
+  "invalid_approximate_candidates": 0,
+  "unknown_approximate_candidates": 0,
+  "claim_validation": "passed",
+  "unsupported_confirmed_claims": 0,
+  "prediction_policy": "Only validated published claims; failed attempts have no usable predictions and retain full positive denominators",
+  "coverage": {
+    "input_manifest_digest": "94f5192726b38b4d29913cbd3e25cbd45756e3414846b13263c89a337fe1696a",
+    "input_preflight": {
+      "digest": "94f5192726b38b4d29913cbd3e25cbd45756e3414846b13263c89a337fe1696a",
+      "image_count": 6,
+      "estimated_source_pixels": 55296,
+      "header_unknown_count": 0,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "all": {
+        "audit_id": "221e7f952848f92adc4bb2af291da3dabfd4a7fde55ff441a452c5b1783b5362",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "b67c4bd2b6e4b653cf9b00c2d95f9d1c7bf583c04a56003915ec437ee43b3d86",
+        "complete": true,
+        "discovered_at_least": 6,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 6,
+          "discoveredAtLeast": 6,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 3035,
+          "index_operations": 0,
+          "decoded_pixels": 55296,
+          "wall_seconds": 0.42365968499998985
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      }
+    },
+    "metadata": {
+      "state": "not_applicable",
+      "issues": []
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {
+      "221e7f952848f92adc4bb2af291da3dabfd4a7fde55ff441a452c5b1783b5362": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "221e7f952848f92adc4bb2af291da3dabfd4a7fde55ff441a452c5b1783b5362",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "3d9ab6809510c0ec7998efe552b83ba9c107d4d56922cf7ded9b490002dfc2ec",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "3d9ab6809510c0ec7998efe552b83ba9c107d4d56922cf7ded9b490002dfc2ec",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "3d9ab6809510c0ec7998efe552b83ba9c107d4d56922cf7ded9b490002dfc2ec",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "6a989c135001035e893d4473ed3e7084498db2aa0d54f9d7a744ad7ced3ce140",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "3d9ab6809510c0ec7998efe552b83ba9c107d4d56922cf7ded9b490002dfc2ec",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "6a989c135001035e893d4473ed3e7084498db2aa0d54f9d7a744ad7ced3ce140",
+                "pixelDigest": "3af372ab59f414a96b30849e1cbb6d44c98d43d68bb7286fbb290d0ccfa72505"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 2
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "truth_sha256": "8cb2151f3451bf8e72556b06fa54293b909467da0fb6d2b4f4fa3698bcd38b8d"
+}
