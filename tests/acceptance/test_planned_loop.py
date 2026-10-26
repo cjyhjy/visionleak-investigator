@@ -223,3 +223,17 @@ def test_requested_review_budget_is_not_charged_twice(tmp_path):
         'pair_ref':row['pair_ref'],'decision':'unsure','reason':'scripted acceptance input'})
     assert revised['budget']['spent']['review_pairs']==1
     assert verify_run(Path(revised['revision']['path']))['mode']=='scripted_test_only'
+
+
+def test_frozen_host_cap_rejects_a_fourth_real_audit_even_with_larger_task_limit(tmp_path):
+    task,registry=make_task(tmp_path/'fixture');task['limits']['max_core_audit_runs']=8
+    def request(payload):
+        done=payload['observation']['profiles']
+        wanted=next(p for p in ['base','transform','local','all'] if p not in done)
+        return reply(action('run_audit',profile=wanted))
+    result=run_scripted_task(task,registry,tmp_path/'run',request=request)
+    assert result['state']=='PARTIAL' and result['budget']['spent']['audit_runs']==3
+    assert list(result['coverage']['profiles'])==['base','transform','local']
+    assert any('three Core audit attempts' in issue for issue in result['issues'])
+    assert sum(entry['kind']=='audit' for entry in result['budget']['entries'])==3
+    assert result['planning']['reason_code']=='guardrail_stop'

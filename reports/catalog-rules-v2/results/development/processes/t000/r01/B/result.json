@@ -1,0 +1,58 @@
+{
+  "argv": [
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/.venv-clean/bin/python",
+    "-m",
+    "visionleak_investigator.evaluation_worker",
+    "--task",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/catalog-rules-v2/suite/tasks/t000/task.json",
+    "--registry",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/catalog-rules-v2/suite/tasks/t000/registry.json",
+    "--out",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/catalog-rules-v2/results/development/runs/t000/r01/B",
+    "--condition",
+    "B"
+  ],
+  "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+  "started_at": "2026-10-26T23:07:03.496916+00:00",
+  "timeout_seconds": 330,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.5051103751175106,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.45311999999999997,
+    "cpu_system_seconds": 0.24453999999999998,
+    "cpu_seconds": 0.69766,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 100532224,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 133644288,
+    "observed_rss_peak_bytes": 133644288,
+    "root_rss_peak_bytes": 34881536,
+    "sample_interval_seconds": 0.02,
+    "samples": 9,
+    "observed_process_count": 4,
+    "peak_members": [
+      {
+        "pid": 82816,
+        "rss_bytes": 34717696
+      },
+      {
+        "pid": 82821,
+        "rss_bytes": 98926592
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 3,
+    "sampler_wall_seconds": 0.5034773340448737,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

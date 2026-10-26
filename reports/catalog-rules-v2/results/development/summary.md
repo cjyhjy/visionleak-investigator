@@ -1,0 +1,455 @@
+# Frozen catalog evaluation
+
+{
+  "status": "completed_no_model",
+  "rejection": null,
+  "benchmark_partition": "development",
+  "evaluation_role": "evaluation",
+  "tasks": 10,
+  "repetitions": 1,
+  "declared_independent_components": 10,
+  "runs": {
+    "A": {
+      "COMPLETED": 9,
+      "PARTIAL": 1,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0,
+      "not_run": 0
+    },
+    "B": {
+      "COMPLETED": 9,
+      "PARTIAL": 1,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0,
+      "not_run": 0
+    },
+    "C": {
+      "COMPLETED": 9,
+      "PARTIAL": 1,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0,
+      "not_run": 0
+    },
+    "D": {
+      "COMPLETED": 0,
+      "PARTIAL": 0,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 10,
+      "not_run": 0
+    }
+  },
+  "quality": {
+    "A": {
+      "status": "scored",
+      "scheduled_runs": 10,
+      "scored_runs": 10,
+      "failed_runs_in_denominator": 0,
+      "exact": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 30,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 30,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "task_macro_recall": 1.0,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "related_excluding_exact": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 50,
+        "predicted_pairs": 0,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 50,
+        "eligible_pairs": 94,
+        "truth_denominator_complete": true,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "task_macro_recall": 0.0,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "entity_goal_conflict": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 0,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 0,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "task_macro_recall": null,
+        "task_macro_defined_count": 0,
+        "task_macro_undefined_count": 10
+      }
+    },
+    "B": {
+      "status": "scored",
+      "scheduled_runs": 10,
+      "scored_runs": 10,
+      "failed_runs_in_denominator": 0,
+      "exact": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 30,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 30,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "task_macro_recall": 1.0,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "related_excluding_exact": {
+        "tp": 20,
+        "fp": 0,
+        "fn": 30,
+        "predicted_pairs": 20,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 50,
+        "eligible_pairs": 94,
+        "truth_denominator_complete": true,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714285714285714,
+        "task_macro_recall": 0.4,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "entity_goal_conflict": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 0,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 0,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "task_macro_recall": null,
+        "task_macro_defined_count": 0,
+        "task_macro_undefined_count": 10
+      }
+    },
+    "C": {
+      "status": "scored",
+      "scheduled_runs": 10,
+      "scored_runs": 10,
+      "failed_runs_in_denominator": 0,
+      "exact": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 30,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 30,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "task_macro_recall": 1.0,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "related_excluding_exact": {
+        "tp": 18,
+        "fp": 0,
+        "fn": 32,
+        "predicted_pairs": 18,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 50,
+        "eligible_pairs": 94,
+        "truth_denominator_complete": true,
+        "precision": 1.0,
+        "recall": 0.36,
+        "f1": 0.5294117647058824,
+        "task_macro_recall": 0.36,
+        "task_macro_defined_count": 10,
+        "task_macro_undefined_count": 0
+      },
+      "entity_goal_conflict": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "predicted_pairs": 0,
+        "unknown_predicted_pairs": 0,
+        "truth_denominator": 0,
+        "eligible_pairs": 124,
+        "truth_denominator_complete": true,
+        "precision": null,
+        "recall": null,
+        "f1": null,
+        "task_macro_recall": null,
+        "task_macro_defined_count": 0,
+        "task_macro_undefined_count": 10
+      }
+    },
+    "D": {
+      "status": "unavailable",
+      "scheduled_runs": 10,
+      "scored_runs": 0,
+      "scheduled_known_positive_counts": {
+        "exact": 30,
+        "related_excluding_exact": 50,
+        "entity_goal_conflict": 0
+      },
+      "reason": "Missing/unrun scores; no successful-only aggregate"
+    }
+  },
+  "quality_by_repetition": {
+    "1": {
+      "A": {
+        "status": "scored",
+        "scheduled_runs": 10,
+        "scored_runs": 10,
+        "failed_runs_in_denominator": 0,
+        "exact": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 30,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 30,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "task_macro_recall": 1.0,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "related_excluding_exact": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 50,
+          "predicted_pairs": 0,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 50,
+          "eligible_pairs": 94,
+          "truth_denominator_complete": true,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "task_macro_recall": 0.0,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "entity_goal_conflict": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 0,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 0,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "task_macro_recall": null,
+          "task_macro_defined_count": 0,
+          "task_macro_undefined_count": 10
+        }
+      },
+      "B": {
+        "status": "scored",
+        "scheduled_runs": 10,
+        "scored_runs": 10,
+        "failed_runs_in_denominator": 0,
+        "exact": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 30,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 30,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "task_macro_recall": 1.0,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "related_excluding_exact": {
+          "tp": 20,
+          "fp": 0,
+          "fn": 30,
+          "predicted_pairs": 20,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 50,
+          "eligible_pairs": 94,
+          "truth_denominator_complete": true,
+          "precision": 1.0,
+          "recall": 0.4,
+          "f1": 0.5714285714285714,
+          "task_macro_recall": 0.4,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "entity_goal_conflict": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 0,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 0,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "task_macro_recall": null,
+          "task_macro_defined_count": 0,
+          "task_macro_undefined_count": 10
+        }
+      },
+      "C": {
+        "status": "scored",
+        "scheduled_runs": 10,
+        "scored_runs": 10,
+        "failed_runs_in_denominator": 0,
+        "exact": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 30,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 30,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "task_macro_recall": 1.0,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "related_excluding_exact": {
+          "tp": 18,
+          "fp": 0,
+          "fn": 32,
+          "predicted_pairs": 18,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 50,
+          "eligible_pairs": 94,
+          "truth_denominator_complete": true,
+          "precision": 1.0,
+          "recall": 0.36,
+          "f1": 0.5294117647058824,
+          "task_macro_recall": 0.36,
+          "task_macro_defined_count": 10,
+          "task_macro_undefined_count": 0
+        },
+        "entity_goal_conflict": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "predicted_pairs": 0,
+          "unknown_predicted_pairs": 0,
+          "truth_denominator": 0,
+          "eligible_pairs": 124,
+          "truth_denominator_complete": true,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "task_macro_recall": null,
+          "task_macro_defined_count": 0,
+          "task_macro_undefined_count": 10
+        }
+      },
+      "D": {
+        "status": "unavailable",
+        "scheduled_runs": 10,
+        "scored_runs": 0,
+        "scheduled_known_positive_counts": {
+          "exact": 30,
+          "related_excluding_exact": 50,
+          "entity_goal_conflict": 0
+        },
+        "reason": "Missing/unrun scores; no successful-only aggregate"
+      }
+    }
+  },
+  "pipeline_resources": {
+    "wall_seconds": 35.704191209282726,
+    "orchestrator_cpu_seconds": 19.513546,
+    "waited_child_cpu_seconds": 34.962012,
+    "peak_tree_rss_bytes": null,
+    "scope": "Current process and waited descendants since runner entry, through pre-summary; CLI runs in an isolated process. Whole-pipeline peak RSS not measured; task/scorer tree RSS recorded separately."
+  },
+  "resources_by_condition": {
+    "A": {
+      "attempted_runs": 10,
+      "cpu_measured_runs": 10,
+      "cpu_seconds": 6.16435,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 10,
+      "max_sampled_tree_rss_bytes": 119701504,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "B": {
+      "attempted_runs": 10,
+      "cpu_measured_runs": 10,
+      "cpu_seconds": 7.094868,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 10,
+      "max_sampled_tree_rss_bytes": 134807552,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "C": {
+      "attempted_runs": 10,
+      "cpu_measured_runs": 10,
+      "cpu_seconds": 10.994214,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 10,
+      "max_sampled_tree_rss_bytes": 134529024,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "D": {
+      "attempted_runs": 0,
+      "cpu_measured_runs": 0,
+      "cpu_seconds": null,
+      "cpu_total_complete": false,
+      "rss_sampled_runs": 0,
+      "max_sampled_tree_rss_bytes": null,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    }
+  },
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "research_gain": "not_established",
+  "E": "not_run; second phase",
+  "limitations": [
+    "Source and license identities are declarations, not independently authenticated.",
+    "Pair/repetition counts are descriptive, not independent sample sizes. No statistical intervals or significance claim.",
+    "Partial annotation yields unknown full precision/recall/F1; labeled subsets remain explicit.",
+    "Failed workers with a valid truth score retain positives as missed usable predictions; missing scorer output suppresses condition aggregates.",
+    "Task resources exclude scorer overhead; pipeline CPU/wall includes orchestration and waited children. Whole-pipeline peak RSS is not measured.",
+    "This detection benchmark requires confirmed goals; interactive usability and human time savings are not measured.",
+    "D/E not executed; no Agent-versus-rule benefit established."
+  ]
+}

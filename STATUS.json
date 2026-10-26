@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T22:43:32.172689+00:00",
+  "updated_at": "2026-10-26T23:08:39.390676+00:00",
   "project_version": "0.1.0",
-  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "code_digest": "ceae07013a54e74fb2a3f165faaeea02a4672d594e3b3b653b2c35fc608539a4",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -44,7 +44,8 @@
       "plan-check-targeted",
       "proposal-export-targeted",
       "review-consistency-targeted",
-      "contract-binding-final-regression"
+      "contract-binding-final-regression",
+      "rules-v2-regression"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
@@ -52,7 +53,8 @@
       "reports/plan-check-v1/receipt.json",
       "reports/proposal-export-v1/receipt.json",
       "reports/review-lifecycle-v1/receipt.json",
-      "reports/interaction-contract-binding-v1/receipt.json"
+      "reports/interaction-contract-binding-v1/receipt.json",
+      "reports/rules-routing-v2/receipt.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
@@ -97,7 +99,10 @@
       "reports/interaction-evaluation-v1-first/receipt.json",
       "reports/interaction-contract-binding-v1/receipt.json",
       "reports/delivery-audit-v1/contract-binding-resolution.json",
-      "reports/rules-context-gap-v1/receipt.json"
+      "reports/rules-context-gap-v1/receipt.json",
+      "reports/rules-routing-v2/receipt.json",
+      "reports/catalog-rules-v2/receipt.json",
+      "reports/delivery-audit-v1/rules-routing-resolution.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -109,21 +114,21 @@
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
       "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded",
       "interaction_evaluation": "passed with scope: expected task/input/registry/limits and exact revision/question/answer history bound; 12 new synthetic C runs and 6 rejected direct API substitutions, D blocked; no human time measurement",
-      "strong_rule_context_routing": "incomplete: registered descriptions are read but rules-v1 routes profiles only from request_text; real two-run reproduction in reports/rules-context-gap-v1/receipt.json"
+      "strong_rule_context_routing": "passed with scope: frozen rules-v2, registered MD/TXT and request clues, metadata clarification, base/verification/budget gates; 13 real CLI cases and 14 reports; bounded lexical policy, no semantic understanding"
     },
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "contract-binding-final-regression: 164 passed, zero skipped",
+    "test_suite": "rules-v2-regression: 191 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T222956082465-contract-binding-final-regression.log",
+    "final_log": "reports/logs/20261026T230324099610-rules-v2-regression.log",
     "ci_evidence": "reports/ci-history/40413457832/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40413457832",
     "tested_commit": "fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 164 tests, zero skips; downloaded artifacts independently verified"
+    "ci_for_current_code": "pending: previous recorded CI is for the previous code digest"
   },
-  "next_local_command": ".venv-clean/bin/python -m pytest -q tests/acceptance/test_loop.py tests/acceptance/test_planned_loop.py",
+  "next_local_command": "python3 scripts/record.py <name> .venv-clean/bin/python <next evidence verification command>",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
@@ -131,7 +136,6 @@
     "ci": "40413457832 passed: 114 host reports, 38 metadata field reports, 24 interaction scores and 12 binding rejections independently reverified, plus prior resource/catalog/lifecycle/export cases.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Complete and freeze strong C routing using registered descriptions, metadata/coverage and budget; preserve prompt-injection boundaries.",
       "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim.",
       "Authorized independent natural data experiments and real provider/D trajectories.",
       "Owner-selected project license and external submission decisions.",
@@ -140,5 +144,5 @@
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
   },
-  "next_local_work": "Repair the reproduced strong-rule context routing gap, with a frozen policy version and real routing/budget/injection tests; then continue full clause audit."
+  "next_local_work": "Verify rules-v2 cross-platform CI and complete the clause-by-clause contract/delivery audit."
 }

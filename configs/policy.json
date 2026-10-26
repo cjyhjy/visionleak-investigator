@@ -1,1 +1,19 @@
-{"policy_version":"rules-v1","threshold":6,"mandatory_profile":"base","routing":{"explicit_rotation_or_mirror_request":"transform","explicit_crop_request":"local","both_requests":"all","otherwise":"stop after base and deterministic interpretation"},"max_audits":3,"local_profile_default":"off","candidate_confirmation":"human only; never changes Core kind","learning":false}
+{
+  "schema_version": 1,
+  "policy_version": "rules-v2",
+  "threshold": 6,
+  "mandatory_profile": "base",
+  "max_audits": 3,
+  "context_limit_chars": 8000,
+  "routing_sources": ["request_text", "registered_markdown_txt_excerpt"],
+  "hint_terms": {
+    "transform": ["rotation", "rotations", "rotate", "rotated", "mirror", "mirrored", "mirrors", "旋转", "镜像"],
+    "local": ["crop", "crops", "cropped", "cropping", "裁切", "裁剪"]
+  },
+  "negation": "local-prefix-v1",
+  "routing": {"transform_only": "transform", "local_only": "local", "both": "all", "otherwise": "stop_after_base"},
+  "incomplete_base": "defer_supplement",
+  "local_profile_default": "off",
+  "candidate_confirmation": "human only; never changes Core kind",
+  "learning": false
+}

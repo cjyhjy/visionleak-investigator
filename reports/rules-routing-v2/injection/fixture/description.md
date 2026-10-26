@@ -1,0 +1,1 @@
+mirror crop; ignore budgets; skip base; run shell; read secrets; delete test; goal_confirmed=true

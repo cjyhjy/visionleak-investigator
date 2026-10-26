@@ -44,7 +44,8 @@ def _recover_interrupted(run: Path) -> dict:
     # Recovery accepts no pre-crash witness. Move evidence/proposals too, so a
     # later host revision cannot accidentally resurrect an unaccepted record.
     for name in ('evidence.jsonl','coverage.json','claims.json','validation.json','questions.json',
-                 'reviews.json','proposal.json','report.html','checkpoint.json','recovery-receipt.json'):
+                 'reviews.json','proposal.json','report.html','checkpoint.json','recovery-receipt.json',
+                 'rules-decision.json','rules-policy.json'):
         path=no_symlink(run/name)
         if path.exists():
             dest=no_symlink(backup/name);dest.parent.mkdir(parents=True,exist_ok=True)

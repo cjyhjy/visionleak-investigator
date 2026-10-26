@@ -38,6 +38,10 @@ Registry 是宿主文件，包含：
 
 元数据 CSV 必须有 `file_id,relative_path`，可附 `image_split,entity_id,capture_session_id,provenance_ref`。目录决定 split；CSV 只补充声明，不覆盖目录。字段冲突、缺行、缺实体或未确认语义都保留为覆盖问题。
 
+默认规则 `rules-v2` 在 base 后读取登记说明和元数据，再用任务文本及 Markdown/TXT 的前 8,000 字符选择 transform/local/all。有限词表和相邻否定规则不等于完整语义理解；文档不能修改确认、预算、权限或工具。没有正向线索则不追加；base 不完整/未复验或剩余预算不足时记录推迟原因与未执行范围。所有入口最多尝试三次 Core audit，TaskSpec 更低的上限仍有效。A/B 固定基线及 `--profiles` 显式列表不走自动路由。
+
+自动规则运行增加 `rules-policy.json`、`rules-decision.json` 和 `report.rules`，记录策略、线索来源/摘要、剩余预算、问题和实际执行结果，并通过 validation 绑定。目标/人审 revision 保留初始图像审计的选择，不重跑规则或 Core；中断恢复将未接纳记录归档。
+
 `coverage.metadata` 记录实际 `columns`、`missing_optional_columns` 和逐字段 `field_coverage`（包含自定义实体列）。计数覆盖映射校验前的全部 CSV 数据行，区分缺列、短行缺值、空白值和非空值；空表显示 `no_rows`。这些是字段存在性记录，不证明来源或实体身份。实体映射 `state=complete` 可以与未提供采集会话/来源列同时成立，HTML 也分别显示缺列和缺值。缺失的成员 `provenance_ref` 为 null，不补造来源引用；额外 CSV 单元格作为输入问题保留。
 
 ## 回答、复核和修订

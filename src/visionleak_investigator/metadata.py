@@ -25,14 +25,14 @@ def field_coverage(fields: list[str], rows: list[dict], entity_key: str | None) 
             'field_coverage': coverage,
             'field_coverage_scope': 'All parsed CSV rows before mapping validation; presence only, not provenance or physical-identity verification.'}
 
-def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_questions: bool=True) -> dict:
+def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_questions: bool=True,routing_policy: dict|None=None) -> dict:
     """Deterministic interpretation. Context text is data, never instructions."""
     tick=time.monotonic();entry=ledger.reserve('interpret_context')
     result={'evidence':[],'claims':[],'questions':[],'issues':[],'context':[],'metadata':{'state':'not_applicable','issues':[]}}
     try:
         for ref in task['context_refs']:
             path=registry.document(ref);text=path.read_text(encoding='utf-8')
-            result['context'].append({'context_ref':ref,'sha256':file_hash(path),'excerpt':text[:8000],'truncated':len(text)>8000,'trust':'untrusted-data; never executed'})
+            result['context'].append({'context_ref':ref,'sha256':file_hash(path),'format':path.suffix.lower(),'excerpt':text[:8000],'truncated':len(text)>8000,'trust':'untrusted-data; never executed'})
         confirmations=registry.value.get('confirmations',{})
         goal=None
         if task['goal_confirmed']:
@@ -88,6 +88,9 @@ def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_ques
         available=int(ledger.remaining('questions')) if request_questions else len(result['questions'])
         if len(result['questions'])>available:
             result['issues'].append('Clarification budget exhausted');result['questions']=result['questions'][:available]
+        if routing_policy is not None:
+            from .rules import collect_hints
+            result['routing_hints']=collect_hints(task,result['context'],routing_policy)
         actual={'wall_seconds':time.monotonic()-tick,'questions':len(result['questions']) if request_questions else 0}
         # Questions are finite independently of the time reservation.
         entry['reservation']['questions']=actual['questions'];ledger.settle(entry,actual)

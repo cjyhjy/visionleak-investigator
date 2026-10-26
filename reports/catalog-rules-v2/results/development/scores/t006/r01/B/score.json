@@ -1,0 +1,279 @@
+{
+  "metric_definition": "catalog-pairs-v1",
+  "task_id": "t006",
+  "truth_digest": "8667d905d43b464b80655ecbacabb72e8aa020b83274aef513d8adaa3c41bf49",
+  "dataset_manifest_digest": "fbe03907f40e267e1f30c7c881d557e6e64670e19516980bb66c5edd49997799",
+  "usable_output": true,
+  "failure": null,
+  "source_unchanged": true,
+  "state": "COMPLETED",
+  "exact": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 3,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 3,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "meaning": "Full eligible population"
+  },
+  "related_excluding_exact": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 3,
+    "predicted_pairs": 2,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 9,
+    "truth_denominator": 5,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285714,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285714
+    },
+    "meaning": "Full eligible population"
+  },
+  "entity_goal_conflict": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 0,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 0,
+    "truth_denominator_complete": true,
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "labeled_subset": {
+      "precision": null,
+      "recall": null,
+      "f1": null
+    },
+    "meaning": "Full eligible population"
+  },
+  "candidate_burden": 2,
+  "candidate_pairs_per_1000_images": 333.3333333333333,
+  "pending_review_pairs": 2,
+  "invalid_approximate_candidates": 0,
+  "unknown_approximate_candidates": 0,
+  "claim_validation": "passed",
+  "unsupported_confirmed_claims": 0,
+  "prediction_policy": "Only validated published claims; failed attempts have no usable predictions and retain full positive denominators",
+  "coverage": {
+    "input_manifest_digest": "fbe03907f40e267e1f30c7c881d557e6e64670e19516980bb66c5edd49997799",
+    "input_preflight": {
+      "digest": "fbe03907f40e267e1f30c7c881d557e6e64670e19516980bb66c5edd49997799",
+      "image_count": 6,
+      "estimated_source_pixels": 55296,
+      "header_unknown_count": 0,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "all": {
+        "audit_id": "a589d04be632f96497b2ccde255e1792cabe41758e0412ec569a850e9b1916a7",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "4166c6557bc3c590aa9608452d171f7f8baf40f969be436477055b420a870d7d",
+        "complete": true,
+        "discovered_at_least": 6,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 6,
+          "discoveredAtLeast": 6,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 2781,
+          "index_operations": 0,
+          "decoded_pixels": 55296,
+          "wall_seconds": 0.16145670926198363
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      }
+    },
+    "metadata": {
+      "state": "not_applicable",
+      "issues": []
+    },
+    "human_review": {
+      "state": "not_run",
+      "total_records": 2,
+      "unique_pairs": 2,
+      "requested_records": 0,
+      "pending_records": 2,
+      "confirmed_records": 0,
+      "rejected_records": 0,
+      "unsure_records": 0,
+      "resolved_pairs": 0,
+      "unresolved_pairs": 2,
+      "scope": "Review applies to its bound Core witness; duplicate witnesses and unsure/conflicting decisions remain unresolved."
+    },
+    "verification": {
+      "a589d04be632f96497b2ccde255e1792cabe41758e0412ec569a850e9b1916a7": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "a589d04be632f96497b2ccde255e1792cabe41758e0412ec569a850e9b1916a7",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "3584e8bf79ac96d128ea048383f2c1cc282746c2743bfe9cb83d83e7564e22c0",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "3584e8bf79ac96d128ea048383f2c1cc282746c2743bfe9cb83d83e7564e22c0",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "3584e8bf79ac96d128ea048383f2c1cc282746c2743bfe9cb83d83e7564e22c0",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "27bc0d4634715b61f338fb65ec42ae870b3980c2748f98f161dc814b87c6cd41",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "3584e8bf79ac96d128ea048383f2c1cc282746c2743bfe9cb83d83e7564e22c0",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "27bc0d4634715b61f338fb65ec42ae870b3980c2748f98f161dc814b87c6cd41",
+                "pixelDigest": "133ae4e70b5f70ce80b772ddfff5930552c9aab0e5ee1e80be1f9df03b312e1a"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 2
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "truth_sha256": "87bd97c834bf2e03696b691d5c665bbf13622907372fec9efcf500d5422d94ba"
+}

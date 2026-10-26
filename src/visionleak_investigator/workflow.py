@@ -9,6 +9,7 @@ from .budget import BudgetLedger,BudgetExceeded
 from .reporting import ClaimValidator,LIMITATIONS,render_report
 from .metadata import interpret,proposal
 from .review_state import review_coverage
+from .rules import MAX_AUDITS,load_policy,decide as decide_rules
 
 class ActionGuard:
     def __init__(self,known_evidence: set[str],profiles: list[str]):self.known_evidence=known_evidence;self.profiles=profiles
@@ -34,23 +35,15 @@ def run_baseline(task: dict,registry_data: dict,out: Path,condition: str) -> dic
     if condition not in ('A','B'):raise ValueError('Only fixed deterministic A/B baselines')
     return _execute_task(task,registry_data,out,profiles=['base' if condition=='A' else 'all'],baseline=condition)
 
-def rules_profiles(task: dict) -> list[str]:
-    text=task['request_text'].lower()
-    transform=any(word in text for word in ('rotation','mirror','旋转','镜像'))
-    local=any(word in text for word in ('crop','裁切','裁剪'))
-    return ['base']+(['all'] if transform and local else ['transform'] if transform else ['local'] if local else [])
-
 def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules',profiles: list[str]|None=None,core_path: Path|None=None,baseline: str|None=None,planner_request=None,use_sdk: bool=False) -> dict:
     start=time.monotonic();TaskSpec.parse(task);registry=Registry(registry_data);registry.check_confirmations(task)
     planned=mode=='scripted_test_only' and planner_request is not None
     if planned and task['privacy']['remote_model_allowed']:raise ValueError('Scripted acceptance requires local-only task privacy')
     if mode!='rules' and not planned:raise ValueError('Agent mode requires explicit model authorization and a validated provider adapter; no rules fallback')
-    omitted_profiles=[]
-    if profiles is None:
-        requested=rules_profiles(task)
-        profiles=requested[:task['limits']['max_core_audit_runs']]
-        omitted_profiles=requested[len(profiles):]
-    if not profiles or (not baseline and profiles[0]!='base') or len(set(profiles))!=len(profiles) or any(p not in PROFILES for p in profiles) or len(profiles)>min(3,task['limits']['max_core_audit_runs']):raise ValueError('Unique profiles must start with base and fit audit count budget')
+    automatic_rules=profiles is None and not planned and not baseline
+    rules_policy=load_policy() if automatic_rules else None
+    profiles=['base'] if automatic_rules else list(profiles or [])
+    if not profiles or (not baseline and profiles[0]!='base') or len(set(profiles))!=len(profiles) or any(p not in PROFILES for p in profiles) or len(profiles)>min(MAX_AUDITS,task['limits']['max_core_audit_runs']):raise ValueError('Unique profiles must start with base and fit audit count budget')
     root=registry.dataset(task['dataset_ref']);out=no_symlink(out)
     if out.is_relative_to(root) or root.is_relative_to(out):raise ValueError('Output and dataset paths must be disjoint')
     for ref in [*task['context_refs'],*([task['metadata_ref']] if task['metadata_ref'] else [])]:
@@ -61,11 +54,14 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     write_json(out/'task.json',task,exclusive=True);write_json(out/'registry.private.json',registry_data,exclusive=True)
     write_json(out/'input-manifest.json',before,exclusive=True)
     ledger=BudgetLedger(task['limits'],out/'ledger.json');issues=[];evidence=[];claims=[];completed=[]
-    if omitted_profiles:issues.append('Audit run budget prevents supplemental profiles: '+', '.join(omitted_profiles))
     coverage={'input_manifest_digest':before['digest'],'input_preflight':{k:v for k,v in before.items() if k!='files'},'profiles':{},'metadata':{'state':'not_run'},'human_review':{'state':'not_run'},'verification':{}}
-    if omitted_profiles:coverage['unexecuted_profiles']=[{'profile':p,'reason':'max_core_audit_runs'} for p in omitted_profiles]
     env={};adapter=CoreAdapter(core_path)
-    manifest={'schema_version':1,'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry_data),'dataset_manifest_digest':before['digest'],'core_lock_digest':file_hash(PROJECT/'core.lock.json'),'runtime_lock_digest':file_hash(PROJECT/'core.runtime.lock.json'),'policy':{'name':'scripted-planner-test' if planned else 'baseline-'+baseline if baseline else 'rules-v1','profiles':profiles},'mode':mode,'model_execution':'not_run','code_digest':code_digest()}
+    policy_record={'name':'scripted-planner-test' if planned else 'baseline-'+baseline if baseline else 'explicit-profiles-v1','profiles':list(profiles),'max_audits':MAX_AUDITS}
+    if automatic_rules:
+        policy_record={'name':rules_policy['policy_version'],'mandatory_profiles':['base'],'supplemental_selection':'after_base_and_registered_interpretation',
+                       'config_digest':digest(rules_policy),'initial_task_digest':digest(task),'config_sha256':file_hash(PROJECT/'configs/policy.json'),'max_audits':MAX_AUDITS}
+        write_json(out/'rules-policy.json',rules_policy,exclusive=True)
+    manifest={'schema_version':1,'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry_data),'dataset_manifest_digest':before['digest'],'core_lock_digest':file_hash(PROJECT/'core.lock.json'),'runtime_lock_digest':file_hash(PROJECT/'core.runtime.lock.json'),'policy':policy_record,'mode':mode,'model_execution':'not_run','code_digest':code_digest()}
     write_json(out/'manifest.json',manifest,exclusive=True)
     def event(state,**data):
         record={'state':state,'time':now(),**data};append_json(out/'events.jsonl',record);write_json(out/'checkpoint.json',{**record,'manifest_digest':digest(manifest)})
@@ -108,6 +104,7 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
         nonlocal stable
         pending=None
         try:
+            if ledger.data['spent']['audit_runs']>=MAX_AUDITS:raise BudgetExceeded('Frozen host limit of three Core audit attempts')
             if baseline:AgentAction.parse(action(profile))  # Independent fixed baseline driver, never an Agent action route.
             else:ActionGuard({e['evidence_id'] for e in evidence},completed).check(action(profile))
             if input_manifest(root,task['limits'])['digest']!=before['digest']:raise ValueError('Input changed before audit')
@@ -155,7 +152,7 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     def interpret_once():
         nonlocal interpretation
         if interpretation is None:
-            interpretation=interpret(task,registry,before,ledger,request_questions=not planned)
+            interpretation=interpret(task,registry,before,ledger,request_questions=not planned,routing_policy=rules_policy)
             evidence.extend(interpretation['evidence']);claims.extend(interpretation['claims'])
             issues.extend(interpretation['issues']);coverage['metadata']=interpretation['metadata']
             write_json(out/'context.json',interpretation['context'],exclusive=True)
@@ -178,9 +175,25 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
                 claims[i]=ClaimValidator().build(c['claim_type'],records,profile)
         return {'verification_state':coverage['verification'][audit_id]['state'],'candidates_recomputed':False}
 
-    planning=None
+    planning=None;rules_decision=None
     for profile in profiles if env else []:
         if not audit_profile(profile):break
+    if automatic_rules and env and stable:
+        try:info=interpret_once()
+        except BudgetExceeded as error:
+            issues.append(str(error));info={'metadata':coverage['metadata'],'questions':[]}
+        rules_decision=decide_rules(task,before,info,coverage,ledger,rules_policy)
+        selected=rules_decision['selected_profile']
+        event('PLANNING',rules_decision=rules_decision['decision'],reason_code=rules_decision['reason_code'],selected_profile=selected)
+        if rules_decision['decision']=='run':
+            profiles.append(selected)
+            accepted=audit_profile(selected)
+            rules_decision['outcome']='accepted' if accepted and stable else 'failed'
+            rules_decision['supplement_complete']=coverage['profiles'].get(selected,{}).get('complete')
+        elif selected:
+            coverage['unexecuted_profiles']=[{'profile':selected,'reason':rules_decision['reason_code']}]
+            issues.append('Rules supplemental check deferred: '+rules_decision['reason_code'])
+        write_json(out/'rules-decision.json',rules_decision,exclusive=True)
     if planned and env and stable and completed:
         from .planner_host import run_test_controller
         planning=run_test_controller(task=task,registry=registry,out=out,evidence=evidence,claims=claims,
@@ -223,12 +236,15 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     for claim in claims:ClaimValidator().validate_claim(claim,registry_evidence,{**coverage['profiles'],'metadata':coverage['metadata']})
     validation={'passed':stable,'claim_count':len(claims),'evidence_sha256':file_hash(out/'evidence.jsonl'),'source_unchanged':stable,'core_reports':{p:c['report_sha256'] for p,c in coverage['profiles'].items()},'meaning':'structural/identity/entailment validation; not evidence of model training or universal absence'}
     validation.update(human_review_coverage_digest=digest(coverage['human_review']),review_inputs={})
+    if rules_decision is not None:
+        validation.update(rules_decision_sha256=file_hash(out/'rules-decision.json'),rules_policy_sha256=file_hash(out/'rules-policy.json'))
     write_json(out/'coverage.json',coverage,exclusive=True);write_json(out/'claims.json',claims,exclusive=True)
     write_json(out/'questions.json',questions,exclusive=True);write_json(out/'reviews.json',reviews,exclusive=True)
     write_json(out/'proposal.json',proposal(task,evidence if stable else [],before),exclusive=True)
     if (out/'model-ledger.json').exists():validation['model_ledger_sha256']=file_hash(out/'model-ledger.json')
     write_json(out/'validation.json',validation,exclusive=True)
     report={'state':state,'mode':mode,'model_execution':'not_run','task':task,'claims':claims,'coverage':coverage,'budget':ledger.data,'questions':questions,'reviews':reviews,'issues':issues,'limitations':LIMITATIONS,'unique_candidate_pairs':len({e['pair_key'] for e in evidence if 'candidate' in e['kind']})}
+    if rules_decision is not None:report['rules']=rules_decision
     if planned:
         report['planning']=planning;report['question_backlog']=question_backlog
         report['limitations']=[*LIMITATIONS,'SCRIPTED_TEST_ONLY：动作由本地测试脚本产生，非真实模型决策。']

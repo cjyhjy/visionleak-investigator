@@ -42,6 +42,7 @@ def run_engineering_suite(out: Path,count: int=12) -> dict:
     if not 1<=count<=100:raise ValueError('Engineering suite size limit')
     out.mkdir(parents=True,exist_ok=False)
     frozen={'conditions':['A','B','C','D'],'D':{'status':'blocked','reason':'No authorized model/provider/usage budget'},'E':{'status':'not_run','reason':'Second phase'},'core_lock_digest':file_hash(PROJECT/'core.lock.json'),'runtime_lock_digest':file_hash(PROJECT/'core.runtime.lock.json'),'rules':'v1: base; explicit request orientation -> transform; local crop -> local; both -> all','threshold':6,'seed_start':2026102600,'task_count':count,'benchmark_partition':'development','cache':'fresh CLI process, no shared fingerprints; OS cache not flushed','claims':'engineering smoke only, no independent natural-scene research claim'}
+    frozen['rules']='rules-v2: mandatory base; registered Markdown/TXT excerpts and request clues; metadata clarification; conservative post-base budget/coverage gates; captured config/decision'
     frozen.update(execution_identity())
     write_json(out/'frozen_config.json',frozen,exclusive=True)
     rows=[];sources=[]

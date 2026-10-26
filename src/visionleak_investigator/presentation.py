@@ -94,6 +94,10 @@ def render(report: dict,evidence: list[dict]) -> str:
 
     goal=GOALS.get(task['goal'],task['goal'])
     scope='<dl><dt>审计目标</dt><dd>'+esc(goal)+' · '+('来源已确认' if task.get('goal_confirmed') else '待确认')+'</dd><dt>数据引用</dt><dd>'+esc(task['dataset_ref'])+'</dd><dt>原始输入</dt><dd>'+('前后摘要一致（非原子快照）' if coverage.get('source_unchanged') is True else '发生变化或未确认')+'</dd></dl>'
+    if report.get('rules'):
+        routing=report['rules']
+        scope+='<p>初始规则选择：'+esc(routing['policy_version'])+' · '+esc(routing['decision'])+' · '+esc(routing['selected_profile'] or '无补充 profile')+'；原因：'+esc(routing['reason_code'])+'。修订不重新执行此选择；线索不证明图像来源。</p>'
+        scope+=raw_details('展开初始规则选择依据',routing)
     for name,c in profiles.items():
         scope+='<article><h3>'+esc(name)+' · '+('已完成' if c.get('complete') else '未完成')+'</h3>'
         scope+='<p>'+esc(f'已发现至少 {number(c.get("discovered_at_least"))} 张；已生成指纹 {number(c.get("fingerprinted_images"))} 张；已处理 {number(c.get("processed_images"))} 张。')+'</p>'

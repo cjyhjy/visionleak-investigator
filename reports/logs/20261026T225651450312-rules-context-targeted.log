@@ -1,0 +1,22 @@
+............................................F.........                   [100%]
+=================================== FAILURES ===================================
+_ test_frozen_host_cap_rejects_a_fourth_real_audit_even_with_larger_task_limit _
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-134/test_frozen_host_cap_rejects_a0')
+
+    def test_frozen_host_cap_rejects_a_fourth_real_audit_even_with_larger_task_limit(tmp_path):
+        task,registry=make_task(tmp_path/'fixture');task['limits']['max_core_audit_runs']=8
+        def request(payload):
+            done=payload['observation']['profiles']
+            wanted=next(p for p in ['base','transform','local','all'] if p not in done)
+            return reply(action('run_audit',profile=wanted))
+        result=run_scripted_task(task,registry,tmp_path/'run',request=request)
+        assert result['state']=='PARTIAL' and result['budget']['spent']['audit_runs']==3
+        assert list(result['coverage']['profiles'])==['base','transform','local']
+>       assert 'three Core audit attempts' in result['planning']['error']
+E       AssertionError: assert 'three Core audit attempts' in 'Requested Core audit failed; preserved output and cost'
+
+tests/acceptance/test_planned_loop.py:237: AssertionError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_planned_loop.py::test_frozen_host_cap_rejects_a_fourth_real_audit_even_with_larger_task_limit
+1 failed, 53 passed in 35.55s

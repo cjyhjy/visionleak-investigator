@@ -62,6 +62,8 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     shutil.copytree(run/'tools',target/'tools')
     for name in ('model-ledger.json','planner-trace.json','planner-tools.json','planner-requests.jsonl','planner-actions.jsonl','recovery-receipt.json'):
         if (run/name).exists():shutil.copy2(run/name,target/name)
+    if 'rules' in old:
+        for name in ('rules-decision.json','rules-policy.json'):shutil.copy2(run/name,target/name)
     if (run/'recovery-receipt.json').exists() and (run/'pre-recovery').exists():shutil.copytree(run/'pre-recovery',target/'pre-recovery')
     before=read_json(run/'input-manifest.json');write_json(target/'input-manifest.json',before,exclusive=True)
     coverage=copy.deepcopy(old['coverage']);issues=[x for x in old['issues'] if not x.startswith(('Goal/','Entity metadata','No registered entity','Metadata has','Clarification budget'))]

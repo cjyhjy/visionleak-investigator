@@ -1,0 +1,184 @@
+[
+  {
+    "claim_id": "04b5c9e5e6ff81f3e1641f9e2127a357a713318d2ba7d0fa8ac768a58187a677",
+    "claim_type": "byte_identity",
+    "statement": "两文件字节摘要相同且已复验；不据此推断训练使用。",
+    "evidence_refs": [
+      "call-0002:pair:0"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "base",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "da0ed4dc3f8635f58ffdb3f1c017464e849fd1f0c24e4c4490e8807b6925102e",
+    "claim_type": "pixel_identity",
+    "statement": "两文件规范化完整像素相同且已复验。",
+    "evidence_refs": [
+      "call-0002:pair:1"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "base",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "5e5a1e1dc1fc8e12e0ba5611a4c51a48d1cf3768e4a467ede09f20672a732948",
+    "claim_type": "pixel_identity",
+    "statement": "两文件规范化完整像素相同且已复验。",
+    "evidence_refs": [
+      "call-0002:pair:2"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "base",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "3cd5a98ef4b47e9a233263acab1d57af32acd2bff942b907d89215f84959d864",
+    "claim_type": "byte_identity",
+    "statement": "两文件字节摘要相同且已复验；不据此推断训练使用。",
+    "evidence_refs": [
+      "call-0005:pair:0"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "transform",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "aacf2f1e6fb6f6b6d4ad0b0fb051ba3433f3563c2ed83ebf7883fc8cef1e9e37",
+    "claim_type": "perceptual_relation",
+    "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+    "evidence_refs": [
+      "call-0005:pair:1"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "transform",
+    "status": "candidate",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "f0c65079272458f23ee1927648145c07c54cc82b8aa150690feb15ad261f11a2",
+    "claim_type": "pixel_identity",
+    "statement": "两文件规范化完整像素相同且已复验。",
+    "evidence_refs": [
+      "call-0005:pair:2"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "transform",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "1131b558092028442d9bcc825f8a2d5e15ddb5a6a26f16f470e97396faeda344",
+    "claim_type": "pixel_identity",
+    "statement": "两文件规范化完整像素相同且已复验。",
+    "evidence_refs": [
+      "call-0005:pair:3"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "transform",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "569db40a2fb96325714896c9fef84b21b28c0f88cd931cdd11df4ead21476bf3",
+    "claim_type": "perceptual_relation",
+    "statement": "在所列 profile 和阈值下存在待复核的相似线索。",
+    "evidence_refs": [
+      "call-0005:pair:4"
+    ],
+    "goal_ref": null,
+    "coverage_ref": "transform",
+    "status": "candidate",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "6e31ba12fcbebd4ca84e06c08a296ac7e46de26b203c9217cf7a38586cbfbb5f",
+    "claim_type": "declared_entity_overlap",
+    "statement": "按提供的元数据，这些文件跨集合具有相同实体标识。",
+    "evidence_refs": [
+      "metadata:9331444b42e5e9255cfaa681e9f9876b56e44ce2b9dd01f740a412b50ec83b92",
+      "goal:13501078177859d26a494a35e9272654b3686a302b30eeb3d16d8f04a13b053a"
+    ],
+    "goal_ref": "goal:13501078177859d26a494a35e9272654b3686a302b30eeb3d16d8f04a13b053a",
+    "coverage_ref": "metadata",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "b10126b3377547b77661b8a72ab92b059ca6daf4f55dab03f1358d5941899778",
+    "claim_type": "goal_conflict",
+    "statement": "该已支持关系违反所确认的划分约定；不证明模型已训练过此数据。",
+    "evidence_refs": [
+      "metadata:9331444b42e5e9255cfaa681e9f9876b56e44ce2b9dd01f740a412b50ec83b92",
+      "goal:13501078177859d26a494a35e9272654b3686a302b30eeb3d16d8f04a13b053a"
+    ],
+    "goal_ref": "goal:13501078177859d26a494a35e9272654b3686a302b30eeb3d16d8f04a13b053a",
+    "coverage_ref": "metadata",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:visionleak-investigator:rules-policy:2",
+  "type": "object", "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1}, "policy_version": {"const": "rules-v2"},
+    "threshold": {"const": 6}, "mandatory_profile": {"const": "base"}, "max_audits": {"const": 3},
+    "context_limit_chars": {"const": 8000},
+    "routing_sources": {"const": ["request_text", "registered_markdown_txt_excerpt"]},
+    "hint_terms": {"type": "object", "additionalProperties": false,
+      "properties": {"transform": {"$ref": "#/$defs/terms"}, "local": {"$ref": "#/$defs/terms"}},
+      "required": ["transform", "local"]},
+    "negation": {"const": "local-prefix-v1"},
+    "routing": {"const": {"transform_only": "transform", "local_only": "local", "both": "all", "otherwise": "stop_after_base"}},
+    "incomplete_base": {"const": "defer_supplement"}, "local_profile_default": {"const": "off"},
+    "candidate_confirmation": {"const": "human only; never changes Core kind"}, "learning": {"const": false}
+  },
+  "required": ["schema_version", "policy_version", "threshold", "mandatory_profile", "max_audits", "context_limit_chars", "routing_sources", "hint_terms", "negation", "routing", "incomplete_base", "local_profile_default", "candidate_confirmation", "learning"],
+  "$defs": {"terms": {"type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true,
+    "items": {"type": "string", "minLength": 1, "maxLength": 32, "pattern": "^[a-zA-Z\\u4e00-\\u9fff]+$"}}}
+}

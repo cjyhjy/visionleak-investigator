@@ -274,11 +274,13 @@
     "reports/interaction-contract-binding-v1/receipt.json",
     "reports/logs/20261026T222956082465-contract-binding-final-regression.log",
     "reports/rules-context-gap-v1/receipt.json",
-    "reports/ci-history/40413457832/verification.json"
+    "reports/ci-history/40413457832/verification.json",
+    "reports/delivery-audit-v1/rules-routing-resolution.json",
+    "reports/rules-routing-v2/receipt.json",
+    "reports/catalog-rules-v2/receipt.json"
   ],
   "remaining_local": [
-    "Complete and freeze strong C routing using registered descriptions, metadata/coverage and budget; preserve prompt-injection boundaries.",
-    "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim."
+    "Finish full clause and delivery artifact audit."
   ],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
@@ -288,6 +290,6 @@
   ],
   "reviewed_code_commit": "fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618",
   "latest_ci_tests_per_platform": 164,
-  "reviewed_worktree_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
-  "current_code_ci": "passed for recorded scopes; strong C routing and full clause audit remain incomplete"
+  "reviewed_worktree_code_digest": "ceae07013a54e74fb2a3f165faaeea02a4672d594e3b3b653b2c35fc608539a4",
+  "current_code_ci": "pending for rules-v2; prior recorded CI remains historical"
 }

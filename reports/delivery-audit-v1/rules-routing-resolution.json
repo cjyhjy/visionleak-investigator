@@ -1,0 +1,76 @@
+{
+  "status": "passed_for_recorded_local_scope",
+  "created_at": "2026-10-26T23:08:39.390334+00:00",
+  "code_digest": "ceae07013a54e74fb2a3f165faaeea02a4672d594e3b3b653b2c35fc608539a4",
+  "policy_sha256": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+  "gap": "reports/rules-context-gap-v1/receipt.json",
+  "regression": {
+    "tests": 191,
+    "skipped": 0,
+    "log": "reports/logs/20261026T230324099610-rules-v2-regression.log"
+  },
+  "smoke": "reports/rules-routing-v2/receipt.json",
+  "frozen_catalog": "reports/catalog-rules-v2/receipt.json",
+  "commands": [
+    {
+      "name": "rules-v2-regression",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 109.455381541,
+      "log": "reports/logs/20261026T230324099610-rules-v2-regression.log",
+      "recorded_at": "20261026T230324099610"
+    },
+    {
+      "name": "rules-v2-local-smoke",
+      "argv": [
+        ".venv-clean/bin/python",
+        "scripts/rules_smoke.py",
+        "--out",
+        "reports/rules-routing-v2"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 9.757578708,
+      "log": "reports/logs/20261026T230644068118-rules-v2-local-smoke.log",
+      "recorded_at": "20261026T230644068118"
+    },
+    {
+      "name": "rules-v2-frozen-catalog",
+      "argv": [
+        ".venv-clean/bin/python",
+        "scripts/catalog_smoke.py",
+        "--tasks",
+        "12",
+        "--out",
+        "reports/catalog-rules-v2"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 47.990248292,
+      "log": "reports/logs/20261026T230701443816-rules-v2-frozen-catalog.log",
+      "recorded_at": "20261026T230701443816"
+    }
+  ],
+  "catalog_states": {
+    "COMPLETED": 30,
+    "PARTIAL": 6
+  },
+  "ci_status": "pending",
+  "model_calls": 0,
+  "scope": "Registered Markdown/TXT and request clues, limited negation, base coverage and remaining budget route fixed profiles; immutable initial routing and revision/recovery trace. Shared host enforces at most three Core attempts. Synthetic sources and scripted clarification only.",
+  "remaining_local": [
+    "Finish full clause and delivery artifact audit."
+  ],
+  "external_or_deferred": [
+    "Authorized real provider adapter and D trajectories.",
+    "Authorized independent natural sources and experiments.",
+    "Owner-selected Investigator license and external submission.",
+    "M4/E after stable real Agent."
+  ]
+}

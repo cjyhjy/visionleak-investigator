@@ -2,6 +2,8 @@
 
 `eval-run` executes the selected partition of a frozen, registered catalog. A uses one real Core `base` scan, B one real `all` scan, and C the production rules workflow. Every condition receives the same confirmed TaskSpec, source registry, total limits, Core/runtime and input identity. D is explicitly blocked because no authorized live provider adapter exists; no scripted callback is substituted. E remains second phase.
 
+C now uses `rules-v2`: base precedes charged context/metadata interpretation, then registered Markdown/TXT excerpts and the request select a fixed supplemental profile under remaining coverage/budget gates. Selection records and the policy snapshot are saved with each run. Literal clues and limited local negation are not semantic understanding; missed synonyms or distant negation remain limitations. No profile is selected from evaluator truth, image filenames, CSV entity values or candidate counts. A/B and explicit profile requests do not inherit this routing. See [ADR-012](adr/012-rules-context-routing.md). New v2 results require a new freeze and must not be pooled as unchanged-policy repetitions of v1.
+
 ## Reproduce the synthetic acceptance
 
 ```sh

@@ -20,6 +20,13 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
     if checkpoint.get('report_digest')!=digest(report):raise ValueError('Report changed')
     if checkpoint.get('manifest_digest')!=digest(manifest):raise ValueError('Manifest changed')
     if read_json(run/'ledger.json')!=report['budget']:raise ValueError('Ledger changed')
+    if 'rules_decision_sha256' in validation or 'rules_policy_sha256' in validation or 'rules' in report:
+        if file_hash(run/'rules-decision.json')!=validation['rules_decision_sha256'] or file_hash(run/'rules-policy.json')!=validation['rules_policy_sha256']:
+            raise ValueError('Rules routing record changed')
+        rules=read_json(run/'rules-decision.json');policy=read_json(run/'rules-policy.json')
+        if (rules!=report['rules'] or digest(policy)!=rules['policy_digest'] or digest(policy)!=manifest['policy']['config_digest']
+                or rules['initial_task_digest']!=manifest['policy']['initial_task_digest'] or rules['dataset_manifest_digest']!=manifest['dataset_manifest_digest']):
+            raise ValueError('Rules routing identity changed')
     if report.get('recovery'):
         receipt=read_json(run/'recovery-receipt.json')
         if receipt!=report['recovery'] or checkpoint.get('recovery_receipt_digest')!=digest(receipt):raise ValueError('Recovery receipt changed')

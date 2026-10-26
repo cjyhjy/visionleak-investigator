@@ -1,0 +1,739 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>VisionLeak Investigator · PARTIAL</title><style>
+:root{color-scheme:light;--ink:#16313c;--muted:#52666f;--line:#d5e1e5;--accent:#126478}
+*{box-sizing:border-box}html{scroll-padding-top:20px}body{margin:0;background:#f2f6f7;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:36px 24px 64px}h1{font-size:clamp(28px,5vw,40px);line-height:1.2;margin:8px 0 16px;letter-spacing:-.7px}
+h2{font-size:22px;margin:0 0 16px}h3{font-size:18px;margin:0 0 10px}p{margin:8px 0 14px}a{color:#075e75;text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:3px solid #d47709;outline-offset:4px}small,.muted{color:var(--muted);font-size:14px}
+code,pre,small,dd,td,figcaption,.wrap{overflow-wrap:anywhere}code{font-size:.9em}pre{white-space:pre-wrap;font-size:13px;margin:12px 0}
+.eyebrow{font-weight:700;color:var(--accent);letter-spacing:1.5px;font-size:12px}.mode{border-left:4px solid var(--accent);padding:10px 14px;background:#e4f0f3}
+.status{border:1px solid var(--line);border-left:5px solid #28745e;background:#fff;padding:20px 24px;border-radius:8px;margin:24px 0}
+.status.partial,.status.waiting{border-left-color:#b76a05;background:#fffaf0}.status.failed{border-left-color:#b03035;background:#fff4f4}
+.status h2{margin-bottom:4px}.metrics,.budget-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+.metric{background:#fff;border:1px solid var(--line);padding:16px;border-radius:8px;min-width:0}.metric strong{display:block;font-size:25px;line-height:1.3;margin-top:6px}
+nav{display:flex;flex-wrap:wrap;gap:8px 20px;padding:4px 0 20px}section{margin:20px 0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}
+article{padding:18px 0;border-top:1px solid var(--line)}article:first-of-type{border-top:0}.badge{display:inline-block;font-size:12px;font-weight:650;padding:3px 9px;border-radius:4px;background:#e8f0f2;color:#365461}
+.badge.confirmed{background:#e4f2eb;color:#245b43}.badge.candidate,.badge.inconclusive{background:#fff0d7;color:#855007}
+.notice{padding:12px 16px;background:#fff3df;border-left:3px solid #b76a05;border-radius:4px}.notice.danger{background:#ffeded;border-color:#b03035}
+ul,ol{padding-left:24px}li{margin:8px 0}dl{display:grid;grid-template-columns:minmax(100px,150px) minmax(0,1fr);gap:8px 18px;margin:12px 0}dt{color:var(--muted)}dd{margin:0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+.pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:620px}figure{margin:8px 0;min-width:0}figure img{width:100%;height:160px;object-fit:contain;background:#eef3f4;border:1px solid var(--line);border-radius:6px}figcaption{font-size:13px;margin-top:4px}
+.evidence:target{outline:3px solid #d18a21;outline-offset:5px;border-radius:4px}.source-links{display:flex;gap:8px 18px;flex-wrap:wrap}.budget-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.budget-grid .metric strong{font-size:20px}
+details{border-top:1px solid var(--line);padding:12px 0}summary{cursor:pointer;color:#245d70;font-weight:600}.raw{background:#f6f9fa;padding:12px;border-radius:6px;max-height:500px;overflow:auto}
+footer{color:var(--muted);font-size:13px;padding-top:12px}@media(max-width:640px){main{padding:22px 14px 40px}section{padding:18px 16px}.status{padding:16px}.metrics,.budget-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:22px}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:10px}th,td{padding:10px 6px}figure img{height:120px}}
+@media print{body{background:white}main{max-width:none;padding:0}nav{display:none}section,article,figure{break-inside:avoid}.raw{max-height:none}a{color:inherit}}
+</style></head><body><main><header><div class="eyebrow">EVIDENCE · COVERAGE · BUDGET</div><h1>VisionLeak Investigator</h1><p class="mode">确定性本地审计 · 真实 Core 0.6.0 · 模型调用：未运行</p><p class="wrap">检查已登记数据说明中的内容关系。</p></header><div class="status partial"><h2>PARTIAL · 部分完成</h2><p>存在未完成或未覆盖的检查，不能据此宣布没有风险。</p></div><div class="metrics"><div class="metric"><small>输入图像</small><strong>6</strong></div><div class="metric"><small>已确认结论条目</small><strong>3</strong></div><div class="metric"><small>不同候选图片对</small><strong>0</strong></div><div class="metric"><small>待复核记录</small><strong>0</strong></div></div><nav aria-label="报告目录"><a href="#next">待办与问题</a><a href="#scope">检查范围</a><a href="#claims">结论</a><a href="#budget">预算</a><a href="#timeline">执行记录</a><a href="#evidence">证据</a><a href="#records">原始记录</a></nav><section id="next" aria-labelledby="next-title"><h2 id="next-title">待办与问题</h2><h3>未完成项与异常</h3><ul><li class="wrap">Rules supplemental check deferred: decode_and_verify_budget</li></ul></section><section id="scope" aria-labelledby="scope-title"><h2 id="scope-title">目标与检查范围</h2><dl><dt>审计目标</dt><dd>图像内容审计 · 来源已确认</dd><dt>数据引用</dt><dd>demo-dataset</dd><dt>原始输入</dt><dd>前后摘要一致（非原子快照）</dd></dl><p>初始规则选择：rules-v2 · defer · transform；原因：decode_and_verify_budget。修订不重新执行此选择；线索不证明图像来源。</p><details><summary>展开初始规则选择依据</summary><pre class="raw">{
+  &quot;policy_version&quot;: &quot;rules-v2&quot;,
+  &quot;policy_digest&quot;: &quot;3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57&quot;,
+  &quot;initial_task_digest&quot;: &quot;b26bc21e349b1262ac5b02146fd8c99fc39f0b0d41f5e1c32422dc880d1a2f3d&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;scope&quot;: &quot;Initial image-audit routing; goal-only revisions do not rerun rules or Core.&quot;,
+  &quot;decision&quot;: &quot;defer&quot;,
+  &quot;reason_code&quot;: &quot;decode_and_verify_budget&quot;,
+  &quot;selected_profile&quot;: &quot;transform&quot;,
+  &quot;hints&quot;: {
+    &quot;selected_profile&quot;: &quot;transform&quot;,
+    &quot;inputs&quot;: [
+      {
+        &quot;source&quot;: &quot;request_text&quot;,
+        &quot;context_ref&quot;: null,
+        &quot;sha256&quot;: null,
+        &quot;truncated&quot;: false,
+        &quot;excerpt_digest&quot;: &quot;dd3f5b0e123ec5a748fefa057e1e5a7a3f3818c719136e57a27e4a96a957c2e2&quot;,
+        &quot;characters&quot;: 16,
+        &quot;positive_terms&quot;: {
+          &quot;transform&quot;: [],
+          &quot;local&quot;: []
+        },
+        &quot;negated_terms&quot;: {
+          &quot;transform&quot;: [],
+          &quot;local&quot;: []
+        }
+      },
+      {
+        &quot;source&quot;: &quot;registered_context&quot;,
+        &quot;context_ref&quot;: &quot;description&quot;,
+        &quot;sha256&quot;: &quot;68eb90fa809e72cc1386996bb964fa979d95fc3f3c102e9b12d5b98f57c0c604&quot;,
+        &quot;truncated&quot;: false,
+        &quot;excerpt_digest&quot;: &quot;b3af7b91142147bc412df3da3cc13fcc54a44e2549ae45fe176947a2f3b358a2&quot;,
+        &quot;characters&quot;: 2,
+        &quot;positive_terms&quot;: {
+          &quot;transform&quot;: [
+            &quot;旋转&quot;
+          ],
+          &quot;local&quot;: []
+        },
+        &quot;negated_terms&quot;: {
+          &quot;transform&quot;: [],
+          &quot;local&quot;: []
+        }
+      }
+    ],
+    &quot;ignored_contexts&quot;: [],
+    &quot;method&quot;: &quot;Literal registered clues with limited local negation; not semantic understanding or proof of a transform.&quot;
+  },
+  &quot;remaining_before_decision&quot;: {
+    &quot;tool_calls&quot;: 12,
+    &quot;audit_runs&quot;: 2,
+    &quot;comparisons&quot;: 999986,
+    &quot;index_operations&quot;: 16000000,
+    &quot;decoded_pixels&quot;: 67056,
+    &quot;wall_seconds&quot;: 299.63137720758095
+  },
+  &quot;base_complete&quot;: true,
+  &quot;metadata_state&quot;: &quot;not_applicable&quot;,
+  &quot;requested_questions&quot;: [],
+  &quot;outcome&quot;: &quot;not_run&quot;,
+  &quot;model_calls&quot;: 0
+}</pre></details><article><h3>base · 已完成</h3><p>已发现至少 6 张；已生成指纹 6 张；已处理 6 张。</p><p>已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。</p><a href="tools/call-0002/output/report.json">查看 base 原始 Core 报告</a></article><p>元数据：not_applicable。元数据中的实体身份来自登记声明。</p><details><summary>展开完整覆盖记录</summary><pre class="raw">{
+  &quot;input_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;input_preflight&quot;: {
+    &quot;digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+    &quot;image_count&quot;: 6,
+    &quot;estimated_source_pixels&quot;: 55296,
+    &quot;header_unknown_count&quot;: 0,
+    &quot;snapshot_guarantee&quot;: &quot;before/after hashes; not an atomic filesystem snapshot&quot;
+  },
+  &quot;profiles&quot;: {
+    &quot;base&quot;: {
+      &quot;audit_id&quot;: &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;,
+      &quot;report_ref&quot;: &quot;tools/call-0002/output/report.json&quot;,
+      &quot;report_sha256&quot;: &quot;2158dbbb1632a8f4fbbb2949634a7e97d950beeea4d226ac0197ca7cbde0c06f&quot;,
+      &quot;complete&quot;: true,
+      &quot;discovered_at_least&quot;: 6,
+      &quot;fingerprinted_images&quot;: 6,
+      &quot;processed_images&quot;: 6,
+      &quot;unprocessed_fingerprints&quot;: [],
+      &quot;errors&quot;: [],
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;core_coverage&quot;: {
+        &quot;splits&quot;: {
+          &quot;train&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;validation&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;test&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;unknown&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 0,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          }
+        },
+        &quot;budgetExhaustion&quot;: [],
+        &quot;enumerationComplete&quot;: true,
+        &quot;rejectedOrErrorCount&quot;: 0,
+        &quot;ignoredFiles&quot;: 0,
+        &quot;unprocessedKnownFiles&quot;: 0,
+        &quot;summary&quot;: &quot;已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。&quot;
+      },
+      &quot;scope&quot;: {
+        &quot;splits&quot;: [
+          &quot;train&quot;,
+          &quot;validation&quot;,
+          &quot;test&quot;
+        ],
+        &quot;splitDirectories&quot;: {
+          &quot;train&quot;: &quot;train&quot;,
+          &quot;validation&quot;: &quot;validation&quot;,
+          &quot;test&quot;: &quot;test&quot;
+        },
+        &quot;missingSplits&quot;: [],
+        &quot;supportedExtensions&quot;: [
+          &quot;.png&quot;,
+          &quot;.jpg&quot;,
+          &quot;.jpeg&quot;,
+          &quot;.webp&quot;,
+          &quot;.avif&quot;,
+          &quot;.tif&quot;,
+          &quot;.tiff&quot;,
+          &quot;.gif&quot;
+        ],
+        &quot;ignoredFiles&quot;: 0,
+        &quot;entriesScanned&quot;: 6,
+        &quot;discoveredAtLeast&quot;: 6,
+        &quot;acceptedImages&quot;: 6,
+        &quot;totalDecodedPixels&quot;: 55296,
+        &quot;maxDirectoryEntries&quot;: 100000,
+        &quot;source&quot;: &quot;local-files&quot;,
+        &quot;allPairsAreCrossSplit&quot;: true,
+        &quot;perceptualMatchesRequireReview&quot;: true
+      },
+      &quot;cost&quot;: {
+        &quot;comparisons&quot;: 14,
+        &quot;index_operations&quot;: 0,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;wall_seconds&quot;: 0.16726541705429554
+      },
+      &quot;pixel_cost_measurement&quot;: &quot;core-successful-decode-count&quot;
+    }
+  },
+  &quot;metadata&quot;: {
+    &quot;state&quot;: &quot;not_applicable&quot;,
+    &quot;issues&quot;: []
+  },
+  &quot;human_review&quot;: {
+    &quot;state&quot;: &quot;not_applicable&quot;,
+    &quot;total_records&quot;: 0,
+    &quot;unique_pairs&quot;: 0,
+    &quot;requested_records&quot;: 0,
+    &quot;pending_records&quot;: 0,
+    &quot;confirmed_records&quot;: 0,
+    &quot;rejected_records&quot;: 0,
+    &quot;unsure_records&quot;: 0,
+    &quot;resolved_pairs&quot;: 0,
+    &quot;unresolved_pairs&quot;: 0,
+    &quot;scope&quot;: &quot;Review applies to its bound Core witness; duplicate witnesses and unsure/conflicting decisions remain unresolved.&quot;
+  },
+  &quot;verification&quot;: {
+    &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;: {
+      &quot;state&quot;: &quot;passed&quot;,
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;auditId&quot;: &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;,
+        &quot;pairs&quot;: [
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;train/001.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;train/001.png&quot;,
+            &quot;evidence&quot;: &quot;byte-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;730986c2a448567ff059f43df22512c6512374b2f4d0520e15160b22b571a0ba&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;train/001.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;train/001.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;730986c2a448567ff059f43df22512c6512374b2f4d0520e15160b22b571a0ba&quot;,
+              &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;
+            }
+          }
+        ],
+        &quot;counts&quot;: {
+          &quot;valid&quot;: 3,
+          &quot;invalid&quot;: 0,
+          &quot;missing&quot;: 0,
+          &quot;skippedCandidates&quot;: 0
+        },
+        &quot;exitCode&quot;: 0,
+        &quot;verificationScope&quot;: {
+          &quot;evidenceTypes&quot;: [
+            &quot;byte-identical&quot;,
+            &quot;pixel-identical&quot;
+          ],
+          &quot;candidatesRecomputed&quot;: false,
+          &quot;wholeDatasetReaudited&quot;: false
+        }
+      },
+      &quot;candidates_recomputed&quot;: false
+    }
+  },
+  &quot;unexecuted_profiles&quot;: [
+    {
+      &quot;profile&quot;: &quot;transform&quot;,
+      &quot;reason&quot;: &quot;decode_and_verify_budget&quot;
+    }
+  ],
+  &quot;source_unchanged&quot;: true
+}</pre></details></section><section id="claims" aria-labelledby="claims-title"><h2 id="claims-title">有证据支撑的结论</h2><article><h3>字节相同 <span class="badge confirmed">confirmed</span></h3><p>两文件字节摘要相同且已复验；不据此推断训练使用。</p><div class="source-links"><a href="#evidence-f7f1352e0dbe665407a155fb">call-0002:pair:0</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-3c91c6214d730b7a815ee5d6">call-0002:pair:1</a></div></article><article><h3>完整像素相同 <span class="badge confirmed">confirmed</span></h3><p>两文件规范化完整像素相同且已复验。</p><div class="source-links"><a href="#evidence-b5aa8d2ee9303575741f8021">call-0002:pair:2</a></div></article><details><summary>结论边界</summary><ul><li>相似候选不证明同源或实验泄漏。</li><li>图像关系不证明模型实际训练使用。</li><li>覆盖仅适用于列明的 profile、输入与阈值。</li><li>本次未调用模型；不是 Agent 性能实验。</li></ul></details></section><section id="budget" aria-labelledby="budget-title"><h2 id="budget-title">预算与成本</h2><p>累计已扣账 / 上限。各维度独立计量，不换算为未定价的金额。</p><div class="budget-grid"><div class="metric"><small>工具调用</small><strong>5 / 16</strong></div><div class="metric"><small>审计扫描调用</small><strong>1 / 3</strong></div><div class="metric"><small>比较次数</small><strong>14 / 1,000,000</strong></div><div class="metric"><small>索引操作</small><strong>0 / 16,000,000</strong></div><div class="metric"><small>解码源像素</small><strong>82,944 / 150,000</strong></div><div class="metric"><small>累计工具时间 / 秒</small><strong>0.372 / 300</strong></div><div class="metric"><small>澄清请求</small><strong>0 / 2</strong></div><div class="metric"><small>复核请求</small><strong>0 / 30</strong></div></div><p>模型执行：not_run。脚本规划请求不作为真实模型调用。</p><details><summary>展开完整预算账本</summary><pre class="raw">{
+  &quot;schema_version&quot;: 1,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1000000,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 150000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;spent&quot;: {
+    &quot;tool_calls&quot;: 5,
+    &quot;audit_runs&quot;: 1,
+    &quot;comparisons&quot;: 14,
+    &quot;index_operations&quot;: 0,
+    &quot;decoded_pixels&quot;: 82944,
+    &quot;wall_seconds&quot;: 0.3716730843298137,
+    &quot;llm_requests&quot;: 0,
+    &quot;review_pairs&quot;: 0,
+    &quot;questions&quot;: 0
+  },
+  &quot;model_usage&quot;: &quot;not_run&quot;,
+  &quot;model_cost_usd&quot;: 0,
+  &quot;entries&quot;: [
+    {
+      &quot;call_id&quot;: &quot;call-0001&quot;,
+      &quot;kind&quot;: &quot;preflight&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T23:06:50.597910+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 290
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.10694741737097502
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T23:06:50.698749+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.893052582629
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0002&quot;,
+      &quot;kind&quot;: &quot;audit&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T23:06:50.701138+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.893052582629,
+        &quot;comparisons&quot;: 1000000,
+        &quot;decoded_pixels&quot;: 94704,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.16726541705429554,
+        &quot;comparisons&quot;: 14,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;index_operations&quot;: 0,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T23:06:50.869028+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.72578716557473,
+        &quot;comparisons&quot;: 999986,
+        &quot;decoded_pixels&quot;: 39408,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0003&quot;,
+      &quot;kind&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T23:06:50.870902+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.72578716557473,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.09372120816260576,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T23:06:50.965191+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.6320659574121,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0004&quot;,
+      &quot;kind&quot;: &quot;interpret_context&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T23:06:50.967714+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.6320659574121,
+        &quot;questions&quot;: 0
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.0006887498311698437,
+        &quot;questions&quot;: 0
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T23:06:50.968397+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.63137720758095,
+        &quot;questions&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0005&quot;,
+      &quot;kind&quot;: &quot;finalize&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T23:06:50.970528+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.63137720758095
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.0030502919107675552
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T23:06:50.973576+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.6283269156702
+      },
+      &quot;overrun&quot;: {}
+    }
+  ]
+}</pre></details></section><section id="timeline" aria-labelledby="timeline-title"><h2 id="timeline-title">执行记录</h2><p class="muted">按预算账本顺序显示预留与结算。unknown 表示保守扣账；修订报告包含复用证据的历史调用。</p><div class="table-wrap"><table><thead><tr><th>步骤</th><th>动作</th><th>状态</th><th>预留 / 结算时间</th><th>已扣账秒数</th></tr></thead><tbody><tr><td><code>call-0001</code></td><td>核对输入与 Core</td><td>settled</td><td><small>2026-10-26T23:06:50.597910+00:00<br>2026-10-26T23:06:50.698749+00:00</small></td><td>0.107</td></tr><tr><td><code>call-0002</code></td><td>图像审计</td><td>settled</td><td><small>2026-10-26T23:06:50.701138+00:00<br>2026-10-26T23:06:50.869028+00:00</small></td><td>0.167</td></tr><tr><td><code>call-0003</code></td><td>精确关系复验</td><td>settled</td><td><small>2026-10-26T23:06:50.870902+00:00<br>2026-10-26T23:06:50.965191+00:00</small></td><td>0.094</td></tr><tr><td><code>call-0004</code></td><td>解释目标与元数据</td><td>settled</td><td><small>2026-10-26T23:06:50.967714+00:00<br>2026-10-26T23:06:50.968397+00:00</small></td><td>0.001</td></tr><tr><td><code>call-0005</code></td><td>生成结论与报告</td><td>settled</td><td><small>2026-10-26T23:06:50.970528+00:00<br>2026-10-26T23:06:50.973576+00:00</small></td><td>0.003</td></tr></tbody></table></div></section><section id="evidence" aria-labelledby="evidence-title"><h2 id="evidence-title">证据明细</h2><p class="muted">证据类型与复验范围保持原样。指纹相似候选未被精确复验，不会自动升级为同源或泄漏。</p><article class="evidence" id="evidence-f7f1352e0dbe665407a155fb"><h3>core.byte_identical</h3><p><code>call-0002:pair:0</code></p><p class="wrap">test/002.png ↔ train/001.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/0</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:0&quot;,
+  &quot;kind&quot;: &quot;core.byte_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;train/001.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;2d26989e6c2462ffc562827e3d596c1aaeea36879aae19f842ffdfc690a9c7f7&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/0&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;d3bd315f2148e3c81dd9f9e53a4cec78d96d0c27c701a9498689eec4f1f107e7&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T23:06:50.966807+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;train/001.png&quot;,
+    &quot;evidence&quot;: &quot;byte-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-3c91c6214d730b7a815ee5d6"><h3>core.pixel_identical</h3><p><code>call-0002:pair:1</code></p><p class="wrap">test/002.png ↔ validation/003.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/1</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg" alt="test/002.png 的 Core 缩略图"><figcaption>test/002.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:1&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;files&quot;: [
+    &quot;test/002.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;3057eb341165589f3cef971a3d9fb5c8a3ee675f48ab50836101a937fab58f98&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/1&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;d3bd315f2148e3c81dd9f9e53a4cec78d96d0c27c701a9498689eec4f1f107e7&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T23:06:50.967057+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;test/002.png&quot;,
+      &quot;path&quot;: &quot;test/002.png&quot;,
+      &quot;split&quot;: &quot;test&quot;,
+      &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;730986c2a448567ff059f43df22512c6512374b2f4d0520e15160b22b571a0ba&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;test/002.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-b5aa8d2ee9303575741f8021"><h3>core.pixel_identical</h3><p><code>call-0002:pair:2</code></p><p class="wrap">train/001.png ↔ validation/003.png</p><p><a href="tools/call-0002/output/report.json">查看原始 Core JSON</a> <small>/pairs/2</small></p><div class="pairs"><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg" alt="train/001.png 的 Core 缩略图"><figcaption>train/001.png</figcaption></figure><figure><img loading="lazy" decoding="async" src="tools/call-0002/output/thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg" alt="validation/003.png 的 Core 缩略图"><figcaption>validation/003.png</figcaption></figure></div><p class="wrap">复核状态：{&quot;report_identity&quot;: &quot;valid&quot;, &quot;exact_recomputed&quot;: &quot;valid&quot;, &quot;human_review&quot;: &quot;not_run&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;call-0002:pair:2&quot;,
+  &quot;kind&quot;: &quot;core.pixel_identical&quot;,
+  &quot;produced_by&quot;: &quot;call-0002&quot;,
+  &quot;core_audit_id&quot;: &quot;5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593&quot;,
+  &quot;dataset_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;files&quot;: [
+    &quot;train/001.png&quot;,
+    &quot;validation/003.png&quot;
+  ],
+  &quot;pair_key&quot;: &quot;a4b2584737026d9951735297ef5aadc66301b2285a6b621986f3d573ba86b72f&quot;,
+  &quot;source_positions&quot;: [
+    &quot;tools/call-0002/output/report.json#/pairs/2&quot;
+  ],
+  &quot;tool_version&quot;: &quot;c69824ee63da3134a1ddb455f9ff9a90ee8d2607&quot;,
+  &quot;params_digest&quot;: &quot;d3bd315f2148e3c81dd9f9e53a4cec78d96d0c27c701a9498689eec4f1f107e7&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T23:06:50.967203+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;report_identity&quot;: &quot;valid&quot;,
+    &quot;exact_recomputed&quot;: &quot;valid&quot;,
+    &quot;human_review&quot;: &quot;not_run&quot;
+  },
+  &quot;images&quot;: [
+    {
+      &quot;id&quot;: &quot;train/001.png&quot;,
+      &quot;path&quot;: &quot;train/001.png&quot;,
+      &quot;split&quot;: &quot;train&quot;,
+      &quot;byteDigest&quot;: &quot;ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    },
+    {
+      &quot;id&quot;: &quot;validation/003.png&quot;,
+      &quot;path&quot;: &quot;validation/003.png&quot;,
+      &quot;split&quot;: &quot;validation&quot;,
+      &quot;byteDigest&quot;: &quot;730986c2a448567ff059f43df22512c6512374b2f4d0520e15160b22b571a0ba&quot;,
+      &quot;pixelDigest&quot;: &quot;bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24&quot;,
+      &quot;pixelDigestBasis&quot;: &quot;full&quot;,
+      &quot;dhashBasis&quot;: {
+        &quot;width&quot;: 96,
+        &quot;height&quot;: 96,
+        &quot;downsampled&quot;: false
+      },
+      &quot;dhash&quot;: &quot;0110100111101001010010011010011011001101010010100101010100111101&quot;,
+      &quot;width&quot;: 96,
+      &quot;height&quot;: 96,
+      &quot;contrast&quot;: 244,
+      &quot;thumbnail&quot;: &quot;thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg&quot;,
+      &quot;thumbnailDigest&quot;: &quot;db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127&quot;,
+      &quot;format&quot;: &quot;png&quot;
+    }
+  ],
+  &quot;pair&quot;: {
+    &quot;left&quot;: &quot;train/001.png&quot;,
+    &quot;right&quot;: &quot;validation/003.png&quot;,
+    &quot;evidence&quot;: &quot;pixel-identical&quot;,
+    &quot;distance&quot;: 0,
+    &quot;lowContrast&quot;: false,
+    &quot;review&quot;: &quot;unreviewed&quot;
+  }
+}</pre></details></article><article class="evidence" id="evidence-50d01166d9ca0b1f71cadb22"><h3>user.goal_confirmation</h3><p><code>goal:fc4d676f8a8bfd01abae5e2f3a886ffdc279fe5c0bfe812af2e0119d24736b85</code></p><p class="muted wrap">来源位置：registry.confirmations/user.local-task</p><p class="wrap">复核状态：{&quot;host_confirmation&quot;: &quot;valid&quot;}</p><details><summary>展开此条证据原文</summary><pre class="raw">{
+  &quot;evidence_id&quot;: &quot;goal:fc4d676f8a8bfd01abae5e2f3a886ffdc279fe5c0bfe812af2e0119d24736b85&quot;,
+  &quot;kind&quot;: &quot;user.goal_confirmation&quot;,
+  &quot;produced_by&quot;: &quot;host.registry&quot;,
+  &quot;core_audit_id&quot;: null,
+  &quot;dataset_manifest_digest&quot;: &quot;6659cb1201e79399e04fa5d13191fb855c43a35e5cacf426ca382afcfc355b03&quot;,
+  &quot;files&quot;: [],
+  &quot;source_positions&quot;: [
+    &quot;registry.confirmations/user.local-task&quot;
+  ],
+  &quot;tool_version&quot;: &quot;vli-0.1.0&quot;,
+  &quot;params_digest&quot;: &quot;f1eedde59c8a063479fadbc309b0ab19b1c4b8e51014fa9b5b6534e58ff5b6c5&quot;,
+  &quot;created_at&quot;: &quot;2026-10-26T23:06:50.968086+00:00&quot;,
+  &quot;verification_state&quot;: {
+    &quot;host_confirmation&quot;: &quot;valid&quot;
+  },
+  &quot;facts&quot;: {
+    &quot;kind&quot;: &quot;user.goal_confirmation&quot;,
+    &quot;goal&quot;: &quot;content_audit&quot;,
+    &quot;actor&quot;: &quot;local synthetic fixture generator&quot;
+  }
+}</pre></details></article></section><section id="records" aria-labelledby="records-title"><h2 id="records-title">原始记录</h2><p>这些文件保留原始身份与记录。输入目录不通过本页提供访问。</p><div class="source-links"><a href="report.json">完整报告 JSON</a><a href="evidence.jsonl">证据账本</a><a href="ledger.json">预算账本</a><a href="coverage.json">覆盖记录</a><a href="manifest.json">运行身份</a><a href="events.jsonl">状态事件</a></div><details><summary>本次任务定义</summary><pre class="raw">{
+  &quot;schema_version&quot;: 1,
+  &quot;task_id&quot;: &quot;r009&quot;,
+  &quot;dataset_ref&quot;: &quot;demo-dataset&quot;,
+  &quot;request_text&quot;: &quot;检查已登记数据说明中的内容关系。&quot;,
+  &quot;goal&quot;: &quot;content_audit&quot;,
+  &quot;goal_confirmed&quot;: true,
+  &quot;goal_evidence_refs&quot;: [
+    &quot;user.local-task&quot;
+  ],
+  &quot;metadata_ref&quot;: null,
+  &quot;context_refs&quot;: [
+    &quot;description&quot;
+  ],
+  &quot;entity_key&quot;: null,
+  &quot;entity_key_confirmed&quot;: false,
+  &quot;entity_key_evidence_refs&quot;: [],
+  &quot;protect_eval_split&quot;: true,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1000000,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 150000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;privacy&quot;: {
+    &quot;remote_model_allowed&quot;: false,
+    &quot;disclosure&quot;: &quot;none&quot;,
+    &quot;consent_ref&quot;: null,
+    &quot;approved_context_refs&quot;: [],
+    &quot;remote_images_allowed&quot;: false
+  }
+}</pre></details></section><footer>VisionLeak Investigator · 静态本地报告 · 不修改源数据 · 本页没有模型调用或外部脚本</footer></main></body></html>

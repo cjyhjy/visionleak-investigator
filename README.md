@@ -137,3 +137,5 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 `vli proposal-export --run <run> --format csv --out <new-file.csv>` 从已验证证据重新生成只读建议；也支持 JSON。CSV 使用明确的可还原文本编码，保留逐图映射、理由和证据，不能直接作为训练清单。实际 CLI 验收：`.venv/bin/python scripts/proposal_export_smoke.py --out runs/proposal-export-acceptance`。
 
 交互评测另用 `eval-interaction`，冻结 C/D 的初始信息与可回答问题集合。规则 C 使用真实 Core 和修订，回答来自明确标注的固定脚本；D 持续 blocked。必要/多余追问、目标与字段确认、目标风险、预算、失败和未完成任务分别记录，不与检测指标混合，也不宣称真人工时收益。运行 `.venv/bin/python scripts/interaction_smoke.py --out runs/interaction-acceptance`，详情见 [docs/INTERACTION_EVALUATION.md](docs/INTERACTION_EVALUATION.md)。
+
+规则基线现为 `rules-v2`：base 后结合登记说明、元数据澄清和剩余预算选择补充检查，保存策略快照与选择依据。可用 `.venv/bin/python scripts/rules_smoke.py --out runs/rules-acceptance` 复现真实 CLI 场景；词表、有限否定和覆盖限制见 [ADR-012](docs/adr/012-rules-context-routing.md)。历史 v1 评测保持原样，新策略须重新冻结；这不构成 Agent 优于规则的证据。
