@@ -1,0 +1,67 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "327a4222e7d03533cf84cde326e323c17fa9358c542456b6081eda0341582b05",
+  "dataset_manifest_digest": "c1ef2e5b68b84730c4a604566d47617ba3dddf9df27d301ef375ee15fd3c1e5c",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "run",
+  "reason_code": "positive_registered_clues",
+  "selected_profile": "all",
+  "hints": {
+    "selected_profile": "all",
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "2054c65c35dfcfb0b10eefdc2744f126d413de43e1c325acfa2925278ec2a342",
+        "characters": 21,
+        "positive_terms": {
+          "transform": [
+            "旋转"
+          ],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      },
+      {
+        "source": "registered_context",
+        "context_ref": "description",
+        "sha256": "c3a89c1aec7a8036375d5d11af2c74fe4e28222c112642363e4791a4751346f1",
+        "truncated": false,
+        "excerpt_digest": "0f2a4a1e5de3044fe44ba68d438d6f292a7ae854f116c30f216ef51a8c480b07",
+        "characters": 10,
+        "positive_terms": {
+          "transform": [],
+          "local": [
+            "crop"
+          ]
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 999986,
+    "index_operations": 16000000,
+    "decoded_pixels": 299917056,
+    "wall_seconds": 299.34877756199995
+  },
+  "base_complete": true,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "accepted",
+  "model_calls": 0,
+  "supplement_complete": true
+}

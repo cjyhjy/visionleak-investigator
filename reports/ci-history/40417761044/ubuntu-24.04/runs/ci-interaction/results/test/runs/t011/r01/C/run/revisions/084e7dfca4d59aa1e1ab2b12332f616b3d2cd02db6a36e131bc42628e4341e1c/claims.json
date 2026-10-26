@@ -1,0 +1,40 @@
+[
+  {
+    "claim_id": "f002452a1473e2ad6a80a657e3ef14a43257682f99321ba92d4f1363f3c313a9",
+    "claim_type": "declared_entity_overlap",
+    "statement": "按提供的元数据，这些文件跨集合具有相同实体标识。",
+    "evidence_refs": [
+      "metadata:72ef203173d3dff2225bc055af789233a693847d856435569d8f8df6f1f27b1f",
+      "goal:e8ba05f34017442bb038e56da0ab2a006a9abff09f2d44c60f0c1f3eba5bbb61"
+    ],
+    "goal_ref": "goal:e8ba05f34017442bb038e56da0ab2a006a9abff09f2d44c60f0c1f3eba5bbb61",
+    "coverage_ref": "metadata",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  },
+  {
+    "claim_id": "0a26b844695e69bfefe2f74a11cbd8cd6796993c10aa8a231fdec956ebc6f9d6",
+    "claim_type": "goal_conflict",
+    "statement": "该已支持关系违反所确认的划分约定；不证明模型已训练过此数据。",
+    "evidence_refs": [
+      "metadata:72ef203173d3dff2225bc055af789233a693847d856435569d8f8df6f1f27b1f",
+      "goal:e8ba05f34017442bb038e56da0ab2a006a9abff09f2d44c60f0c1f3eba5bbb61"
+    ],
+    "goal_ref": "goal:e8ba05f34017442bb038e56da0ab2a006a9abff09f2d44c60f0c1f3eba5bbb61",
+    "coverage_ref": "metadata",
+    "status": "confirmed",
+    "limitations": [
+      "相似候选不证明同源或实验泄漏。",
+      "图像关系不证明模型实际训练使用。",
+      "覆盖仅适用于列明的 profile、输入与阈值。",
+      "本次未调用模型；不是 Agent 性能实验。"
+    ],
+    "rule_version": "vli-claims-1"
+  }
+]

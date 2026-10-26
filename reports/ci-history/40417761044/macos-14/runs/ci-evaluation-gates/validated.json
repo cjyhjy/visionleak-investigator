@@ -1,0 +1,158 @@
+{
+  "catalog_digest": "1732a9d9ab08c72e7e78e3515ebce91935804a6b310349caecb38e695bd1b038",
+  "core_history_digest": "de5184188cba204df8c89de2670f8e5b7c4cd7fd1665174c6b441e5aad14e624",
+  "tasks": [
+    {
+      "task_id": "development",
+      "benchmark_partition": "development",
+      "task_path": "development/task.json",
+      "registry_path": "development/registry.json",
+      "truth_path": "evaluator-truth/development.json",
+      "image_sources": {
+        "test/002.png": "development-0",
+        "test/004.png": "development-1",
+        "train/001.png": "development-2",
+        "train/006.png": "development-3",
+        "validation/003.png": "development-4",
+        "validation/005.png": "development-5"
+      },
+      "source_refs": [
+        "development-0",
+        "development-1",
+        "development-2",
+        "development-3",
+        "development-4",
+        "development-5"
+      ],
+      "task_sha256": "b30dfb1c3955e2a186465366c4689909eee08b974aa8126fb748099db93914b1",
+      "registry_sha256": "ea6bdff07e6fd502257c1d2de8f8f70b1ae0d4de7cbbbc7cb9c7fcd4f6805fe9",
+      "truth_sha256": "28efad7097942549fd6f7d6b5ef120e5b4bbcc05bbec96f93641743b97721581",
+      "input_digest": "ae98038fbbd47a38d9ce580b7fec9c91c192788bcc3e9def29b084986024d92d",
+      "limits_digest": "f6fff6dfc8840469c06986ec1bebf2003d549e360d7da5c7b41bca83f845ffdb",
+      "document_hashes": {}
+    },
+    {
+      "task_id": "validation",
+      "benchmark_partition": "validation",
+      "task_path": "validation/task.json",
+      "registry_path": "validation/registry.json",
+      "truth_path": "evaluator-truth/validation.json",
+      "image_sources": {
+        "test/002.png": "validation-0",
+        "test/004.png": "validation-1",
+        "train/001.png": "validation-2",
+        "train/006.png": "validation-3",
+        "validation/003.png": "validation-4",
+        "validation/005.png": "validation-5"
+      },
+      "source_refs": [
+        "validation-0",
+        "validation-1",
+        "validation-2",
+        "validation-3",
+        "validation-4",
+        "validation-5"
+      ],
+      "task_sha256": "575f6281f43f501ce075ea81a4af81b374a18b01b27a937998700fc5dfd94358",
+      "registry_sha256": "1396105ccac53e3c1c7cc3dcd0fae81c2c3bbbfec02cbd74c0d05936439e50fd",
+      "truth_sha256": "0e29a1f86dec4d908cbf5bb44ed3d2a9eb70782a1228e3967af5a08556805048",
+      "input_digest": "bb283a14b4fadd6dc5488a4664d665fc293b78f8d7f2be93618ed988ddfbc1f2",
+      "limits_digest": "f6fff6dfc8840469c06986ec1bebf2003d549e360d7da5c7b41bca83f845ffdb",
+      "document_hashes": {}
+    },
+    {
+      "task_id": "test",
+      "benchmark_partition": "test",
+      "task_path": "test/task.json",
+      "registry_path": "test/registry.json",
+      "truth_path": "evaluator-truth/test.json",
+      "image_sources": {
+        "test/002.png": "test-0",
+        "test/004.png": "test-1",
+        "train/001.png": "test-2",
+        "train/006.png": "test-3",
+        "validation/003.png": "test-4",
+        "validation/005.png": "test-5"
+      },
+      "source_refs": [
+        "test-0",
+        "test-1",
+        "test-2",
+        "test-3",
+        "test-4",
+        "test-5"
+      ],
+      "task_sha256": "234ccdc687d032ac3d96c55bf2c1975a6a0d4db5b67599e9ad51b8744b564d17",
+      "registry_sha256": "b55e043c752ccf2a0be3e1e9e60812d34bbb1ca573afa7e3f11d4021dbb2577a",
+      "truth_sha256": "ed45bfdc8a39321df261bddd0f224cb6459189cb29d3d5cec8779ffc7c835bcc",
+      "input_digest": "27b90dcd3e432002d445fe2357177cbcb55e62db91f65f81985f5a7aa36cdefe",
+      "limits_digest": "f6fff6dfc8840469c06986ec1bebf2003d549e360d7da5c7b41bca83f845ffdb",
+      "document_hashes": {}
+    }
+  ],
+  "components": [
+    {
+      "sources": [
+        "development-0",
+        "development-1",
+        "development-2",
+        "development-3",
+        "development-4",
+        "development-5"
+      ],
+      "tasks": [
+        "development"
+      ],
+      "partitions": [
+        "development"
+      ]
+    },
+    {
+      "sources": [
+        "test-0",
+        "test-1",
+        "test-2",
+        "test-3",
+        "test-4",
+        "test-5"
+      ],
+      "tasks": [
+        "test"
+      ],
+      "partitions": [
+        "test"
+      ]
+    },
+    {
+      "sources": [
+        "validation-0",
+        "validation-1",
+        "validation-2",
+        "validation-3",
+        "validation-4",
+        "validation-5"
+      ],
+      "tasks": [
+        "validation"
+      ],
+      "partitions": [
+        "validation"
+      ]
+    }
+  ],
+  "partition_task_counts": {
+    "development": 1,
+    "validation": 1,
+    "test": 1
+  },
+  "partition_independent_components": {
+    "development": 1,
+    "validation": 1,
+    "test": 1
+  },
+  "limitations": [
+    "Provenance/license/group labels are declarations; identities not inferred from appearance.",
+    "Exact hashes, origin URIs and declared ancestry/groups are checked.",
+    "Application boundary only; local administrators can read evaluator truth."
+  ]
+}

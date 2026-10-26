@@ -1,0 +1,62 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "fc79833e1f99ad6b9d513f56f990501a68a23a8e19e4fb86378f473ca13081e0",
+  "dataset_manifest_digest": "0533361a74889bfbcf89acf7ed0fe7962e71813395d5d2cd5b97635d726e8c22",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "stop",
+  "reason_code": "no_positive_clues",
+  "selected_profile": null,
+  "hints": {
+    "selected_profile": null,
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "dd3f5b0e123ec5a748fefa057e1e5a7a3f3818c719136e57a27e4a96a957c2e2",
+        "characters": 16,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      },
+      {
+        "source": "registered_context",
+        "context_ref": "description",
+        "sha256": "b5b7bda62bf70e22f38f911315e585748ac5a601ddc02e0b72955462c41c62cd",
+        "truncated": true,
+        "excerpt_digest": "51d611fa89cd96ee84746ade894263f9f07802206a0eb8760cddbebc99505d54",
+        "characters": 8000,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 999984,
+    "index_operations": 16000000,
+    "decoded_pixels": 299917056,
+    "wall_seconds": 299.26791875
+  },
+  "base_complete": true,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "not_run",
+  "model_calls": 0
+}

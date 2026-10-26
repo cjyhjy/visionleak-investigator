@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/audit_limit/fixture/images"
+  },
+  "documents": {
+    "description": {
+      "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/audit_limit/fixture/description.md",
+      "sha256": "68eb90fa809e72cc1386996bb964fa979d95fc3f3c102e9b12d5b98f57c0c604"
+    }
+  },
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "local synthetic fixture generator"
+    }
+  }
+}

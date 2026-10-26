@@ -9,7 +9,8 @@ class BudgetLedger:
     def remaining(self,key: str) -> float:
         mapping={'tool_calls':'max_tool_calls','audit_runs':'max_core_audit_runs','comparisons':'max_comparisons_total','index_operations':'max_index_operations_total','decoded_pixels':'max_total_decoded_pixels','wall_seconds':'max_tool_wall_seconds','questions':'max_questions','review_pairs':'max_review_pairs'}
         return max(0,self.limits[mapping[key]]-self.data['spent'][key])
-    def reserve(self,kind: str,allocation: dict|None=None,*,final: bool=False) -> dict:
+    def check_reservation(self,kind: str,allocation: dict|None=None,*,final: bool=False) -> dict:
+        """Validate without writing a run or starting work; reserve repeats this check."""
         if any(e['status']=='pending' for e in self.data['entries']):raise BudgetExceeded('Pending reservation; recovery required')
         reserve_calls=0 if final else self.limits['finalization_reserve_tool_calls']
         reserve_time=0 if final else self.limits['finalization_reserve_seconds']
@@ -18,6 +19,9 @@ class BudgetLedger:
         if kind=='audit':a['audit_runs']=1
         for k,v in a.items():
             if v<0 or v>self.remaining(k):raise BudgetExceeded(f'Insufficient {k}')
+        return a
+    def reserve(self,kind: str,allocation: dict|None=None,*,final: bool=False) -> dict:
+        a=self.check_reservation(kind,allocation,final=final)
         entry={'call_id':f'call-{len(self.data["entries"])+1:04d}','kind':kind,'status':'pending','reserved_at':now(),'reservation':a}
         self.data['entries'].append(entry);self.save();return entry
     def settle(self,entry: dict,actual: dict|None,*,error: str|None=None) -> None:

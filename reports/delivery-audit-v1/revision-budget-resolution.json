@@ -1,0 +1,94 @@
+{
+  "status": "passed_for_revision_identity_reservation_scope",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+  "gap": "reports/revision-budget-gap-v1/receipt.json",
+  "regression": {
+    "tests": 196,
+    "skipped": 0,
+    "log": "reports/logs/20261026T232825120507-revision-budget-regression.log"
+  },
+  "smoke": "reports/revision-budget-v1/receipt.json",
+  "commands": [
+    {
+      "name": "revision-budget-gap",
+      "argv": [
+        ".venv-clean/bin/python",
+        "reports/revision-budget-gap-v1/reproduce.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 0.660808333,
+      "log": "reports/logs/20261026T231631805785-revision-budget-gap.log",
+      "recorded_at": "20261026T231631805785"
+    },
+    {
+      "name": "revision-budget-red",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/acceptance/test_revision_budget.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 1,
+      "wall_seconds": 2.3959040419999997,
+      "log": "reports/logs/20261026T232240863282-revision-budget-red.log",
+      "recorded_at": "20261026T232240863282"
+    },
+    {
+      "name": "revision-budget-targeted",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/acceptance/test_revision_budget.py",
+        "tests/acceptance/test_interaction.py",
+        "tests/acceptance/test_revision_provenance.py",
+        "tests/acceptance/test_review_consistency.py",
+        "tests/acceptance/test_rules_routing.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 25.484487458,
+      "log": "reports/logs/20261026T232413276751-revision-budget-targeted.log",
+      "recorded_at": "20261026T232413276751"
+    },
+    {
+      "name": "revision-budget-local-smoke",
+      "argv": [
+        ".venv-clean/bin/python",
+        "scripts/revision_budget_smoke.py",
+        "--out",
+        "reports/revision-budget-v1"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 3.6628283329999998,
+      "log": "reports/logs/20261026T232712150501-revision-budget-local-smoke.log",
+      "recorded_at": "20261026T232712150501"
+    },
+    {
+      "name": "revision-budget-regression",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 111.452044917,
+      "log": "reports/logs/20261026T232825120507-revision-budget-regression.log",
+      "recorded_at": "20261026T232825120507"
+    }
+  ],
+  "ci_status": "pending",
+  "model_calls": 0,
+  "scope": "Budget denial before Core launch or target creation; persisted identity reservation before real inspection; inherited failed/interrupted cost, conservative recovery, no automatic Core replay; real Core and scripted answers only.",
+  "remaining_local": [
+    "Finalization and revision assembly timing scope: reports/finalization-accounting-gap-v1/receipt.json",
+    "Complete clause-by-clause delivery audit."
+  ]
+}

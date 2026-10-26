@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T23:08:39.390676+00:00",
+  "updated_at": "2026-10-26T23:31:54.703741+00:00",
   "project_version": "0.1.0",
-  "code_digest": "ceae07013a54e74fb2a3f165faaeea02a4672d594e3b3b653b2c35fc608539a4",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -21,21 +21,24 @@
     ]
   },
   "M1": {
-    "status": "passed",
+    "status": "failed",
     "tests": [
       "M1-verified",
       "final-regression",
-      "half-written-core-report"
+      "half-written-core-report",
+      "revision-budget-regression"
     ],
     "evidence": [
       "reports/demo-rules/report.json",
       "reports/demo-rules/ledger.json",
       "reports/delivery-demo/report.json",
-      "reports/partial-report-v1/receipt.json"
-    ]
+      "reports/partial-report-v1/receipt.json",
+      "reports/finalization-accounting-gap-v1/receipt.json"
+    ],
+    "reason": "Later contract audit reproduced uncharged second-render latency in finalization; existing real Core/ledger tests remain passed for their scopes."
   },
   "M2": {
-    "status": "passed",
+    "status": "failed",
     "tests": [
       "M2-first",
       "recovery-check",
@@ -45,7 +48,8 @@
       "proposal-export-targeted",
       "review-consistency-targeted",
       "contract-binding-final-regression",
-      "rules-v2-regression"
+      "rules-v2-regression",
+      "revision-budget-regression"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
@@ -54,12 +58,15 @@
       "reports/proposal-export-v1/receipt.json",
       "reports/review-lifecycle-v1/receipt.json",
       "reports/interaction-contract-binding-v1/receipt.json",
-      "reports/rules-routing-v2/receipt.json"
+      "reports/rules-routing-v2/receipt.json",
+      "reports/revision-budget-v1/receipt.json",
+      "reports/delivery-audit-v1/revision-budget-resolution.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
       "Review backlog is visible; import requires bound audit/input/reviewer."
-    ]
+    ],
+    "reason": "Revision identity reservation is locally fixed and verified; common finalization and remaining revision assembly timing do not yet satisfy the full total-accounting requirement."
   },
   "M3": {
     "status": "blocked",
@@ -102,7 +109,10 @@
       "reports/rules-context-gap-v1/receipt.json",
       "reports/rules-routing-v2/receipt.json",
       "reports/catalog-rules-v2/receipt.json",
-      "reports/delivery-audit-v1/rules-routing-resolution.json"
+      "reports/delivery-audit-v1/rules-routing-resolution.json",
+      "reports/ci-history/40417761044/verification.json",
+      "reports/delivery-audit-v1/revision-budget-resolution.json",
+      "reports/finalization-accounting-gap-v1/receipt.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -119,24 +129,25 @@
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "rules-v2-regression: 191 passed, zero skipped",
+    "test_suite": "revision-budget-regression: 196 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T230324099610-rules-v2-regression.log",
-    "ci_evidence": "reports/ci-history/40413457832/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40413457832",
-    "tested_commit": "fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618",
-    "ci_for_current_code": "pending: previous recorded CI is for the previous code digest"
+    "final_log": "reports/logs/20261026T232825120507-revision-budget-regression.log",
+    "ci_evidence": "reports/ci-history/40417761044/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40417761044",
+    "tested_commit": "cee32090384c192ab171c321336876eea2c95083",
+    "ci_for_current_code": "pending for revision-budget changes; recorded rules-v2 CI passed for the preceding code digest"
   },
-  "next_local_command": "python3 scripts/record.py <name> .venv-clean/bin/python <next evidence verification command>",
+  "next_local_command": "python3 scripts/record.py finalization-targeted .venv-clean/bin/python -m pytest -q tests/acceptance/test_revision_budget.py tests/acceptance/test_loop.py",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "40413457832 passed: 114 host reports, 38 metadata field reports, 24 interaction scores and 12 binding rejections independently reverified, plus prior resource/catalog/lifecycle/export cases.",
+    "ci": "Rules-v2 CI 40417761044 passed and artifacts reverified: 142 reports, 82 rules records, 42 metadata field reports, 28 rules smoke reports, and prior catalog/interaction/resource/lifecycle evidence.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim.",
+      "Finalization and revision assembly timing scope: reports/finalization-accounting-gap-v1/receipt.json",
+      "Complete clause-by-clause delivery audit.",
       "Authorized independent natural data experiments and real provider/D trajectories.",
       "Owner-selected project license and external submission decisions.",
       "M4 deferred until real Agent stabilizes."
@@ -144,5 +155,5 @@
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
   },
-  "next_local_work": "Verify rules-v2 cross-platform CI and complete the clause-by-clause contract/delivery audit."
+  "next_local_work": "Fix the reproduced finalization timing gap and charge revision assembly, then complete all remaining contract/delivery clauses; verify revision-budget CI after push."
 }

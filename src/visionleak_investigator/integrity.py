@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import time
 from .common import read_json,file_hash,digest,safe_child
 from .workflow import code_digest
 from .core import CoreAdapter
@@ -7,7 +8,13 @@ from .domain import Registry,input_manifest
 from .reporting import ClaimValidator
 from .review_state import review_coverage
 
-def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=False) -> dict:
+def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=False,identity_timeout: float|None=None) -> dict:
+    deadline=None if identity_timeout is None else time.monotonic()+identity_timeout
+    def allowance(default):
+        if deadline is None:return default
+        remaining=deadline-time.monotonic()
+        if remaining<=0:raise TimeoutError('Run identity verification time allowance exhausted')
+        return min(default,remaining)
     report=read_json(run/'report.json');validation=read_json(run/'validation.json');manifest=read_json(run/'manifest.json')
     if file_hash(run/'evidence.jsonl')!=validation['evidence_sha256']:raise ValueError('Evidence store tampered')
     if 'model_ledger_sha256' in validation and file_hash(run/'model-ledger.json')!=validation['model_ledger_sha256']:raise ValueError('Model ledger tampered')
@@ -30,15 +37,15 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
     if report.get('recovery'):
         receipt=read_json(run/'recovery-receipt.json')
         if receipt!=report['recovery'] or checkpoint.get('recovery_receipt_digest')!=digest(receipt):raise ValueError('Recovery receipt changed')
-        if not report.get('revision') and receipt['original_manifest_digest']!=digest(manifest):raise ValueError('Recovery origin changed')
+        if (not report.get('revision') or report['revision'].get('recovered_interruption')) and receipt['original_manifest_digest']!=digest(manifest):raise ValueError('Recovery origin changed')
         for saved in receipt['preserved_files']:
             if file_hash(safe_child(run,saved['path']))!=saved['sha256']:raise ValueError('Recovery archive changed')
     adapter=CoreAdapter()
-    if recompute_identity:adapter.verify_artifacts()
+    if recompute_identity:adapter.verify_artifacts(timeout=allowance(5))
     for profile,cov in report['coverage']['profiles'].items():
         path=run/cov['report_ref']
         if file_hash(path)!=validation['core_reports'][profile]:raise ValueError('Core report changed')
-        if recompute_identity:adapter.inspect_report(path,root)
+        if recompute_identity:adapter.inspect_report(path,root,timeout=allowance(10))
     evidence={e['evidence_id']:e for e in [json.loads(line) for line in (run/'evidence.jsonl').read_text().splitlines()]}
     if 'human_review_coverage_digest' in validation:
         if report['coverage']['human_review']!=review_coverage(report['reviews']) or digest(report['coverage']['human_review'])!=validation['human_review_coverage_digest']:
@@ -59,4 +66,5 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
                 raise ValueError('Review summary is not bound to current review evidence')
     for ref in [*report['task']['context_refs'],*([report['task']['metadata_ref']] if report['task']['metadata_ref'] else [])]:Registry(registry).document(ref)
     for claim in report['claims']:ClaimValidator().validate_claim(claim,evidence,{**report['coverage']['profiles'],'metadata':report['coverage']['metadata'],'human_review':report['coverage']['human_review']})
+    if recompute_identity and deadline is not None:allowance(10)
     return report

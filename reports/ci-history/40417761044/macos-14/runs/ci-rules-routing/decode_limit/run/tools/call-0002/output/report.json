@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "visionleak-report-v1",
+  "identityVersion": "vl-report-sha256-v2",
+  "normalization": "vl-rgb-v1",
+  "decoder": {
+    "name": "sharp",
+    "version": "0.35.5",
+    "libvips": "8.18.7"
+  },
+  "engine": {
+    "name": "visionleak-moonbit",
+    "artifactDigest": "ad556a709752b9add24a71fed5943442428e277b3b588c1a1692a7c2e4379507"
+  },
+  "ok": true,
+  "complete": true,
+  "status": "complete",
+  "pairs": [
+    {
+      "left": "test/002.png",
+      "right": "train/001.png",
+      "evidence": "byte-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    },
+    {
+      "left": "test/002.png",
+      "right": "validation/003.png",
+      "evidence": "pixel-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    },
+    {
+      "left": "train/001.png",
+      "right": "validation/003.png",
+      "evidence": "pixel-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    }
+  ],
+  "groups": [
+    {
+      "members": [
+        "test/002.png",
+        "train/001.png",
+        "validation/003.png"
+      ],
+      "evidence": "exact-component"
+    }
+  ],
+  "options": {
+    "threshold": 6,
+    "maxImages": 1000,
+    "maxDecodePixels": 64000000,
+    "maxPixels": 4194304,
+    "maxTotalPixels": 94704,
+    "maxFileBytes": 33554432,
+    "maxComparisons": 1000000,
+    "maxPairs": 2000,
+    "includeMirrors": false,
+    "includeRotations": false,
+    "includeCrops": false
+  },
+  "stats": {
+    "inputImages": 6,
+    "processedImages": 6,
+    "comparisons": 14,
+    "distanceEvaluations": 11,
+    "pairChecks": 3,
+    "emittedPairs": 3,
+    "indexNodes": 4,
+    "reason": ""
+  },
+  "images": [
+    {
+      "id": "test/002.png",
+      "path": "test/002.png",
+      "split": "test",
+      "byteDigest": "ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443",
+      "pixelDigest": "bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0110100111101001010010011010011011001101010010100101010100111101",
+      "width": 96,
+      "height": 96,
+      "contrast": 244,
+      "thumbnail": "thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg",
+      "thumbnailDigest": "db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127",
+      "format": "png"
+    },
+    {
+      "id": "test/004.png",
+      "path": "test/004.png",
+      "split": "test",
+      "byteDigest": "b5ec81bc6ee4acce45fa826a058dfbb52a7cb9ceb46b37f7ff1f2aa0c5554d2a",
+      "pixelDigest": "07ba2ba4404416b939e8d7e79d32599958aae3664097b25d1166978c09a221ea",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0110100101100110000110010110101010010011010101100101101001001101",
+      "width": 96,
+      "height": 96,
+      "contrast": 244,
+      "thumbnail": "thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg",
+      "thumbnailDigest": "67f683a00237bc5119b9443e47a41a9ecad7e387f80895b01fd5eded4e541fb0",
+      "format": "png"
+    },
+    {
+      "id": "train/001.png",
+      "path": "train/001.png",
+      "split": "train",
+      "byteDigest": "ff4ce818d8458141a374e02e189d15a3d4f6f500a310fa5c5f8948757e8f0443",
+      "pixelDigest": "bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0110100111101001010010011010011011001101010010100101010100111101",
+      "width": 96,
+      "height": 96,
+      "contrast": 244,
+      "thumbnail": "thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg",
+      "thumbnailDigest": "db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127",
+      "format": "png"
+    },
+    {
+      "id": "train/006.png",
+      "path": "train/006.png",
+      "split": "train",
+      "byteDigest": "7d1497f93aa642dd95d09f11be291e90c19019f55b5a2aaf133ab38341a77816",
+      "pixelDigest": "80933fa78b144e9188850bbb15afef891f555c8903b76825d50034068df0e7e9",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0101010111001010001010101000100010110110010010110100011001010101",
+      "width": 96,
+      "height": 96,
+      "contrast": 248,
+      "thumbnail": "thumbnails/a110f2a65c6cf4656b46686879a72d667ee298b00a0820890e3dd24462e07c07.jpg",
+      "thumbnailDigest": "7dc39b8bb6cf38273dc4e6a503325ac98b01f9bb6eb48ecefa7af584ee871243",
+      "format": "png"
+    },
+    {
+      "id": "validation/003.png",
+      "path": "validation/003.png",
+      "split": "validation",
+      "byteDigest": "730986c2a448567ff059f43df22512c6512374b2f4d0520e15160b22b571a0ba",
+      "pixelDigest": "bd689b55cfc2ab75bc7cfb1f991379a21aa5c62a6c8a0adc1da7e762c46a9a24",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0110100111101001010010011010011011001101010010100101010100111101",
+      "width": 96,
+      "height": 96,
+      "contrast": 244,
+      "thumbnail": "thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg",
+      "thumbnailDigest": "db950cc9df8702731f49ede83070f2113a0702a5adbb945e2a46ffe29d990127",
+      "format": "png"
+    },
+    {
+      "id": "validation/005.png",
+      "path": "validation/005.png",
+      "split": "validation",
+      "byteDigest": "1d27a56022b34258633ef80d4a8ff39faee7480efec9853e808891ef1b24555d",
+      "pixelDigest": "380f309d086b9c7875c8837b65cfda42e85bcbf6082a9b6201562249ff604d97",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "1011001010101100011011101010100110100011000111001000010011000110",
+      "width": 96,
+      "height": 96,
+      "contrast": 233,
+      "thumbnail": "thumbnails/6a1a11a4d4681f38899f09ac6622e458524cd7c1c7e344417c6a2300ea3eb68b.jpg",
+      "thumbnailDigest": "0532d90e1e58d61e661d8e4556aa5b7f95f79984a31728c30db8207dd9a20392",
+      "format": "png"
+    }
+  ],
+  "errors": [],
+  "scope": {
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "splitDirectories": {
+      "train": "train",
+      "validation": "validation",
+      "test": "test"
+    },
+    "missingSplits": [],
+    "supportedExtensions": [
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".webp",
+      ".avif",
+      ".tif",
+      ".tiff",
+      ".gif"
+    ],
+    "ignoredFiles": 0,
+    "entriesScanned": 6,
+    "discoveredAtLeast": 6,
+    "acceptedImages": 6,
+    "totalDecodedPixels": 55296,
+    "maxDirectoryEntries": 100000,
+    "source": "local-files",
+    "allPairsAreCrossSplit": true,
+    "perceptualMatchesRequireReview": true
+  },
+  "coverage": {
+    "splits": {
+      "train": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "validation": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "test": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "unknown": {
+        "audited": 0,
+        "fingerprinted": 0,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      }
+    },
+    "budgetExhaustion": [],
+    "enumerationComplete": true,
+    "rejectedOrErrorCount": 0,
+    "ignoredFiles": 0,
+    "unprocessedKnownFiles": 0,
+    "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+  },
+  "candidateGroups": [],
+  "auditId": "5adc355c3970fdfda0a67b384e6c9436e6714040d2b1e49fd32fdcd1c4ebc593",
+  "createdAt": "2026-10-26T23:14:55.654Z",
+  "timing": {
+    "elapsedMs": 77
+  }
+}

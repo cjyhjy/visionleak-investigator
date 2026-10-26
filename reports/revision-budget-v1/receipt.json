@@ -1,0 +1,141 @@
+{
+  "status": "passed",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+  "cases": [
+    {
+      "case": "denied",
+      "initial_run": "denied/run",
+      "revision_run": null,
+      "source_unchanged": true,
+      "original_ledger_unchanged": true,
+      "processes": [
+        {
+          "record": "denied/initial-process/result.json",
+          "expected_exit": 0
+        },
+        {
+          "record": "denied/resume-process/result.json",
+          "expected_exit": 1
+        }
+      ],
+      "controlled_real_inspections": 0,
+      "final_state": "rejected_before_revision"
+    },
+    {
+      "case": "accepted",
+      "initial_run": "accepted/run",
+      "revision_run": "accepted/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "source_unchanged": true,
+      "original_ledger_unchanged": true,
+      "processes": [
+        {
+          "record": "accepted/initial-process/result.json",
+          "expected_exit": 0
+        },
+        {
+          "record": "accepted/resume-process/result.json",
+          "expected_exit": 2
+        },
+        {
+          "record": "accepted/repeat-process/result.json",
+          "expected_exit": 2
+        }
+      ],
+      "controlled_real_inspections": 0,
+      "final_state": "PARTIAL"
+    },
+    {
+      "case": "failed",
+      "initial_run": "failed/run",
+      "revision_run": "failed/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "source_unchanged": true,
+      "original_ledger_unchanged": true,
+      "processes": [
+        {
+          "record": "failed/initial-process/result.json",
+          "expected_exit": 0
+        },
+        {
+          "record": "failed/resume-process/result.json",
+          "expected_exit": 2
+        },
+        {
+          "record": "failed/repeat-process/result.json",
+          "expected_exit": 2
+        }
+      ],
+      "controlled_real_inspections": 1,
+      "final_state": "PARTIAL"
+    },
+    {
+      "case": "interrupted",
+      "initial_run": "interrupted/run",
+      "revision_run": "interrupted/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "source_unchanged": true,
+      "original_ledger_unchanged": true,
+      "processes": [
+        {
+          "record": "interrupted/initial-process/result.json",
+          "expected_exit": 0
+        },
+        {
+          "record": "interrupted/resume-process/result.json",
+          "expected_exit": 2
+        },
+        {
+          "record": "interrupted/repeat-process/result.json",
+          "expected_exit": 2
+        }
+      ],
+      "controlled_real_inspections": 1,
+      "final_state": "PARTIAL"
+    }
+  ],
+  "reports": [
+    {
+      "case": "denied_initial",
+      "run": "denied/run",
+      "report_sha256": "1e9ff79829dddd884a704144374c98e9c85beb8aef32cc4135940e24b17a2f94",
+      "manifest_sha256": "bfddd0e50627e52a13f1527b91d8f3425f34062743e7f2545da7af362452d981"
+    },
+    {
+      "case": "accepted_initial",
+      "run": "accepted/run",
+      "report_sha256": "9271c40b90b4d19427b8e0b436dc6140c57817f8c84a229ca3fc31e5eb24ee33",
+      "manifest_sha256": "b0623c3790cb6bbd767ab295d32a067ced12e85dbe780b06d1be73c475ca2741"
+    },
+    {
+      "case": "accepted_revision",
+      "run": "accepted/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "report_sha256": "1bcf3ea15e788293fe618d99ca5c5c460a8d5daa975a542759a3be3141fc5d54",
+      "manifest_sha256": "024c299d4126f5861400257abb14118254cf2ca91d783e45e39c6659cf35ed5e"
+    },
+    {
+      "case": "failed_initial",
+      "run": "failed/run",
+      "report_sha256": "001e8297ff9b44f8f5622275c43f4a539bb69f84b2b7c7e67a9fe849cdda30c6",
+      "manifest_sha256": "b5b645ca922aa7ff3664fb8f92a6c391a48ba6afe411288fe70d64cc4c4414a1"
+    },
+    {
+      "case": "failed_revision",
+      "run": "failed/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "report_sha256": "cd46b7ea786ec5db27369a68e4c6158a13c14a3298b6d79ea7944ed4a83ebc7f",
+      "manifest_sha256": "88f49ec25481eb804419d865d789c99191f1875e93fe910e1df12368b4ece27d"
+    },
+    {
+      "case": "interrupted_initial",
+      "run": "interrupted/run",
+      "report_sha256": "93de498f0ad3914b69113e645131c141f2c505228b62c23c5c969a768d26a29f",
+      "manifest_sha256": "98ab8c963190c40bb2f2c5fadfc428f5e7815e0ae5e68af2bda2509562187e65"
+    },
+    {
+      "case": "interrupted_revision",
+      "run": "interrupted/run/revisions/c88837f3d3d48e5a480cc4f009bfd68da998ded853fba98b6be12c2a90226952",
+      "report_sha256": "236bce66f8f71e16a1157198dbc8fd07ffb858ca924dbc26d927ff97316d408e",
+      "manifest_sha256": "835ab4c52ed27d70f6ae302a6494c559c25529d37ad105e4719b7da0f959008a"
+    }
+  ],
+  "model_calls": 0,
+  "human_participants": 0,
+  "scope": "Real Core and CLI on generated images. Failure/interruption injected only after actual identity inspection. No Agent or natural-data experiment."
+}

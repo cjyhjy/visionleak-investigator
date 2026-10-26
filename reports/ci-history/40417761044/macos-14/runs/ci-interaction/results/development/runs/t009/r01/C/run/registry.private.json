@@ -1,0 +1,23 @@
+{
+  "datasets": {
+    "demo-dataset": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t009/images"
+  },
+  "documents": {
+    "metadata": {
+      "path": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t009/samples.csv",
+      "sha256": "ba475bfa09448d4b8444b330d0502f9a14f6c1635c1aecb136af87c27acaf061"
+    }
+  },
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "new_entity_generalization",
+      "actor": "synthetic initial task contract"
+    },
+    "user.entity": {
+      "kind": "user.entity_key_confirmation",
+      "entity_key": "entity_id",
+      "actor": "synthetic initial field contract"
+    }
+  }
+}

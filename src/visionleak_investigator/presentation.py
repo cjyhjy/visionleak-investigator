@@ -75,6 +75,7 @@ def render(report: dict,evidence: list[dict]) -> str:
     if coverage.get('source_unchanged') is False:top+='<p class="notice danger">输入在检查期间发生变化。结论已撤回，保留的原始产物不能作为当前数据的有效证据。</p>'
     if report.get('revision'):
         reuse='复用已有图像证据' if report['revision'].get('image_evidence_reused',True) else '此前没有已接纳的图像证据'
+        if report['revision'].get('recovered_interruption'):reuse='此修订未接纳图像证据，失败开销已保留'
         top+='<p class="notice">这是'+esc(report['revision']['kind'])+'修订：'+reuse+'，本次未重跑 Core。账本保留此前累计开销。</p>'
     counts=Counter(c['status'] for c in claims)
     pending=[r for r in report.get('reviews',[]) if r['status']=='pending']

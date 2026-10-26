@@ -59,6 +59,10 @@ def _recover_interrupted(run: Path) -> dict:
     (run/'evidence.jsonl').touch(exist_ok=False)
     validation={'passed':True,'evidence_sha256':file_hash(run/'evidence.jsonl'),'claim_count':0,'core_reports':{},'source_unchanged':True,'recovery':'No raw report accepted or claim published; pending cost conservatively settled'}
     report={'state':'PARTIAL','mode':manifest['mode'],'model_execution':'not_run','task':task,'claims':[],'coverage':coverage,'budget':ledger.data,'questions':[],'reviews':[],'issues':['Process interrupted. Pending reservations conservatively charged; raw reports retained. Start a new run for additional image checks.'],'limitations':LIMITATIONS,'unique_candidate_pairs':0,'recovery':receipt}
+    if manifest.get('revision_kind'):
+        report['revision']={'kind':manifest['revision_kind'],'path':str(run),'reused_from':manifest['evidence_reused_from'],
+                            'core_reexecuted':False,'image_evidence_reused':False,'reused_core_evidence_count':0,
+                            'recovered_interruption':True,'attempt_code_digest':manifest['code_digest']}
     if (run/'model-ledger.json').exists():
         validation['model_ledger_sha256']=file_hash(run/'model-ledger.json')
         report['planning']={'execution_label':'scripted_test_only','recovery':'conservative_no_replay','accounting':model.summary()}

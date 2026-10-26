@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T23:13:52.772055+00:00",
+  "catalog": {
+    "catalog_digest": "2fffcea43360efb483f4af980d1c6f728db9da6c29a551140dfa38e6703a7731",
+    "core_history_digest": "de5184188cba204df8c89de2670f8e5b7c4cd7fd1665174c6b441e5aad14e624",
+    "tasks": [
+      {
+        "task_id": "t000",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t000/task.json",
+        "registry_path": "tasks/t000/registry.json",
+        "truth_path": "evaluator-truth/t000.json",
+        "image_sources": {
+          "test/002.png": "t000-002",
+          "test/004.png": "t000-004",
+          "train/001.png": "t000-001",
+          "train/006.png": "t000-006",
+          "validation/003.png": "t000-003",
+          "validation/005.png": "t000-005"
+        },
+        "source_refs": [
+          "t000-001",
+          "t000-002",
+          "t000-003",
+          "t000-004",
+          "t000-005",
+          "t000-006"
+        ],
+        "task_sha256": "fcb3770f226e4b552fab99e2d9864dfa30a70e6da59ccc0c3784d8292548a53b",
+        "registry_sha256": "a7c46831a621fbd98f4c3db69743e4a64af3c9ed2b1f02253e7719c8c30fb622",
+        "truth_sha256": "47f44376accca8dd9040e45b699defae41f54a4d1e7f249a4aa700e2287536f1",
+        "input_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t001",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t001/task.json",
+        "registry_path": "tasks/t001/registry.json",
+        "truth_path": "evaluator-truth/t001.json",
+        "image_sources": {
+          "test/002.png": "t001-002",
+          "test/004.png": "t001-004",
+          "train/001.png": "t001-001",
+          "train/006.png": "t001-006",
+          "validation/003.png": "t001-003",
+          "validation/005.png": "t001-005"
+        },
+        "source_refs": [
+          "t001-001",
+          "t001-002",
+          "t001-003",
+          "t001-004",
+          "t001-005",
+          "t001-006"
+        ],
+        "task_sha256": "36e1632ccb0b55260d277b46f9da199c7b220a93ff9de312a95d31c7b340f5b6",
+        "registry_sha256": "44d5b0dd5889d3fafdb7e891fe63678222808d61bc2717eb81a721a530e80619",
+        "truth_sha256": "9d5862b6bac31bc6eb2fe9f6b0eef5ff0a2007853fe834fd8edac78119c4ac6b",
+        "input_digest": "ccbd10d3117c912aac0ba4a90531e10d16533d6513aa74d4e9977d778104c581",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t002",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t002/task.json",
+        "registry_path": "tasks/t002/registry.json",
+        "truth_path": "evaluator-truth/t002.json",
+        "image_sources": {
+          "test/002.png": "t002-002",
+          "test/004.png": "t002-004",
+          "train/001.png": "t002-001",
+          "train/006.png": "t002-006",
+          "validation/003.png": "t002-003",
+          "validation/005.png": "t002-005"
+        },
+        "source_refs": [
+          "t002-001",
+          "t002-002",
+          "t002-003",
+          "t002-004",
+          "t002-005",
+          "t002-006"
+        ],
+        "task_sha256": "4c379e3c0e4b5db4298afe8e6d125ea61e5f7d759c4e50fca8316b7018f1dc20",
+        "registry_sha256": "e6d52fa6e118e2e3e5b8ed6ad32bf40bea0d9b8830d4448c981e9284fd2d0e64",
+        "truth_sha256": "55edc583c04c47a39cb738e5a4f64a43a0ad1479752d5a8a676c7dd6e3b47651",
+        "input_digest": "7b94cc1f08f30d3671421a8b2d92bdd1cd33391d3fe0b7c0658320a35077e9a7",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t003",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t003/task.json",
+        "registry_path": "tasks/t003/registry.json",
+        "truth_path": "evaluator-truth/t003.json",
+        "image_sources": {
+          "test/002.png": "t003-002",
+          "test/004.png": "t003-004",
+          "train/001.png": "t003-001",
+          "train/006.png": "t003-006",
+          "validation/003.png": "t003-003",
+          "validation/005.png": "t003-005"
+        },
+        "source_refs": [
+          "t003-001",
+          "t003-002",
+          "t003-003",
+          "t003-004",
+          "t003-005",
+          "t003-006"
+        ],
+        "task_sha256": "7228785472485509122411704f6a2e072d5c54f5febb8187af75df602ef46b2e",
+        "registry_sha256": "8d14bb6e33e002c535dc4035d805db3c5cfe7fcd717fa354738e9b02225cfd68",
+        "truth_sha256": "05331f13ff48f9b6e6b58293c21705c095571a8da119414122eb52b8dd95caca",
+        "input_digest": "33a7541875e5a0f990803031f5fddaa944d69918c7e81e92ff5688da53098a94",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t004",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t004/task.json",
+        "registry_path": "tasks/t004/registry.json",
+        "truth_path": "evaluator-truth/t004.json",
+        "image_sources": {
+          "test/002.png": "t004-002",
+          "test/004.png": "t004-004",
+          "train/001.png": "t004-001",
+          "train/006.png": "t004-006",
+          "validation/003.png": "t004-003",
+          "validation/005.png": "t004-005"
+        },
+        "source_refs": [
+          "t004-001",
+          "t004-002",
+          "t004-003",
+          "t004-004",
+          "t004-005",
+          "t004-006"
+        ],
+        "task_sha256": "8fdd61deb8f08746ba1baf070bfaa900e837f7e75ba2801cdd363e5891bcf6df",
+        "registry_sha256": "dc8b41df422543b9288991c16e37d93d1c85e57a766c686fc18fc391c38738de",
+        "truth_sha256": "d214e63977a8d45d960f917a9854c10f30b4e4c9f5736591620378d614892543",
+        "input_digest": "494f6fa8d479b94f1bc52e58a8608d1980dc8eb2b13d9c6e6f8d90145e754727",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t005",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t005/task.json",
+        "registry_path": "tasks/t005/registry.json",
+        "truth_path": "evaluator-truth/t005.json",
+        "image_sources": {
+          "test/002.png": "t005-002",
+          "test/004.png": "t005-004",
+          "train/001.png": "t005-001",
+          "train/006.png": "t005-006",
+          "validation/003.png": "t005-003",
+          "validation/005.png": "t005-005"
+        },
+        "source_refs": [
+          "t005-001",
+          "t005-002",
+          "t005-003",
+          "t005-004",
+          "t005-005",
+          "t005-006"
+        ],
+        "task_sha256": "51a80f4599a9c17e1dcef3f453b1b9d5f6760588db3ef22c7a4c68df3d8c3209",
+        "registry_sha256": "4e45b177da8a948f69064c0a930596acf1a870e15dc9e153f3e5da7be1d81f88",
+        "truth_sha256": "bb3806a820df5c1a34651cc3305a4e59145a8a950d336c0c07b4086db52470eb",
+        "input_digest": "8bc85712b2d11f12e86de198166f2419a8e67258b3255e7ddb1ed212716579c8",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t006",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t006/task.json",
+        "registry_path": "tasks/t006/registry.json",
+        "truth_path": "evaluator-truth/t006.json",
+        "image_sources": {
+          "test/002.png": "t006-002",
+          "test/004.png": "t006-004",
+          "train/001.png": "t006-001",
+          "train/006.png": "t006-006",
+          "validation/003.png": "t006-003",
+          "validation/005.png": "t006-005"
+        },
+        "source_refs": [
+          "t006-001",
+          "t006-002",
+          "t006-003",
+          "t006-004",
+          "t006-005",
+          "t006-006"
+        ],
+        "task_sha256": "a549139670842e61d59b555e5fa5945af227ab6dbec57108d48624671d72d6ec",
+        "registry_sha256": "7b3dd7283184adb442092676b1ff804ba75c49e619c98d6380b29f04651081dd",
+        "truth_sha256": "762a0b55ed951cda28ff2fc002c712549cfa30cbbf96e66c3a5cd6f8db5ddf33",
+        "input_digest": "29960ddc31a11da9a287bd561bb6d0429ef128dc93634856811dc27072a946ca",
+        "limits_digest": "f9f06eece4efd8c0a5090cbf5e72c6f9f56570265ca283cb686ee205b027ac72",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t007",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t007/task.json",
+        "registry_path": "tasks/t007/registry.json",
+        "truth_path": "evaluator-truth/t007.json",
+        "image_sources": {
+          "test/002.png": "t007-002",
+          "test/004.png": "t007-004",
+          "train/001.png": "t007-001",
+          "train/006.png": "t007-006",
+          "validation/003.png": "t007-003",
+          "validation/005.png": "t007-005"
+        },
+        "source_refs": [
+          "t007-001",
+          "t007-002",
+          "t007-003",
+          "t007-004",
+          "t007-005",
+          "t007-006"
+        ],
+        "task_sha256": "61340ffe8de3ccf2c3acb2833f8418d0356d28dd2c1dd2a65629a428fca4e1d2",
+        "registry_sha256": "b71de520e4451dbfdbf7e0b90e776170689ec966d45be0214b47fcb30cf81ab2",
+        "truth_sha256": "296e14560c8ef371497507d5de0d24e298c4ca1643ff733b325b2a5b83a10c55",
+        "input_digest": "6cc82ad74704e81bd72f44d017f852388e28c52bba8ca7ceab2c6e599735b4f9",
+        "limits_digest": "8d40dde875e936fac98d604b79af72107d8a5f8d384b699b12d6d917fec1c095",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t008",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t008/task.json",
+        "registry_path": "tasks/t008/registry.json",
+        "truth_path": "evaluator-truth/t008.json",
+        "image_sources": {
+          "test/002.png": "t008-002",
+          "test/004.png": "t008-004",
+          "train/001.png": "t008-001",
+          "train/006.png": "t008-006",
+          "validation/003.png": "t008-003",
+          "validation/005.png": "t008-005"
+        },
+        "source_refs": [
+          "t008-001",
+          "t008-002",
+          "t008-003",
+          "t008-004",
+          "t008-005",
+          "t008-006"
+        ],
+        "task_sha256": "36ec7711f69b55c8820b660fdf121eb078d8b3082ce1d152bbf0e6ea4f1c830f",
+        "registry_sha256": "36ce5dd128f929df6a05db99d90c611c960269881eec8242f92a22a780fa8f99",
+        "truth_sha256": "77cf326666a719b89111cd1794931fafdc83e926a2cd7f8e00612e27ea2901fa",
+        "input_digest": "63d166b5cc716106976d6c0a617142e325f7312f7b78e5c728d237510dddfc2e",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t009",
+        "benchmark_partition": "development",
+        "task_path": "tasks/t009/task.json",
+        "registry_path": "tasks/t009/registry.json",
+        "truth_path": "evaluator-truth/t009.json",
+        "image_sources": {
+          "test/002.png": "t009-002",
+          "test/004.png": "t009-004",
+          "test/007.png": "t009-007",
+          "train/001.png": "t009-001",
+          "train/006.png": "t009-006",
+          "validation/003.png": "t009-003",
+          "validation/005.png": "t009-005"
+        },
+        "source_refs": [
+          "t009-001",
+          "t009-002",
+          "t009-003",
+          "t009-004",
+          "t009-005",
+          "t009-006",
+          "t009-007"
+        ],
+        "task_sha256": "e3343bafe985467a992efa383d2c0ecf5845922e9eb67354b1d4af91ce62a995",
+        "registry_sha256": "78e18826d62159176c962d5067cc9793a100ca010f292d07773971667920c71c",
+        "truth_sha256": "ade9ea114bc15a03f7bce770c153dda3213fec573337988a4d3cac0a9ae7f359",
+        "input_digest": "dc6572d0f5356234499daf69042b57756e2d67ea96645089e7e61b99edb68958",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "ba475bfa09448d4b8444b330d0502f9a14f6c1635c1aecb136af87c27acaf061"
+        }
+      },
+      {
+        "task_id": "t010",
+        "benchmark_partition": "validation",
+        "task_path": "tasks/t010/task.json",
+        "registry_path": "tasks/t010/registry.json",
+        "truth_path": "evaluator-truth/t010.json",
+        "image_sources": {
+          "test/002.png": "t010-002",
+          "test/004.png": "t010-004",
+          "train/001.png": "t010-001",
+          "train/006.png": "t010-006",
+          "validation/003.png": "t010-003",
+          "validation/005.png": "t010-005"
+        },
+        "source_refs": [
+          "t010-001",
+          "t010-002",
+          "t010-003",
+          "t010-004",
+          "t010-005",
+          "t010-006"
+        ],
+        "task_sha256": "a161a490fe801ea6bcae55abe9045538ac42ff840070a017eb9a10ebe6414d32",
+        "registry_sha256": "a721ccab12ee5f875699c369c3763326caeebc0b8ce5afa0b0da04d24a9bc6da",
+        "truth_sha256": "f59295abbda0603421bd63d78cb75bc0a9cef20ddbb11c9fccb170a13665a238",
+        "input_digest": "97dd90c0d7ccf4b03f91872ce2945aa8767a0796904a4061c0dab592d3b543b8",
+        "limits_digest": "353b9c9494ed9dba89bcf804cc43e0ec6c0a256b5edfc4db5fed0a8f18c2b451",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      {
+        "task_id": "t011",
+        "benchmark_partition": "test",
+        "task_path": "tasks/t011/task.json",
+        "registry_path": "tasks/t011/registry.json",
+        "truth_path": "evaluator-truth/t011.json",
+        "image_sources": {
+          "test/002.png": "t011-002",
+          "test/004.png": "t011-004",
+          "train/001.png": "t011-001",
+          "train/006.png": "t011-006",
+          "validation/003.png": "t011-003",
+          "validation/005.png": "t011-005"
+        },
+        "source_refs": [
+          "t011-001",
+          "t011-002",
+          "t011-003",
+          "t011-004",
+          "t011-005",
+          "t011-006"
+        ],
+        "task_sha256": "9c44da649c7251c01569ca4e00bcad27fb6a3712895d594321035ffd2b296beb",
+        "registry_sha256": "9394d1967db7783c96c54a64ec3368f826d205ce446312564f073fbc62ff1048",
+        "truth_sha256": "2cc583de8b9432bee07e7b79b3d9e1a4b077aae34d5e7ef18565b97a34037330",
+        "input_digest": "86a1307c34aa32381ddd51679920ed95a582447e5e92fc8493e41e58b01d4fb2",
+        "limits_digest": "c3a3d8a97f5b0cff90e089a21799f3cd38ba67dc2f7b1b2cb1dddefcf204dfd0",
+        "document_hashes": {
+          "metadata": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      }
+    ],
+    "components": [
+      {
+        "sources": [
+          "t000-001",
+          "t000-002",
+          "t000-003",
+          "t000-004",
+          "t000-005",
+          "t000-006"
+        ],
+        "tasks": [
+          "t000"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t001-001",
+          "t001-002",
+          "t001-003",
+          "t001-004",
+          "t001-005",
+          "t001-006"
+        ],
+        "tasks": [
+          "t001"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t002-001",
+          "t002-002",
+          "t002-003",
+          "t002-004",
+          "t002-005",
+          "t002-006"
+        ],
+        "tasks": [
+          "t002"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t003-001",
+          "t003-002",
+          "t003-003",
+          "t003-004",
+          "t003-005",
+          "t003-006"
+        ],
+        "tasks": [
+          "t003"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t004-001",
+          "t004-002",
+          "t004-003",
+          "t004-004",
+          "t004-005",
+          "t004-006"
+        ],
+        "tasks": [
+          "t004"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t005-001",
+          "t005-002",
+          "t005-003",
+          "t005-004",
+          "t005-005",
+          "t005-006"
+        ],
+        "tasks": [
+          "t005"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t006-001",
+          "t006-002",
+          "t006-003",
+          "t006-004",
+          "t006-005",
+          "t006-006"
+        ],
+        "tasks": [
+          "t006"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t007-001",
+          "t007-002",
+          "t007-003",
+          "t007-004",
+          "t007-005",
+          "t007-006"
+        ],
+        "tasks": [
+          "t007"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t008-001",
+          "t008-002",
+          "t008-003",
+          "t008-004",
+          "t008-005",
+          "t008-006"
+        ],
+        "tasks": [
+          "t008"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t009-001",
+          "t009-002",
+          "t009-003",
+          "t009-004",
+          "t009-005",
+          "t009-006",
+          "t009-007"
+        ],
+        "tasks": [
+          "t009"
+        ],
+        "partitions": [
+          "development"
+        ]
+      },
+      {
+        "sources": [
+          "t010-001",
+          "t010-002",
+          "t010-003",
+          "t010-004",
+          "t010-005",
+          "t010-006"
+        ],
+        "tasks": [
+          "t010"
+        ],
+        "partitions": [
+          "validation"
+        ]
+      },
+      {
+        "sources": [
+          "t011-001",
+          "t011-002",
+          "t011-003",
+          "t011-004",
+          "t011-005",
+          "t011-006"
+        ],
+        "tasks": [
+          "t011"
+        ],
+        "partitions": [
+          "test"
+        ]
+      }
+    ],
+    "partition_task_counts": {
+      "development": 10,
+      "validation": 1,
+      "test": 1
+    },
+    "partition_independent_components": {
+      "development": 10,
+      "validation": 1,
+      "test": 1
+    },
+    "limitations": [
+      "Provenance/license/group labels are declarations; identities not inferred from appearance.",
+      "Exact hashes, origin URIs and declared ancestry/groups are checked.",
+      "Application boundary only; local administrators can read evaluator truth."
+    ]
+  },
+  "protocol": {
+    "conditions": [
+      "C",
+      "D"
+    ],
+    "repetitions": 1,
+    "policy_digest": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+    "model_configuration": {
+      "status": "not_configured",
+      "provider": null,
+      "model_id": null,
+      "endpoint": null,
+      "prompt_digest": null
+    },
+    "metric_definition": "interaction-v1"
+  },
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1",
+  "code_digest": "ceae07013a54e74fb2a3f165faaeea02a4672d594e3b3b653b2c35fc608539a4",
+  "python_lock_digest": "2b1f60823d1765dbcf14fadb045ad1bd496d9ec4636a680ca8a39fe6b6b448b5",
+  "policy_digest": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+  "environment": {
+    "python": "3.12.14",
+    "libraries": {
+      "jsonschema": "4.26.0",
+      "pillow": "12.3.0",
+      "psutil": "7.2.2"
+    }
+  },
+  "status": "frozen_configuration_only",
+  "model_execution": "not_run",
+  "freeze_digest": "7cfe42a6ac5dab87475c9dd4b0a7360e1920bd63742240d6105e6fd8929de36f"
+}

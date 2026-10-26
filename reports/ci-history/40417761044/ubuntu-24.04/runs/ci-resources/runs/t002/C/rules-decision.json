@@ -1,0 +1,51 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "af2b332e1a6e82e6896ea95a969e466ab9b75321f4deca8424e7dd10f3f4c6dc",
+  "dataset_manifest_digest": "72f964f6aa0dae6398cb0517ab0dad020925618c70ea4f806404b0ab0acc951c",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "defer",
+  "reason_code": "base_incomplete",
+  "selected_profile": "all",
+  "hints": {
+    "selected_profile": "all",
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "8f1ac3d41a5a505de8b25438818a9bf1db9a33eff9b86d2200740f8cf84e01c8",
+        "characters": 20,
+        "positive_terms": {
+          "transform": [
+            "旋转",
+            "镜像"
+          ],
+          "local": [
+            "裁切"
+          ]
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 999984,
+    "index_operations": 16000000,
+    "decoded_pixels": 199972352,
+    "wall_seconds": 299.312035042
+  },
+  "base_complete": false,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "not_run",
+  "model_calls": 0
+}

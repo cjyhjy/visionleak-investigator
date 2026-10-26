@@ -1,0 +1,57 @@
+{
+  "argv": [
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python",
+    "-m",
+    "visionleak_investigator.cli",
+    "run",
+    "--task",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/context_transform/fixture/task.json",
+    "--registry",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/context_transform/fixture/registry.json",
+    "--out",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/context_transform/run"
+  ],
+  "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-26T23:14:24.807455+00:00",
+  "timeout_seconds": 90,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 1.3337704599999824,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 1.489029,
+    "cpu_system_seconds": 0.427728,
+    "cpu_seconds": 1.916757,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 97984512,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 128409600,
+    "observed_rss_peak_bytes": 128409600,
+    "root_rss_peak_bytes": 32034816,
+    "sample_interval_seconds": 0.02,
+    "samples": 56,
+    "observed_process_count": 8,
+    "peak_members": [
+      {
+        "pid": 17025,
+        "rss_bytes": 31072256
+      },
+      {
+        "pid": 17072,
+        "rss_bytes": 97337344
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 0,
+    "sampler_wall_seconds": 1.3330003830000123,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

@@ -13,13 +13,13 @@ from .review_state import review_coverage,preserve_review_inputs
 
 
 def revise(run: Path, payload: dict,kind: str) -> dict:
-    run=no_symlink(run);anchor=run;tick=time.monotonic();old=verify_run(run,recompute_identity=True)
+    run=no_symlink(run);anchor=run;tick=time.monotonic();old=verify_run(run)
     target=anchor/'revisions'/digest([kind,payload])
     if target.exists():return verify_run(target)
     if (anchor/'latest-revision.json').exists():
         latest=no_symlink(Path(read_json(anchor/'latest-revision.json')['path']))
         if not latest.is_relative_to(anchor/'revisions'):raise ValueError('Revision pointer escaped run')
-        old=verify_run(latest,recompute_identity=True);run=latest
+        old=verify_run(latest);run=latest
     if old['coverage'].get('source_unchanged') is not True:raise ValueError('Source changed in parent audit; start a new run')
     parent_manifest=read_json(run/'manifest.json')
     if parent_manifest['core_lock_digest']!=file_hash(PROJECT/'core.lock.json') or parent_manifest['runtime_lock_digest']!=file_hash(PROJECT/'core.runtime.lock.json'):raise ValueError('Core lock changed; cannot reuse evidence')
@@ -50,14 +50,21 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
         if payload['dataset_manifest_digest']!=parent_manifest['dataset_manifest_digest'] or payload['audit_id']!=source['core_audit_id']:raise ValueError('Review belongs to a different input or audit')
         human={'evidence_id':'review:'+digest(payload),'kind':'human.same_source_confirmation' if payload['decision']=='confirmed' else 'human.candidate_review','produced_by':'user.review_import','core_audit_id':source['core_audit_id'],'dataset_manifest_digest':parent_manifest['dataset_manifest_digest'],'files':source['files'],'pair_key':source['pair_key'],'source_positions':['review.input.json'],'tool_version':'vli-0.1.0','params_digest':digest(payload),'created_at':now(),'verification_state':{'human_review':payload['decision']},'facts':payload}
     else:raise ValueError('Unknown revision kind')
-    target.mkdir(parents=True,exist_ok=False)
-    write_json(target/(kind+'.input.json'),payload,exclusive=True)
     ledger=BudgetLedger(task['limits'],target/'ledger.json',copy.deepcopy(old['budget']))
-    ledger.recover_pending()
     # A pending explicitly requested review was already charged by the host.
     review_charge=0 if kind=='review' and any(r['pair_ref']==payload['pair_ref'] and r.get('requested') and r['status']=='pending' for r in old['reviews']) else 1
+    allocation={'review_pairs':review_charge} if kind=='review' else {}
+    ledger.check_reservation('resume_identity_check',allocation,final=False)
+    origin=parent_manifest.get('image_evidence_origin',{'manifest_digest':digest(parent_manifest),'investigator_code_digest':parent_manifest['code_digest'],'core_lock_digest':parent_manifest['core_lock_digest'],'runtime_lock_digest':parent_manifest['runtime_lock_digest']})
+    record={**parent_manifest,'code_digest':code_digest(),'image_evidence_origin':origin,'parent_report_digest':digest(old),'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry),'evidence_reused_from':str(run),'parent_manifest_digest':digest(parent_manifest),'revision_kind':kind,'supersedes_risk_interpretation':str(run),'core_reexecuted':False}
+    before=read_json(run/'input-manifest.json')
+    target.mkdir(parents=True,exist_ok=False)
+    for name,value in [(kind+'.input.json',payload),('task.json',task),('registry.private.json',registry),('manifest.json',record),('input-manifest.json',before)]:write_json(target/name,value,exclusive=True)
+    ledger.save()
+    write_json(anchor/'pending-revision.json',{'path':str(target),'anchor_manifest_digest':digest(read_json(anchor/'manifest.json')),'manifest_digest':digest(record)})
     entry=ledger.reserve('resume_identity_check',{'review_pairs':review_charge} if kind=='review' else {},final=False)
-    ledger.settle(entry,{'wall_seconds':time.monotonic()-tick,**({'review_pairs':review_charge} if kind=='review' else {})})
+    write_json(target/'checkpoint.json',{'state':'VERIFYING','manifest_digest':digest(record),'pending_action':entry['call_id']})
+    verify_run(run,recompute_identity=True,identity_timeout=entry['reservation']['wall_seconds']-(time.monotonic()-tick))
     # Reuse only immutable witnesses. Copying their bytes performs no image recomputation.
     shutil.copytree(run/'tools',target/'tools')
     for name in ('model-ledger.json','planner-trace.json','planner-tools.json','planner-requests.jsonl','planner-actions.jsonl','recovery-receipt.json'):
@@ -65,7 +72,7 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     if 'rules' in old:
         for name in ('rules-decision.json','rules-policy.json'):shutil.copy2(run/name,target/name)
     if (run/'recovery-receipt.json').exists() and (run/'pre-recovery').exists():shutil.copytree(run/'pre-recovery',target/'pre-recovery')
-    before=read_json(run/'input-manifest.json');write_json(target/'input-manifest.json',before,exclusive=True)
+    ledger.settle(entry,{'wall_seconds':time.monotonic()-tick,**allocation})
     coverage=copy.deepcopy(old['coverage']);issues=[x for x in old['issues'] if not x.startswith(('Goal/','Entity metadata','No registered entity','Metadata has','Clarification budget'))]
     current_reviews={r['pair_ref']:r for r in old['reviews']}
     superseded=set()
@@ -96,10 +103,8 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     review_inputs=preserve_review_inputs(evidence,target)
     waiting_reviews=any(r.get('requested') and r['status'] in ('pending','unsure') for r in reviews)
     state='WAITING_USER' if info['questions'] or waiting_reviews else 'PARTIAL' if issues else 'COMPLETED'
-    origin=parent_manifest.get('image_evidence_origin',{'manifest_digest':digest(parent_manifest),'investigator_code_digest':parent_manifest['code_digest'],'core_lock_digest':parent_manifest['core_lock_digest'],'runtime_lock_digest':parent_manifest['runtime_lock_digest']})
     reused_core_evidence_count=sum(e['kind'].startswith('core.') for e in evidence)
-    record={**parent_manifest,'code_digest':code_digest(),'image_evidence_origin':origin,'parent_report_digest':digest(old),'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry),'evidence_reused_from':str(run),'parent_manifest_digest':digest(parent_manifest),'revision_kind':kind,'supersedes_risk_interpretation':str(run),'core_reexecuted':False}
-    for name,value in [('task.json',task),('registry.private.json',registry),('manifest.json',record),('coverage.json',coverage),('claims.json',claims),('context.json',info['context']),('questions.json',info['questions']),('reviews.json',reviews),('proposal.json',proposal(task,evidence,before))]:write_json(target/name,value,exclusive=True)
+    for name,value in [('coverage.json',coverage),('claims.json',claims),('context.json',info['context']),('questions.json',info['questions']),('reviews.json',reviews),('proposal.json',proposal(task,evidence,before))]:write_json(target/name,value,exclusive=True)
     for ev in evidence:append_json(target/'evidence.jsonl',ev)
     if not evidence:(target/'evidence.jsonl').touch(exist_ok=False)
     evmap={e['evidence_id']:e for e in evidence}
@@ -117,16 +122,45 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     write_json(target/'report.json',result,exclusive=True);(target/'report.html').write_text(render_report(result,evidence))
     checkpoint={'state':state,'report_digest':digest(result),'manifest_digest':digest(record)}
     if result.get('recovery'):checkpoint['recovery_receipt_digest']=digest(result['recovery'])
-    write_json(target/'checkpoint.json',checkpoint,exclusive=True)
+    write_json(target/'checkpoint.json',checkpoint)
     append_json(target/'events.jsonl',{'state':state,'revision_kind':kind,'time':now(),'image_evidence_reused':bool(reused_core_evidence_count),'processor_code_digest':record['code_digest']})
     write_json(anchor/'latest-revision.json',{'path':str(target),'digest':digest(result)})
+    (anchor/'pending-revision.json').unlink()
     return result
 
+def _pending_target(anchor: Path) -> Path | None:
+    pointer=anchor/'pending-revision.json'
+    if not pointer.exists():return None
+    pending=read_json(pointer);target=no_symlink(Path(pending['path']))
+    if target.parent!=anchor/'revisions':raise ValueError('Pending revision escaped anchor')
+    if pending['anchor_manifest_digest']!=digest(read_json(anchor/'manifest.json')) or pending['manifest_digest']!=digest(read_json(target/'manifest.json')):
+        raise ValueError('Pending revision identity changed')
+    return target
+
+def _recover_pending_revision(anchor: Path) -> None:
+    target=_pending_target(anchor)
+    if target is None:return
+    from .recovery import recover_interrupted
+    recovered=recover_interrupted(target)
+    write_json(anchor/'latest-revision.json',{'path':str(target),'digest':digest(recovered)})
+    (anchor/'pending-revision.json').unlink()
+
 def _locked_revision(run: Path,payload: dict,kind: str) -> dict:
+    run=no_symlink(run)
     lock=no_symlink(run/'.revision.lock')
     with lock.open('a') as f:
         fcntl.flock(f,fcntl.LOCK_EX)
-        try:return revise(run,payload,kind)
+        try:
+            _recover_pending_revision(run)
+            return revise(run,payload,kind)
+        except Exception as exc:
+            target=_pending_target(run)
+            if target is not None:
+                task=read_json(target/'task.json')
+                ledger=BudgetLedger(task['limits'],target/'ledger.json',read_json(target/'ledger.json'))
+                ledger.recover_pending()
+                write_json(target/'revision-failure.json',{'state':'FAILED','error_type':type(exc).__name__,'reason':str(exc),'cost_preserved':True,'next_step':'Conservative recovery before another revision; no automatic Core replay.'})
+            raise
         finally:fcntl.flock(f,fcntl.LOCK_UN)
 
 def resume_run(run: Path,answers: dict) -> dict:return _locked_revision(run,answers,'answers')

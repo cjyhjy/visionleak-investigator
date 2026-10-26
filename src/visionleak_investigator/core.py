@@ -30,12 +30,15 @@ class CoreAdapter:
     def __init__(self,path: Path|None=None):
         self.path=no_symlink(path or PROJECT/'.deps/visionleak-core');self.lock=read_json(PROJECT/'core.lock.json')
         self.cli=self.path/'tools/cli.mjs'
-    def verify_artifacts(self) -> None:
+    def verify_artifacts(self, *, timeout: float=5) -> None:
+        deadline=time.monotonic()+timeout
         if file_hash(self.path/'dist/visionleak.js')!=self.lock['compiled_artifact_sha256']:raise ValueError('Core compiled artifact digest mismatch')
         pin=read_json(PROJECT/'core.runtime.lock.json')
         for name,sha in pin['files'].items():
             if file_hash(safe_child(self.path,name))!=sha:raise ValueError(f'Core source digest mismatch: {name}')
-        node=subprocess.run(['node','--version'],capture_output=True,text=True,check=True,timeout=5,env=child_environment()).stdout.strip()
+        remaining=deadline-time.monotonic()
+        if remaining<=0:raise TimeoutError('Core artifact verification time allowance exhausted')
+        node=subprocess.run(['node','--version'],capture_output=True,text=True,check=True,timeout=remaining,env=child_environment()).stdout.strip()
         if node!=pin['node']:raise ValueError(f'Node version differs from runtime lock: {node}')
     def doctor(self) -> dict:
         self.verify_artifacts()

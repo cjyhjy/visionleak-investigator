@@ -94,3 +94,6 @@ CSV 的可变文本单元格统一使用 `text:` 加 JSON 字符串的可还原�
 ## 进程内接口
 
 `workflow.run_task/run_baseline`、`interaction.resume_run/import_review`、`recovery.recover_interrupted` 和 `integrity.verify_run` 是当前宿主入口；它们仍执行相同验证与预算逻辑。`evaluation_worker`、`evaluation_scoring` 仅供宿主评测启动，不是注册给 Planner 的工具。Python 模块接口目前不承诺独立稳定的第三方 SDK 兼容性。
+# Revision attempt accounting
+
+An answer/review revision reserves its Core identity work before launching it. `pending-revision.json` binds an unfinished attempt to the original run; subsequent `resume`/`review-import` first conservatively recovers that attempt and carries its consumed budget forward. A failed attempt may leave `revision-failure.json` and no published report until recovery. Repeating a recovered payload returns its PARTIAL report without a new Core call. See [ADR-013](adr/013-revision-budget-reservation.md).

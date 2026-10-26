@@ -1,0 +1,44 @@
+{
+  "status": "gap_reproduced",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+  "render_calls": [
+    {
+      "render_number": 1,
+      "wall_seconds": 0.0007950412109494209,
+      "injected_latency_seconds": 0,
+      "real_renderer": true
+    },
+    {
+      "render_number": 2,
+      "wall_seconds": 0.3031559591181576,
+      "injected_latency_seconds": 0.3,
+      "real_renderer": true
+    }
+  ],
+  "finalization_entry": {
+    "call_id": "call-0005",
+    "kind": "finalize",
+    "status": "settled",
+    "reserved_at": "2026-10-26T23:29:12.638332+00:00",
+    "reservation": {
+      "tool_calls": 1,
+      "wall_seconds": 299.6275768755004
+    },
+    "actual": {
+      "tool_calls": 1,
+      "wall_seconds": 0.00306637492030859
+    },
+    "error": null,
+    "settled_at": "2026-10-26T23:29:12.641395+00:00",
+    "refund": {
+      "tool_calls": 0,
+      "wall_seconds": 299.6245105005801
+    },
+    "overrun": {}
+  },
+  "measured_render_wall_seconds": 0.30395100032910705,
+  "unaccounted_render_lower_bound_seconds": 0.30088462540879846,
+  "source_unchanged": true,
+  "model_calls": 0,
+  "scope": "Real Core and renderer on generated data. Controlled 0.3-second latency in the second render demonstrates accounting scope, not production latency or a model experiment."
+}

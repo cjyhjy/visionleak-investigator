@@ -1,0 +1,62 @@
+{
+  "argv": [
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python",
+    "-m",
+    "visionleak_investigator.interaction_scoring",
+    "--task",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t006/task.json",
+    "--registry",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t006/registry.json",
+    "--truth",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/evaluator-truth/t006.json",
+    "--run",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t006/r01/C/run/revisions/907a6c5037d609329b6a59564d8b95f11c8b660aba9ffa4e7993e8f305c0f397",
+    "--transcript",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t006/r01/C/transcript.jsonl",
+    "--out",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t006/r01/C/score.json"
+  ],
+  "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-26T23:14:17.716353+00:00",
+  "timeout_seconds": 60,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.6075815419999913,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.397657,
+    "cpu_system_seconds": 0.10346999999999999,
+    "cpu_seconds": 0.501127,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 70615040,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 92012544,
+    "observed_rss_peak_bytes": 92012544,
+    "root_rss_peak_bytes": 33734656,
+    "sample_interval_seconds": 0.02,
+    "samples": 9,
+    "observed_process_count": 3,
+    "peak_members": [
+      {
+        "pid": 6871,
+        "rss_bytes": 33406976
+      },
+      {
+        "pid": 6882,
+        "rss_bytes": 58605568
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 1,
+    "sampler_wall_seconds": 0.6001719999999864,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

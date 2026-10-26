@@ -1,0 +1,491 @@
+[
+  {
+    "task_id": "t000",
+    "condition": "A",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 16,
+      "index_operations": 0,
+      "decoded_pixels": 82944,
+      "wall_seconds": 0.6738772810001024,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.8484879999999999,
+      "cpu_system_seconds": 0.255199,
+      "cpu_seconds": 1.1036869999999999,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 95485952,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 125427712,
+      "observed_rss_peak_bytes": 125427712,
+      "root_rss_peak_bytes": 31375360,
+      "sample_interval_seconds": 0.02,
+      "samples": 35,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13048,
+          "rss_bytes": 30806016
+        },
+        {
+          "pid": 13062,
+          "rss_bytes": 94621696
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.83266568800002,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.8334629060000225,
+    "process_record": "processes/t000/A"
+  },
+  {
+    "task_id": "t000",
+    "condition": "B",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 2983,
+      "index_operations": 0,
+      "decoded_pixels": 82944,
+      "wall_seconds": 0.7258696369999598,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 1.040489,
+      "cpu_system_seconds": 0.257339,
+      "cpu_seconds": 1.297828,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 100483072,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 130793472,
+      "observed_rss_peak_bytes": 130793472,
+      "root_rss_peak_bytes": 31141888,
+      "sample_interval_seconds": 0.02,
+      "samples": 38,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13095,
+          "rss_bytes": 30826496
+        },
+        {
+          "pid": 13109,
+          "rss_bytes": 99966976
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.9058615270000132,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.906631305000019,
+    "process_record": "processes/t000/B"
+  },
+  {
+    "task_id": "t000",
+    "condition": "C",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 16,
+      "index_operations": 0,
+      "decoded_pixels": 82944,
+      "wall_seconds": 0.6587108459999627,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.817919,
+      "cpu_system_seconds": 0.24647,
+      "cpu_seconds": 1.064389,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 93528064,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 121028608,
+      "observed_rss_peak_bytes": 121028608,
+      "root_rss_peak_bytes": 31408128,
+      "sample_interval_seconds": 0.02,
+      "samples": 35,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13143,
+          "rss_bytes": 30801920
+        },
+        {
+          "pid": 13157,
+          "rss_bytes": 90226688
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.8315689579999912,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.8322863559999973,
+    "process_record": "processes/t000/C"
+  },
+  {
+    "task_id": "t000",
+    "condition": "D"
+  },
+  {
+    "task_id": "t001",
+    "condition": "A",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 1,
+      "index_operations": 0,
+      "decoded_pixels": 55296,
+      "wall_seconds": 0.6195268110000143,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.763328,
+      "cpu_system_seconds": 0.204091,
+      "cpu_seconds": 0.967419,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 92454912,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 122347520,
+      "observed_rss_peak_bytes": 122347520,
+      "root_rss_peak_bytes": 31195136,
+      "sample_interval_seconds": 0.02,
+      "samples": 33,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13190,
+          "rss_bytes": 30961664
+        },
+        {
+          "pid": 13204,
+          "rss_bytes": 91385856
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.7820798320000222,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.7828607249999777,
+    "process_record": "processes/t001/A"
+  },
+  {
+    "task_id": "t001",
+    "condition": "B",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 1,
+      "index_operations": 0,
+      "decoded_pixels": 55296,
+      "wall_seconds": 0.6984820060000629,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.928739,
+      "cpu_system_seconds": 0.262462,
+      "cpu_seconds": 1.191201,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 99557376,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 127602688,
+      "observed_rss_peak_bytes": 127602688,
+      "root_rss_peak_bytes": 31121408,
+      "sample_interval_seconds": 0.02,
+      "samples": 37,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13236,
+          "rss_bytes": 30830592
+        },
+        {
+          "pid": 13250,
+          "rss_bytes": 96772096
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.8693911679999928,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.8701696179999772,
+    "process_record": "processes/t001/B"
+  },
+  {
+    "task_id": "t001",
+    "condition": "C",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 1,
+      "index_operations": 0,
+      "decoded_pixels": 55296,
+      "wall_seconds": 0.6126918780001347,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.75606,
+      "cpu_system_seconds": 0.222414,
+      "cpu_seconds": 0.978474,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 95629312,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 125067264,
+      "observed_rss_peak_bytes": 125067264,
+      "root_rss_peak_bytes": 31191040,
+      "sample_interval_seconds": 0.02,
+      "samples": 33,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13282,
+          "rss_bytes": 30830592
+        },
+        {
+          "pid": 13296,
+          "rss_bytes": 94236672
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.7800265490000129,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.7807591100000195,
+    "process_record": "processes/t001/C"
+  },
+  {
+    "task_id": "t001",
+    "condition": "D"
+  },
+  {
+    "task_id": "t002",
+    "condition": "A",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 16,
+      "index_operations": 0,
+      "decoded_pixels": 100027648,
+      "wall_seconds": 0.6878353990000505,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.8394469999999999,
+      "cpu_system_seconds": 0.257198,
+      "cpu_seconds": 1.0966449999999999,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 96026624,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 130134016,
+      "observed_rss_peak_bytes": 130134016,
+      "root_rss_peak_bytes": 35926016,
+      "sample_interval_seconds": 0.02,
+      "samples": 36,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13329,
+          "rss_bytes": 35442688
+        },
+        {
+          "pid": 13345,
+          "rss_bytes": 94691328
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 1,
+      "sampler_wall_seconds": 0.8537417119999873,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.8544865920000007,
+    "process_record": "processes/t002/A"
+  },
+  {
+    "task_id": "t002",
+    "condition": "B",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 2933,
+      "index_operations": 0,
+      "decoded_pixels": 100027648,
+      "wall_seconds": 0.7449853949999579,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 1.045592,
+      "cpu_system_seconds": 0.270194,
+      "cpu_seconds": 1.3157860000000001,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 98852864,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 132014080,
+      "observed_rss_peak_bytes": 132014080,
+      "root_rss_peak_bytes": 35721216,
+      "sample_interval_seconds": 0.02,
+      "samples": 39,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13380,
+          "rss_bytes": 35442688
+        },
+        {
+          "pid": 13394,
+          "rss_bytes": 96571392
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.9236917039999639,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.9244543009999688,
+    "process_record": "processes/t002/B"
+  },
+  {
+    "task_id": "t002",
+    "condition": "C",
+    "costs": {
+      "tool_calls": 5,
+      "audit_runs": 1,
+      "comparisons": 16,
+      "index_operations": 0,
+      "decoded_pixels": 100027648,
+      "wall_seconds": 0.695786389000034,
+      "llm_requests": 0,
+      "review_pairs": 0,
+      "questions": 0
+    },
+    "full_task_resources": {
+      "schema_version": 1,
+      "cpu_method": "os.wait4",
+      "cpu_user_seconds": 0.85458,
+      "cpu_system_seconds": 0.25271499999999997,
+      "cpu_seconds": 1.107295,
+      "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+      "wait4_maxrss_bytes": 95330304,
+      "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+      "tree_rss_method": "psutil recursive children; sampled sum RSS",
+      "tree_rss_status": "sampled",
+      "tree_rss_peak_bytes": 129126400,
+      "observed_rss_peak_bytes": 129126400,
+      "root_rss_peak_bytes": 36044800,
+      "sample_interval_seconds": 0.02,
+      "samples": 37,
+      "observed_process_count": 5,
+      "peak_members": [
+        {
+          "pid": 13427,
+          "rss_bytes": 35373056
+        },
+        {
+          "pid": 13441,
+          "rss_bytes": 93753344
+        }
+      ],
+      "access_denied_samples": 0,
+      "process_exit_races": 0,
+      "sampler_wall_seconds": 0.8707667109999875,
+      "limitations": [
+        "Short-lived processes or peaks between samples may be missed.",
+        "Summed RSS can count shared pages more than once.",
+        "This is measurement, not an OS memory limit."
+      ]
+    },
+    "full_task_wall_seconds": 0.8714864130000137,
+    "process_record": "processes/t002/C"
+  },
+  {
+    "task_id": "t002",
+    "condition": "D"
+  }
+]

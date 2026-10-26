@@ -1,0 +1,57 @@
+{
+  "status": "completed",
+  "rejection": null,
+  "metric_definition": "interaction-v1",
+  "quality": {
+    "C": {
+      "status": "scored",
+      "scheduled_runs": 10,
+      "scored_runs": 10,
+      "necessary_questions": 10,
+      "necessary_questions_asked": 8,
+      "questions_asked": 9,
+      "excessive_questions": 1,
+      "unanswerable_questions": 1,
+      "answers_delivered": 8,
+      "failed_runs_in_denominator": 0,
+      "goal_correct_runs": 8,
+      "goal_accuracy": 0.8,
+      "field_evaluable_runs": 9,
+      "field_accuracy": 0.8888888888888888,
+      "risk": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 27,
+        "truth_denominator": 64,
+        "predicted_pairs": 37,
+        "precision": 1.0,
+        "recall": 0.578125,
+        "f1": 0.7326732673267327
+      },
+      "unsupported_confirmed_claims": 0,
+      "human_time_saved_seconds": null,
+      "interpretation": "Descriptive repeated-run counts, not independent human/Agent gains"
+    },
+    "D": {
+      "status": "unavailable",
+      "scheduled_runs": 10,
+      "scored_runs": 0,
+      "reason": "All scheduled scores required; blocked/missing runs are not successes"
+    }
+  },
+  "scheduled_runs": 20,
+  "declared_independent_components": 10,
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "human_participants": 0,
+  "human_time_saved_seconds": null,
+  "wall_seconds": 29.99472249500002,
+  "broker_cpu_seconds": 13.334185000000002,
+  "pipeline_peak_rss_bytes": null,
+  "limitations": [
+    "Separate interaction benchmark; not combined with detection precision/recall.",
+    "Scripted answers are not model decisions or measured human labor.",
+    "Failed/unresolved cases remain in denominators; missing scores suppress aggregates.",
+    "Repeated tasks are not independent sampling units; no significance or research-gain claim."
+  ]
+}

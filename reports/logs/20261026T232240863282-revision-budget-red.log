@@ -1,0 +1,160 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_denied_revision_does_not_launch_core_or_leave_partial_target _______
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_denied_revision_does_not_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107c3d8b0>
+
+    def test_denied_revision_does_not_launch_core_or_leave_partial_target(tmp_path, monkeypatch):
+        run, target = setup_run(tmp_path, calls=6)
+        before = file_hash(run/'ledger.json')
+        original = CoreAdapter.inspect_report
+        calls = []
+        def observe(self, *args, **kwargs):
+            calls.append(str(args[0]))
+            return original(self, *args, **kwargs)
+        monkeypatch.setattr(CoreAdapter, 'inspect_report', observe)
+        with pytest.raises(BudgetExceeded):
+            resume_run(run, ANSWER)
+>       assert calls == []
+E       AssertionError: assert ['/private/va.../report.json'] == []
+E         
+E         Left contains one more item: '/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_denied_revision_does_not_0/run/tools/call-0002/output/report.json'
+E         Use -v to get more diff
+
+tests/acceptance/test_revision_budget.py:37: AssertionError
+______ test_real_identity_check_starts_with_persisted_pending_reservation ______
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_real_identity_check_start0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10796ac60>
+
+    def test_real_identity_check_starts_with_persisted_pending_reservation(tmp_path, monkeypatch):
+        run, target = setup_run(tmp_path)
+        original = CoreAdapter.inspect_report
+        seen = []
+        def observe(self, *args, **kwargs):
+            ledger = read_json(target/'ledger.json')
+            entry = ledger['entries'][-1]
+            assert entry['kind'] == 'resume_identity_check' and entry['status'] == 'pending'
+            assert read_json(run/'pending-revision.json')['path'] == str(target)
+            assert kwargs['timeout'] <= entry['reservation']['wall_seconds']
+            seen.append(entry['call_id'])
+            return original(self, *args, **kwargs)
+        monkeypatch.setattr(CoreAdapter, 'inspect_report', observe)
+>       result = resume_run(run, ANSWER)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_revision_budget.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/visionleak_investigator/interaction.py:132: in resume_run
+    def resume_run(run: Path,answers: dict) -> dict:return _locked_revision(run,answers,'answers')
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/interaction.py:129: in _locked_revision
+    try:return revise(run,payload,kind)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/interaction.py:16: in revise
+    run=no_symlink(run);anchor=run;tick=time.monotonic();old=verify_run(run,recompute_identity=True)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/integrity.py:41: in verify_run
+    if recompute_identity:adapter.inspect_report(path,root)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/acceptance/test_revision_budget.py:48: in observe
+    ledger = read_json(target/'ledger.json')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/common.py:30: in read_json
+    if path.stat().st_size>64*1024*1024:raise ValueError('JSON input too large')
+       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_real_identity_check_start0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json')
+
+    def stat(self, *, follow_symlinks=True):
+        """
+        Return the result of the stat() system call on this path, like
+        os.stat() does.
+        """
+>       return os.stat(self, follow_symlinks=follow_symlinks)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_real_identity_check_start0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json'
+
+../../../.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/pathlib.py:840: FileNotFoundError
+_____ test_failed_revision_is_charged_and_recovered_before_another_attempt _____
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_failed_revision_is_charge0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107cc5190>
+
+    def test_failed_revision_is_charged_and_recovered_before_another_attempt(tmp_path, monkeypatch):
+        run, target = setup_run(tmp_path)
+        original = CoreAdapter.inspect_report
+        calls = []
+        def fail_after_real_inspection(self, *args, **kwargs):
+            result = original(self, *args, **kwargs)
+            calls.append(result)
+            raise ValueError('controlled failure after real Core identity check')
+        monkeypatch.setattr(CoreAdapter, 'inspect_report', fail_after_real_inspection)
+        with pytest.raises(ValueError, match='controlled failure'):
+            resume_run(run, ANSWER)
+>       ledger = read_json(target/'ledger.json')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_revision_budget.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/visionleak_investigator/common.py:30: in read_json
+    if path.stat().st_size>64*1024*1024:raise ValueError('JSON input too large')
+       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_failed_revision_is_charge0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json')
+
+    def stat(self, *, follow_symlinks=True):
+        """
+        Return the result of the stat() system call on this path, like
+        os.stat() does.
+        """
+>       return os.stat(self, follow_symlinks=follow_symlinks)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_failed_revision_is_charge0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json'
+
+../../../.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/pathlib.py:840: FileNotFoundError
+____________ test_interrupted_revision_reservation_is_not_replayed _____________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_interrupted_revision_rese0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107c997f0>
+
+    def test_interrupted_revision_reservation_is_not_replayed(tmp_path, monkeypatch):
+        run, target = setup_run(tmp_path)
+        original = CoreAdapter.inspect_report
+        def interrupt_after_real_inspection(self, *args, **kwargs):
+            original(self, *args, **kwargs)
+            raise KeyboardInterrupt('controlled interruption')
+        monkeypatch.setattr(CoreAdapter, 'inspect_report', interrupt_after_real_inspection)
+        with pytest.raises(KeyboardInterrupt):
+            resume_run(run, ANSWER)
+>       assert read_json(target/'ledger.json')['entries'][-1]['status'] == 'pending'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_revision_budget.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/visionleak_investigator/common.py:30: in read_json
+    if path.stat().st_size>64*1024*1024:raise ValueError('JSON input too large')
+       ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_interrupted_revision_rese0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json')
+
+    def stat(self, *, follow_symlinks=True):
+        """
+        Return the result of the stat() system call on this path, like
+        os.stat() does.
+        """
+>       return os.stat(self, follow_symlinks=follow_symlinks)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-137/test_interrupted_revision_rese0/run/revisions/bb4f1adc1e5348fc9ca42dee3b0dc551a5a22debd9187d5add2ad52d70c484e9/ledger.json'
+
+../../../.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/pathlib.py:840: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_revision_budget.py::test_denied_revision_does_not_launch_core_or_leave_partial_target
+FAILED tests/acceptance/test_revision_budget.py::test_real_identity_check_starts_with_persisted_pending_reservation
+FAILED tests/acceptance/test_revision_budget.py::test_failed_revision_is_charged_and_recovered_before_another_attempt
+FAILED tests/acceptance/test_revision_budget.py::test_interrupted_revision_reservation_is_not_replayed
+4 failed in 2.01s

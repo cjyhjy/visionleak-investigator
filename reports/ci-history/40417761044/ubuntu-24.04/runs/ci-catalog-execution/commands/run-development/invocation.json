@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python",
+    "-m",
+    "visionleak_investigator.cli",
+    "eval-run",
+    "--catalog",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite/catalog.json",
+    "--root",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite",
+    "--protocol",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite/protocol.json",
+    "--frozen",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/frozen.json",
+    "--partition",
+    "development",
+    "--out",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/results/development"
+  ],
+  "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-26T23:13:11.345189+00:00",
+  "timeout_seconds": 900,
+  "status": "pending"
+}

@@ -1,0 +1,64 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "b67aaa6cbc3c70ca0314f7ecd84bd0e2af7342fedd6afafc4818e55c6c936f14",
+  "dataset_manifest_digest": "1ac5195ea3913c1a1565e045a53dff867efaa7e31fe94465ef7a736376fd2b80",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "defer",
+  "reason_code": "base_incomplete",
+  "selected_profile": "transform",
+  "hints": {
+    "selected_profile": "transform",
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "dd3f5b0e123ec5a748fefa057e1e5a7a3f3818c719136e57a27e4a96a957c2e2",
+        "characters": 16,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      },
+      {
+        "source": "registered_context",
+        "context_ref": "description",
+        "sha256": "68eb90fa809e72cc1386996bb964fa979d95fc3f3c102e9b12d5b98f57c0c604",
+        "truncated": false,
+        "excerpt_digest": "b3af7b91142147bc412df3da3cc13fcc54a44e2549ae45fe176947a2f3b358a2",
+        "characters": 2,
+        "positive_terms": {
+          "transform": [
+            "旋转"
+          ],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 0,
+    "index_operations": 16000000,
+    "decoded_pixels": 299944704,
+    "wall_seconds": 299.40541062600005
+  },
+  "base_complete": false,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "not_run",
+  "model_calls": 0
+}
