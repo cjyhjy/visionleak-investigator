@@ -1,0 +1,269 @@
+{
+  "audit_status": "in_progress",
+  "completion_claim": false,
+  "basis": "Read current implementation plan/revision notes, implementation, test assertions, full local regression and actual receipts. This index is not a substitute for those artifacts.",
+  "matrix": [
+    {
+      "requirement": "T01",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T01_T02_real_exact_and_pixel",
+      "verified_scope": "真实 byte 证据"
+    },
+    {
+      "requirement": "T02",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T01_T02_real_exact_and_pixel",
+      "verified_scope": "真实重编码 pixel 证据"
+    },
+    {
+      "requirement": "T03",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T03_rotation_and_mirror_are_candidates_not_exact_identity",
+      "verified_scope": "旋转/镜像候选；另有真实 local-only 契约测试"
+    },
+    {
+      "requirement": "T04",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_hard_negatives.py",
+      "test": "test_T04_flat_and_gradient_candidates_stay_unconfirmed_and_count_as_false_positives",
+      "verified_scope": "生命周期收据中 4 个受控负例候选计入 FP"
+    },
+    {
+      "requirement": "T05",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_partial_keeps_evidence_and_coverage",
+      "verified_scope": "PARTIAL、处理前缀及证据保留"
+    },
+    {
+      "requirement": "T06",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T06_encoded_and_decoded_limits_preserve_other_real_evidence",
+      "verified_scope": "坏图/未知格式、编码字节/解码像素限额"
+    },
+    {
+      "requirement": "T07",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T05_T07_T30_partial_and_fail_on",
+      "verified_scope": "真实 code 3；另有真实缺失文件 verify code 4"
+    },
+    {
+      "requirement": "T08",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_interaction.py",
+      "test": "test_T08_T09_goal_sensitive_metadata",
+      "verified_scope": "新实体目标冲突"
+    },
+    {
+      "requirement": "T09",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_interaction.py",
+      "test": "test_T08_T09_goal_sensitive_metadata",
+      "verified_scope": "同实体新视角不升级实体重叠为冲突"
+    },
+    {
+      "requirement": "T10",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_interaction.py",
+      "test": "test_T10_T12_T35_resume_no_duplicate_audit",
+      "verified_scope": "目标/字段追问与回答恢复；脚本用户"
+    },
+    {
+      "requirement": "T11",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_interaction.py",
+      "test": "test_T11_T32_metadata_conflict_no_assertion",
+      "verified_scope": "缺行与矛盾保留范围问题"
+    },
+    {
+      "requirement": "T12",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_revision_provenance.py",
+      "test": "test_published_checkpoint_and_budget_bind_their_artifacts",
+      "verified_scope": "输入变化、evidence 变化及 manifest/ledger 变化拒绝"
+    },
+    {
+      "requirement": "T13",
+      "status": "passed_local_scope",
+      "source": "tests/security/test_guards.py",
+      "test": "test_T13_T14_T16_action_schema_refs_repeat",
+      "verified_scope": "未知引用拒绝"
+    },
+    {
+      "requirement": "T14",
+      "status": "passed_local_scope",
+      "source": "tests/unit/test_planner_gate.py",
+      "test": "test_structural_correction_bounded_and_not_real_agent",
+      "verified_scope": "结构纠错与预算；脚本 Planner 测试"
+    },
+    {
+      "requirement": "T15",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_planned_loop.py",
+      "test": "test_context_injection_stays_local_and_observations_are_detached",
+      "verified_scope": "恶意文本不成为工具/权限指令"
+    },
+    {
+      "requirement": "T16",
+      "status": "passed_local_scope",
+      "source": "tests/security/test_guards.py",
+      "test": "test_T13_T14_T16_action_schema_refs_repeat",
+      "verified_scope": "重复 profile 拒绝"
+    },
+    {
+      "requirement": "T17",
+      "status": "in_progress",
+      "source": "tests/acceptance/test_resources.py",
+      "test": "test_timeout_terminates_spawned_descendant_not_only_worker",
+      "verified_scope": "实际超时进程组与受控恢复；Core 半写报告专项尚需核对"
+    },
+    {
+      "requirement": "T18",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T18_output_overlap_and_symlink",
+      "verified_scope": "输入输出重叠、symlink、路径穿越"
+    },
+    {
+      "requirement": "T19",
+      "status": "passed_local_scope",
+      "source": "tests/security/test_guards.py",
+      "test": "test_T19_html_and_T33_claim_entailment",
+      "verified_scope": "HTML 转义；CSV 仅输入字符串，尚无 CSV 导出"
+    },
+    {
+      "requirement": "T20",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T20_agent_no_consent_no_fallback",
+      "verified_scope": "仅有环境 key 也拒绝；无实际 provider"
+    },
+    {
+      "requirement": "T21",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_interaction.py",
+      "test": "test_T21_review_identity_binding_and_no_upgrade",
+      "verified_scope": "audit/input/pair 绑定且不升级证据"
+    },
+    {
+      "requirement": "T22",
+      "status": "not_run",
+      "source": null,
+      "test": null,
+      "verified_scope": "M4/E 按修订计划后置；optimizer 尚未实现"
+    },
+    {
+      "requirement": "T23",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_evaluation_data.py",
+      "test": "test_other_task_truth_cannot_enter_any_registered_input",
+      "verified_scope": "跨任务真值隔离及 Planner 观察脱敏；应用边界"
+    },
+    {
+      "requirement": "T24",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_planned_loop.py",
+      "test": "test_guardrail_failures_keep_real_evidence_and_finalize",
+      "verified_scope": "脚本模式显式标注，真实 Agent 未运行"
+    },
+    {
+      "requirement": "T25",
+      "status": "in_progress",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T25_proposal_preserves_test_and_source",
+      "verified_scope": "生成建议的内部检查通过；独立用户 manifest plan-check CLI 尚缺"
+    },
+    {
+      "requirement": "T26",
+      "status": "passed_local_scope",
+      "source": "tests/unit/test_model_budget.py",
+      "test": "test_missing_usage_is_never_zero_cost",
+      "verified_scope": "未知用量/失败/纠错/预留计账；模型仅脚本请求"
+    },
+    {
+      "requirement": "T27",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_evaluation.py",
+      "test": "test_T27_T35_same_lock_and_limits_required",
+      "verified_scope": "不同锁、输入和总上限拒绝；真实 D 仍未比较"
+    },
+    {
+      "requirement": "T28",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_catalog_execution.py",
+      "test": "test_partial_labels_unknown_candidates_and_empty_denominators",
+      "verified_scope": "完整分母、未知标签、不丢失败和候选负担"
+    },
+    {
+      "requirement": "T29",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T03_T29_real_local_only_verification",
+      "verified_scope": "真实 local-only，valid=0 仍候选"
+    },
+    {
+      "requirement": "T30",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T05_T07_T30_partial_and_fail_on",
+      "verified_scope": "指纹数量不等于已处理数量"
+    },
+    {
+      "requirement": "T31",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T31_three_scans_and_verifications_share_one_ledger",
+      "verified_scope": "三次扫描/复验共用预算"
+    },
+    {
+      "requirement": "T32",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_loop.py",
+      "test": "test_T32_flat_layout_rejected",
+      "verified_scope": "平铺目录与 CSV split 冲突拒绝"
+    },
+    {
+      "requirement": "T33",
+      "status": "passed_local_scope",
+      "source": "tests/security/test_guards.py",
+      "test": "test_T19_html_and_T33_claim_entailment",
+      "verified_scope": "支持关系不足或非模板断言拒绝"
+    },
+    {
+      "requirement": "T34",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_core_contract.py",
+      "test": "test_T34_harmless_fields_tolerated_unknown_schema_rejected",
+      "verified_scope": "身份匹配的无害字段兼容，未知语义/错误产物拒绝"
+    },
+    {
+      "requirement": "T35",
+      "status": "passed_local_scope",
+      "source": "tests/acceptance/test_revision_provenance.py",
+      "test": "test_revision_tracks_current_host_and_original_image_evidence",
+      "verified_scope": "无重复图像审计；当前解释与原证据代码分离；比较门禁另测"
+    }
+  ],
+  "evidence": [
+    "reports/lifecycle-v1/receipt.json",
+    "reports/catalog-execution-v1/receipt.json",
+    "reports/logs/20261026T210243040277-delivery-provenance-regression.log",
+    "reports/ci-history/40398281500/verification.json"
+  ],
+  "remaining_local": [
+    "Implement the named plan-check operation for a user-supplied manifest, beyond generated-proposal internal checks.",
+    "Verify half-written Core report handling against the T17 requirement.",
+    "Finish the clause-level contract/delivery audit and separate interaction-evaluation accounting."
+  ],
+  "external_or_deferred": [
+    "Provider/model/disclosure/spend authorization and real D trajectories.",
+    "Authorized independent natural validation/test sources and experiments.",
+    "Owner-selected Investigator license and any competition submission authorization.",
+    "M4/E deferred until the real Agent is stable."
+  ]
+}

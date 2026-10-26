@@ -47,3 +47,30 @@ def test_real_core_calls_include_node_resources(tmp_path):
         m=call['resources']
         if m['tree_rss_status']=='sampled':assert m['tree_rss_peak_bytes']>0
         else:assert m['tree_rss_peak_bytes'] is None and m['access_denied_samples']>0
+
+
+def test_timeout_terminates_spawned_descendant_not_only_worker(tmp_path):
+    import os
+    import signal
+    import psutil
+    pidfile=tmp_path/'owned-child.json'
+    child="import time; time.sleep(20)"
+    parent="import subprocess,sys,json,os,time; p=subprocess.Popen([sys.executable,'-c',sys.argv[1]]); open(sys.argv[2],'w').write(json.dumps({'child':p.pid,'parent':os.getpid()})); time.sleep(20)"
+    result=execute([sys.executable,'-c',parent,child,str(pidfile)],tmp_path,tmp_path/'call',0.5)
+    ids=json.loads(pidfile.read_text())
+    assert result['error']=='timeout'
+    try:
+        process=psutil.Process(ids['child'])
+        assert process.status()==psutil.STATUS_ZOMBIE, 'Timed-out process group left a live descendant'
+    except psutil.NoSuchProcess:
+        pass
+    except psutil.AccessDenied:
+        pytest.skip('OS denied child status; verify process-group cleanup with process access or CI')
+    finally:
+        # Clean only this exact fixture child if a regression leaves it alive.
+        try:
+            p=psutil.Process(ids['child'])
+            if p.status()!=psutil.STATUS_ZOMBIE and p.cmdline()==[sys.executable,'-c',child]:
+                os.kill(ids['child'],signal.SIGKILL)
+        except (psutil.NoSuchProcess,psutil.AccessDenied,ProcessLookupError):
+            pass

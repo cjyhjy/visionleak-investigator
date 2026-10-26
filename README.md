@@ -76,7 +76,7 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 .venv/bin/vli evaluate --suite synthetic-engineering --tasks 12 --out runs/evaluation-001
 ```
 
-命令、退出码和日志索引为 `reports/commands.jsonl`；阶段状态在 `STATUS.json`、`WORKLOG.md`、`reports/milestones/M*.md`。测试使用真实 Core，只有规划器结构纠错单元测试使用明确标为 `scripted_test_only` 的输入。A/B 为独立固定驱动，B 只扫一次 all；生产规则与未来 Agent 门禁仍强制 base。真值位于 evaluator 专属目录，未登记为工具输入。失败、PARTIAL 和 D blocked 都保留。
+命令、退出码和日志索引为 `reports/commands.jsonl`；阶段状态在 `STATUS.json`、`WORKLOG.md`、`reports/milestones/M*.md`。检测验收使用真实 Core；Planner 测试回调统一标为 `SCRIPTED_TEST_ONLY`，脚本用户回答和受控故障也明确标注。它们不是模型或真人实验。A/B 为独立固定驱动，B 只扫一次 all；生产规则与未来 Agent 门禁仍强制 base。真值位于 evaluator 专属目录，未登记为工具输入。失败、PARTIAL 和 D blocked 都保留。
 
 ## 限制与后续
 
@@ -115,3 +115,9 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 ```
 
 此命令生成新的合成来源、分别执行三个评测分区并保留真实 Core 证据；不是独立自然数据实验。正式新数据与模型实验仍需其授权。
+
+## 接口、来源和生命周期验收
+
+当前实现架构见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)，实际命令与文件契约见 [docs/API.md](docs/API.md)，AI 辅助与实验模式见 [docs/AI_USAGE.md](docs/AI_USAGE.md)。作品说明草稿 [docs/SUBMISSION_DRAFT.md](docs/SUBMISSION_DRAFT.md) 只描述已实现范围与待完成事项，未自动提交。
+
+`.venv/bin/python scripts/lifecycle_smoke.py --out runs/lifecycle-acceptance` 验证真实 Core 的修订、受控中断恢复和难负例。新版 revision 分别记录当前解释代码和原图像证据代码；恢复把未接纳的 evidence/proposal 归档，避免后续修订重新采用。全部历史材料保留，恢复仍不进行 Core 断点扫描。

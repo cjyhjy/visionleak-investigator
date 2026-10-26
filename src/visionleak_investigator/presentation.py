@@ -73,7 +73,9 @@ def render(report: dict,evidence: list[dict]) -> str:
     top='<header><div class="eyebrow">EVIDENCE · COVERAGE · BUDGET</div><h1>VisionLeak Investigator</h1><p class="mode">'+esc(mode)+'</p><p class="wrap">'+esc(task['request_text'])+'</p></header>'
     top+='<div class="status '+style+'"><h2>'+esc(report['state']+' · '+title)+'</h2><p>'+esc(explanation)+'</p></div>'
     if coverage.get('source_unchanged') is False:top+='<p class="notice danger">输入在检查期间发生变化。结论已撤回，保留的原始产物不能作为当前数据的有效证据。</p>'
-    if report.get('revision'):top+='<p class="notice">这是'+esc(report['revision']['kind'])+'修订：复用已有图像证据，本次未重跑 Core。账本保留此前累计开销。</p>'
+    if report.get('revision'):
+        reuse='复用已有图像证据' if report['revision'].get('image_evidence_reused',True) else '此前没有已接纳的图像证据'
+        top+='<p class="notice">这是'+esc(report['revision']['kind'])+'修订：'+reuse+'，本次未重跑 Core。账本保留此前累计开销。</p>'
     counts=Counter(c['status'] for c in claims)
     pending=[r for r in report.get('reviews',[]) if r['status']=='pending']
     top+='<div class="metrics">'+metric('输入图像',coverage.get('input_preflight',{}).get('image_count'))+metric('已确认结论条目',counts['confirmed'])+metric('不同候选图片对',report.get('unique_candidate_pairs'))+metric('待复核记录',len(pending))+'</div>'

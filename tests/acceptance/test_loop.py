@@ -78,3 +78,34 @@ def test_T31_three_scans_and_verifications_share_one_ledger(tmp_path):
     assert ledger['spent']['decoded_pixels']==3*(6+3)*96*96
     assert ledger['spent']['comparisons']==sum(e['actual'].get('comparisons',0) for e in ledger['entries'])
     assert ledger['spent']['index_operations']<=task['limits']['max_index_operations_total']
+
+
+def test_T06_encoded_and_decoded_limits_preserve_other_real_evidence(tmp_path):
+    from PIL import Image
+    task,registry=make_task(tmp_path/'fixture');root=tmp_path/'fixture/images'
+    (root/'test/large-encoded.png').write_bytes((root/'train/001.png').read_bytes()+b'x'*50000)
+    Image.new('RGB',(128,128),(34,56,78)).save(root/'test/large-decoded.png')
+    task['limits']['max_file_bytes']=40000
+    task['limits']['max_decode_pixels_per_image']=10000
+    result=run_task(task,registry,tmp_path/'run')
+    assert result['state']=='PARTIAL' and result['coverage']['source_unchanged']
+    errors=json.dumps(result['coverage']['profiles']['base']['errors'])
+    assert 'large-encoded.png' in errors and 'large-decoded.png' in errors
+    assert any(c['claim_type']=='byte_identity' and c['status']=='confirmed' for c in result['claims'])
+    assert not result['coverage']['profiles']['base']['complete']
+
+
+def test_T03_rotation_and_mirror_are_candidates_not_exact_identity(tmp_path):
+    from PIL import Image
+    task,registry=make_task(tmp_path/'fixture');root=tmp_path/'fixture/images'
+    with Image.open(root/'train/001.png') as im:
+        im.transpose(Image.Transpose.FLIP_LEFT_RIGHT).save(root/'test/007.png')
+    result=run_task(task,registry,tmp_path/'run',profiles=['base','all'])
+    evidence={e['evidence_id']:e for e in map(json.loads,(tmp_path/'run/evidence.jsonl').read_text().splitlines())}
+    for other in ('test/004.png','test/007.png'):
+        records=[e for e in evidence.values() if set(e['files'])=={'train/001.png',other}]
+        assert records and all('candidate' in e['kind'] for e in records)
+        refs={e['evidence_id'] for e in records}
+        claims=[c for c in result['claims'] if refs & set(c['evidence_refs'])]
+        assert claims and all(c['status']=='candidate' for c in claims)
+    assert result['coverage']['source_unchanged']

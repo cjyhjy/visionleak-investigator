@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from .common import read_json,file_hash,digest
+from .common import read_json,file_hash,digest,safe_child
 from .workflow import code_digest
 from .core import CoreAdapter
 from .domain import Registry,input_manifest
@@ -17,6 +17,14 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
     if check_input and input_manifest(root,report['task']['limits'])['digest']!=manifest['dataset_manifest_digest']:raise ValueError('Input changed since audit')
     checkpoint=read_json(run/'checkpoint.json')
     if checkpoint.get('report_digest')!=digest(report):raise ValueError('Report changed')
+    if checkpoint.get('manifest_digest')!=digest(manifest):raise ValueError('Manifest changed')
+    if read_json(run/'ledger.json')!=report['budget']:raise ValueError('Ledger changed')
+    if report.get('recovery'):
+        receipt=read_json(run/'recovery-receipt.json')
+        if receipt!=report['recovery'] or checkpoint.get('recovery_receipt_digest')!=digest(receipt):raise ValueError('Recovery receipt changed')
+        if not report.get('revision') and receipt['original_manifest_digest']!=digest(manifest):raise ValueError('Recovery origin changed')
+        for saved in receipt['preserved_files']:
+            if file_hash(safe_child(run,saved['path']))!=saved['sha256']:raise ValueError('Recovery archive changed')
     adapter=CoreAdapter()
     if recompute_identity:adapter.verify_artifacts()
     for profile,cov in report['coverage']['profiles'].items():

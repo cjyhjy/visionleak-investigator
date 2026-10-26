@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T20:48:59.784331+00:00",
+  "updated_at": "2026-10-26T21:11:06.971860+00:00",
   "project_version": "0.1.0",
-  "code_digest": "0d7b3566655282266904973bdd8ba0b84b28e08d80919f3cf81d8986201121ce",
+  "code_digest": "e9b6dc5805c1215fc77ca7e33d3c7a1c510a1c5961a61eb751b35a298d639afa",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -41,11 +41,13 @@
       "M2-demo"
     ],
     "evidence": [
-      "reports/interaction-demo/receipt.json"
+      "reports/interaction-demo/receipt.json",
+      "reports/lifecycle-v1/receipt.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
-      "Review backlog is visible; import requires bound audit/input/reviewer."
+      "Review backlog is visible; import requires bound audit/input/reviewer.",
+      "Standalone plan-check for user-edited manifests remains to implement; generated-proposal internal checks already run."
     ]
   },
   "M3": {
@@ -72,7 +74,7 @@
   "M5": {
     "status": "blocked",
     "reason": "Catalog A/B/C execution and scoring passed on fresh synthetic partitions; independent natural data and live model D remain unfinished",
-    "local_status": "passed",
+    "local_status": "in_progress",
     "evidence": [
       "reports/engineering-suite/metrics.json",
       "reports/engineering-suite/per_run.jsonl",
@@ -81,7 +83,8 @@
       "reports/report-demo-final/receipt.json",
       "reports/report-controller-final/receipt.json",
       "reports/visual-review/report-v2-final/receipt.json",
-      "reports/catalog-execution-v1/receipt.json"
+      "reports/catalog-execution-v1/receipt.json",
+      "reports/delivery-audit-v1/requirements.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -92,29 +95,31 @@
       "live_model_D": "blocked",
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
       "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded"
-    }
+    },
+    "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "catalog-full-regression-process-access: 115 passed, zero skipped",
+    "test_suite": "delivery-provenance-regression: 124 passed, zero skipped; additional orientation test: 1 passed",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T204149614893-catalog-full-regression-process-access.log",
+    "final_log": "reports/logs/20261026T210243040277-delivery-provenance-regression.log",
     "ci_evidence": "reports/ci-history/40398281500/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40398281500",
     "tested_commit": "0d7073c7a0f2186bc91a78216b7a7e53b62678c2",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 115 passed, zero test skips; current catalog artifacts reverified"
+    "ci_for_current_code": "not_run; lifecycle changes awaiting new CI"
   },
-  "next_local_command": ".venv-clean/bin/python scripts/catalog_smoke.py --tasks 12 --out runs/next-catalog-execution",
+  "next_local_command": ".venv-clean/bin/python scripts/lifecycle_smoke.py --out runs/next-lifecycle-acceptance",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Passed for catalog implementation 0d7073c; 52 host reports, 36 task resource receipts and 18 catalog scores reverified",
+    "ci": "Pending for lifecycle changes; catalog CI 40398281500 remains passed",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Requirements/delivery audit and remaining reproducibility/interaction-evaluation work",
-      "Independent natural source/data preparation and authorized experiments",
-      "Real provider selection/authorization, adapter and live D trajectories",
+      "Standalone plan-check for user-supplied manifests",
+      "Half-written Core report acceptance and remaining clause-level delivery audit",
+      "Separate interaction-evaluation accounting",
+      "Authorized independent natural data experiments and real provider/D trajectories",
       "M4 deferred until real Agent stabilizes"
     ],
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
