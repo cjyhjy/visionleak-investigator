@@ -1,0 +1,19 @@
+.........F...............                                                [100%]
+=================================== FAILURES ===================================
+____________________ test_T19_html_and_T33_claim_entailment ____________________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-84/test_T19_html_and_T33_claim_en0')
+
+    def test_T19_html_and_T33_claim_entailment(tmp_path):
+        task,registry=make_task(tmp_path/'fixture');task['request_text']='<script>alert(1)</script>'
+        r=run_task(task,registry,tmp_path/'run')
+        html=(tmp_path/'run/report.html').read_text();assert '<script>' not in html and '&lt;script&gt;' in html
+        evidence=[json.loads(s) for s in (tmp_path/'run/evidence.jsonl').read_text().splitlines()]
+>       candidate=next(e for e in evidence if 'candidate' in e['kind'])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/security/test_guards.py:50: StopIteration
+=========================== short test summary info ============================
+FAILED tests/security/test_guards.py::test_T19_html_and_T33_claim_entailment
+1 failed, 24 passed in 3.82s

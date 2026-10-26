@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "visionleak-report-v1",
+  "identityVersion": "vl-report-sha256-v2",
+  "normalization": "vl-rgb-v1",
+  "decoder": {
+    "name": "sharp",
+    "version": "0.35.5",
+    "libvips": "8.18.7"
+  },
+  "engine": {
+    "name": "visionleak-moonbit",
+    "artifactDigest": "ad556a709752b9add24a71fed5943442428e277b3b588c1a1692a7c2e4379507"
+  },
+  "ok": true,
+  "complete": false,
+  "status": "incomplete",
+  "pairs": [
+    {
+      "left": "test/002.png",
+      "right": "train/001.png",
+      "evidence": "byte-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    },
+    {
+      "left": "test/002.png",
+      "right": "validation/003.png",
+      "evidence": "pixel-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    },
+    {
+      "left": "train/001.png",
+      "right": "validation/003.png",
+      "evidence": "pixel-identical",
+      "distance": 0,
+      "lowContrast": false,
+      "review": "unreviewed"
+    }
+  ],
+  "groups": [
+    {
+      "members": [
+        "test/002.png",
+        "train/001.png",
+        "validation/003.png"
+      ],
+      "evidence": "exact-component"
+    }
+  ],
+  "options": {
+    "threshold": 6,
+    "maxImages": 1000,
+    "maxDecodePixels": 64000000,
+    "maxPixels": 4194304,
+    "maxTotalPixels": 100000000,
+    "maxFileBytes": 33554432,
+    "maxComparisons": 1000000,
+    "maxPairs": 2000,
+    "includeMirrors": false,
+    "includeRotations": false,
+    "includeCrops": false
+  },
+  "stats": {
+    "inputImages": 6,
+    "processedImages": 6,
+    "comparisons": 14,
+    "distanceEvaluations": 11,
+    "pairChecks": 3,
+    "emittedPairs": 3,
+    "indexNodes": 4,
+    "reason": ""
+  },
+  "images": [
+    {
+      "id": "test/002.png",
+      "path": "test/002.png",
+      "split": "test",
+      "byteDigest": "aa652b4762ec32bce76433170e8bea75308960d8c65f62548c9f9ace790c6f90",
+      "pixelDigest": "fc8e952e77e24849c8fcaa51524f331a756e4ff380878722e08dbb1f5e70c98b",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0010001010110010100100110110101001001001100101010110010111101010",
+      "width": 96,
+      "height": 96,
+      "contrast": 243,
+      "thumbnail": "thumbnails/f761e02df9eb71472d4b9fbf2a89765fa2a97bc2ef82e86bb4c6e0e160f8662f.jpg",
+      "thumbnailDigest": "a73f299c1726ea887e1ce7b07e7c349a369642d9cfdaea3087c935780379ee5f",
+      "format": "png"
+    },
+    {
+      "id": "test/004.png",
+      "path": "test/004.png",
+      "split": "test",
+      "byteDigest": "21745489aab58363e6cc8e8573d1a817e9032f056939eae897f37816be255595",
+      "pixelDigest": "204d1fcb6c8c696c1480509c86e66bf1ccd8b19b8ae4cbfded33158cff719e23",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "1001101010100101001110101001011000100110001010101001110101011000",
+      "width": 96,
+      "height": 96,
+      "contrast": 243,
+      "thumbnail": "thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg",
+      "thumbnailDigest": "f800ae7d56872cec5eb77c4f75b387d02df3ef1cb9f245dea6f915ecb29f533f",
+      "format": "png"
+    },
+    {
+      "id": "train/001.png",
+      "path": "train/001.png",
+      "split": "train",
+      "byteDigest": "aa652b4762ec32bce76433170e8bea75308960d8c65f62548c9f9ace790c6f90",
+      "pixelDigest": "fc8e952e77e24849c8fcaa51524f331a756e4ff380878722e08dbb1f5e70c98b",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0010001010110010100100110110101001001001100101010110010111101010",
+      "width": 96,
+      "height": 96,
+      "contrast": 243,
+      "thumbnail": "thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg",
+      "thumbnailDigest": "a73f299c1726ea887e1ce7b07e7c349a369642d9cfdaea3087c935780379ee5f",
+      "format": "png"
+    },
+    {
+      "id": "train/006.png",
+      "path": "train/006.png",
+      "split": "train",
+      "byteDigest": "38b99077f9ae5eb74e4b4acc4d9724c4edfe818035250ccefbb6538875277e44",
+      "pixelDigest": "9256ff2bbe7c7a7fca9014f3a374e7b2a833b2600445d60fc4c830b924e82424",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0100110000100011010011010101101110110001010101000011010001010010",
+      "width": 96,
+      "height": 96,
+      "contrast": 244,
+      "thumbnail": "thumbnails/a110f2a65c6cf4656b46686879a72d667ee298b00a0820890e3dd24462e07c07.jpg",
+      "thumbnailDigest": "ce5a25f6b124ab3234803f31c3a75911ff42f3c4882a18babd5dedea043a7451",
+      "format": "png"
+    },
+    {
+      "id": "validation/003.png",
+      "path": "validation/003.png",
+      "split": "validation",
+      "byteDigest": "78f5871a32b03ba895e3cbb643071280fe3703eb5cf12f900af2a1c7135a079c",
+      "pixelDigest": "fc8e952e77e24849c8fcaa51524f331a756e4ff380878722e08dbb1f5e70c98b",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "0010001010110010100100110110101001001001100101010110010111101010",
+      "width": 96,
+      "height": 96,
+      "contrast": 243,
+      "thumbnail": "thumbnails/1576e01286c6bbb96c6d180e33096b8fc48171013040c85f7fd4427ab565f437.jpg",
+      "thumbnailDigest": "a73f299c1726ea887e1ce7b07e7c349a369642d9cfdaea3087c935780379ee5f",
+      "format": "png"
+    },
+    {
+      "id": "validation/005.png",
+      "path": "validation/005.png",
+      "split": "validation",
+      "byteDigest": "bfdbfb1dcaf40717388edf0e8452c4c81ac3ee8b67696d4bc132e36c216bda9a",
+      "pixelDigest": "aae0d2b10cebf6c39c3757cec042d40e2d79cad1aa5858d1d6fa828dfe985dab",
+      "pixelDigestBasis": "full",
+      "dhashBasis": {
+        "width": 96,
+        "height": 96,
+        "downsampled": false
+      },
+      "dhash": "1101100100101001000101000110110110010100110010101001101101100110",
+      "width": 96,
+      "height": 96,
+      "contrast": 237,
+      "thumbnail": "thumbnails/6a1a11a4d4681f38899f09ac6622e458524cd7c1c7e344417c6a2300ea3eb68b.jpg",
+      "thumbnailDigest": "361356f39023485d18b191ec31df73854b8670eaca4314fe110d639f112cdb94",
+      "format": "png"
+    }
+  ],
+  "errors": [
+    {
+      "code": "DECODE_ERROR",
+      "message": "Image metadata could not be decoded",
+      "path": "test/007.png"
+    }
+  ],
+  "scope": {
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ],
+    "splitDirectories": {
+      "train": "train",
+      "validation": "validation",
+      "test": "test"
+    },
+    "missingSplits": [],
+    "supportedExtensions": [
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".webp",
+      ".avif",
+      ".tif",
+      ".tiff",
+      ".gif"
+    ],
+    "ignoredFiles": 0,
+    "entriesScanned": 7,
+    "discoveredAtLeast": 7,
+    "acceptedImages": 6,
+    "totalDecodedPixels": 55296,
+    "maxDirectoryEntries": 100000,
+    "source": "local-files",
+    "allPairsAreCrossSplit": true,
+    "perceptualMatchesRequireReview": true
+  },
+  "coverage": {
+    "splits": {
+      "train": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "validation": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "test": {
+        "audited": 2,
+        "fingerprinted": 2,
+        "rejectedByCode": {
+          "DECODE_ERROR": 1
+        },
+        "ignored": 0,
+        "unprocessed": 0
+      },
+      "unknown": {
+        "audited": 0,
+        "fingerprinted": 0,
+        "rejectedByCode": {},
+        "ignored": 0,
+        "unprocessed": 0
+      }
+    },
+    "budgetExhaustion": [],
+    "enumerationComplete": true,
+    "rejectedOrErrorCount": 1,
+    "ignoredFiles": 0,
+    "unprocessedKnownFiles": 0,
+    "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 1；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+  },
+  "candidateGroups": [],
+  "auditId": "e72363f252bed76ea78868db1283c9b259fe0a6618880be8f0b788896ea50643",
+  "createdAt": "2026-10-26T17:26:36.040Z",
+  "timing": {
+    "elapsedMs": 30
+  }
+}

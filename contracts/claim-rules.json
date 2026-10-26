@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "rule_version": "vli-claims-1",
+  "status": "design_rules_require_host_implementation",
+  "rules": {
+    "byte_identity": {
+      "evidence": [
+        "core.byte_identical"
+      ],
+      "preconditions": [
+        "report_identity_valid",
+        "matching_pair_digests",
+        "exact_recomputed_valid"
+      ],
+      "status": "confirmed",
+      "template": "两文件字节摘要相同且已复验；不据此推断训练使用。"
+    },
+    "pixel_identity": {
+      "evidence": [
+        "core.pixel_identical"
+      ],
+      "preconditions": [
+        "report_identity_valid",
+        "matching_full_pixel_digests",
+        "exact_recomputed_valid"
+      ],
+      "status": "confirmed",
+      "template": "两文件规范化完整像素相同且已复验。"
+    },
+    "perceptual_relation": {
+      "evidence": [
+        "core.perceptual_candidate",
+        "core.local_candidate"
+      ],
+      "preconditions": [
+        "report_identity_valid",
+        "known_profile"
+      ],
+      "status": "candidate",
+      "template": "在所列 profile 和阈值下存在待复核的相似线索。"
+    },
+    "declared_entity_overlap": {
+      "evidence": [
+        "metadata.entity_overlap",
+        "user.goal_confirmation"
+      ],
+      "preconditions": [
+        "entity_key_confirmed",
+        "same_nonempty_entity_id",
+        "different_image_splits",
+        "metadata_provenance_recorded"
+      ],
+      "status": "confirmed",
+      "template": "按提供的元数据，这些文件跨集合具有相同实体标识。"
+    },
+    "same_source_review": {
+      "evidence": [
+        "human.same_source_confirmation"
+      ],
+      "preconditions": [
+        "reviewer_recorded",
+        "input_digest_matches_review",
+        "pair_bound"
+      ],
+      "status": "confirmed",
+      "template": "该图像对被指定复核者确认同源；不改写 Core 证据等级。"
+    },
+    "goal_conflict": {
+      "evidence": [
+        "user.goal_confirmation"
+      ],
+      "preconditions": [
+        "explicit_goal_prohibits_relation",
+        "supported_relation_claim",
+        "coverage_limits_included"
+      ],
+      "status": "confirmed",
+      "template": "该已支持关系违反所确认的划分约定；不证明模型已训练过此数据。"
+    },
+    "no_evidence_in_scope": {
+      "evidence": [],
+      "preconditions": [
+        "profile_complete",
+        "scope_explicit",
+        "no_evidence_of_claimed_kind",
+        "input_manifest_matches"
+      ],
+      "status": "confirmed",
+      "template": "在列明的输入、profile、阈值和覆盖中未发现该类证据。"
+    }
+  },
+  "fallback": "Missing prerequisites produce inconclusive; unsupported assertions are excluded from affirmative statements. References alone do not establish entailment.",
+  "prohibited_claims": [
+    "dataset_is_safe",
+    "no_leakage_anywhere",
+    "model_trained_on_image",
+    "candidate_is_pixel_identical"
+  ]
+}

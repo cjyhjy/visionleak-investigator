@@ -1,0 +1,45 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_T34_harmless_fields_tolerated_unknown_schema_rejected __________
+
+data = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-93/test_T34_harmless_fields_toler0/images')
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-93/test_T34_harmless_fields_toler0')
+
+    def test_T34_harmless_fields_tolerated_unknown_schema_rejected(data,tmp_path):
+        p,r=audit(data,tmp_path/'out');assert p.returncode==0
+        path=tmp_path/'out/report.json';r['harmlessNewMetadata']={'note':'forward-compatible annotation'};path.write_text(json.dumps(r))
+>       assert CoreAdapter().inspect_report(path,data)['auditId']==r['auditId']
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_core_contract.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <visionleak_investigator.core.CoreAdapter object at 0x108da4890>
+report_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-93/test_T34_harmless_fields_toler0/out/report.json')
+dataset = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-93/test_T34_harmless_fields_toler0/images')
+timeout = 10
+
+    def inspect_report(self, report_path: Path, dataset: Path, timeout: float=10) -> dict:
+        r=read_json(report_path)
+        if r.get('schemaVersion')!=self.lock['report_schema'] or r.get('identityVersion')!=self.lock['report_identity_version']:raise ValueError('Unknown report schema')
+        if r.get('normalization')!=self.lock['normalization'] or r.get('engine',{}).get('artifactDigest')!=self.lock['compiled_artifact_sha256']:raise ValueError('Report engine/normalization mismatch')
+        if r.get('localProfile') and (r['localProfile'].get('version')!=self.lock['local_profile'] or r['localProfile'].get('minimumGridContrast')!=16):raise ValueError('Unknown local profile')
+        for i in r['images']:
+            safe_child(dataset,i['path']);safe_child(report_path.parent,i['thumbnail'])
+        if any(p['evidence'] not in KINDS for p in r['pairs']):raise ValueError('Unknown evidence type')
+        p=subprocess.run(['node',str(PROJECT/'scripts/core_inspect.mjs'),str(self.path),str(report_path)],capture_output=True,text=True,timeout=timeout)
+>       if p.returncode:raise ValueError('Core report identity/schema check failed: '+p.stderr[-500:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: Core report identity/schema check failed: digest !== report.auditId) throw new Error('报告内容与 auditId 不匹配，未加载报告或复核记录。请重新运行审计生成完整报告。');
+E                                                                     ^
+E       
+E       Error: 报告内容与 auditId 不匹配，未加载报告或复核记录。请重新运行审计生成完整报告。
+E           at verifyReportIdentity (file:///Users/cjy/Documents/VisionLeak%20Investigator/visionleak-investigator/.deps/visionleak-core/demo/report-identity.mjs:13:63)
+E           at file:///Users/cjy/Documents/VisionLeak%20Investigator/visionleak-investigator/scripts/core_inspect.mjs:11:7
+E       
+E       Node.js v26.7.0
+
+src/visionleak_investigator/core.py:59: ValueError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_core_contract.py::test_T34_harmless_fields_tolerated_unknown_schema_rejected
+1 failed in 0.22s

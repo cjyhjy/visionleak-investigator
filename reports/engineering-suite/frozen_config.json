@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "D": {
+    "status": "blocked",
+    "reason": "No authorized model/provider/usage budget"
+  },
+  "E": {
+    "status": "not_run",
+    "reason": "Second phase"
+  },
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "f910446862c515d28cfb2512bf9f23b3eca3b3bb8fd6865c9711577e6a439b41",
+  "rules": "v1: base; explicit request orientation -> transform; local crop -> local; both -> all",
+  "threshold": 6,
+  "seed_start": 2026102600,
+  "task_count": 12,
+  "benchmark_partition": "development",
+  "cache": "fresh CLI process, no shared fingerprints; OS cache not flushed",
+  "claims": "engineering smoke only, no independent natural-scene research claim"
+}

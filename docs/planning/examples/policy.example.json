@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "policy_id": "draft-policy-001",
+  "status": "design_example_not_measured",
+  "fixed_invariants": {
+    "required_initial_profile": "base",
+    "core_threshold": 6,
+    "source_data_read_only": true,
+    "allow_code_modification": false,
+    "allow_evidence_upgrade": false,
+    "allow_test_truth_access": false,
+    "allow_test_time_persistent_learning": false
+  },
+  "proposed_tunable_settings": {
+    "post_base_profile_preference": [
+      "transform",
+      "local"
+    ],
+    "comparison_caps": {
+      "base": 400000,
+      "transform": 300000,
+      "local": 300000
+    },
+    "clarification_preference": [
+      "clarify_goal",
+      "clarify_entity_key"
+    ],
+    "review_priority": "goal_relevance_then_evidence_uncertainty"
+  },
+  "note": "Caps are draft defaults, not validated optima. All action costs use a shared ledger. The all baseline receives the full same task budget. A policy cannot change task limits."
+}

@@ -1,0 +1,90 @@
+{
+  "updated_at": "2026-10-26T19:04:01.571952+00:00",
+  "project_version": "0.1.0",
+  "code_digest": "ad0a4e0dd3a5f376389ceb2a81508a50575637d490caa2f1eb90bddfab91cdd1",
+  "original_core_modified": false,
+  "model_calls": 0,
+  "paid_model_calls": 0,
+  "publication": "public_repository_created_push_pending",
+  "M0": {
+    "status": "passed",
+    "tests": [
+      "M0-core-contract",
+      "M0-persistent-smoke",
+      "M0-sdk-smoke",
+      "doctor"
+    ],
+    "evidence": [
+      "reports/core-smoke/receipt.json",
+      "reports/sdk-smoke/receipt.json",
+      "reports/environment.json"
+    ]
+  },
+  "M1": {
+    "status": "passed",
+    "tests": [
+      "M1-verified",
+      "final-regression"
+    ],
+    "evidence": [
+      "reports/demo-rules/report.json",
+      "reports/demo-rules/ledger.json",
+      "reports/delivery-demo/report.json"
+    ]
+  },
+  "M2": {
+    "status": "passed",
+    "tests": [
+      "M2-first",
+      "recovery-check",
+      "final-regression",
+      "M2-demo"
+    ],
+    "evidence": [
+      "reports/interaction-demo/receipt.json"
+    ],
+    "limitations": [
+      "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
+      "Review backlog is visible; import requires bound audit/input/reviewer."
+    ]
+  },
+  "M3": {
+    "status": "blocked",
+    "reason": "No configured/authorized model provider, data disclosure and spend budget; true model adapter and trajectories are not implemented/verified",
+    "subtasks": {
+      "M3.1": "passed",
+      "M3.2": "not_run",
+      "M3.3": "passed (scripted structure unit tests only)",
+      "M3.4": "blocked",
+      "M3.5": "passed (local guard tests)",
+      "M3.6": "blocked"
+    },
+    "local_evidence": [
+      "reports/sdk-smoke/receipt.json",
+      "M3-local-gate command log"
+    ]
+  },
+  "M4": {
+    "status": "not_run",
+    "reason": "Second phase per revised handoff; no policy optimization or condition E"
+  },
+  "M5": {
+    "status": "blocked",
+    "reason": "A/B/C engineering runs completed; D and independent natural-source validation/test remain unrun",
+    "local_status": "passed",
+    "evidence": [
+      "reports/engineering-suite/metrics.json",
+      "reports/engineering-suite/per_run.jsonl"
+    ],
+    "research_gain": "not_established"
+  },
+  "verification": {
+    "test_suite": "delivery-regression: 41 passed in clean Python environment",
+    "clean_python_env": "passed, no agent extra",
+    "commands": "reports/commands.jsonl",
+    "final_log": "reports/logs/20261026T174146419809-delivery-regression.log"
+  },
+  "next_local_command": ".venv/bin/vli demo --out runs/next-fixture",
+  "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
+  "repository": "https://github.com/cjyhjy/visionleak-investigator"
+}

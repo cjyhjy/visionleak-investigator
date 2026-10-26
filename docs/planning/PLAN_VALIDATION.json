@@ -1,0 +1,66 @@
+{
+  "scope": "planning_package_structure_only",
+  "validatedAt": "2026-10-26T16:41:55.042626+00:00",
+  "implementation_tests_run": false,
+  "model_calls_made": false,
+  "investigator_implemented": false,
+  "core_evidence": "core.lock.json and core-capabilities.json refer to independently executed Core release acceptance, not Investigator integration tests",
+  "json_parse": "passed",
+  "local_markdown_links": "passed",
+  "schema_checks": [
+    {
+      "name": "task.example.json",
+      "expected": "valid",
+      "passed": true
+    },
+    {
+      "name": "action.ask-goal.example.json",
+      "expected": "valid",
+      "passed": true
+    },
+    {
+      "name": "action.run-transform.example.json",
+      "expected": "valid",
+      "passed": true
+    },
+    {
+      "name": "claim.local-candidate.example.json",
+      "expected": "valid",
+      "passed": true
+    },
+    {
+      "name": "negative_pixel_budget",
+      "expected": "invalid",
+      "passed": true
+    },
+    {
+      "name": "decode_over_core_hard_limit",
+      "expected": "invalid",
+      "passed": true
+    },
+    {
+      "name": "missing_index_budget",
+      "expected": "invalid",
+      "passed": true
+    },
+    {
+      "name": "arbitrary_shell_field",
+      "expected": "invalid",
+      "passed": true
+    },
+    {
+      "name": "candidate_auto_confirmed",
+      "expected": "invalid",
+      "passed": true
+    },
+    {
+      "name": "unsupported_training_claim",
+      "expected": "invalid",
+      "passed": true
+    }
+  ],
+  "notes": [
+    "Schemas cannot establish consent, runtime budgets, evidence existence or semantic entailment.",
+    "T01-T35 remain implementation acceptance requirements, not executed by this planning validation."
+  ]
+}

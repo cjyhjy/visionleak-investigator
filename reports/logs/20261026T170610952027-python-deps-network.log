@@ -1,0 +1,87 @@
+Resolved 14 packages in 3.38s
+   Building visionleak-investigator @ file:///Users/cjy/Documents/VisionLeak%20Investigator/visionleak-investigator
+Downloading pygments (1.2MiB)
+Downloading pillow (4.6MiB)
+ Downloaded pygments
+ Downloaded pillow
+  × Failed to build `visionleak-investigator @
+  │ file:///Users/cjy/Documents/VisionLeak%20Investigator/visionleak-investigator`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `hatchling.build.build_editable` failed (exit status: 1)
+
+      [stderr]
+      Traceback (most recent call last):
+        File "<string>", line 11, in <module>
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/build.py",
+      line 83, in build_editable
+          return os.path.basename(next(builder.build(directory=wheel_directory,
+      versions=['editable'])))
+      
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/plugin/interface.py",
+      line 155, in build
+          artifact = version_api[version](directory, **build_data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/wheel.py",
+      line 496, in build_editable
+          return self.build_editable_detection(directory, **build_data)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/wheel.py",
+      line 507, in build_editable_detection
+          for included_file in self.recurse_selected_project_files():
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/plugin/interface.py",
+      line 180, in recurse_selected_project_files
+          if self.config.only_include:
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/Users/cjy/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/functools.py",
+      line 998, in __get__
+          val = self.func(instance)
+                ^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/config.py",
+      line 713, in only_include
+          only_include = only_include_config.get('only-include',
+      self.default_only_include()) or self.packages
+      
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/wheel.py",
+      line 262, in default_only_include
+          return self.default_file_selection_options.only_include
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/Users/cjy/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/functools.py",
+      line 998, in __get__
+          val = self.func(instance)
+                ^^^^^^^^^^^^^^^^^^^
+        File "/Users/cjy/Documents/VisionLeak
+      Investigator/visionleak-investigator/.cache/uv/builds-v0/.tmpCLXVJE/lib/python3.12/site-packages/hatchling/builders/wheel.py",
+      line 250, in default_file_selection_options
+          raise ValueError(message)
+      ValueError: Unable to determine which files to ship
+      inside the wheel using the following heuristics:
+      https://hatch.pypa.io/latest/plugins/builder/wheel/#default-file-selection
+
+      The most likely cause of this is that there is no directory that matches
+      the name of your project (visionleak_investigator).
+
+      At least one file selection option must be defined
+      in the `tool.hatch.build.targets.wheel` table, see:
+      https://hatch.pypa.io/latest/config/build/
+
+      As an example, if you intend to ship a directory named `foo` that
+      resides within a `src` directory located at the root of your project,
+      you can define the following:
+
+      [tool.hatch.build.targets.wheel]
+      packages = ["src/foo"]
+
+
+hint: Build failures usually indicate a problem with the package or the build environment

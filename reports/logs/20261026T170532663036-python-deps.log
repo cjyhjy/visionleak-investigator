@@ -1,0 +1,8 @@
+Using CPython 3.12.14
+Creating virtual environment at: .venv
+error: Request failed after 3 retries in 5.0s
+  Caused by: Failed to fetch: `https://pypi.org/simple/pytest/`
+  Caused by: error sending request for url (https://pypi.org/simple/pytest/)
+  Caused by: client error (Connect)
+  Caused by: dns error
+  Caused by: failed to lookup address information: nodename nor servname provided, or not known

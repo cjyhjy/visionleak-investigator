@@ -1,0 +1,30 @@
+{
+  "datasets": {
+    "demo-dataset": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-demo/fixture/images"
+  },
+  "documents": {
+    "samples": {
+      "path": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-demo/fixture/samples.csv",
+      "sha256": "f63799153a5d3b61c6ac1a3df688ff2273d7aca9a197f36300e13e5371fc9309"
+    }
+  },
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "local synthetic fixture generator"
+    },
+    "user.answer:33767de8544b42c3311db17d41812e100189c15ef7c407b9f68663855447e534": {
+      "kind": "user.goal_confirmation",
+      "goal": "new_entity_generalization",
+      "actor": "controlled demo scripted user (not a real participant)",
+      "confirmed_at": "2026-10-26T17:35:12.194193+00:00"
+    },
+    "user.answer:73210b7deaca04a96c5439d861775ef3a44c92bbeb23cde6c941687fd69c4ac0": {
+      "kind": "user.entity_key_confirmation",
+      "entity_key": "entity_id",
+      "actor": "controlled demo scripted user (not a real participant)",
+      "confirmed_at": "2026-10-26T17:35:12.194202+00:00"
+    }
+  }
+}

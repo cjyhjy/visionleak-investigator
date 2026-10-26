@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:visionleak-investigator:task:1",
+  "title": "VisionLeak Investigator TaskSpec v1",
+  "description": "Design contract. Host-side registry, authorization, budget and evidence validation are additionally required.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "dataset_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "request_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "goal": {
+      "enum": [
+        "content_audit",
+        "new_entity_generalization",
+        "same_entity_new_view",
+        "unspecified"
+      ]
+    },
+    "goal_confirmed": {
+      "type": "boolean"
+    },
+    "goal_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "uniqueItems": true,
+      "maxItems": 16
+    },
+    "metadata_ref": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "context_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "uniqueItems": true,
+      "maxItems": 32
+    },
+    "entity_key": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "entity_key_confirmed": {
+      "type": "boolean"
+    },
+    "entity_key_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "uniqueItems": true,
+      "maxItems": 16
+    },
+    "protect_eval_split": {
+      "const": true
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_agent_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32,
+          "default": 8
+        },
+        "max_tool_calls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64,
+          "default": 16
+        },
+        "max_core_audit_runs": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8,
+          "default": 3
+        },
+        "max_comparisons_total": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30000000,
+          "default": 1000000
+        },
+        "max_images": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 1000
+        },
+        "max_pairs_per_audit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000,
+          "default": 2000
+        },
+        "max_questions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8,
+          "default": 2
+        },
+        "max_review_pairs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200,
+          "default": 30
+        },
+        "max_llm_requests": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32,
+          "default": 8
+        },
+        "max_tool_wall_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3600,
+          "default": 300
+        },
+        "remote_budget_usd": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "max_decode_pixels_per_image": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000,
+          "default": 64000000
+        },
+        "max_sample_pixels_per_image": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4194304,
+          "default": 4194304
+        },
+        "max_file_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1073741824,
+          "default": 33554432
+        },
+        "max_total_decoded_pixels": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8000000000,
+          "default": 300000000
+        },
+        "max_index_operations_total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 480000000,
+          "default": 16000000
+        },
+        "max_llm_output_tokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32768,
+          "default": 1024
+        },
+        "finalization_reserve_tool_calls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8,
+          "default": 2
+        },
+        "finalization_reserve_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120,
+          "default": 10
+        }
+      },
+      "required": [
+        "max_agent_steps",
+        "max_tool_calls",
+        "max_core_audit_runs",
+        "max_comparisons_total",
+        "max_images",
+        "max_pairs_per_audit",
+        "max_questions",
+        "max_review_pairs",
+        "max_llm_requests",
+        "max_tool_wall_seconds",
+        "remote_budget_usd",
+        "max_decode_pixels_per_image",
+        "max_sample_pixels_per_image",
+        "max_file_bytes",
+        "max_total_decoded_pixels",
+        "max_index_operations_total",
+        "max_llm_output_tokens",
+        "finalization_reserve_tool_calls",
+        "finalization_reserve_seconds"
+      ]
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "remote_model_allowed": {
+          "type": "boolean",
+          "default": false
+        },
+        "disclosure": {
+          "enum": [
+            "none",
+            "aggregates_only",
+            "approved_text"
+          ]
+        },
+        "consent_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "approved_context_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "uniqueItems": true,
+          "maxItems": 32
+        },
+        "remote_images_allowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "remote_model_allowed",
+        "disclosure",
+        "consent_ref",
+        "approved_context_refs",
+        "remote_images_allowed"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "remote_model_allowed": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "disclosure": {
+                "enum": [
+                  "aggregates_only",
+                  "approved_text"
+                ]
+              },
+              "consent_ref": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "disclosure": {
+                "const": "none"
+              },
+              "consent_ref": {
+                "type": "null"
+              },
+              "approved_context_refs": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "disclosure": {
+                "const": "approved_text"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "approved_context_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "dataset_ref",
+    "request_text",
+    "goal",
+    "goal_confirmed",
+    "goal_evidence_refs",
+    "metadata_ref",
+    "context_refs",
+    "entity_key",
+    "entity_key_confirmed",
+    "entity_key_evidence_refs",
+    "protect_eval_split",
+    "limits",
+    "privacy"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "goal_confirmed": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "goal": {
+            "enum": [
+              "content_audit",
+              "new_entity_generalization",
+              "same_entity_new_view"
+            ]
+          },
+          "goal_evidence_refs": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "entity_key_confirmed": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "entity_key": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "metadata_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "entity_key_evidence_refs": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "privacy": {
+            "properties": {
+              "remote_model_allowed": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "limits": {
+            "properties": {
+              "remote_budget_usd": {
+                "exclusiveMinimum": 0
+              },
+              "max_llm_requests": {
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

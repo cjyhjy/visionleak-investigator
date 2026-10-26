@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:visionleak-investigator:claim:1",
+  "title": "ClaimRecord v1",
+  "description": "Structure only. Host must resolve evidence, rules and prerequisites. Statement is rendered by code, not accepted as free model fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "claim_type": {
+      "enum": [
+        "byte_identity",
+        "pixel_identity",
+        "perceptual_relation",
+        "declared_entity_overlap",
+        "same_source_review",
+        "goal_conflict",
+        "no_evidence_in_scope"
+      ]
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      },
+      "uniqueItems": true,
+      "maxItems": 200
+    },
+    "goal_ref": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "coverage_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "status": {
+      "enum": [
+        "confirmed",
+        "candidate",
+        "inconclusive",
+        "unsupported"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 2000
+      },
+      "maxItems": 32
+    },
+    "rule_version": {
+      "const": "vli-claims-1"
+    }
+  },
+  "required": [
+    "claim_id",
+    "claim_type",
+    "statement",
+    "evidence_refs",
+    "goal_ref",
+    "coverage_ref",
+    "status",
+    "limitations",
+    "rule_version"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "claim_type": {
+            "const": "perceptual_relation"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": [
+              "candidate",
+              "inconclusive",
+              "unsupported"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claim_type": {
+            "const": "goal_conflict"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "goal_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        }
+      }
+    }
+  ]
+}
