@@ -17,19 +17,24 @@ def main() -> int:
     r=sub.add_parser('review-import');r.add_argument('--run',type=Path,required=True);r.add_argument('--review',type=Path,required=True)
     r=sub.add_parser('recover');r.add_argument('--run',type=Path,required=True)
     r=sub.add_parser('evaluate');r.add_argument('--out',type=Path,required=True);r.add_argument('--tasks',type=int,default=12);r.add_argument('--suite',choices=['synthetic-engineering'],default='synthetic-engineering')
-    for name in ('eval-validate','eval-freeze','eval-check'):
+    for name in ('eval-validate','eval-freeze','eval-check','eval-run'):
         r=sub.add_parser(name);r.add_argument('--catalog',type=Path,required=True);r.add_argument('--root',type=Path,required=True)
-        r.add_argument('--out',type=Path,required=name=='eval-freeze')
+        r.add_argument('--out',type=Path,required=name in ('eval-freeze','eval-run'))
         if name!='eval-validate':r.add_argument('--protocol',type=Path,required=True)
-        if name=='eval-check':
+        if name in ('eval-check','eval-run'):
             r.add_argument('--frozen',type=Path,required=True);r.add_argument('--partition',choices=['development','validation','test'],required=True)
+        if name=='eval-run':r.add_argument('--replay-of',type=Path)
     args=p.parse_args()
     try:
-        if args.command in ('eval-validate','eval-freeze','eval-check'):
+        if args.command in ('eval-validate','eval-freeze','eval-check','eval-run'):
             from .evaluation_data import validate_catalog,freeze_catalog,verify_frozen
             catalog=read_json(args.catalog);root=args.root.resolve()
             if args.command=='eval-validate':value=validate_catalog(catalog,root)
             elif args.command=='eval-freeze':value=freeze_catalog(catalog,root,read_json(args.protocol),args.out)
+            elif args.command=='eval-run':
+                from .evaluation_runner import run_catalog
+                value=run_catalog(catalog,root,read_json(args.protocol),args.frozen,args.out,partition=args.partition,replay_of=args.replay_of)
+                print(json.dumps(value,ensure_ascii=False));return 1 if value['status']=='rejected' else 2 if value['status']=='completed_with_failures' else 0
             else:value=verify_frozen(read_json(args.frozen),catalog,root,read_json(args.protocol),partition=args.partition)
             if args.out and args.command!='eval-freeze':write_json(args.out,value,exclusive=True)
             print(json.dumps(value,ensure_ascii=False));return 0

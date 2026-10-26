@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:visionleak-investigator:evaluation-truth:1",
+  "title": "Evaluator-only pair truth v1",
+  "description": "Exhaustive means every eligible pair not listed positive is negative. Partial annotation leaves unlisted pairs unknown. Host additionally verifies cross-split paths, task/input binding and exact exclusion. Never register this file as an audit input.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "dataset_manifest_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "goal": {
+      "enum": [
+        "content_audit",
+        "new_entity_generalization",
+        "same_entity_new_view"
+      ]
+    },
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "description"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "synthetic_generation",
+            "source_annotation"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      }
+    },
+    "exact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage",
+        "positive_pairs",
+        "negative_pairs"
+      ],
+      "properties": {
+        "coverage": {
+          "enum": [
+            "exhaustive",
+            "partial"
+          ]
+        },
+        "positive_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        },
+        "negative_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        }
+      }
+    },
+    "related_excluding_exact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage",
+        "positive_pairs",
+        "negative_pairs"
+      ],
+      "properties": {
+        "coverage": {
+          "enum": [
+            "exhaustive",
+            "partial"
+          ]
+        },
+        "positive_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        },
+        "negative_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        }
+      }
+    },
+    "entity_goal_conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage",
+        "positive_pairs",
+        "negative_pairs"
+      ],
+      "properties": {
+        "coverage": {
+          "enum": [
+            "exhaustive",
+            "partial"
+          ]
+        },
+        "positive_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        },
+        "negative_pairs": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "maxItems": 1000000
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "dataset_manifest_digest",
+    "goal",
+    "basis",
+    "exact",
+    "related_excluding_exact",
+    "entity_goal_conflict"
+  ]
+}

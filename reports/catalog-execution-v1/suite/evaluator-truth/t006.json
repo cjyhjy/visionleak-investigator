@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "task_id": "t006",
+  "dataset_manifest_digest": "fbe03907f40e267e1f30c7c881d557e6e64670e19516980bb66c5edd49997799",
+  "goal": "content_audit",
+  "basis": {
+    "kind": "synthetic_generation",
+    "description": "Controlled procedural seed 75006; exact copies/re-encoding, rotation/crop and independent random negative. No natural scene or human annotation."
+  },
+  "exact": {
+    "coverage": "exhaustive",
+    "positive_pairs": [
+      [
+        "test/002.png",
+        "train/001.png"
+      ],
+      [
+        "test/002.png",
+        "validation/003.png"
+      ],
+      [
+        "train/001.png",
+        "validation/003.png"
+      ]
+    ],
+    "negative_pairs": []
+  },
+  "related_excluding_exact": {
+    "coverage": "exhaustive",
+    "positive_pairs": [
+      [
+        "test/002.png",
+        "validation/005.png"
+      ],
+      [
+        "test/004.png",
+        "train/001.png"
+      ],
+      [
+        "test/004.png",
+        "validation/003.png"
+      ],
+      [
+        "test/004.png",
+        "validation/005.png"
+      ],
+      [
+        "train/001.png",
+        "validation/005.png"
+      ]
+    ],
+    "negative_pairs": []
+  },
+  "entity_goal_conflict": {
+    "coverage": "exhaustive",
+    "positive_pairs": [],
+    "negative_pairs": []
+  }
+}

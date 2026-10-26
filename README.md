@@ -108,4 +108,10 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 
 第一条命令生成三组全新合成素材，实际调用后三个 CLI 并验证来源交叉、跨任务真值暴露和协议变化会被拒绝；这是工具验收，不是独立自然图像测试。它也提供 catalog/protocol 格式示例。冻结绑定输入、真值、登记文档、Core、实现代码、策略、Python 依赖、模型声明和重复次数；声明模型不代表授权或调用模型。已冻结文件不能覆盖。
 
-目前此入口验证数据与配置，尚未执行用户自备 catalog 的 A—D 实验。`evaluate` 仍只支持明确标注的合成工程集，其运行前后检查冻结的代码、策略和运行环境，变化即拒绝汇总。来源身份和许可字段是登记信息，不是自动事实核验；应用层真值隔离不防本地管理员或经过改写的答案泄露。详见 `docs/adr/005-evaluation-provenance-and-resources.md`。
+`eval-run` 已接通冻结 catalog 的真实 A/B/C 执行与独立评分进程，D 逐项记录 blocked；执行要求协议使用 `metric_definition: "catalog-pairs-v1"` 和严格绑定输入的 evaluator 真值。运行前后核验冻结配置，数据/实现变化拒绝汇总；失败、部分完成与未知标注保留完整分母。`evaluate` 继续提供原合成工程集。来源身份和许可字段是登记信息，应用层隔离不防本地管理员。执行、指标、重放与边界见 [docs/EVALUATION.md](docs/EVALUATION.md)。
+
+```sh
+.venv/bin/python scripts/catalog_smoke.py --tasks 12 --out runs/catalog-acceptance
+```
+
+此命令生成新的合成来源、分别执行三个评测分区并保留真实 Core 证据；不是独立自然数据实验。正式新数据与模型实验仍需其授权。

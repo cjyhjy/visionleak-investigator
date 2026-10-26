@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T20:29:32.021497+00:00",
+  "updated_at": "2026-10-26T20:43:34.277051+00:00",
   "project_version": "0.1.0",
-  "code_digest": "5124500d656fd4667a433058c4d9ef0bcdbb5e291403659c37dd54d092f95830",
+  "code_digest": "0d7b3566655282266904973bdd8ba0b84b28e08d80919f3cf81d8986201121ce",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -71,7 +71,7 @@
   },
   "M5": {
     "status": "blocked",
-    "reason": "Engineering A/B/C resources and source/freeze gates passed; catalog-driven experiments, independent natural data and model D remain unfinished",
+    "reason": "Catalog A/B/C execution and scoring passed on fresh synthetic partitions; independent natural data and live model D remain unfinished",
     "local_status": "passed",
     "evidence": [
       "reports/engineering-suite/metrics.json",
@@ -80,13 +80,14 @@
       "reports/evaluation-gates/receipt.json",
       "reports/report-demo-final/receipt.json",
       "reports/report-controller-final/receipt.json",
-      "reports/visual-review/report-v2-final/receipt.json"
+      "reports/visual-review/report-v2-final/receipt.json",
+      "reports/catalog-execution-v1/receipt.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
       "resource_accounting": "passed: 36 actual task runs, all CPU and process-tree RSS measured",
       "source_and_freeze_gates": "passed: real CLI acceptance and rejection cases; synthetic fixtures only",
-      "catalog_driven_experiment_runner": "not_run",
+      "catalog_driven_experiment_runner": "passed: strict truth contract, separate scorer, frozen pre/post guards, failures/unknown labels retained, explicit test replay; 36 real synthetic A/B/C runs",
       "independent_natural_validation_test": "not_run",
       "live_model_D": "blocked",
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
@@ -94,25 +95,25 @@
     }
   },
   "verification": {
-    "test_suite": "report-final-regression: 106 passed",
+    "test_suite": "catalog-full-regression-process-access: 115 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T201453016076-report-final-regression.log",
+    "final_log": "reports/logs/20261026T204149614893-catalog-full-regression-process-access.log",
     "ci_evidence": "reports/ci-history/40395014802/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40395014802",
     "tested_commit": "09abc4f698f96db59a779bf179f1b6c5ddd7a8c1",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 106 passed, zero test skips; downloaded artifacts reverified"
+    "ci_for_current_code": "not_run; catalog implementation awaiting new CI"
   },
-  "next_local_command": ".venv-clean/bin/python scripts/report_smoke.py --out runs/next-report-demo",
+  "next_local_command": ".venv-clean/bin/python scripts/catalog_smoke.py --tasks 12 --out runs/next-catalog-execution",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Passed for report implementation 09abc4f; 34 host reports and 18 task resource receipts reverified",
+    "ci": "Pending for catalog changes; prior report CI 40395014802 passed",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Catalog-driven A/B/C execution and independent source/data preparation",
-      "Final scope/delivery audit and remaining reproducibility documentation",
+      "Requirements/delivery audit and remaining reproducibility/interaction-evaluation work",
+      "Independent natural source/data preparation and authorized experiments",
       "Real provider selection/authorization, adapter and live D trajectories",
       "M4 deferred until real Agent stabilizes"
     ],

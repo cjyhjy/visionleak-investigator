@@ -1,0 +1,513 @@
+{
+  "status": "passed",
+  "data_kind": "fresh self-generated synthetic engineering catalog",
+  "tasks": 12,
+  "real_task_runs": 36,
+  "models_called": 0,
+  "real_agent_experiment": "not_run",
+  "source_unchanged": true,
+  "commands": [
+    {
+      "name": "freeze",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/freeze/result.json"
+    },
+    {
+      "name": "run-development",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-development/result.json"
+    },
+    {
+      "name": "run-validation",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-validation/result.json"
+    },
+    {
+      "name": "run-test",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-test/result.json"
+    },
+    {
+      "name": "reject-test-repeat",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "record": "commands/reject-test-repeat/result.json"
+    }
+  ],
+  "states": {
+    "development": {
+      "A": {
+        "COMPLETED": 9,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 9,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 9,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 10,
+        "not_run": 0
+      }
+    },
+    "validation": {
+      "A": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 1,
+        "not_run": 0
+      }
+    },
+    "test": {
+      "A": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 1,
+        "not_run": 0
+      }
+    }
+  },
+  "scores": [
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/A",
+      "score_sha256": "b5c3b6a863f4e78b0162ee98e5d4ffb2949ba2f4a0b96665f7f6b76f43baac38",
+      "cpu_seconds": 0.6236349999999999,
+      "tree_rss_peak_bytes": 119341056
+    },
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/B",
+      "score_sha256": "72226bc67752520b3b92540b30113c6d7b577c70735461d1fc821d934f119361",
+      "cpu_seconds": 0.750285,
+      "tree_rss_peak_bytes": 112738304
+    },
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/C",
+      "score_sha256": "cae66319ec90e307faba4c0c0ab0c1deaa56948d506a626d44ca91449da0d380",
+      "cpu_seconds": 1.148336,
+      "tree_rss_peak_bytes": 113573888
+    },
+    {
+      "partition": "development",
+      "task_id": "t001",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t001/r01/A",
+      "score_sha256": "bd3c89a18115bb0e96fbdfccd4977aa5061f548a32e03ba1fb4b793717116587",
+      "cpu_seconds": 0.641257,
+      "tree_rss_peak_bytes": 112852992
+    },
+    {
+      "partition": "development",
+      "task_id": "t001",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t001/r01/B",
+      "score_sha256": "eaeb0eda709132919851fa756ba9e923a0332a90bc57328be0cc40ad81c11c14",
+      "cpu_seconds": 0.715414,
+      "tree_rss_peak_bytes": 122470400
+    },
+    {
+      "partition": "development",
+      "task_id": "t001",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t001/r01/C",
+      "score_sha256": "5f9878e4e84438119428c47521dcfc9619785ca96d273b3da82139130115d581",
+      "cpu_seconds": 1.120574,
+      "tree_rss_peak_bytes": 122601472
+    },
+    {
+      "partition": "development",
+      "task_id": "t002",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t002/r01/A",
+      "score_sha256": "1d6fd2a101ac41270544c09422ad20c50b5ed7ab7290494c69af86f857aed6e3",
+      "cpu_seconds": 0.592252,
+      "tree_rss_peak_bytes": 121241600
+    },
+    {
+      "partition": "development",
+      "task_id": "t002",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t002/r01/B",
+      "score_sha256": "4adbc638578319894a5f8d0e0dd3b3b83384575bb681501958c32e2d381bdb3e",
+      "cpu_seconds": 0.6885669999999999,
+      "tree_rss_peak_bytes": 135675904
+    },
+    {
+      "partition": "development",
+      "task_id": "t002",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t002/r01/C",
+      "score_sha256": "c222c2b6a45e1e600c81de43a895ddecfecd3f5257c3476ed99d6ab941c2a4e7",
+      "cpu_seconds": 1.141552,
+      "tree_rss_peak_bytes": 132595712
+    },
+    {
+      "partition": "development",
+      "task_id": "t003",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t003/r01/A",
+      "score_sha256": "204cc42dc63431d0330df4c27830a4ed02fa48556c31ad792332a75f1a7bca95",
+      "cpu_seconds": 0.6226499999999999,
+      "tree_rss_peak_bytes": 113115136
+    },
+    {
+      "partition": "development",
+      "task_id": "t003",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t003/r01/B",
+      "score_sha256": "c76825bd25c236e5fee595f614e16881922b715c5df73ac54cdf31ac00a13fef",
+      "cpu_seconds": 0.716434,
+      "tree_rss_peak_bytes": 134463488
+    },
+    {
+      "partition": "development",
+      "task_id": "t003",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t003/r01/C",
+      "score_sha256": "642eb39bae2822aebf38a38d9d4fcc76a0074290b0ad0963b74a379425b83165",
+      "cpu_seconds": 1.1655469999999999,
+      "tree_rss_peak_bytes": 123224064
+    },
+    {
+      "partition": "development",
+      "task_id": "t004",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t004/r01/A",
+      "score_sha256": "ed012a47e63a6aa246523c7e99bc225676e36f33005712b8daece7ed94d0e4bb",
+      "cpu_seconds": 0.6246659999999999,
+      "tree_rss_peak_bytes": 111951872
+    },
+    {
+      "partition": "development",
+      "task_id": "t004",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t004/r01/B",
+      "score_sha256": "0c045ab498e51d08dc6d866024f3497a6e99763d2b178f2d312c43731022c93c",
+      "cpu_seconds": 0.7061769999999999,
+      "tree_rss_peak_bytes": 114638848
+    },
+    {
+      "partition": "development",
+      "task_id": "t004",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t004/r01/C",
+      "score_sha256": "7d0937319122b3681c46705a1d5a9ed3b65903020e19b8f9232b13234bd727e5",
+      "cpu_seconds": 1.1506889999999999,
+      "tree_rss_peak_bytes": 112820224
+    },
+    {
+      "partition": "development",
+      "task_id": "t005",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t005/r01/A",
+      "score_sha256": "7363587b1024f9b774bce89539ac650b987a6dd186de9a2d31cb7f34bb246f39",
+      "cpu_seconds": 0.587969,
+      "tree_rss_peak_bytes": 113426432
+    },
+    {
+      "partition": "development",
+      "task_id": "t005",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t005/r01/B",
+      "score_sha256": "314c2e84895a575c7d9589b00bfaf6ac08ce3bc143338e44b50b3c802fdc484e",
+      "cpu_seconds": 0.692937,
+      "tree_rss_peak_bytes": 113442816
+    },
+    {
+      "partition": "development",
+      "task_id": "t005",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t005/r01/C",
+      "score_sha256": "7d983e71012d839a55cc14f12600063d9d512417b294d2344f768a1be7d7e543",
+      "cpu_seconds": 1.156528,
+      "tree_rss_peak_bytes": 111296512
+    },
+    {
+      "partition": "development",
+      "task_id": "t006",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t006/r01/A",
+      "score_sha256": "7fcc64ee2e4ba37bfff68585d5cc8ce84c7b60c8b2eb7112046120f60834b409",
+      "cpu_seconds": 0.615429,
+      "tree_rss_peak_bytes": 99237888
+    },
+    {
+      "partition": "development",
+      "task_id": "t006",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t006/r01/B",
+      "score_sha256": "e797fef8bc9798a2b4ac75ddd62ae9e83d15c18ffd9c53de95cee7fc853fad54",
+      "cpu_seconds": 0.695465,
+      "tree_rss_peak_bytes": 124108800
+    },
+    {
+      "partition": "development",
+      "task_id": "t006",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t006/r01/C",
+      "score_sha256": "a9f70e106905310793f5523826eb359f69a295167b298c238024259ad7e89242",
+      "cpu_seconds": 1.1057199999999998,
+      "tree_rss_peak_bytes": 132775936
+    },
+    {
+      "partition": "development",
+      "task_id": "t007",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t007/r01/A",
+      "score_sha256": "04d2f9886757c452e9f6c9da31aa064c05d603ce59df5751bad19c174f572e51",
+      "cpu_seconds": 0.605614,
+      "tree_rss_peak_bytes": 119701504
+    },
+    {
+      "partition": "development",
+      "task_id": "t007",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t007/r01/B",
+      "score_sha256": "a4a87ce8428fae8e933d9cd596abff25717645446ea4b2de1e368629ffbd8886",
+      "cpu_seconds": 0.736761,
+      "tree_rss_peak_bytes": 111558656
+    },
+    {
+      "partition": "development",
+      "task_id": "t007",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t007/r01/C",
+      "score_sha256": "1529bdbf56413e9f993cb7560d288e7999665ccc5f2566165be0f02934dadca1",
+      "cpu_seconds": 1.1054869999999999,
+      "tree_rss_peak_bytes": 134938624
+    },
+    {
+      "partition": "development",
+      "task_id": "t008",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t008/r01/A",
+      "score_sha256": "6c69fcdcab443e9214c22a50129243ffdcff2dd431f4b3b640acf7474536f88b",
+      "cpu_seconds": 0.6279969999999999,
+      "tree_rss_peak_bytes": 111984640
+    },
+    {
+      "partition": "development",
+      "task_id": "t008",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t008/r01/B",
+      "score_sha256": "77d49f7ad7027ffa4d5da413fbbb9c9dd8ae0f91b3e290835a3140be949688c9",
+      "cpu_seconds": 0.7209639999999999,
+      "tree_rss_peak_bytes": 131776512
+    },
+    {
+      "partition": "development",
+      "task_id": "t008",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t008/r01/C",
+      "score_sha256": "0c3e8f1154da66d5ce6a346afa21e016f3e8dccf590b2b173e15ed5bb110a8b7",
+      "cpu_seconds": 1.135958,
+      "tree_rss_peak_bytes": 124010496
+    },
+    {
+      "partition": "development",
+      "task_id": "t009",
+      "condition": "A",
+      "state": "PARTIAL",
+      "run": "results/development/runs/t009/r01/A",
+      "score_sha256": "e16bdd913abf67e0cefeeb2fbdd6aaf59fdab10b268af3c3617f7b0312bb4433",
+      "cpu_seconds": 0.630921,
+      "tree_rss_peak_bytes": 93847552
+    },
+    {
+      "partition": "development",
+      "task_id": "t009",
+      "condition": "B",
+      "state": "PARTIAL",
+      "run": "results/development/runs/t009/r01/B",
+      "score_sha256": "d33b3e95b1ac5a103f5daebcc18fd68ce625f51cce3323c7f8b6c22f0bcb2ee2",
+      "cpu_seconds": 0.723617,
+      "tree_rss_peak_bytes": 118226944
+    },
+    {
+      "partition": "development",
+      "task_id": "t009",
+      "condition": "C",
+      "state": "PARTIAL",
+      "run": "results/development/runs/t009/r01/C",
+      "score_sha256": "3378913903af4e9fbdb4101d80a3a8ac7defb784062c8f944ffc65b45db9c0fb",
+      "cpu_seconds": 1.200893,
+      "tree_rss_peak_bytes": 137363456
+    },
+    {
+      "partition": "validation",
+      "task_id": "t010",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t010/r01/A",
+      "score_sha256": "8bb4b737c079c69b5e90075ab9ca62d67f58dff28af8cc108fd9ee27bb79edac",
+      "cpu_seconds": 0.664812,
+      "tree_rss_peak_bytes": 126746624
+    },
+    {
+      "partition": "validation",
+      "task_id": "t010",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t010/r01/B",
+      "score_sha256": "9ff3be34d0732bc3e40a4cf160b9ea24a3fc3c89956e55a250b882e4742f0a6d",
+      "cpu_seconds": 0.823809,
+      "tree_rss_peak_bytes": 123699200
+    },
+    {
+      "partition": "validation",
+      "task_id": "t010",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t010/r01/C",
+      "score_sha256": "88c51298f52bb4a5bd16f518f5e3a41b5b2d819234429d585555aaebbcf12131",
+      "cpu_seconds": 1.319407,
+      "tree_rss_peak_bytes": 128040960
+    },
+    {
+      "partition": "test",
+      "task_id": "t011",
+      "condition": "A",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t011/r01/A",
+      "score_sha256": "f7ad934a997e60907b62cf5f5746c5041559c048c548887904d68071ec5ad359",
+      "cpu_seconds": 0.67492,
+      "tree_rss_peak_bytes": 98304000
+    },
+    {
+      "partition": "test",
+      "task_id": "t011",
+      "condition": "B",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t011/r01/B",
+      "score_sha256": "3fcf399a3cd9d6fcfcc79f30e38e661d98d67f87cf25352aed0905d9b5167125",
+      "cpu_seconds": 0.72117,
+      "tree_rss_peak_bytes": 134807552
+    },
+    {
+      "partition": "test",
+      "task_id": "t011",
+      "condition": "C",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t011/r01/C",
+      "score_sha256": "ca2f7aa2554c0bc82a4d724df483d582a1d39b4583e060bc7cf54bdfbbc78b30",
+      "cpu_seconds": 0.624789,
+      "tree_rss_peak_bytes": 112607232
+    }
+  ],
+  "freeze_digest": "11d538c3c3911b5e7fd97225c11b60ddc22e7a1be9861751c26a1890d3ee1834",
+  "limitations": [
+    "Synthetic validation/test partition labels exercise execution gates only; no independent natural-scene experiment.",
+    "No actual human participant or measured human time savings.",
+    "D blocked; E not_run."
+  ]
+}

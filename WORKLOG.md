@@ -59,3 +59,9 @@ Chrome 页面初验：实际打开完成、预算不足、脚本控制器待澄�
 Chrome 实际验收：桌面与临时 390×844 窄屏下查看 6 个最终报告，证据片段、缩略图、原始 JSON 导航、折叠明细、预算和修订提示可用，无采样页面横向溢出。8 张截图、DOM 与服务日志保存在 reports/visual-review/report-v2-final。立即读取 lazy 图片时 ready=false，随后的真实截图已显示图片；保留早期采样，未伪造最终 DOM-ready 断言。直接 file:// 核验被浏览器 URL 策略拒绝（仅支持 http/https），未绕过，不宣称验证直接文件模式。临时视口已恢复、本地服务已关闭。新文档 docs/REPORTS.md 与更新的三分钟脚本 docs/DEMO.md 对应实际产物；没有录制视频。当前代码快照 reports/source-manifests/report-presentation.json，等待推送后双平台 CI。
 
 报告实现提交 `09abc4f698f96db59a779bf179f1b6c5ddd7a8c1` 已公开推送。CI 40395014802 在 Ubuntu 24.04/macOS 14 各 106 passed、零测试 skip；两平台真实 Core 审计、脚本控制器、来源门禁、资源评测与报告演示均通过。下载的原始 ZIP 与 GitHub artifact SHA-256 一致；`report-ci-artifact-integrity` 退出码 0，复核 34 份宿主报告及其 Core 身份/claims/输入和账本摘要、页面链接/缩略图与 18 份任务资源收据。原始证据见 reports/ci-history/40395014802/verification.json。模型调用仍为 0，catalog 执行器、独立自然数据和真实 Agent 实验仍未完成。
+
+catalog 执行器已实现：严格 evaluator-only 真值 schema、冻结 metric_definition=catalog-pairs-v1、同输入/总预算 A/B/C 真实工作进程、独立评分进程、执行前后冻结检查、完整预登记次数与 test 首次执行/replay 标记。完整/部分标注分开；未知候选不算假阳性；失败工作进程的已知正例保留在分母，评分失败则拒绝成功子集汇总。命令/环境/资源/原始证据和未运行条目均保留。没有模型请求或新自然数据采集。
+
+专项验收先 5 passed，再 8 passed；集成发现规则的 max_core_audit_runs=1 会在基础扫描前拒绝补充计划，修正为执行 base 并明确 PARTIAL 和未执行 profile；显式非法 profile 列表仍拒绝。加入真实子进程启动失败（缺失可执行文件）的受控故障验收，未替换 Core 检测器。catalog-full-regression 为 114 passed/1 skipped（沙箱禁止进程枚举）；在可读取进程资源权限下复验 catalog-full-regression-process-access 为 115 passed、零 skip。日志见 reports/commands.jsonl。
+
+catalog-frozen-cli 通过：12 个全新受控合成任务，development=10/validation=1/test=1，36 次真实 A/B/C 运行；每条件 10 COMPLETED+2 PARTIAL，D 共 12 blocked，E not_run。所有任务 CPU/RSS 资源收据与独立评分保存，报告/原始 Core 身份再验通过；普通重复 test 请求退出 1，未创建新实验目录。该分区命名只验证执行管线，不能称独立自然测试或 Agent 收益。证据 reports/catalog-execution-v1/receipt.json；源快照 reports/source-manifests/catalog-execution.json。新增 docs/EVALUATION.md 与 ADR-006，CI 已接入新的三任务 catalog smoke，远端结果待推送核验。

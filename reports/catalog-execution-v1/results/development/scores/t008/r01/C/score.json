@@ -1,0 +1,440 @@
+{
+  "metric_definition": "catalog-pairs-v1",
+  "task_id": "t008",
+  "truth_digest": "b1f706ca1abeb9fd70b4c8d22dfb1b1dcc9a7d526e7d9d309f4e8c09b7112dee",
+  "dataset_manifest_digest": "d5f324467c7e3f94941a16e0754d7f6a9080737d6da6d582d61e2763455912bf",
+  "usable_output": true,
+  "failure": null,
+  "source_unchanged": true,
+  "state": "COMPLETED",
+  "exact": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 3,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 3,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "meaning": "Full eligible population"
+  },
+  "related_excluding_exact": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 3,
+    "predicted_pairs": 2,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 9,
+    "truth_denominator": 5,
+    "truth_denominator_complete": true,
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285714,
+    "labeled_subset": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285714
+    },
+    "meaning": "Full eligible population"
+  },
+  "entity_goal_conflict": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "predicted_pairs": 0,
+    "unknown_predicted_pairs": 0,
+    "eligible_pairs": 12,
+    "truth_denominator": 0,
+    "truth_denominator_complete": true,
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "labeled_subset": {
+      "precision": null,
+      "recall": null,
+      "f1": null
+    },
+    "meaning": "Full eligible population"
+  },
+  "candidate_burden": 2,
+  "candidate_pairs_per_1000_images": 333.3333333333333,
+  "pending_review_pairs": 2,
+  "invalid_approximate_candidates": 0,
+  "unknown_approximate_candidates": 0,
+  "claim_validation": "passed",
+  "unsupported_confirmed_claims": 0,
+  "prediction_policy": "Only validated published claims; failed attempts have no usable predictions and retain full positive denominators",
+  "coverage": {
+    "input_manifest_digest": "d5f324467c7e3f94941a16e0754d7f6a9080737d6da6d582d61e2763455912bf",
+    "input_preflight": {
+      "digest": "d5f324467c7e3f94941a16e0754d7f6a9080737d6da6d582d61e2763455912bf",
+      "image_count": 6,
+      "estimated_source_pixels": 55296,
+      "header_unknown_count": 0,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "base": {
+        "audit_id": "3173f05497f023d13cbdd7ebb21facd2d4ac449b068750258361dc9b9f41b3e7",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "fcf1c1f8704f1944e1229b53fea16b10fe3bebc106824e236e230454c0089aa1",
+        "complete": true,
+        "discovered_at_least": 6,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 6,
+          "discoveredAtLeast": 6,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 17,
+          "index_operations": 0,
+          "decoded_pixels": 55296,
+          "wall_seconds": 0.16363345785066485
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      },
+      "all": {
+        "audit_id": "e945c49533b2446de4717ca8979c1d734462221622f3f054477fe7c73f71574f",
+        "report_ref": "tools/call-0004/output/report.json",
+        "report_sha256": "43a8e79ea913e83966175dd5b6b24f59c630a2c02dc69f29e5aced6cd8d48bf9",
+        "complete": true,
+        "discovered_at_least": 6,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 6,
+          "discoveredAtLeast": 6,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 2723,
+          "index_operations": 0,
+          "decoded_pixels": 55296,
+          "wall_seconds": 0.15593633288517594
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      }
+    },
+    "metadata": {
+      "state": "not_applicable",
+      "issues": []
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {
+      "3173f05497f023d13cbdd7ebb21facd2d4ac449b068750258361dc9b9f41b3e7": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "3173f05497f023d13cbdd7ebb21facd2d4ac449b068750258361dc9b9f41b3e7",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "10e3bf7f8a7f5a349af70bcbe2d527675be7c4077a926144ff4253ffe118547b",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "10e3bf7f8a7f5a349af70bcbe2d527675be7c4077a926144ff4253ffe118547b",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 0
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      },
+      "e945c49533b2446de4717ca8979c1d734462221622f3f054477fe7c73f71574f": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "e945c49533b2446de4717ca8979c1d734462221622f3f054477fe7c73f71574f",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "10e3bf7f8a7f5a349af70bcbe2d527675be7c4077a926144ff4253ffe118547b",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "c50413ff5197be330a1bf60b2bf88559a665bc42a55ed066d7549bb9648abd18",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "10e3bf7f8a7f5a349af70bcbe2d527675be7c4077a926144ff4253ffe118547b",
+                "pixelDigest": "67345349dfd928f64c0fab88bdd876690c21dd342b2bcfdff4816542e2743047"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 2
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "truth_sha256": "f0dc38437860d70a7e7637cbccffdc8890e12e0455647499dcfc213ff49a96f3"
+}

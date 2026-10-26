@@ -44,7 +44,11 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     planned=mode=='scripted_test_only' and planner_request is not None
     if planned and task['privacy']['remote_model_allowed']:raise ValueError('Scripted acceptance requires local-only task privacy')
     if mode!='rules' and not planned:raise ValueError('Agent mode requires explicit model authorization and a validated provider adapter; no rules fallback')
-    profiles=profiles or rules_profiles(task)
+    omitted_profiles=[]
+    if profiles is None:
+        requested=rules_profiles(task)
+        profiles=requested[:task['limits']['max_core_audit_runs']]
+        omitted_profiles=requested[len(profiles):]
     if not profiles or (not baseline and profiles[0]!='base') or len(set(profiles))!=len(profiles) or any(p not in PROFILES for p in profiles) or len(profiles)>min(3,task['limits']['max_core_audit_runs']):raise ValueError('Unique profiles must start with base and fit audit count budget')
     root=registry.dataset(task['dataset_ref']);out=no_symlink(out)
     if out.is_relative_to(root) or root.is_relative_to(out):raise ValueError('Output and dataset paths must be disjoint')
@@ -56,7 +60,9 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     write_json(out/'task.json',task,exclusive=True);write_json(out/'registry.private.json',registry_data,exclusive=True)
     write_json(out/'input-manifest.json',before,exclusive=True)
     ledger=BudgetLedger(task['limits'],out/'ledger.json');issues=[];evidence=[];claims=[];completed=[]
+    if omitted_profiles:issues.append('Audit run budget prevents supplemental profiles: '+', '.join(omitted_profiles))
     coverage={'input_manifest_digest':before['digest'],'input_preflight':{k:v for k,v in before.items() if k!='files'},'profiles':{},'metadata':{'state':'not_run'},'human_review':{'state':'not_run'},'verification':{}}
+    if omitted_profiles:coverage['unexecuted_profiles']=[{'profile':p,'reason':'max_core_audit_runs'} for p in omitted_profiles]
     env={};adapter=CoreAdapter(core_path)
     manifest={'schema_version':1,'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry_data),'dataset_manifest_digest':before['digest'],'core_lock_digest':file_hash(PROJECT/'core.lock.json'),'runtime_lock_digest':file_hash(PROJECT/'core.runtime.lock.json'),'policy':{'name':'scripted-planner-test' if planned else 'baseline-'+baseline if baseline else 'rules-v1','profiles':profiles},'mode':mode,'model_execution':'not_run','code_digest':code_digest()}
     write_json(out/'manifest.json',manifest,exclusive=True)

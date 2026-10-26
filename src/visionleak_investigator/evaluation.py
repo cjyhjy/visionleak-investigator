@@ -10,7 +10,7 @@ from .core import execute
 def resource_totals(rows: list[dict]) -> dict:
     totals={}
     for condition in ('A','B','C','D'):
-        selected=[r for r in rows if r['condition']==condition and r['state']!='blocked']
+        selected=[r for r in rows if r['condition']==condition and r['state'] not in ('blocked','not_run')]
         measured=[r['full_task_resources'] for r in selected if r.get('full_task_resources')]
         rss=[m['tree_rss_peak_bytes'] for m in measured if m.get('tree_rss_peak_bytes') is not None]
         totals[condition]={'attempted_runs':len(selected),'cpu_measured_runs':len(measured),
