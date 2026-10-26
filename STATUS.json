@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T22:33:49.502053+00:00",
+  "updated_at": "2026-10-26T22:43:32.172689+00:00",
   "project_version": "0.1.0",
   "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
   "original_core_modified": false,
@@ -118,17 +118,17 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T222956082465-contract-binding-final-regression.log",
-    "ci_evidence": "reports/ci-history/40409535123/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40409535123",
-    "tested_commit": "1ef1732e19f37ecdfd5e98b2031413abd623f0cd",
-    "ci_for_current_code": "pending: contract, transcript and metadata fixes await CI; previous 1ef1732 CI remains historical"
+    "ci_evidence": "reports/ci-history/40413457832/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40413457832",
+    "tested_commit": "fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 164 tests, zero skips; downloaded artifacts independently verified"
   },
   "next_local_command": ".venv-clean/bin/python -m pytest -q tests/acceptance/test_loop.py tests/acceptance/test_planned_loop.py",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Current implementation pending CI; previous 40409535123 verified 149 tests per platform.",
+    "ci": "40413457832 passed: 114 host reports, 38 metadata field reports, 24 interaction scores and 12 binding rejections independently reverified, plus prior resource/catalog/lifecycle/export cases.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Complete and freeze strong C routing using registered descriptions, metadata/coverage and budget; preserve prompt-injection boundaries.",

@@ -18,9 +18,11 @@
     "tests/acceptance/test_interaction_evaluation.py"
   ],
   "scope": "Expected initial task, dataset, registry, limits, revision parents and exact question/answer chain bound before scoring. Explicit metadata column/value absence, no invented member provenance. Real Core; no model/human experiment.",
-  "ci_status": "pending",
+  "ci_status": "passed",
   "remaining_local": [
     "Complete strong C routing from registered descriptions, metadata and coverage; preserve untrusted-data/budget gates.",
     "Finish full clause and delivery artifact audit."
-  ]
+  ],
+  "ci_evidence": "reports/ci-history/40413457832/verification.json",
+  "implementation_commit": "fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618"
 }

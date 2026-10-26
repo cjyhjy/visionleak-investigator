@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "data_kind": "self-generated controlled synthetic fixtures and optional verified historical synthetic evidence reuse",
+  "human_inputs": "scripted fixture answers, no human participant",
+  "cases": [
+    {
+      "case": "fresh_revision",
+      "status": "passed",
+      "original_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+      "processor_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+      "evidence_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+      "core_reexecuted_for_revision": false,
+      "historical_source": null
+    },
+    {
+      "case": "conservative_recovery",
+      "status": "passed",
+      "interruption_kind": "controlled final-artifact removal, not an observed production crash",
+      "raw_records_preserved": 9,
+      "accepted_image_evidence_count": 0,
+      "core_reexecuted": false,
+      "idempotent": true
+    },
+    {
+      "case": "hard_negatives",
+      "status": "passed",
+      "known_false_candidates": 4,
+      "candidate_burden": 4,
+      "exact_predictions": 0,
+      "score": "negative/score.json"
+    }
+  ],
+  "reports": [
+    {
+      "case": "fresh_original",
+      "run": "fresh/run",
+      "state": "COMPLETED",
+      "manifest_sha256": "29be957dc029baf7907a064a0bb73e4ec196607ff637f5adb0b7f7334bf9ea06",
+      "report_sha256": "2965f10dd2a41e3ede67ce7e60b2a6951e5b8449f7c2a76ffc4f3729713a7f4e"
+    },
+    {
+      "case": "fresh_revision",
+      "run": "fresh/run/revisions/8c838af99a4f579056e23f91eab3301942f12a7b59f5fa765b988c3840d6f1ea",
+      "state": "PARTIAL",
+      "manifest_sha256": "f7e9840d0c6ecb5775b18b0d73aa37ca60b43a799f99f92e58bfd3b4373097c5",
+      "report_sha256": "8db42f353235160f5ebdfcf970bc8305522c943c7975c774cd99dcca73ccd2b1"
+    },
+    {
+      "case": "conservative_recovery",
+      "run": "recovery/run",
+      "state": "PARTIAL",
+      "manifest_sha256": "5aba67c094c1f750aca305c0489cc8d2f0874da1b502b35feaae230943e5660f",
+      "report_sha256": "4768cefbb8c1902f6849830f6a47133006eccd12559977c3462cf4d056d1b3ea"
+    },
+    {
+      "case": "revision_after_recovery",
+      "run": "recovery/run/revisions/595e5092588eea5541451b2cea4cfbc26249a6dd2feb3c4a5f076f90b3353674",
+      "state": "PARTIAL",
+      "manifest_sha256": "2a14b854e61a15c40b4440500c5d6d7ddb442fd494f01c1bc942ef90ed186291",
+      "report_sha256": "0d8f6066795a018dae7f46a4fe1285e0ed19664986ac73ba236622276d73954d"
+    },
+    {
+      "case": "hard_negatives",
+      "run": "negative/run",
+      "state": "COMPLETED",
+      "manifest_sha256": "ba3863fa71416f9f11722812a8a19d8c502bf4618271435409d9c192c4b20bf3",
+      "report_sha256": "d0b22a7f8e595b86d81b7a90aa2b47f40d99e80b2a069c406b07d41b8aa21402"
+    }
+  ]
+}

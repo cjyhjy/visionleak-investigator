@@ -95,3 +95,7 @@ CSV/交互/人审实现 `1ef1732e19f37ecdfd5e98b2031413abd623f0cd` 的 CI 404095
 元数据新增逐字段存在性覆盖，区分缺列、短行缺值、空白值和非空值；空表、自定义实体列及多余单元格有验收。缺会话/来源列不伪装为字段完整，也不自动否定完整实体映射；缺失的成员 provenance_ref 写 null，HTML 显示缺列/缺值。最终 contract-binding-final-regression 为 164 passed、零 skip；源快照 reports/source-manifests/contract-binding.json。新的 reports/interaction-contract-binding-v1 保存 12 个真实 C 运行、12 个 blocked D 和 6 个评分边界拒绝；仍为合成数据和脚本回答，模型调用 0。
 
 全量条款核对继续：真实双运行复现 rules-v1 的上下文路由缺口（reports/rules-context-gap-v1/receipt.json）。同一旋转/镜像说明只放登记 Markdown 时仅执行 base；移入 request_text 才执行 base+transform。源图不变，说明已实际读取。这尚不满足规划中强 C 基线根据可见说明/元数据/覆盖选择补充检查的范围，保留下一步实施；不把本轮测试通过写成全部本地工作完成。当前修复等待推送后的跨平台 CI，原 Core scoped git status 为空。
+
+契约绑定修复 `fa2ad2a1eebf22f16ae1fbfef288822bfcfb6618` 已公开推送。CI 40413457832 在 Ubuntu 24.04/macOS 14 各 164 passed、零测试 skip。ZIP SHA-256 与 GitHub 元数据一致；contract-binding-ci-integrity-summary 退出 0，重验 114 份报告、38 份元数据字段覆盖、24 份交互评分、12 个评分绑定拒绝，以及 36 份资源收据、18 份 catalog 评分和已有生命周期/清单/CSV/半写报告证据。提取脚本、原始记录、校验脚本和结果位于 reports/ci-history/40413457832。
+
+首次复核的 JUnit 断言和 verification JSON 已正确记录 164，但控制台摘要沿用了 149 的旧常量；现改为从已核验结果计算摘要并复跑通过。初次回执 verification.initial.json 与两次实际日志均保留。此修正只影响复核脚本摘要，不改变实现或测试结果。模型调用 0；强规则上下文路由及完整交付条款审计仍为未完成。

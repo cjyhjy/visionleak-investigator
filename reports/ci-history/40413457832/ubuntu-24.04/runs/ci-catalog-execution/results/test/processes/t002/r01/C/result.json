@@ -1,0 +1,58 @@
+{
+  "argv": [
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python",
+    "-m",
+    "visionleak_investigator.evaluation_worker",
+    "--task",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite/tasks/t002/task.json",
+    "--registry",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite/tasks/t002/registry.json",
+    "--out",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/results/test/runs/t002/r01/C",
+    "--condition",
+    "C"
+  ],
+  "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-26T22:37:49.831439+00:00",
+  "timeout_seconds": 330,
+  "status": "returned",
+  "exit_code": 2,
+  "error": null,
+  "wall_seconds": 0.6682409039999868,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.704919,
+    "cpu_system_seconds": 0.111486,
+    "cpu_seconds": 0.8164049999999999,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 95842304,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 125620224,
+    "observed_rss_peak_bytes": 125620224,
+    "root_rss_peak_bytes": 31199232,
+    "sample_interval_seconds": 0.02,
+    "samples": 31,
+    "observed_process_count": 5,
+    "peak_members": [
+      {
+        "pid": 13200,
+        "rss_bytes": 30920704
+      },
+      {
+        "pid": 13214,
+        "rss_bytes": 94699520
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 0,
+    "sampler_wall_seconds": 0.6677035870000054,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

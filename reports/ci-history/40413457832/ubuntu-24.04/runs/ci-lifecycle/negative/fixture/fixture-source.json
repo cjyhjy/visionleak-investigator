@@ -1,0 +1,24 @@
+{
+  "kind": "synthetic declared hard negatives",
+  "independent_test": false,
+  "license": "self-generated",
+  "model_calls": 0,
+  "generator_version": 1,
+  "parameters": {
+    "size": [
+      48,
+      48
+    ],
+    "flat_values": [
+      60,
+      90
+    ],
+    "gradient_base": 20,
+    "gradient_step": 4,
+    "gradient_offsets": [
+      0,
+      20
+    ]
+  },
+  "truth_basis": "Four separately constructed synthetic source records; all cross-split pairs labelled unrelated for this controlled negative test, not a natural-scene source judgement."
+}

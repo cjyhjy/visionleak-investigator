@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T22:37:33.715930+00:00",
+  "task_digest": "b996fa113bace7bd2def9f57ca7ee17a2960b5dfca2017a98034ebfecfc87061",
+  "registry_digest": "d8a20028c23ad7c0425838ba46ebe918331bd1838aa8fb43013c69b17e19d0ca",
+  "dataset_manifest_digest": "2af07b27c3ed746882942d35278d0ca2a34e5aa4f44e74faa4eb1871de1d5e5e",
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7",
+  "policy": {
+    "name": "rules-v1",
+    "profiles": [
+      "base"
+    ]
+  },
+  "mode": "rules",
+  "model_execution": "not_run",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "image_evidence_origin": {
+    "manifest_digest": "e4712d83c5c85aa3b1ac1ae5cacff4ecd0634926a3ab8cdaa34fac55d17ce741",
+    "investigator_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+    "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+    "runtime_lock_digest": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7"
+  },
+  "parent_report_digest": "f6eaa2b8588e47ef74ac167de476db74573e106e02e0bb517e922c079c0cb029",
+  "evidence_reused_from": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-report-demo/clarification/run",
+  "parent_manifest_digest": "e4712d83c5c85aa3b1ac1ae5cacff4ecd0634926a3ab8cdaa34fac55d17ce741",
+  "revision_kind": "answers",
+  "supersedes_risk_interpretation": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-report-demo/clarification/run",
+  "core_reexecuted": false
+}

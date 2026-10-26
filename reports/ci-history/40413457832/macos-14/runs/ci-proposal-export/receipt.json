@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+  "rows": 6,
+  "exports": [
+    {
+      "status": "exported_suggestion_only",
+      "format": "json",
+      "output": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-proposal-export/exports/suggestion.json",
+      "sha256": "ad6c66f120ffbb07559785116a8df381032287f66cda1dee1d316c8b3bfecc9c",
+      "rows": 6,
+      "source_manifest_digest": "4817b98ddc284131a5cf055a32d097fee759e34786e0335bf70a4cbe23247edf",
+      "audit_manifest_digest": "953f671ff4ef29fe880afaf4c1e1d37543cceb8ce24e1975695106d7619a427b",
+      "audit_report_digest": "0e3fe9caae36fdc10674df0e101ea408af63501b59b40241536dff396364da31",
+      "evidence_sha256": "1e63d0004245bdf89398b70570f6295ff87bb5d84b287db8d5060e8c599dd2ff",
+      "processor_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+      "requires_approval": true,
+      "image_reaudit": "not_run",
+      "source_files_modified": false,
+      "text_encoding": null,
+      "audit_state": "COMPLETED",
+      "known_conflicts_remaining": [
+        "call-0002:pair:1"
+      ],
+      "limitations": [
+        "Requires class/sample-balance review before applying.",
+        "Existing trained models may require retraining and independent evaluation.",
+        "No source files were modified.",
+        "CSV is a presentation export, not a Core or training manifest.",
+        "Partial audit coverage remains partial; exporting is not approval or a new image audit."
+      ],
+      "execution": {
+        "wall_seconds": 0.014438041999994766,
+        "core_audit_runs": 0,
+        "model_calls": 0,
+        "accounting": "standalone export; original audit ledger unchanged"
+      }
+    },
+    {
+      "status": "exported_suggestion_only",
+      "format": "csv",
+      "output": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-proposal-export/exports/suggestion.csv",
+      "sha256": "81a49f391af2ce1158422ad8969bd1594d104aaa4417f103acf46e0da46ee036",
+      "rows": 6,
+      "source_manifest_digest": "4817b98ddc284131a5cf055a32d097fee759e34786e0335bf70a4cbe23247edf",
+      "audit_manifest_digest": "953f671ff4ef29fe880afaf4c1e1d37543cceb8ce24e1975695106d7619a427b",
+      "audit_report_digest": "0e3fe9caae36fdc10674df0e101ea408af63501b59b40241536dff396364da31",
+      "evidence_sha256": "1e63d0004245bdf89398b70570f6295ff87bb5d84b287db8d5060e8c599dd2ff",
+      "processor_code_digest": "07c084ba7b1a525ee3058e2e5aaa934bec78dee577f11adbee9cd2737d6d59be",
+      "requires_approval": true,
+      "image_reaudit": "not_run",
+      "source_files_modified": false,
+      "text_encoding": "text: followed by a JSON string; decode only as data, never as a formula",
+      "audit_state": "COMPLETED",
+      "known_conflicts_remaining": [
+        "call-0002:pair:1"
+      ],
+      "limitations": [
+        "Requires class/sample-balance review before applying.",
+        "Existing trained models may require retraining and independent evaluation.",
+        "No source files were modified.",
+        "CSV is a presentation export, not a Core or training manifest.",
+        "Partial audit coverage remains partial; exporting is not approval or a new image audit."
+      ],
+      "execution": {
+        "wall_seconds": 0.013345082999990154,
+        "core_audit_runs": 0,
+        "model_calls": 0,
+        "accounting": "standalone export; original audit ledger unchanged"
+      }
+    }
+  ],
+  "source_and_audit_unchanged": true,
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "data_kind": "self-generated controlled synthetic audit",
+  "encoding": "text-json-v1",
+  "spreadsheet_gui_execution": "not_run; CSV serializer/parser and literal-prefix invariants tested"
+}
