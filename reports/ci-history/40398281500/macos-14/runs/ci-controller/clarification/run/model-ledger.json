@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "binding": "d5bc5963cfeda73c833ec5a63b9c422f67994e2ea55804732f98e39ddeb9db9d",
+  "limits": {
+    "max_requests": 8,
+    "max_output_tokens": 1024,
+    "budget_usd": "0"
+  },
+  "execution_label": "scripted_test_only",
+  "entries": [
+    {
+      "request_id": "model-0001",
+      "status": "unknown",
+      "reserved_at": "2026-10-26T20:46:04.996030+00:00",
+      "cost_cap_usd": "0",
+      "output_token_cap": 1024,
+      "settled_at": "2026-10-26T20:46:04.997052+00:00",
+      "charged_cost_usd": "0",
+      "measured_cost_usd": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "accounting_basis": "conservative_reservation",
+      "failure_code": null,
+      "overrun": false
+    }
+  ],
+  "halted": false
+}

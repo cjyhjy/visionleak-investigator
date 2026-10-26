@@ -1,0 +1,24 @@
+[
+  {
+    "action": {
+      "action_type": "run_audit",
+      "reason": "SCRIPTED_TEST_ONLY",
+      "evidence_refs": [],
+      "parameters": {
+        "profile": "all"
+      }
+    },
+    "status": "executed"
+  },
+  {
+    "action": {
+      "action_type": "finalize",
+      "reason": "SCRIPTED_TEST_ONLY",
+      "evidence_refs": [],
+      "parameters": {
+        "reason_code": "supported_scope_exhausted"
+      }
+    },
+    "status": "executed"
+  }
+]

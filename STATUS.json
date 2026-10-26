@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T20:43:34.277051+00:00",
+  "updated_at": "2026-10-26T20:48:59.784331+00:00",
   "project_version": "0.1.0",
   "code_digest": "0d7b3566655282266904973bdd8ba0b84b28e08d80919f3cf81d8986201121ce",
   "original_core_modified": false,
@@ -99,17 +99,17 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T204149614893-catalog-full-regression-process-access.log",
-    "ci_evidence": "reports/ci-history/40395014802/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40395014802",
-    "tested_commit": "09abc4f698f96db59a779bf179f1b6c5ddd7a8c1",
-    "ci_for_current_code": "not_run; catalog implementation awaiting new CI"
+    "ci_evidence": "reports/ci-history/40398281500/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40398281500",
+    "tested_commit": "0d7073c7a0f2186bc91a78216b7a7e53b62678c2",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 115 passed, zero test skips; current catalog artifacts reverified"
   },
   "next_local_command": ".venv-clean/bin/python scripts/catalog_smoke.py --tasks 12 --out runs/next-catalog-execution",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Pending for catalog changes; prior report CI 40395014802 passed",
+    "ci": "Passed for catalog implementation 0d7073c; 52 host reports, 36 task resource receipts and 18 catalog scores reverified",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Requirements/delivery audit and remaining reproducibility/interaction-evaluation work",
