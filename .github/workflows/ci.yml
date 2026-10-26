@@ -43,8 +43,8 @@ jobs:
       - name: Regression and fresh acceptance (Linux network namespace disabled)
         if: runner.os == 'Linux'
         run: |
-          sudo env "PATH=$PATH" unshare --net .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
-          sudo env "PATH=$PATH" unshare --net .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
       - name: Regression and fresh acceptance (macOS)
         if: runner.os == 'macOS'
         run: |
