@@ -23,3 +23,5 @@ M5：12 个合成任务 x A/B/C = 36 次真实 Core 条件运行（30 COMPLETED�
 公开归档准备：负责人明确授权建立并推送独立公开 GitHub 仓库 cjyhjy/visionleak-investigator；仓库已创建，首次推送待核验。提交范围为实现、原始设计、合成数据和工程验收记录；依赖、虚拟环境、根目录临时运行与 SDK 日志排除。修正忽略规则，保留 reports/logs 与 reports/engineering-suite/runs 原始证据。对 1887 个待提交文件（约 12 MB）扫描，未发现所检查的凭据模式、符号链接或超 10 MiB 文件。没有代码运行逻辑变更，沿用 delivery-regression 的 41 passed 结果。
 
 公开推送完成：实现提交 `2a7bfb5222e24e3e247566fe6182fb4d4bb53c79` 已推送 main；GitHub API 返回 PUBLIC，远端 refs/heads/main 与本地提交一致。命令与回执见 reports/publication.json。本条为后续文档记录，不改变代码与测试结果。原始设计快照及历史原始日志保留其空白格式，实现文件的 diff whitespace 检查通过。
+
+自主推进 / 复现与 CI：显式平台运行锁迁移、SHA 验证下载、双平台无模型 CI 已实现。本地 platform-regression 46 passed；platform-current-lock 确认旧运行锁未变化。Linux/macOS 远端结果待实际运行；模型仍为 not_run。

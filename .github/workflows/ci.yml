@@ -1,0 +1,64 @@
+name: No-model acceptance
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['reports/**', 'WORKLOG.md', 'STATUS.json']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: no-model-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  acceptance:
+    name: Real Core / ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-14]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          version: '0.12.13'
+          enable-cache: false
+      - name: Install frozen Python dependencies (no agent extra)
+        run: uv sync --frozen
+      - name: Fetch the hash-locked public Core release
+        run: .venv/bin/python scripts/record.py ci-fetch .venv/bin/python scripts/fetch_core.py --out .cache/core.zip
+      - name: Install Core and explicitly record this platform runtime
+        run: .venv/bin/python scripts/record.py ci-bootstrap .venv/bin/python scripts/bootstrap_core.py --archive .cache/core.zip --migrate-runtime --receipt reports/ci/runtime-migration.json
+      - name: Regression and fresh acceptance (Linux network namespace disabled)
+        if: runner.os == 'Linux'
+        run: |
+          sudo env "PATH=$PATH" unshare --net .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
+          sudo env "PATH=$PATH" unshare --net .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
+      - name: Regression and fresh acceptance (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
+          .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
+      - name: Preserve commands, failures, platform locks and real audit evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: real-core-${{ matrix.os }}-${{ github.sha }}
+          retention-days: 14
+          path: |
+            reports/ci/
+            reports/logs/
+            reports/commands.jsonl
+            runs/ci-acceptance/
+            core.runtime.lock.json

@@ -25,12 +25,15 @@
 
 ```sh
 UV_CACHE_DIR="$PWD/.cache/uv" UV_PYTHON_INSTALL_DIR="$PWD/.cache/python" uv sync --frozen
-python3 scripts/bootstrap_core.py --archive /absolute/path/to/visionleak-0.6.0.zip
+.venv/bin/python scripts/fetch_core.py --out .cache/visionleak-0.6.0.zip
+.venv/bin/python scripts/bootstrap_core.py --archive .cache/visionleak-0.6.0.zip
 .venv/bin/vli doctor
 .venv/bin/python -m pytest -q
 ```
 
-发布包来源与 SHA-256 见 `core.lock.json`。bootstrap 只读取指定 ZIP，验证摘要，解压到本项目 `.deps`，按发布的 package-lock 安装 sharp，禁用 npm 安装脚本。不会操作原 Core 工作树，不使用 `npm install visionleak`，不运行时更新依赖。已有 `.deps/visionleak-core` 时拒绝覆盖。首次下载依赖需要联网；审计不需要联网。不同平台或 Node 版本须显式迁移 runtime lock 并重跑契约测试。
+已有本地发布包时可省略 fetch，并给 bootstrap 传入该文件路径。fetch 是显式联网安装步骤，只接受锁定的公开发布地址和 SHA-256，不由审计触发。
+
+发布包来源与 SHA-256 见 `core.lock.json`。bootstrap 只读取指定 ZIP，验证摘要，解压到本项目 `.deps`，按发布的 package-lock 安装 sharp，禁用 npm 安装脚本。不会操作原 Core 工作树，不使用 `npm install visionleak`，不运行时更新依赖。已有 `.deps/visionleak-core` 时拒绝覆盖。首次下载依赖需要联网；审计不需要联网。跨平台首次安装请为 bootstrap 增加 `--migrate-runtime --receipt reports/my-platform-migration.json`；该显式操作保存旧/新锁和平台信息，仅允许原生依赖差异，仍强制固定 Core 源码、编译产物及 Node 版本。安装已完成但锁不同，可执行 `.venv/bin/python scripts/pin_core.py --migrate-runtime --receipt reports/my-platform-migration.json`，随后必须跑 doctor 和全套测试。不要用迁移绕过版本升级审核；不同运行锁的评测仍禁止合并。
 
 可选 SDK 环境：`UV_CACHE_DIR="$PWD/.cache/uv" uv sync --frozen --extra agent`。无模型 SDK smoke 的原始日志与收据已经保存于 `reports/sdk-smoke/`；该脚本要求其输出目录全新，不覆盖既有验收结果。
 
@@ -81,3 +84,7 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 - 无模型调用、向模型上传图片、软件包发布或赛事提交。负责人已授权将代码、开发文档、合成测试素材与实际工程日志发布至独立公开仓库；仓库内历史证据保留当时的本地路径，复现请重新生成 registry。
 
 开发设计的原始快照保存在 `docs/planning/`；实现偏差与边界见 `docs/adr/`。第三方许可与来源见 `THIRD_PARTY_NOTICES.md`。
+
+## 持续集成
+
+`.github/workflows/ci.yml` 在 Ubuntu 24.04 与 macOS 14 的全新 checkout 中安装冻结依赖，下载并验证 Core，显式记录平台锁，运行完整测试和新生成合成图的 base+all 审计。Linux 测试与审计在禁用网络的 namespace 中执行；macOS 不宣称 OS 网络隔离。没有模型凭据或 agent extra。失败时也上传命令、日志、JUnit、平台锁和真实审计证据，保留 14 天。远端完成前仅表示工作流已配置，不表示跨平台通过。
