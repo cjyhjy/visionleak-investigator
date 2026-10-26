@@ -19,6 +19,10 @@
 
 已有可读结果：`reports/demo-rules/report.html`，原始工具结果在同目录 `tools/`。`reports/engineering-suite/summary.md` 是 12 个合成任务 A/B/C 的工程结果，D 未运行。没有实测准确率优越性、自然泄漏发现或节省人工工时的结论。
 
+新版页面示例：`reports/report-demo-final/complete/run/report.html`。首页显示状态、范围、待办和累计预算；点击证据编号可跳转到图片对、复验状态与原始 Core JSON。完整账本默认折叠，执行记录取自实际预留/结算条目。`COMPLETED` 仅表示列明检查完成，候选仍可等待人工复核。页面没有脚本或外部资源请求；只加载当前审计目录内允许的 Core 缩略图。
+
+复现新版演示：`.venv/bin/python scripts/report_smoke.py --out runs/new-report-demo`。它实际运行真实 Core，生成完整、部分完成、待澄清和两种修订报告；回答与复核明确标为脚本输入，无真人参与。原始报告不覆盖；修订保留累计账本并注明未重跑 Core。使用说明见 `docs/REPORTS.md`。
+
 ## 干净环境安装
 
 环境锁：Python **3.12.14**、Node **26.7.0**、sharp **0.35.5** / libvips **8.18.7**；当前原生运行锁来自 macOS arm64。`uv.lock` 锁定全部 Python 依赖，openJiuwen **0.1.19.post2** 为可选 `agent` extra。业务层与普通测试无需导入 SDK。

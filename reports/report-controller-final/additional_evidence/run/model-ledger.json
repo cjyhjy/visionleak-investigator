@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "binding": "ee6a880788d3068a25207c441fde171323df562a95ba9896e2ac437a657ae511",
+  "limits": {
+    "max_requests": 8,
+    "max_output_tokens": 1024,
+    "budget_usd": "0"
+  },
+  "execution_label": "scripted_test_only",
+  "entries": [
+    {
+      "request_id": "model-0001",
+      "status": "unknown",
+      "reserved_at": "2026-10-26T20:14:53.322470+00:00",
+      "cost_cap_usd": "0",
+      "output_token_cap": 1024,
+      "settled_at": "2026-10-26T20:14:53.322895+00:00",
+      "charged_cost_usd": "0",
+      "measured_cost_usd": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "accounting_basis": "conservative_reservation",
+      "failure_code": null,
+      "overrun": false
+    },
+    {
+      "request_id": "model-0002",
+      "status": "unknown",
+      "reserved_at": "2026-10-26T20:14:53.590627+00:00",
+      "cost_cap_usd": "0",
+      "output_token_cap": 1024,
+      "settled_at": "2026-10-26T20:14:53.591070+00:00",
+      "charged_cost_usd": "0",
+      "measured_cost_usd": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "accounting_basis": "conservative_reservation",
+      "failure_code": null,
+      "overrun": false
+    }
+  ],
+  "halted": false
+}

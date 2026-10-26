@@ -48,6 +48,7 @@ jobs:
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-scripted-controller .venv/bin/python scripts/controller_smoke.py --out runs/ci-controller
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-evaluation-gates .venv/bin/python scripts/evaluation_gate_smoke.py --out runs/ci-evaluation-gates
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-resources .venv/bin/vli evaluate --tasks 3 --out runs/ci-resources
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-report-demo .venv/bin/python scripts/report_smoke.py --out runs/ci-report-demo
       - name: Regression and fresh acceptance (macOS)
         if: runner.os == 'macOS'
         run: |
@@ -56,6 +57,7 @@ jobs:
           .venv/bin/python scripts/record.py ci-scripted-controller .venv/bin/python scripts/controller_smoke.py --out runs/ci-controller
           .venv/bin/python scripts/record.py ci-evaluation-gates .venv/bin/python scripts/evaluation_gate_smoke.py --out runs/ci-evaluation-gates
           .venv/bin/python scripts/record.py ci-resources .venv/bin/vli evaluate --tasks 3 --out runs/ci-resources
+          .venv/bin/python scripts/record.py ci-report-demo .venv/bin/python scripts/report_smoke.py --out runs/ci-report-demo
       - name: Preserve commands, failures, platform locks and real audit evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -70,4 +72,5 @@ jobs:
             runs/ci-controller/
             runs/ci-evaluation-gates/
             runs/ci-resources/
+            runs/ci-report-demo/
             core.runtime.lock.json

@@ -83,8 +83,8 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     if old.get('planning'):
         result['planning']={**old['planning'],'continuation':'host_revision_only_no_new_planning'}
         result['question_backlog']=[]
-    render_report(result);ledger.settle(entry,{'wall_seconds':time.monotonic()-tick})
-    write_json(target/'report.json',result,exclusive=True);(target/'report.html').write_text(render_report(result))
+    render_report(result,evidence);ledger.settle(entry,{'wall_seconds':time.monotonic()-tick})
+    write_json(target/'report.json',result,exclusive=True);(target/'report.html').write_text(render_report(result,evidence))
     write_json(target/'checkpoint.json',{'state':state,'report_digest':digest(result),'manifest_digest':digest(record)},exclusive=True)
     append_json(target/'events.jsonl',{'state':state,'revision_kind':kind,'time':now(),'image_evidence_reused':True})
     write_json(anchor/'latest-revision.json',{'path':str(target),'digest':digest(result)})

@@ -1,0 +1,83 @@
+{
+  "verified_at": "2026-10-26T20:19:51.864633+00:00",
+  "status": "passed_with_scope",
+  "source_code_digest": "5124500d656fd4667a433058c4d9ef0bcdbb5e291403659c37dd54d092f95830",
+  "browser": "Chrome via localhost HTTP, desktop plus temporary 390x844 viewport; override reset",
+  "checks": [
+    "Top-level status and no-model/scripted markers",
+    "Coverage incomplete: 6 fingerprints, 1 processed and ComparisonBudget visible",
+    "Actual budget counters and call timeline",
+    "Evidence anchor, image pair visible in screenshot, native details expansion, raw Core JSON navigation",
+    "Goal/review revision preserves no-Core-rerun notice",
+    "No document horizontal overflow in sampled desktop/narrow views"
+  ],
+  "reports": [
+    {
+      "path": "reports/report-demo-final/complete/run/report.html",
+      "sha256": "6bfeaa88be7be5569f9e4788cd42e5a5cde3f3e931bf857bc80a4e331a10aee8"
+    },
+    {
+      "path": "reports/report-demo-final/complete/run/revisions/b1f901b5bb5547fef8cab6aaea89a01323ce874f87ac3236f9783d9bffca4b58/report.html",
+      "sha256": "7269d86a91a778b257c91ae45b005ddd9f5eb8ac52daf80d06ecfa00b2dcc1f9"
+    },
+    {
+      "path": "reports/report-demo-final/partial/run/report.html",
+      "sha256": "73c43cabd9b90cc42091eeb39f5e58001c2bc1a551fb1a295123b17dc70884fd"
+    },
+    {
+      "path": "reports/report-demo-final/clarification/run/report.html",
+      "sha256": "0899ee48cc265bc90bf91ddf627a3ee94444930d06e533f6eb46df00fb4a5197"
+    },
+    {
+      "path": "reports/report-demo-final/clarification/run/revisions/814e5ef755e039452982fa4844f080d1a70f49ddc567b540b11f318d015d3c47/report.html",
+      "sha256": "46f6e0b6be0fa0b0081834b9989fc22279f12f48a3147cb6422443ba5ae1975a"
+    },
+    {
+      "path": "reports/report-controller-final/clarification/run/report.html",
+      "sha256": "e6ef8b04714324e78f12b7ed54701c0ad2a72a4501711e83f7827ed7c2a8feaf"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "reports/visual-review/report-v2-final/budget-mobile.png",
+      "sha256": "fe585fa5ad113514ca64fe7fc51fe3c70897cb6323e0122ca3282c7593e99616"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/clarification-mobile.png",
+      "sha256": "a51bc59ae79d8b088128440e95197029d0e99bec65dbba4edf39fe2f24880813"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/complete-desktop.png",
+      "sha256": "6e2a9ec431be1f0ebeb0894272c7ab4f4569e5b83184251a2e4ad9b210dede56"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/evidence-desktop.png",
+      "sha256": "df1a7734aa5583659b705d51519dd35e5d54eb0cfd1c43b0dffdddafaf8f23a9"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/partial-mobile.png",
+      "sha256": "3fc1e39ae2ed5a0919a6eec4c8683ac3a74572e3cdbcc5081c44e8a3dcd788fe"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/revision-desktop.png",
+      "sha256": "1c14deb17f5d451e6ee2b73ed7741e02e103306c29febe7b35635492b27cfee7"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/scope-mobile.png",
+      "sha256": "4c7871d392be548f0d8f908b7cae3b865c56aadac7b2634e51911df2a11bf3a8"
+    },
+    {
+      "path": "reports/visual-review/report-v2-final/scripted-desktop.png",
+      "sha256": "7ba1575f4004d8c110e3d1dc4dcb11091db8e2be2748b0b8a316b06634c813ca"
+    }
+  ],
+  "notes": [
+    "First Playwright button-role locator for native summary matched no DOM element; inspected SUMMARY then used visible text successfully.",
+    "Immediate DOM readiness sample was false for lazy images before the subsequent screenshot; two images are visible in evidence-desktop.png. A proposed all-ready assertion failed, so no final DOM-ready pass is claimed.",
+    "Direct file:// browser validation was rejected by the browser URL policy (only http/https allowed). No bypass was attempted; direct-file mode remains unverified.",
+    "Screenshot/DOM observations are actual browser output, not image generation.",
+    "No Safari, physical-device, screen-reader, large-dataset or print-layout acceptance claim."
+  ],
+  "model_calls": 0,
+  "server": "127.0.0.1 only; stopped after inspection"
+}

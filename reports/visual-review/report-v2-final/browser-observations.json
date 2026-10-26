@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-10-26T20:17:51.826Z",
+  "checks": [
+    {
+      "page": "/report-demo-final/partial/run/report.html",
+      "request": "EVIDENCE · COVERAGE · BUDGET\nVisionLeak Investigator\n\n确定性本地审计 · 真实 Core 0.6.0 · 模型调用：未运行\n\n受控合成演示；用户回答和复核均为脚本输入，无真人参与。请检查图像内容，不修改原始图片。",
+      "scrollWidth": 375,
+      "state": "PARTIAL · 部分完成\n\n存在未完成或未覆盖的检查，不能据此宣布没有风险。",
+      "viewport": 390,
+      "width": 375
+    },
+    {
+      "next": "待办与问题\n待确认问题\n请选择实验目标：内容审计、新实体泛化或同实体新视角。\n未完成项与异常\nNo registered entity metadata; entity scope is unknown",
+      "page": "/report-demo-final/clarification/run/report.html",
+      "scrollWidth": 375,
+      "state": "WAITING_USER · 等待确认\n\n请查看待确认问题或已请求的人工复核；已有图像证据仍按其原始范围保留。",
+      "viewport": 390,
+      "width": 375
+    },
+    {
+      "page": "/report-demo-final/clarification/run/revisions/814e5ef755e039452982fa4844f080d1a70f49ddc567b540b11f318d015d3c47/report.html",
+      "revision": "这是answers修订：复用已有图像证据，本次未重跑 Core。账本保留此前累计开销。",
+      "scrollWidth": 1497,
+      "state": "COMPLETED · 检查已完成\n\n已完成列明范围的检查；这不代表数据没有风险。",
+      "viewport": 1512,
+      "width": 1497
+    },
+    {
+      "page": "/report-demo-final/complete/run/revisions/b1f901b5bb5547fef8cab6aaea89a01323ce874f87ac3236f9783d9bffca4b58/report.html",
+      "review": "待办与问题\n\n还有 1 条待复核记录，其中 0 条已请求人工处理。候选尚未被确认。\n\n候选证据\t复核状态\t请求情况\ncall-0004:pair:1\tunsure\t未请求\ncall-0004:pair:4\tpending\t未请求",
+      "revision": "这是review修订：复用已有图像证据，本次未重跑 Core。账本保留此前累计开销。",
+      "scrollWidth": 1497,
+      "viewport": 1512,
+      "width": 1497
+    },
+    {
+      "mode": "SCRIPTED_TEST_ONLY · 本地脚本决策测试 · 真实 Core · 模型调用：未运行",
+      "next": "待办与问题\n待确认问题\n请确认实验目标。\n未完成项与异常\nNo registered entity metadata; entity scope is unknown",
+      "page": "/report-controller-final/clarification/run/report.html",
+      "scrollWidth": 1497,
+      "viewport": 1512,
+      "width": 1497
+    },
+    {
+      "fragment": "#evidence-44cb8090339fffef5f9c65d6",
+      "images": [
+        {
+          "loaded": false,
+          "src": "tools/call-0004/output/thumbnails/f73bc3e360bd6ff9c2a0eb7dcc79fe9e6fe7e083da5a1450ca608eba66fd8ba7.jpg"
+        },
+        {
+          "loaded": false,
+          "src": "tools/call-0004/output/thumbnails/f32f47fedfaefaa2501a02f69a6e0a5ecaac0ba225c836f1d918b7668274d79d.jpg"
+        }
+      ],
+      "page": "/report-demo-final/complete/run/report.html",
+      "scrollWidth": 1497,
+      "targetText": "core.perceptual_candidate\n\ncall-0004:pair:1\n\ntest/004.png ↔ train/001.png\n\n查看原始 Core JSON /pairs/1\n\ntest/004.png\ntrain/001.png\n\n复核状态：{\"report_identity\": \"valid\", \"exact_recomputed\": \"not_applicable\", \"human_review\": \"not_run\"}\n\n展开此条证据原文",
+      "viewport": 1512,
+      "width": 1497
+    },
+    {
+      "detailsOpen": true,
+      "page": "/report-demo-final/complete/run/report.html"
+    }
+  ],
+  "console": [],
+  "viewport_override_reset": true,
+  "scope": "Local Chrome desktop and 390x844 viewport; synthetic data only. No Safari or physical phone claim."
+}

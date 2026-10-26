@@ -1,0 +1,19 @@
+...F....................                                                 [100%]
+=================================== FAILURES ===================================
+__ test_input_drift_withholds_evidence_cards_even_if_raw_records_are_retained __
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-109/test_input_drift_withholds_evi0')
+
+    def test_input_drift_withholds_evidence_cards_even_if_raw_records_are_retained(tmp_path):
+        task,registry=make_task(tmp_path/'fixture');out=tmp_path/'audit';report=run_task(task,registry,out)
+        evidence=list(map(json.loads,(out/'evidence.jsonl').read_text().splitlines()))
+        report['claims']=[];report['coverage']['source_unchanged']=False;report['state']='PARTIAL'
+        text=render_report(report,evidence);page=Page(text)
+>       assert not any(x.startswith('evidence-') for x in page.ids) and not page.images
+E       assert (not True)
+E        +  where True = any(<generator object test_input_drift_withholds_evidence_cards_even_if_raw_records_are_retained.<locals>.<genexpr> at 0x1074bab50>)
+
+tests/acceptance/test_report_presentation.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_report_presentation.py::test_input_drift_withholds_evidence_cards_even_if_raw_records_are_retained
+1 failed, 23 passed in 7.36s

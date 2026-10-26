@@ -42,6 +42,7 @@ def additional(payload):
 rows = []
 for scenario in ('additional_evidence', 'clarification'):
     task, registry = make_task(root/scenario/'fixture')
+    task['request_text']='受控合成素材；SCRIPTED_TEST_ONLY。请检查图像内容，目标缺失时请求澄清。'
     if scenario == 'clarification':
         task.update(goal='unspecified', goal_confirmed=False, goal_evidence_refs=[])
         request = lambda _: response('request_clarification', question_code='clarify_goal', question='请确认实验目标。')

@@ -224,13 +224,13 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
         report['planning']=planning;report['question_backlog']=question_backlog
         report['limitations']=[*LIMITATIONS,'SCRIPTED_TEST_ONLY：动作由本地测试脚本产生，非真实模型决策。']
     # Render is included in the finalization reservation; report is committed only once.
-    html=render_report(report)
+    html=render_report(report,evidence)
     if entry is not None:
         elapsed=time.monotonic()-tick
         ledger.settle(entry,{'wall_seconds':elapsed})
         if elapsed>entry['reservation']['wall_seconds']:report['state']='PARTIAL';report['issues'].append('Finalization time exceeded reservation')
     write_json(out/'report.json',report,exclusive=True)
-    with (out/'report.html').open('x') as f:f.write(render_report(report))
+    with (out/'report.html').open('x') as f:f.write(render_report(report,evidence))
     event(report['state'],report_digest=digest(report));return report
 
 def code_digest() -> str:
