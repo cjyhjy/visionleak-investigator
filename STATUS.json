@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T21:35:19.562705+00:00",
+  "updated_at": "2026-10-26T22:03:42.022839+00:00",
   "project_version": "0.1.0",
-  "code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+  "code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -41,12 +41,16 @@
       "recovery-check",
       "final-regression",
       "M2-demo",
-      "plan-check-targeted"
+      "plan-check-targeted",
+      "proposal-export-targeted",
+      "review-consistency-targeted"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
       "reports/lifecycle-v1/receipt.json",
-      "reports/plan-check-v1/receipt.json"
+      "reports/plan-check-v1/receipt.json",
+      "reports/proposal-export-v1/receipt.json",
+      "reports/review-lifecycle-v1/receipt.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
@@ -87,7 +91,8 @@
       "reports/report-controller-final/receipt.json",
       "reports/visual-review/report-v2-final/receipt.json",
       "reports/catalog-execution-v1/receipt.json",
-      "reports/delivery-audit-v1/requirements.json"
+      "reports/delivery-audit-v1/requirements.json",
+      "reports/interaction-evaluation-v1-first/receipt.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -97,31 +102,32 @@
       "independent_natural_validation_test": "not_run",
       "live_model_D": "blocked",
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
-      "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded"
+      "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded",
+      "interaction_evaluation": "passed with scope: independent frozen C/D answer contract, real C subprocesses and separate scoring; 12 synthetic C runs, D 12 blocked, negative/unresolved outcomes retained; human time not measured"
     },
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "plan-and-failure-regression: 134 passed, zero skipped",
+    "test_suite": "interaction-review-final-regression: 149 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T212806003226-plan-and-failure-regression.log",
+    "final_log": "reports/logs/20261026T220110779182-interaction-review-final-regression.log",
     "ci_evidence": "reports/ci-history/40404896802/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40404896802",
     "tested_commit": "aff5ea6abaf08d138e168954e87d684bb60947bc",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 134 passed, zero test skips; plan-check and half-written-report artifacts reverified"
+    "ci_for_current_code": "pending: CSV export, separate interaction evaluation and human-review revision fixes await remote CI"
   },
-  "next_local_command": ".venv-clean/bin/python scripts/plan_check_smoke.py --out runs/next-plan-check-acceptance",
+  "next_local_command": ".venv-clean/bin/python scripts/interaction_smoke.py --out runs/next-interaction-acceptance",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Passed for aff5ea6; 66 host reports, 36 resource receipts, 18 catalog scores, 8 plan-check cases and 2 controlled half-written Core outputs reverified",
+    "ci": "Current implementation awaiting CI; previous plan-check code had 134 tests per platform.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Separate interaction-evaluation accounting",
-      "Finish clause-level delivery audit, including the planned suggestion CSV export",
+      "Finish requirement-by-requirement contract/delivery audit; no blanket completion claim",
       "Authorized independent natural data experiments and real provider/D trajectories",
+      "Owner-selected project license and external submission decisions",
       "M4 deferred until real Agent stabilizes"
     ],
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",

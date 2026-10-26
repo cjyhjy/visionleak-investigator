@@ -133,9 +133,9 @@
     {
       "requirement": "T19",
       "status": "passed",
-      "source": "tests/security/test_guards.py",
-      "test": "test_T19_html_and_T33_claim_entailment",
-      "verified_scope": "HTML 转义；CSV 仅输入字符串，尚无 CSV 导出"
+      "source": "tests/acceptance/test_proposal_export.py",
+      "test": "test_T19_text_encoding_preserves_data_without_formula_or_row_injection",
+      "verified_scope": "HTML 转义继续通过；新增真实建议 JSON/CSV 导出，固定文字前缀、控制字符/全角/分隔符/引号可还原编码测试；未宣称表格 GUI 验收"
     },
     {
       "requirement": "T20",
@@ -147,9 +147,9 @@
     {
       "requirement": "T21",
       "status": "passed",
-      "source": "tests/acceptance/test_interaction.py",
-      "test": "test_T21_review_identity_binding_and_no_upgrade",
-      "verified_scope": "audit/input/pair 绑定且不升级证据"
+      "source": "tests/acceptance/test_review_consistency.py",
+      "test": "test_review_reversal_supersedes_active_claims_and_preserves_payloads",
+      "verified_scope": "人审绑定 audit/input/pair；最新导入决定替代当前修订旧人审结论，覆盖状态/来源文件保持一致；候选等级不升级"
     },
     {
       "requirement": "T22",
@@ -259,11 +259,16 @@
     "reports/plan-check-v1/receipt.json",
     "reports/partial-report-v1/receipt.json",
     "reports/logs/20261026T212806003226-plan-and-failure-regression.log",
-    "reports/ci-history/40404896802/verification.json"
+    "reports/ci-history/40404896802/verification.json",
+    "reports/interaction-evaluation-v1-first/receipt.json",
+    "reports/proposal-export-v1/receipt.json",
+    "reports/review-consistency-gap-v1/receipt.json",
+    "reports/review-consistency-gap-v1/resolution.json",
+    "reports/review-lifecycle-v1/receipt.json",
+    "reports/logs/20261026T220110779182-interaction-review-final-regression.log"
   ],
   "remaining_local": [
-    "Finish the clause-level contract/delivery audit, including planned suggestion CSV export.",
-    "Implement separate interaction-evaluation accounting."
+    "Complete the full clause-by-clause requirements and artifact audit; test-matrix coverage is not proof of every delivery requirement."
   ],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
@@ -273,6 +278,6 @@
   ],
   "reviewed_code_commit": "aff5ea6abaf08d138e168954e87d684bb60947bc",
   "latest_ci_tests_per_platform": 134,
-  "reviewed_worktree_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
-  "current_code_ci": "passed; scope remains in_progress for interaction accounting, CSV export and clause-level delivery audit"
+  "reviewed_worktree_code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
+  "current_code_ci": "pending"
 }

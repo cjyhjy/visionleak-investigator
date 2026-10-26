@@ -130,3 +130,10 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 ```
 
 后者运行真实 Core 后，显式截断此次生成的报告；保存完整原件和损坏副本，验证宿主保守计费并结案 PARTIAL。这是受控故障注入，不是真实生产事故或 Agent 实验。
+
+
+## 建议导出与独立交互评测
+
+`vli proposal-export --run <run> --format csv --out <new-file.csv>` 从已验证证据重新生成只读建议；也支持 JSON。CSV 使用明确的可还原文本编码，保留逐图映射、理由和证据，不能直接作为训练清单。实际 CLI 验收：`.venv/bin/python scripts/proposal_export_smoke.py --out runs/proposal-export-acceptance`。
+
+交互评测另用 `eval-interaction`，冻结 C/D 的初始信息与可回答问题集合。规则 C 使用真实 Core 和修订，回答来自明确标注的固定脚本；D 持续 blocked。必要/多余追问、目标与字段确认、目标风险、预算、失败和未完成任务分别记录，不与检测指标混合，也不宣称真人工时收益。运行 `.venv/bin/python scripts/interaction_smoke.py --out runs/interaction-acceptance`，详情见 [docs/INTERACTION_EVALUATION.md](docs/INTERACTION_EVALUATION.md)。

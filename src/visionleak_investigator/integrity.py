@@ -5,6 +5,7 @@ from .workflow import code_digest
 from .core import CoreAdapter
 from .domain import Registry,input_manifest
 from .reporting import ClaimValidator
+from .review_state import review_coverage
 
 def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=False) -> dict:
     report=read_json(run/'report.json');validation=read_json(run/'validation.json');manifest=read_json(run/'manifest.json')
@@ -32,6 +33,23 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
         if file_hash(path)!=validation['core_reports'][profile]:raise ValueError('Core report changed')
         if recompute_identity:adapter.inspect_report(path,root)
     evidence={e['evidence_id']:e for e in [json.loads(line) for line in (run/'evidence.jsonl').read_text().splitlines()]}
+    if 'human_review_coverage_digest' in validation:
+        if report['coverage']['human_review']!=review_coverage(report['reviews']) or digest(report['coverage']['human_review'])!=validation['human_review_coverage_digest']:
+            raise ValueError('Human review coverage changed')
+        expected={p for e in evidence.values() if e['kind'].startswith('human.') for p in e['source_positions']}
+        if expected!=set(validation['review_inputs']):raise ValueError('Human review input inventory changed')
+        for item in evidence.values():
+            if not item['kind'].startswith('human.'):continue
+            if digest(item['facts'])!=item['params_digest']:raise ValueError('Human review payload changed')
+            for ref in item['source_positions']:
+                path=safe_child(run,ref)
+                if file_hash(path)!=validation['review_inputs'][ref] or read_json(path)!=item['facts']:raise ValueError('Human review input changed')
+        for row in report['reviews']:
+            if row['status']=='pending':continue
+            matches=[e for e in evidence.values() if e['kind'].startswith('human.') and e['facts']['pair_ref']==row['pair_ref']
+                     and e['facts']['decision']==row['status'] and e['facts']['reviewer']==row.get('reviewer') and e['facts']['created_at']==row.get('created_at')]
+            if not matches or evidence[row['pair_ref']]['verification_state']['human_review']!=row['status']:
+                raise ValueError('Review summary is not bound to current review evidence')
     for ref in [*report['task']['context_refs'],*([report['task']['metadata_ref']] if report['task']['metadata_ref'] else [])]:Registry(registry).document(ref)
     for claim in report['claims']:ClaimValidator().validate_claim(claim,evidence,{**report['coverage']['profiles'],'metadata':report['coverage']['metadata'],'human_review':report['coverage']['human_review']})
     return report

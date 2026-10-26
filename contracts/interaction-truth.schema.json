@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluator-only interaction contract v1",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "task_id", "dataset_manifest_digest", "goal", "entity_key", "basis", "necessary_questions", "answerable_questions", "risk_positive_pairs"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "dataset_manifest_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "goal": {"enum": ["content_audit", "new_entity_generalization", "same_entity_new_view"]},
+    "entity_key": {"type": ["string", "null"], "minLength": 1},
+    "basis": {"type": "object", "additionalProperties": false, "required": ["kind", "description"], "properties": {
+      "kind": {"enum": ["synthetic_generation", "source_annotation"]}, "description": {"type": "string", "minLength": 1}
+    }},
+    "necessary_questions": {"type": "array", "uniqueItems": true, "items": {"enum": ["clarify_goal", "clarify_entity_key"]}},
+    "answerable_questions": {"type": "object", "additionalProperties": false, "properties": {
+      "clarify_goal": {"type": "object", "additionalProperties": false, "required": ["goal"], "properties": {
+        "goal": {"enum": ["content_audit", "new_entity_generalization", "same_entity_new_view"]}
+      }},
+      "clarify_entity_key": {"type": "object", "additionalProperties": false, "required": ["entity_key"], "properties": {
+        "entity_key": {"type": "string", "minLength": 1}
+      }}
+    }},
+    "risk_positive_pairs": {"type": "array", "uniqueItems": true, "maxItems": 100000,
+      "items": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string", "minLength": 1}}}
+  }
+}

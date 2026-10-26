@@ -1,0 +1,22 @@
+{
+  "status": "gap_reproduced",
+  "code_digest": "cf69f1c237ea84771ce6239de9e10002f8c17ab08827229fc4369d5518a9ae55",
+  "gaps": {
+    "coverage_still_not_run_after_confirmation": true,
+    "rejected_review_retains_confirmed_same_source_claim": true,
+    "goal_revision_has_missing_review_source_positions": [
+      "review.input.json",
+      "review.input.json"
+    ]
+  },
+  "model_calls": 0,
+  "human_participants": 0,
+  "original_core_modified": false,
+  "runs": {
+    "initial": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/review-consistency-gap-v1/run",
+    "confirmed": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/review-consistency-gap-v1/run/revisions/c8217bfa7dd7957e614292578c413a4ce28643a8fd52f0924187373ffb9b2414",
+    "rejected": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/review-consistency-gap-v1/run/revisions/38a27b541cadeca27b718c24279e752ee73c9a8af0bcd46c39adf217bee27f7f",
+    "goal_revision": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/review-consistency-gap-v1/run/revisions/fd2b41f02c7e50d5d3b92ad13874a1c60eaaf5d08b6743cf782530081c9eed64"
+  },
+  "next_required_work": "Synchronize review coverage, supersede outdated human conclusions, preserve review payload provenance through revisions."
+}

@@ -53,6 +53,9 @@ jobs:
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-lifecycle .venv/bin/python scripts/lifecycle_smoke.py --out runs/ci-lifecycle
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-plan-check .venv/bin/python scripts/plan_check_smoke.py --out runs/ci-plan-check
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-partial-report .venv/bin/python scripts/partial_report_smoke.py --out runs/ci-partial-report
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-proposal-export .venv/bin/python scripts/proposal_export_smoke.py --out runs/ci-proposal-export
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-interaction .venv/bin/python scripts/interaction_smoke.py --out runs/ci-interaction
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-review-lifecycle .venv/bin/python scripts/review_lifecycle_smoke.py --out runs/ci-review-lifecycle
       - name: Regression and fresh acceptance (macOS)
         if: runner.os == 'macOS'
         run: |
@@ -66,6 +69,9 @@ jobs:
           .venv/bin/python scripts/record.py ci-lifecycle .venv/bin/python scripts/lifecycle_smoke.py --out runs/ci-lifecycle
           .venv/bin/python scripts/record.py ci-plan-check .venv/bin/python scripts/plan_check_smoke.py --out runs/ci-plan-check
           .venv/bin/python scripts/record.py ci-partial-report .venv/bin/python scripts/partial_report_smoke.py --out runs/ci-partial-report
+          .venv/bin/python scripts/record.py ci-proposal-export .venv/bin/python scripts/proposal_export_smoke.py --out runs/ci-proposal-export
+          .venv/bin/python scripts/record.py ci-interaction .venv/bin/python scripts/interaction_smoke.py --out runs/ci-interaction
+          .venv/bin/python scripts/record.py ci-review-lifecycle .venv/bin/python scripts/review_lifecycle_smoke.py --out runs/ci-review-lifecycle
       - name: Preserve commands, failures, platform locks and real audit evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -85,4 +91,7 @@ jobs:
             runs/ci-lifecycle/
             runs/ci-plan-check/
             runs/ci-partial-report/
+            runs/ci-proposal-export/
+            runs/ci-interaction/
+            runs/ci-review-lifecycle/
             core.runtime.lock.json

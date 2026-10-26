@@ -78,14 +78,9 @@ def _output_path(out: Path, run: Path, registry: Registry, plan_path: Path) -> P
     return out
 
 
-def check_plan(run: Path, plan_path: Path, *, out: Path | None = None) -> dict:
+def verified_plan_context(run: Path) -> tuple[dict, dict, dict, dict, Registry, list[dict]]:
+    """Load accepted witnesses, including their full original source mapping."""
     from .integrity import verify_run
-    from .workflow import code_digest
-
-    start = time.monotonic()
-    run = no_symlink(run)
-    plan_path = no_symlink(plan_path)
-    plan = read_json(plan_path)
     report = verify_run(run)
     if report['coverage'].get('source_unchanged') is not True:
         raise ValueError('Audit input was unstable; new audit required')
@@ -97,10 +92,22 @@ def check_plan(run: Path, plan_path: Path, *, out: Path | None = None) -> dict:
     registry = Registry(read_json(run/'registry.private.json'))
     if input_manifest(registry.dataset(task['dataset_ref']), task['limits']) != source:
         raise ValueError('Saved input manifest differs from current source')
-    destination = _output_path(out, run, registry, plan_path) if out is not None else None
     accepted = {c['audit_id'] for c in report['coverage']['profiles'].values()}
     evidence = [json.loads(line) for line in (run/'evidence.jsonl').read_text().splitlines()]
     evidence = [e for e in evidence if not e['kind'].startswith('core.') or e['core_audit_id'] in accepted]
+    return report, manifest, source, task, registry, evidence
+
+
+def check_plan(run: Path, plan_path: Path, *, out: Path | None = None) -> dict:
+    from .integrity import verify_run
+    from .workflow import code_digest
+
+    start = time.monotonic()
+    run = no_symlink(run)
+    plan_path = no_symlink(plan_path)
+    plan = read_json(plan_path)
+    report, manifest, source, task, registry, evidence = verified_plan_context(run)
+    destination = _output_path(out, run, registry, plan_path) if out is not None else None
     result = check_manifest(task, evidence, source, plan)
     result.update(schema_version=1, created_at=now(),
                   status='known_conflicts_remaining' if result['known_conflicts_remaining'] else 'no_known_conflicts_remaining',

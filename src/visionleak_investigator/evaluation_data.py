@@ -173,8 +173,9 @@ def validate_catalog(catalog: dict, root: Path, *, history: dict | None = None) 
 def freeze_catalog(catalog: dict, root: Path, protocol: dict, out: Path) -> dict:
     if set(protocol)!={'conditions','repetitions','policy_digest','model_configuration','metric_definition'}:
         raise ValueError('Protocol must freeze conditions, repetitions, policy, model and metrics')
-    if protocol['conditions']!=['A','B','C','D'] or type(protocol['repetitions']) is not int or not 1<=protocol['repetitions']<=10:
-        raise ValueError('Freeze the full A-D comparison and bounded repetitions')
+    conditions=['C','D'] if protocol['metric_definition']=='interaction-v1' else ['A','B','C','D']
+    if protocol['conditions']!=conditions or type(protocol['repetitions']) is not int or not 1<=protocol['repetitions']<=10:
+        raise ValueError('Freeze the full '+('/'.join(conditions))+' comparison and bounded repetitions')
     if protocol['policy_digest']!=file_hash(PROJECT/'configs/policy.json'):raise ValueError('Policy digest mismatch')
     model=protocol['model_configuration']
     if not isinstance(model,dict) or set(model)!={'status','provider','model_id','endpoint','prompt_digest'}:

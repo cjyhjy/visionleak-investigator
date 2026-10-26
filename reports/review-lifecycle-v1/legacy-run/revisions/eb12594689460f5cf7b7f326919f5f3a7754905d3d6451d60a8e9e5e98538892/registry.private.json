@@ -1,0 +1,25 @@
+{
+  "datasets": {
+    "demo-dataset": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/review-consistency-gap-v1/fixture/images"
+  },
+  "documents": {},
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "local synthetic fixture generator"
+    },
+    "user.answer:73d1c5c8ac7184cac2991f9453a6800c073f1b9827cb252bd278e6d33d83a01c": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "controlled scripted goal answer",
+      "confirmed_at": "2026-10-26T21:54:36.915758+00:00"
+    },
+    "user.answer:315e49107025f02bdb91eee332d80f1c577980cbb06960c7a540cbb738108b69": {
+      "kind": "user.goal_confirmation",
+      "goal": "same_entity_new_view",
+      "actor": "scripted legacy repair fixture",
+      "confirmed_at": "2026-10-26T21:59:51.669884+00:00"
+    }
+  }
+}

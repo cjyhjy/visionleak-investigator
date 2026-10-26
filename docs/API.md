@@ -14,11 +14,13 @@
 | `review-import` | `--run --review` | 导入绑定当前图像对的人审记录，生成 revision；不升级 Core 证据种类 |
 | `recover` | `--run` | 原工作进程停止后保守结案；有完整报告则校验并返回；恢复通常退出 2 |
 | `plan-check` | `--run --manifest`；可选 `--out` | 只读检查用户清单；0 无剩余已知冲突、2 仍有已知冲突、1 输入/完整性/路径拒绝 |
+| `proposal-export` | `--run --out`；可选 `--format json/csv` | 重新从有效证据生成只读建议；0 导出成功、1 拒绝；不代表已修复冲突 |
 | `evaluate` | `--out`；可选 `--tasks` | 原有 `synthetic-engineering` 工程集；A/B/C 实际运行，D 受阻 |
 | `eval-validate` | `--catalog --root` | 来源、内容、分区和真值隔离检查；可选 `--out` |
 | `eval-freeze` | `--catalog --root --protocol --out` | 不可覆盖的输入/实现/依赖/策略/模型声明冻结 |
 | `eval-check` | `--catalog --root --protocol --frozen --partition` | 验证冻结；可选 `--out`；不是实验结果 |
 | `eval-run` | 上行参数及 `--out` | 执行冻结 A/B/C 和独立评分；可选 `--replay-of`；0 调度结束、2 含执行/评分失败、1 拒绝 |
+| `eval-interaction` | 与 `eval-run` 相同 | 独立 C/D 交互协议；C 真实运行、固定脚本回答，D 受阻；退出码同上 |
 
 `--mode agent` 始终拒绝，直到模型提供商、授权和实际适配器完成。环境变量中有 key 不会自动开启模型。`eval-run` 的 0 可以包含 PARTIAL 和 blocked D，不能解释为完整科研评测通过。详细指标与文件布局见 [EVALUATION.md](EVALUATION.md)。
 
@@ -50,6 +52,10 @@ Revision 保存于 `revisions/<payload-digest>/`，`latest-revision.json` 指向
 
 新 revision 的 `manifest.code_digest` 记录当前处理程序；`image_evidence_origin` 记录最初图像证据的 Investigator 代码摘要、manifest、Core 和运行锁。`parent_manifest_digest`、`parent_report_digest` 绑定父记录。报告中的 `revision` 同时说明处理代码、证据代码、复用条数以及 `core_reexecuted=false`。旧报告保留原来的字段和含义，不追写历史版本。
 
+对同一 Core 见证再次导入复核，最新导入的决定替代当前修订中的旧人审证据和依赖结论；旧报告保留历史意见，这不是评审者共识。`superseded_review_evidence_refs` 列出被替代引用。复核 payload 在每个新 revision 的 `review-inputs/<digest>.json` 中保留并核验，目标修改不会丢失其引用。
+
+`coverage.human_review` 分别统计记录数、不同图片对、已请求/待处理、确认/否定/不确定以及已解决/未解决图片对。多个工具见证尚未全部解决或存在冲突时，不把整对标为已解决。已请求而仍 pending/unsure 的复核让任务保持 WAITING_USER；候选证据等级不变。
+
 ## 恢复与完整性
 
 `recover` 不是停止进程的命令，调用前必须确认原工作进程已停止。它使用与修订共用的文件锁，串行结算 pending reservation；并发重复恢复不会重复收费。没有结案预算时拒绝并保留原始材料。
@@ -75,7 +81,9 @@ Revision 保存于 `revisions/<payload-digest>/`，`latest-revision.json` 指向
 
 0 仅代表已接纳证据中的已知冲突消除。原审计为 PARTIAL、未检查后缀或未知元数据时，这些覆盖缺口仍保留；不重新执行 Core，不产生全量无泄漏结论。输出默认 stdout；`--out` 必须是新文件，不能写入原审计（含修订祖先）或登记数据目录，也不能覆盖登记文档。检查不应用建议；类别/样本平衡、人工批准、重训及独立评测仍需另行完成。
 
-目前没有 CSV 导出命令；CSV 输入以普通字符串处理，不执行表格公式。
+`proposal-export --run runs/my-audit --format csv --out suggestion.csv` 导出逐图的原/新保留关系、split、原因、证据引用及审计摘要。默认格式 JSON，含完整覆盖信息。命令重新核验原图和有效证据，再生成建议；不信任可编辑的旧 `proposal.json`。没有任何已接纳图像审计的运行拒绝导出可行动建议。
+
+CSV 的可变文本单元格统一使用 `text:` 加 JSON 字符串的可还原编码，并通过标准 CSV writer 引用/转义。它是展示格式，不能直接当作数据输入清单；JSON 保留原始值。格式记录为 `text-json-v1`，只作文本解码，不执行公式。CSV 不改变 source/test，也不代表重训或独立评测完成。输出路径采用与 `plan-check` 相同的保护和不可覆盖规则。
 
 ## 进程内接口
 

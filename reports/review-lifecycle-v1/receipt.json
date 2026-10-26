@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "code_digest": "751533d614ee707a0fb8f335582fefe38857ced16afefec0a74738e0e4d8b19a",
+  "reports": [
+    {
+      "case": "original",
+      "run": "run",
+      "report_sha256": "6b7016d0a38fb96235ecb8f9d481311941c9b56228c6ea67916b902252456390",
+      "manifest_sha256": "3565fbcfb4a8ffecb24766b07d70316f302daa8a6214879d4e20f9f9dfccc3fa"
+    },
+    {
+      "case": "confirmed",
+      "run": "run/revisions/dae96e5c48de13e3538d02eab0771875d41f0c044f1b9e696061324474444b6d",
+      "report_sha256": "1c51123523b307c62e4a20abdb000088121df7c220884869cc8d71edfebeee15",
+      "manifest_sha256": "df6dd8d142fc286920dc15eb1406700b287aa010536d7822b50f023ead46965f"
+    },
+    {
+      "case": "rejected",
+      "run": "run/revisions/06ffd739970412dc4b771238ce76f1afa417d021573ad2291332efd681a076c6",
+      "report_sha256": "191d9fa82a8549abdccfe3975736704900e17497beffc521439c609b2e579979",
+      "manifest_sha256": "fc23359679ce2332ca6e80f95f5fc9e64982cd7bc2dff77dada9e615a8d69863"
+    },
+    {
+      "case": "goal_revision",
+      "run": "run/revisions/cf005747930cd857ad3340e399cd25d16e9d98e3ba2fd9153088028ca337bec1",
+      "report_sha256": "dc53c46d2d8a81e9c8292a161056dfeb9d01dd0e67635e18d083650a574ac88a",
+      "manifest_sha256": "532a63f905694f5852a4a1b4632e37cbbf64319eddf0a9075256fbb799392356"
+    },
+    {
+      "case": "legacy_original",
+      "run": "legacy-run",
+      "report_sha256": "c891a50b4521b42326c0f80b26689b8d31a278d181300d2ad776a26e2c6aa181",
+      "manifest_sha256": "cc2077066b9467b97f35b6e960266412c46c08586ec250d41af16d58b7a90820"
+    },
+    {
+      "case": "legacy_reinterpretation",
+      "run": "legacy-run/revisions/eb12594689460f5cf7b7f326919f5f3a7754905d3d6451d60a8e9e5e98538892",
+      "report_sha256": "6d756d3546e84ec5978419eef704a2ef34ceffb8ed24a2b28d12803491a5f29e",
+      "manifest_sha256": "784a7dd7c211efc4dd3e56460bc8ef297efc0a9a51d1e559d661b6fb33b7359a"
+    }
+  ],
+  "legacy": {
+    "status": "passed",
+    "source_report_unchanged": true,
+    "stale_confirmation_removed_from_new_revision": true
+  },
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "human_participants": 0,
+  "data_kind": "controlled synthetic image and review lifecycle fixtures",
+  "source_review_history_preserved": true,
+  "image_reaudit_for_revisions": false
+}

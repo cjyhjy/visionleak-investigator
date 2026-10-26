@@ -9,6 +9,7 @@ from .reporting import ClaimValidator,render_report
 from .metadata import interpret,proposal
 from .integrity import verify_run
 from .workflow import code_digest
+from .review_state import review_coverage,preserve_review_inputs
 
 
 def revise(run: Path, payload: dict,kind: str) -> dict:
@@ -64,18 +65,35 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     if (run/'recovery-receipt.json').exists() and (run/'pre-recovery').exists():shutil.copytree(run/'pre-recovery',target/'pre-recovery')
     before=read_json(run/'input-manifest.json');write_json(target/'input-manifest.json',before,exclusive=True)
     coverage=copy.deepcopy(old['coverage']);issues=[x for x in old['issues'] if not x.startswith(('Goal/','Entity metadata','No registered entity','Metadata has','Clarification budget'))]
+    current_reviews={r['pair_ref']:r for r in old['reviews']}
+    superseded=set()
+    for item in existing:
+        if not item['kind'].startswith('human.'):continue
+        facts=item['facts'];current=current_reviews.get(facts['pair_ref'],{})
+        stale=any(current.get(k)!=facts[v] for k,v in [('status','decision'),('reviewer','reviewer'),('created_at','created_at')])
+        if stale or (human and facts['pair_ref']==payload['pair_ref']):superseded.add(item['evidence_id'])
     evidence=[e for e in existing if not e['kind'].startswith(('metadata.','user.goal'))]
-    claims=[c for c in old['claims'] if c['claim_type'] not in ('goal_conflict','declared_entity_overlap')]
+    evidence=[e for e in evidence if e['evidence_id'] not in superseded]
+    claims=[c for c in old['claims'] if c['claim_type'] not in ('goal_conflict','declared_entity_overlap') and not (set(c['evidence_refs'])&superseded)]
     info=interpret(task,Registry(registry),before,ledger);evidence.extend(info['evidence']);claims.extend(info['claims']);issues.extend(info['issues']);coverage['metadata']=info['metadata']
     if not info['questions']:issues=[x for x in issues if x!='Required clarification remains unrequested']
     accepted_refs={e['evidence_id'] for e in evidence}
     reviews=[copy.deepcopy(r) for r in old['reviews'] if r['pair_ref'] in accepted_refs]
     if human:
         evidence.append(human)
+        for item in evidence:
+            if item['evidence_id']==payload['pair_ref']:item['verification_state']['human_review']=payload['decision']
         for row in reviews:
             if row['pair_ref']==payload['pair_ref']:row.update(status=payload['decision'],reviewer=payload['reviewer'],created_at=payload['created_at'])
         if human['kind']=='human.same_source_confirmation':claims.append(ClaimValidator().build('same_source_review',[human],'human_review'))
-    state='WAITING_USER' if info['questions'] else 'PARTIAL' if issues else 'COMPLETED'
+    coverage['human_review']=review_coverage(reviews)
+    for row in reviews:
+        if row['status']!='pending':
+            for item in evidence:
+                if item['evidence_id']==row['pair_ref']:item['verification_state']['human_review']=row['status']
+    review_inputs=preserve_review_inputs(evidence,target)
+    waiting_reviews=any(r.get('requested') and r['status'] in ('pending','unsure') for r in reviews)
+    state='WAITING_USER' if info['questions'] or waiting_reviews else 'PARTIAL' if issues else 'COMPLETED'
     origin=parent_manifest.get('image_evidence_origin',{'manifest_digest':digest(parent_manifest),'investigator_code_digest':parent_manifest['code_digest'],'core_lock_digest':parent_manifest['core_lock_digest'],'runtime_lock_digest':parent_manifest['runtime_lock_digest']})
     reused_core_evidence_count=sum(e['kind'].startswith('core.') for e in evidence)
     record={**parent_manifest,'code_digest':code_digest(),'image_evidence_origin':origin,'parent_report_digest':digest(old),'created_at':now(),'task_digest':digest(task),'registry_digest':digest(registry),'evidence_reused_from':str(run),'parent_manifest_digest':digest(parent_manifest),'revision_kind':kind,'supersedes_risk_interpretation':str(run),'core_reexecuted':False}
@@ -85,9 +103,11 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     evmap={e['evidence_id']:e for e in evidence}
     for c in claims:ClaimValidator().validate_claim(c,evmap,{**coverage['profiles'],'metadata':coverage['metadata'],'human_review':coverage['human_review']})
     validation={**read_json(run/'validation.json'),'evidence_sha256':file_hash(target/'evidence.jsonl'),'claim_count':len(claims)}
+    validation.update(human_review_coverage_digest=digest(coverage['human_review']),review_inputs=review_inputs)
     write_json(target/'validation.json',validation,exclusive=True)
     entry=ledger.reserve('finalize',final=True);tick=time.monotonic()
     result={**old,'state':state,'task':task,'claims':claims,'coverage':coverage,'budget':ledger.data,'questions':info['questions'],'reviews':reviews,'issues':issues,'revision':{'kind':kind,'path':str(target),'reused_from':str(run),'core_reexecuted':False,'processor_code_digest':record['code_digest'],'image_evidence_code_digest':origin['investigator_code_digest'],'image_evidence_reused':bool(reused_core_evidence_count),'reused_core_evidence_count':reused_core_evidence_count}}
+    result['revision']['superseded_review_evidence_refs']=sorted(superseded)
     if old.get('planning'):
         result['planning']={**old['planning'],'continuation':'host_revision_only_no_new_planning'}
         result['question_backlog']=[]

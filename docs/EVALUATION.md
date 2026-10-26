@@ -71,3 +71,6 @@ vli eval-run --catalog /absolute/suite/catalog.json --root /absolute/suite \
 Replays are labelled and cannot be presented as new independent tests. The claim is a local guard; copying or editing a freeze is not cryptographically prevented. A process killed externally may leave a `running` schedule with partial artifacts: there is no automatic resumption or silent overwrite. Preserve that attempt and use a labelled replay to repeat it. Development/validation attempts also retain separate output directories.
 
 Exit codes: 0 means the registered deterministic schedule completed (it may contain PARTIAL audits and blocked D); 2 means the schedule completed with worker/scorer failures; 1 means rejection or preflight failure. Inspect the per-run states rather than treating exit 0 as a fully complete scientific evaluation.
+
+
+Interaction missingness uses a separate frozen C/D protocol and `eval-interaction`; it is not included in these detection metrics. See [INTERACTION_EVALUATION.md](INTERACTION_EVALUATION.md) for fixed answer permissions, independent scoring, failures and resource accounting.

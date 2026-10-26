@@ -1,0 +1,51 @@
+{
+  "argv": [
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/.venv-clean/bin/python",
+    "-m",
+    "visionleak_investigator.cli",
+    "resume",
+    "--run",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-evaluation-v1-first/results/test/runs/t011/r01/C/run",
+    "--answers",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/interaction-evaluation-v1-first/results/test/runs/t011/r01/C/answers/00.json"
+  ],
+  "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+  "started_at": "2026-10-26T21:45:08.780912+00:00",
+  "timeout_seconds": 329.4360555000603,
+  "status": "returned",
+  "exit_code": 2,
+  "error": null,
+  "wall_seconds": 0.1959054577164352,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.120404,
+    "cpu_system_seconds": 0.049589999999999995,
+    "cpu_seconds": 0.16999399999999998,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 63143936,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "partial",
+    "tree_rss_peak_bytes": null,
+    "observed_rss_peak_bytes": 33685504,
+    "root_rss_peak_bytes": 33685504,
+    "sample_interval_seconds": 0.02,
+    "samples": 6,
+    "observed_process_count": 1,
+    "peak_members": [
+      {
+        "pid": 66713,
+        "rss_bytes": 33685504
+      }
+    ],
+    "access_denied_samples": 8,
+    "process_exit_races": 2,
+    "sampler_wall_seconds": 0.19445900013670325,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

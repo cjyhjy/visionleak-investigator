@@ -32,3 +32,5 @@ flowchart TD
 设计原文保存在 `docs/planning/`；实现选择和偏差在 `docs/adr/`。研究对照的 D 与策略优化 E 仍未执行。
 
 `plan_check.py` 提供生成器与独立 CLI 共用的清单检查；绑定已验证的审计/输入，保留已知冲突与覆盖边界。它不执行文件修改或图像重审，也不改变原审计账本。
+
+`proposal_export.py` 只从有效证据重新生成建议，CSV 文本采用可还原编码。`interaction_evaluation.py` 单独组织 C/D 交互任务与固定回答通道，`interaction_scoring.py` 在独立进程读取交互真值；初始/续答工作进程不接收完整回答契约或风险标签。

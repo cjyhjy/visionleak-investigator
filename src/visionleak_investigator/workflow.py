@@ -8,6 +8,7 @@ from .core import CoreAdapter,PROFILES,KINDS,execute
 from .budget import BudgetLedger,BudgetExceeded
 from .reporting import ClaimValidator,LIMITATIONS,render_report
 from .metadata import interpret,proposal
+from .review_state import review_coverage
 
 class ActionGuard:
     def __init__(self,known_evidence: set[str],profiles: list[str]):self.known_evidence=known_evidence;self.profiles=profiles
@@ -206,6 +207,7 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     if not stable:claims=[]
     review_refs=planning['review_refs'] if planning else []
     reviews=[{'pair_ref':e['evidence_id'],'pair_key':e['pair_key'],'audit_id':e['core_audit_id'],'status':'pending','requested':e['evidence_id'] in review_refs} for e in evidence if 'candidate' in e['kind']]
+    coverage['human_review']=review_coverage(reviews)
     scope_done=bool(completed) if planned else len(completed)==len(profiles)
     state='COMPLETED' if env and not issues and scope_done and stable else 'PARTIAL'
     if not env:state='FAILED'
@@ -220,6 +222,7 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     registry_evidence={e['evidence_id']:e for e in evidence}
     for claim in claims:ClaimValidator().validate_claim(claim,registry_evidence,{**coverage['profiles'],'metadata':coverage['metadata']})
     validation={'passed':stable,'claim_count':len(claims),'evidence_sha256':file_hash(out/'evidence.jsonl'),'source_unchanged':stable,'core_reports':{p:c['report_sha256'] for p,c in coverage['profiles'].items()},'meaning':'structural/identity/entailment validation; not evidence of model training or universal absence'}
+    validation.update(human_review_coverage_digest=digest(coverage['human_review']),review_inputs={})
     write_json(out/'coverage.json',coverage,exclusive=True);write_json(out/'claims.json',claims,exclusive=True)
     write_json(out/'questions.json',questions,exclusive=True);write_json(out/'reviews.json',reviews,exclusive=True)
     write_json(out/'proposal.json',proposal(task,evidence if stable else [],before),exclusive=True)
