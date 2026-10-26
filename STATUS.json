@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T20:21:55.769030+00:00",
+  "updated_at": "2026-10-26T20:29:32.021497+00:00",
   "project_version": "0.1.0",
   "code_digest": "5124500d656fd4667a433058c4d9ef0bcdbb5e291403659c37dd54d092f95830",
   "original_core_modified": false,
@@ -98,17 +98,17 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T201453016076-report-final-regression.log",
-    "ci_evidence": "reports/ci-history/40391572151/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40391572151",
-    "tested_commit": "54df5312b2ce9754eab0f560e43f4fae951eac4d",
-    "ci_for_current_code": "not_run; report changes awaiting new CI"
+    "ci_evidence": "reports/ci-history/40395014802/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40395014802",
+    "tested_commit": "09abc4f698f96db59a779bf179f1b6c5ddd7a8c1",
+    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 106 passed, zero test skips; downloaded artifacts reverified"
   },
   "next_local_command": ".venv-clean/bin/python scripts/report_smoke.py --out runs/next-report-demo",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Pending for report changes; 54df531 resource/provenance CI remains passed",
+    "ci": "Passed for report implementation 09abc4f; 34 host reports and 18 task resource receipts reverified",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Catalog-driven A/B/C execution and independent source/data preparation",

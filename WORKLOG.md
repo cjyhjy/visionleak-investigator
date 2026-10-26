@@ -57,3 +57,5 @@ Chrome 页面初验：实际打开完成、预算不足、脚本控制器待澄�
 报告验收首次 23 passed/1 failed：测试把 section 标题 evidence-title 当成证据卡片；改为检查实际 evidence ID 对应的片段。新增真实 Core 链接/缩略图摘要、预算不完整、目标修订、注入与输入变化测试，最终 report-final-regression 为 106 passed。report-final-demo 生成 5 个新报告（3 次审计+2 次保留证据的修订）；report-final-controller 运行两条醒目标注 SCRIPTED_TEST_ONLY 的控制器测试。合成来源、脚本回答和复核在页面与收据标明；没有真人参与或模型请求。
 
 Chrome 实际验收：桌面与临时 390×844 窄屏下查看 6 个最终报告，证据片段、缩略图、原始 JSON 导航、折叠明细、预算和修订提示可用，无采样页面横向溢出。8 张截图、DOM 与服务日志保存在 reports/visual-review/report-v2-final。立即读取 lazy 图片时 ready=false，随后的真实截图已显示图片；保留早期采样，未伪造最终 DOM-ready 断言。直接 file:// 核验被浏览器 URL 策略拒绝（仅支持 http/https），未绕过，不宣称验证直接文件模式。临时视口已恢复、本地服务已关闭。新文档 docs/REPORTS.md 与更新的三分钟脚本 docs/DEMO.md 对应实际产物；没有录制视频。当前代码快照 reports/source-manifests/report-presentation.json，等待推送后双平台 CI。
+
+报告实现提交 `09abc4f698f96db59a779bf179f1b6c5ddd7a8c1` 已公开推送。CI 40395014802 在 Ubuntu 24.04/macOS 14 各 106 passed、零测试 skip；两平台真实 Core 审计、脚本控制器、来源门禁、资源评测与报告演示均通过。下载的原始 ZIP 与 GitHub artifact SHA-256 一致；`report-ci-artifact-integrity` 退出码 0，复核 34 份宿主报告及其 Core 身份/claims/输入和账本摘要、页面链接/缩略图与 18 份任务资源收据。原始证据见 reports/ci-history/40395014802/verification.json。模型调用仍为 0，catalog 执行器、独立自然数据和真实 Agent 实验仍未完成。
