@@ -1,0 +1,53 @@
+{
+  "verified_at": "2026-10-26T19:35:54.855427+00:00",
+  "tested_commit": "9829ed5e4822af8eede147287fee5a0909f8e682",
+  "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40387674329",
+  "results": [
+    {
+      "platform": "ubuntu-24.04",
+      "tests": 77,
+      "reports_reverified": [
+        {
+          "report": "acceptance/audit/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "controller/additional_evidence/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "controller/clarification/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "WAITING_USER"
+        }
+      ],
+      "runtime_lock_sha256": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7"
+    },
+    {
+      "platform": "macos-14",
+      "tests": 77,
+      "reports_reverified": [
+        {
+          "report": "acceptance/audit/report.json",
+          "mode": "rules",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "controller/additional_evidence/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "COMPLETED"
+        },
+        {
+          "report": "controller/clarification/run/report.json",
+          "mode": "scripted_test_only",
+          "state": "WAITING_USER"
+        }
+      ],
+      "runtime_lock_sha256": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1"
+    }
+  ],
+  "real_agent_experiment": "not_run",
+  "method": "Verify downloaded real CI evidence; this is not a new audit experiment."
+}

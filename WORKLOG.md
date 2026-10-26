@@ -35,3 +35,7 @@ M3 本地后续：新增独立持久化模型预算账本（无模型客户端�
 CI 第三次 40385473497（6f823de）完整通过：Ubuntu 24.04 与 macOS 14 各 59 项测试，新 base+all 真实审计完成且产物上传成功。下载实际产物后，本地再次验证 JUnit、checkpoint/report digest、evidence hash 和四份真实 Core 报告身份。完整证据与校验回执位于 reports/ci-history/40385473497。模型调用仍为 0。
 
 自主推进 / Planner：共用审计操作重构先跑 59 passed；接入循环后新增 18 项真实 Core 控制器验收，完整回归 77 passed。实际 SDK dispatch 的补充取证/澄清脚本场景通过并保留 trace、报告、账本；非真实 Agent 实验。新增 ledger 摘要校验、脚本来源保留、输入变化后撤回 claims/建议、已请求复核首次导入不双扣预算。命令与日志沿用 reports/commands.jsonl。
+
+控制器 CI 40387674329（9829ed5）通过：Ubuntu/macOS 各 77 passed，规则新审计及两个 SCRIPTED_TEST_ONLY 控制器场景通过。实际产物下载到 reports/ci-history/40387674329；M3-ci-artifact-integrity 重核六份宿主报告及其 Core 报告、evidence/model-ledger hash 和 JUnit 通过。
+
+依赖通知清单：基础环境 13、SDK 环境 162 个已安装 Python distribution，Core+Node 依赖 7 项。实际许可证/通知文件摘要、元数据与采集脚本保存在 reports/licenses；保留首次过宽的文件名前缀采集，v2 排除源码扩展名。openJiuwen/docx2txt 缺结构化 license 字段，已核对安装包 LICENSE 文件标题，不推定未知许可；未给 Investigator 新设许可证、未发布依赖包。

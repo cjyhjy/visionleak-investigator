@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T19:32:24.594281+00:00",
+  "updated_at": "2026-10-26T19:37:11.382762+00:00",
   "project_version": "0.1.0",
   "code_digest": "5a79979072cdddd333ff225ead315c43f5af13ad6553a1a4eaaa400835a4abcd",
   "original_core_modified": false,
@@ -84,23 +84,24 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T192952312126-M3-controller-complete-local.log",
-    "ci_evidence": "reports/ci-history/40385473497/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40385473497",
-    "tested_commit": "6f823de810a958f4defd31fb214ce7dc5afce1d3",
-    "ci_for_current_code": "pending"
+    "ci_evidence": "reports/ci-history/40387674329/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40387674329",
+    "tested_commit": "9829ed5e4822af8eede147287fee5a0909f8e682",
+    "ci_for_current_code": "passed"
   },
   "next_local_command": ".venv/bin/vli demo --out runs/next-fixture",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "passed: Ubuntu 24.04 and macOS 14, 59 tests each, fresh base+all audit and artifacts",
+    "ci": "passed: Ubuntu 24.04 and macOS 14, 77 tests each, fresh rules audit and labelled scripted controller scenarios",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
       "Real provider authorization, adapter and live trajectories",
       "Resource measurement and independent evaluation source/partition tooling",
-      "Delivery review, license inventory and demo verification",
+      "Delivery review, report visual verification and demo verification",
       "M4 deferred until real Agent stabilizes"
-    ]
+    ],
+    "licenses": "installed metadata and notice hash inventories collected; Investigator license not assigned"
   }
 }
