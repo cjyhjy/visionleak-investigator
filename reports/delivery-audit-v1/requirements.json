@@ -117,11 +117,11 @@
     },
     {
       "requirement": "T17",
-      "status": "not_run",
-      "source": "tests/acceptance/test_resources.py",
-      "test": "test_timeout_terminates_spawned_descendant_not_only_worker",
-      "verified_scope": "实际超时进程组与受控恢复；Core 半写报告专项尚需核对",
-      "local_subchecks": "passed: wrapper timeout/process-group cleanup and controlled recovery; complete half-written Core-report acceptance still missing"
+      "status": "passed",
+      "source": "tests/acceptance/test_partial_report.py",
+      "test": "test_T17_half_written_real_report_is_preserved_but_not_accepted",
+      "verified_scope": "真实 Core 成功后显式截断新建报告；宿主拒绝接纳、保留原件与损坏副本/日志、unknown 全额结算、保留 finalization、PARTIAL 且无声明",
+      "local_subchecks": "passed: process-group timeout, conservative recovery, controlled half-written Core output acceptance"
     },
     {
       "requirement": "T18",
@@ -175,9 +175,9 @@
     {
       "requirement": "T25",
       "status": "passed",
-      "source": "tests/acceptance/test_loop.py",
-      "test": "test_T25_proposal_preserves_test_and_source",
-      "verified_scope": "生成建议的内部检查通过；独立用户 manifest plan-check CLI 尚缺"
+      "source": "tests/acceptance/test_plan_check.py",
+      "test": "test_plan_check_preserves_audit_and_inputs_with_finite_scope",
+      "verified_scope": "独立用户清单检查与生成器共用规则；test/映射/split/原数据保护；原覆盖缺口保留，未执行修正或重审"
     },
     {
       "requirement": "T26",
@@ -255,12 +255,14 @@
     "reports/catalog-execution-v1/receipt.json",
     "reports/logs/20261026T210243040277-delivery-provenance-regression.log",
     "reports/ci-history/40398281500/verification.json",
-    "reports/ci-history/40402240904/verification.json"
+    "reports/ci-history/40402240904/verification.json",
+    "reports/plan-check-v1/receipt.json",
+    "reports/partial-report-v1/receipt.json",
+    "reports/logs/20261026T212806003226-plan-and-failure-regression.log"
   ],
   "remaining_local": [
-    "Implement the named plan-check operation for a user-supplied manifest, beyond generated-proposal internal checks.",
-    "Verify half-written Core report handling against the T17 requirement.",
-    "Finish the clause-level contract/delivery audit and separate interaction-evaluation accounting."
+    "Finish the clause-level contract/delivery audit, including planned suggestion CSV export.",
+    "Implement separate interaction-evaluation accounting."
   ],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
@@ -269,5 +271,7 @@
     "M4/E deferred until the real Agent is stable."
   ],
   "reviewed_code_commit": "3791ccab9727c4dd9bccdebaa623636a05516bfc",
-  "latest_ci_tests_per_platform": 125
+  "latest_ci_tests_per_platform": 125,
+  "reviewed_worktree_code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
+  "current_code_ci": "pending"
 }

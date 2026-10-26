@@ -13,6 +13,7 @@
 | `resume` | `--run --answers` | 导入用户目标/字段确认，生成 revision；不恢复 Core 扫描 |
 | `review-import` | `--run --review` | 导入绑定当前图像对的人审记录，生成 revision；不升级 Core 证据种类 |
 | `recover` | `--run` | 原工作进程停止后保守结案；有完整报告则校验并返回；恢复通常退出 2 |
+| `plan-check` | `--run --manifest`；可选 `--out` | 只读检查用户清单；0 无剩余已知冲突、2 仍有已知冲突、1 输入/完整性/路径拒绝 |
 | `evaluate` | `--out`；可选 `--tasks` | 原有 `synthetic-engineering` 工程集；A/B/C 实际运行，D 受阻 |
 | `eval-validate` | `--catalog --root` | 来源、内容、分区和真值隔离检查；可选 `--out` |
 | `eval-freeze` | `--catalog --root --protocol --out` | 不可覆盖的输入/实现/依赖/策略/模型声明冻结 |
@@ -57,11 +58,24 @@ Revision 保存于 `revisions/<payload-digest>/`，`latest-revision.json` 指向
 
 `recovery-receipt.json` 记录原始 manifest/代码、恢复处理代码、归档路径和 SHA-256；checkpoint 与报告绑定该收据。`verify_run` 还检查 manifest、report、ledger、evidence、模型账本（如有）、Core 报告及声明支持关系。它发现意外内容变化，不是数字签名或防本地管理员的安全边界。
 
-## 建议文件和当前接口缺口
+## 建议文件与独立清单检查
 
 `proposal.json` 是只读建议，内含 `new_manifest` 和 `plan_check`。当前生成器校验结构、保留 test，并列出已知确定性/实体冲突是否仍在；它不移动、删除或重划分原数据，也不声称替用户重训。
 
-当前还没有接收用户自改 manifest 的独立 `plan-check` CLI；已有的是生成建议时的内部检查。这一接口差距保留在交付核对中，不能把设计中的名字当作现成命令。没有 CSV 导出命令；CSV 输入以普通字符串处理，不执行表格公式。
+`plan-check` 与生成建议共用检查规则。候选 JSON 使用 `contracts/plan-manifest.schema.json`：仅含 `source_manifest_digest`、完整 `new_manifest` 数组，可选 `schema_version: 1`。可从建议文件提取后编辑：
+
+```sh
+.venv/bin/python -c 'import json; from pathlib import Path; p=json.loads(Path("runs/my-audit/proposal.json").read_text()); out=Path("candidate-manifest.json"); out.open("x").write(json.dumps({k:p[k] for k in ("source_manifest_digest","new_manifest")},indent=2))'
+.venv/bin/vli plan-check --run runs/my-audit --manifest candidate-manifest.json --out plan-check-result.json
+```
+
+每行必须包含 `path,image_split,included`，`included` 必须为 JSON 布尔值。所有原始图像恰好一行，不能增加/漏掉路径、改变 split 或排除 test。编辑时只调整非 test 行的 `included`；完整的 `proposal.json` 含其他字段，不能直接作为候选输入。
+
+检查先核验原报告、证据、登记文档和当前输入；结果绑定原 manifest/report、证据和候选清单摘要，列出旧/新保留关系、受影响 split 与支持证据。候选相似关系、人审同源确认不会变成精确相等约束；实体约束只适用于已确认的新实体泛化目标。费用/时间单独记录为此次本地检查，不改写原审计账本。
+
+0 仅代表已接纳证据中的已知冲突消除。原审计为 PARTIAL、未检查后缀或未知元数据时，这些覆盖缺口仍保留；不重新执行 Core，不产生全量无泄漏结论。输出默认 stdout；`--out` 必须是新文件，不能写入原审计（含修订祖先）或登记数据目录，也不能覆盖登记文档。检查不应用建议；类别/样本平衡、人工批准、重训及独立评测仍需另行完成。
+
+目前没有 CSV 导出命令；CSV 输入以普通字符串处理，不执行表格公式。
 
 ## 进程内接口
 

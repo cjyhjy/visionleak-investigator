@@ -121,3 +121,12 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 当前实现架构见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)，实际命令与文件契约见 [docs/API.md](docs/API.md)，AI 辅助与实验模式见 [docs/AI_USAGE.md](docs/AI_USAGE.md)。作品说明草稿 [docs/SUBMISSION_DRAFT.md](docs/SUBMISSION_DRAFT.md) 只描述已实现范围与待完成事项，未自动提交。
 
 `.venv/bin/python scripts/lifecycle_smoke.py --out runs/lifecycle-acceptance` 验证真实 Core 的修订、受控中断恢复和难负例。新版 revision 分别记录当前解释代码和原图像证据代码；恢复把未接纳的 evidence/proposal 归档，避免后续修订重新采用。全部历史材料保留，恢复仍不进行 Core 断点扫描。
+
+`vli plan-check --run <run> --manifest <candidate.json> --out <new-result.json>` 检查修改后的完整清单：保留 test、不改 split，并列出已知冲突是否仍在。输入格式和退出码见 [docs/API.md](docs/API.md)。它不应用修改、不重跑图片审计；原覆盖缺口仍保留。独立验收命令：
+
+```sh
+.venv/bin/python scripts/plan_check_smoke.py --out runs/plan-check-acceptance
+.venv/bin/python scripts/partial_report_smoke.py --out runs/partial-report-acceptance
+```
+
+后者运行真实 Core 后，显式截断此次生成的报告；保存完整原件和损坏副本，验证宿主保守计费并结案 PARTIAL。这是受控故障注入，不是真实生产事故或 Agent 实验。

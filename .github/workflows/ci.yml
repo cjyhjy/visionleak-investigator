@@ -51,6 +51,8 @@ jobs:
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-report-demo .venv/bin/python scripts/report_smoke.py --out runs/ci-report-demo
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-catalog-execution .venv/bin/python scripts/catalog_smoke.py --tasks 3 --out runs/ci-catalog-execution
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-lifecycle .venv/bin/python scripts/lifecycle_smoke.py --out runs/ci-lifecycle
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-plan-check .venv/bin/python scripts/plan_check_smoke.py --out runs/ci-plan-check
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-partial-report .venv/bin/python scripts/partial_report_smoke.py --out runs/ci-partial-report
       - name: Regression and fresh acceptance (macOS)
         if: runner.os == 'macOS'
         run: |
@@ -62,6 +64,8 @@ jobs:
           .venv/bin/python scripts/record.py ci-report-demo .venv/bin/python scripts/report_smoke.py --out runs/ci-report-demo
           .venv/bin/python scripts/record.py ci-catalog-execution .venv/bin/python scripts/catalog_smoke.py --tasks 3 --out runs/ci-catalog-execution
           .venv/bin/python scripts/record.py ci-lifecycle .venv/bin/python scripts/lifecycle_smoke.py --out runs/ci-lifecycle
+          .venv/bin/python scripts/record.py ci-plan-check .venv/bin/python scripts/plan_check_smoke.py --out runs/ci-plan-check
+          .venv/bin/python scripts/record.py ci-partial-report .venv/bin/python scripts/partial_report_smoke.py --out runs/ci-partial-report
       - name: Preserve commands, failures, platform locks and real audit evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -79,4 +83,6 @@ jobs:
             runs/ci-report-demo/
             runs/ci-catalog-execution/
             runs/ci-lifecycle/
+            runs/ci-plan-check/
+            runs/ci-partial-report/
             core.runtime.lock.json

@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T21:17:57.299819+00:00",
+  "updated_at": "2026-10-26T21:29:50.492236+00:00",
   "project_version": "0.1.0",
-  "code_digest": "e9b6dc5805c1215fc77ca7e33d3c7a1c510a1c5961a61eb751b35a298d639afa",
+  "code_digest": "d38945423b330614a7f8a46a88cbe42f1c7900af4856352aa24917890b625f75",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -24,12 +24,14 @@
     "status": "passed",
     "tests": [
       "M1-verified",
-      "final-regression"
+      "final-regression",
+      "half-written-core-report"
     ],
     "evidence": [
       "reports/demo-rules/report.json",
       "reports/demo-rules/ledger.json",
-      "reports/delivery-demo/report.json"
+      "reports/delivery-demo/report.json",
+      "reports/partial-report-v1/receipt.json"
     ]
   },
   "M2": {
@@ -38,16 +40,17 @@
       "M2-first",
       "recovery-check",
       "final-regression",
-      "M2-demo"
+      "M2-demo",
+      "plan-check-targeted"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
-      "reports/lifecycle-v1/receipt.json"
+      "reports/lifecycle-v1/receipt.json",
+      "reports/plan-check-v1/receipt.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
-      "Review backlog is visible; import requires bound audit/input/reviewer.",
-      "Standalone plan-check for user-edited manifests remains to implement; generated-proposal internal checks already run."
+      "Review backlog is visible; import requires bound audit/input/reviewer."
     ]
   },
   "M3": {
@@ -99,26 +102,25 @@
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "delivery-provenance-regression: 124 passed, zero skipped; additional orientation test: 1 passed",
+    "test_suite": "plan-and-failure-regression: 134 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T210243040277-delivery-provenance-regression.log",
+    "final_log": "reports/logs/20261026T212806003226-plan-and-failure-regression.log",
     "ci_evidence": "reports/ci-history/40402240904/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40402240904",
     "tested_commit": "3791ccab9727c4dd9bccdebaa623636a05516bfc",
-    "ci_for_current_code": "passed: Ubuntu 24.04 and macOS 14 each 125 passed, zero test skips; lifecycle artifacts reverified"
+    "ci_for_current_code": "pending: standalone plan-check and half-written report acceptance not yet run in remote CI"
   },
-  "next_local_command": ".venv-clean/bin/python scripts/lifecycle_smoke.py --out runs/next-lifecycle-acceptance",
+  "next_local_command": ".venv-clean/bin/python scripts/plan_check_smoke.py --out runs/next-plan-check-acceptance",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Passed for lifecycle implementation 3791cca; 62 reports, 36 task resource receipts, 18 catalog scores and 10 lifecycle reports reverified",
+    "ci": "Current implementation awaiting CI; previous lifecycle implementation had 125 tests per platform.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Standalone plan-check for user-supplied manifests",
-      "Half-written Core report acceptance and remaining clause-level delivery audit",
       "Separate interaction-evaluation accounting",
+      "Finish clause-level delivery audit, including the planned suggestion CSV export",
       "Authorized independent natural data experiments and real provider/D trajectories",
       "M4 deferred until real Agent stabilizes"
     ],

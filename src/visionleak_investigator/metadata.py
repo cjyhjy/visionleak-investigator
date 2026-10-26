@@ -5,6 +5,7 @@ from .common import now,digest,file_hash,safe_child
 from .domain import Registry,SPLITS
 from .budget import BudgetExceeded
 from .reporting import ClaimValidator
+from .plan_check import check_manifest
 
 def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_questions: bool=True) -> dict:
     """Deterministic interpretation. Context text is data, never instructions."""
@@ -86,13 +87,5 @@ def proposal(task: dict,evidence: list[dict],manifest: dict) -> dict:
                 for m in members:
                     if m['image_split']=='train':excluded.setdefault(m['path'],[]).append(e['evidence_id'])
     new_manifest=[{'path':r['path'],'image_split':r['image_split'],'included':r['path'] not in excluded} for r in manifest['files'] if r['supported_image']]
-    included={r['path'] for r in new_manifest if r['included']}
-    assert len({r['path'] for r in new_manifest})==len(new_manifest)
-    assert all(r['included'] for r in new_manifest if r['image_split']=='test')
-    remaining=[]
-    for e in evidence:
-        if e['kind'] in ('core.byte_identical','core.pixel_identical') and e['verification_state']['exact_recomputed']=='valid' and set(e['files'])<=included:remaining.append(e['evidence_id'])
-        elif e['kind']=='metadata.entity_overlap' and task['goal']=='new_entity_generalization':
-            if len({m['image_split'] for m in e['facts']['members'] if m['path'] in included})>1:remaining.append(e['evidence_id'])
-    check={'structure':'passed','test_preserved':True,'known_conflicts_remaining':remaining,'scope':'structure and known evidence only','image_reaudit':'not_run'}
+    check=check_manifest(task,evidence,manifest,{'source_manifest_digest':manifest['digest'],'new_manifest':new_manifest})
     return {'status':'suggestion_only','requires_approval':True,'protect_eval_split':True,'source_manifest_digest':manifest['digest'],'proposed_exclusions':[{'path':p,'evidence_refs':refs} for p,refs in excluded.items()], 'new_manifest':new_manifest, 'plan_check':check, 'limitations':['Requires class/sample-balance review before applying.','Existing trained models may require retraining and independent evaluation.','No source files were modified.']}

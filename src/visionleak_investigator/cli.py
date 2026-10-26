@@ -16,6 +16,7 @@ def main() -> int:
     r=sub.add_parser('resume');r.add_argument('--run',type=Path,required=True);r.add_argument('--answers',type=Path,required=True)
     r=sub.add_parser('review-import');r.add_argument('--run',type=Path,required=True);r.add_argument('--review',type=Path,required=True)
     r=sub.add_parser('recover');r.add_argument('--run',type=Path,required=True)
+    r=sub.add_parser('plan-check');r.add_argument('--run',type=Path,required=True);r.add_argument('--manifest',type=Path,required=True);r.add_argument('--out',type=Path)
     r=sub.add_parser('evaluate');r.add_argument('--out',type=Path,required=True);r.add_argument('--tasks',type=int,default=12);r.add_argument('--suite',choices=['synthetic-engineering'],default='synthetic-engineering')
     for name in ('eval-validate','eval-freeze','eval-check','eval-run'):
         r=sub.add_parser(name);r.add_argument('--catalog',type=Path,required=True);r.add_argument('--root',type=Path,required=True)
@@ -26,6 +27,10 @@ def main() -> int:
         if name=='eval-run':r.add_argument('--replay-of',type=Path)
     args=p.parse_args()
     try:
+        if args.command=='plan-check':
+            from .plan_check import check_plan
+            value=check_plan(args.run,args.manifest,out=args.out)
+            print(json.dumps(value,ensure_ascii=False));return 2 if value['known_conflicts_remaining'] else 0
         if args.command in ('eval-validate','eval-freeze','eval-check','eval-run'):
             from .evaluation_data import validate_catalog,freeze_catalog,verify_frozen
             catalog=read_json(args.catalog);root=args.root.resolve()
