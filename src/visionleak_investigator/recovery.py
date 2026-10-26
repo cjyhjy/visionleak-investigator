@@ -16,6 +16,10 @@ def recover_interrupted(run: Path) -> dict:
     root=Registry(registry).dataset(task['dataset_ref']);current=input_manifest(root,task['limits'])
     if current['digest']!=manifest['dataset_manifest_digest']:raise ValueError('Input changed; cannot recover evidence for this version')
     ledger=BudgetLedger(task['limits'],run/'ledger.json',read_json(run/'ledger.json'));ledger.recover_pending()
+    if (run/'model-ledger.json').exists():
+        from .model_budget import ModelBudgetLedger
+        model=ModelBudgetLedger(run/'model-ledger.json',binding=manifest['task_digest'],limits=task['limits'],execution_label='scripted_test_only')
+        model.recover_pending();ledger.data['planner_accounting']=model.summary();ledger.save()
     try:closing=ledger.reserve('recovery_finalize',final=True)
     except BudgetExceeded as e:
         write_json(run/'recovery-status.json',{'state':'FAILED','reason':'No finalization allowance remains','raw_outputs_preserved':True})
@@ -26,6 +30,10 @@ def recover_interrupted(run: Path) -> dict:
     if not (run/'evidence.jsonl').exists():(run/'evidence.jsonl').touch(exist_ok=False)
     validation={'passed':True,'evidence_sha256':file_hash(run/'evidence.jsonl'),'claim_count':0,'core_reports':{},'source_unchanged':True,'recovery':'No raw report accepted or claim published; pending cost conservatively settled'}
     report={'state':'PARTIAL','mode':'rules','model_execution':'not_run','task':task,'claims':[],'coverage':coverage,'budget':ledger.data,'questions':[],'reviews':[],'issues':['Process interrupted. Pending reservations conservatively charged; raw reports retained. Start a new run for additional image checks.'],'limitations':LIMITATIONS,'unique_candidate_pairs':0}
+    report['mode']=manifest['mode']
+    if (run/'model-ledger.json').exists():
+        validation['model_ledger_sha256']=file_hash(run/'model-ledger.json')
+        report['planning']={'execution_label':'scripted_test_only','recovery':'conservative_no_replay','accounting':model.summary()}
     for name,value in [('coverage.json',coverage),('claims.json',[]),('validation.json',validation),('questions.json',[]),('reviews.json',[])]:
         if (run/name).exists():
             # Keep pre-crash artifacts as evidence rather than silently overwriting.

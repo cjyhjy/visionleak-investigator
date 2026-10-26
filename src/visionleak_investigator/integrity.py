@@ -9,6 +9,7 @@ from .reporting import ClaimValidator
 def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=False) -> dict:
     report=read_json(run/'report.json');validation=read_json(run/'validation.json');manifest=read_json(run/'manifest.json')
     if file_hash(run/'evidence.jsonl')!=validation['evidence_sha256']:raise ValueError('Evidence store tampered')
+    if 'model_ledger_sha256' in validation and file_hash(run/'model-ledger.json')!=validation['model_ledger_sha256']:raise ValueError('Model ledger tampered')
     if digest(read_json(run/'task.json'))!=manifest['task_digest']:raise ValueError('Task changed')
     registry=read_json(run/'registry.private.json')
     if digest(registry)!=manifest['registry_digest']:raise ValueError('Registry changed')

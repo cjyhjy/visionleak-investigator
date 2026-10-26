@@ -76,7 +76,7 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 
 ## 限制与后续
 
-- M3 目前只有真实 SDK 无模型工作流、脱敏观察、动作结构/门禁与有限纠错。尚无配置并授权的真实模型 provider adapter 或两条真实模型轨迹；D=blocked，M4/E=not_run。
+- M3 已接通共用真实审计操作、脱敏观察、七类白名单动作循环、模型预算预留/结算、结构纠错、停止与保守恢复；这些仅经过明确标注的脚本测试及无模型 SDK 验收。尚无配置并授权的真实模型 provider adapter 或两条真实模型轨迹；D=blocked，M4/E=not_run。
 - 全部评测输入为受控合成工程数据；未建立独立自然图像 test，不宣传泛化或算法收益。
 - 前后 hash 不是原子快照；应用门禁不是对恶意本地管理员的沙箱或数字签名。资源限制主要由 Core 和进程组超时执行，无 OS 硬内存上限。
 - CPU/完整进程树 RSS 未测，报告写 not_measured，不用 Python 母进程数据冒充。
@@ -88,3 +88,5 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 ## 持续集成
 
 `.github/workflows/ci.yml` 在 Ubuntu 24.04 与 macOS 14 的全新 checkout 中安装冻结依赖，下载并验证 Core，显式记录平台锁，运行完整测试和新生成合成图的 base+all 审计。Linux 测试与审计在禁用网络的 namespace 中执行；macOS 不宣称 OS 网络隔离。没有模型凭据或 agent extra。失败时也上传命令、日志、JUnit、平台锁和真实审计证据，保留 14 天。远端完成前仅表示工作流已配置，不表示跨平台通过。
+
+控制器测试（不是 Agent 演示）：`.venv/bin/python scripts/controller_smoke.py --sdk --out runs/new-controller-sdk`。需已安装 agent extra；省略 `--sdk` 可在基础环境验证同一宿主循环。结果醒目标注 `SCRIPTED_TEST_ONLY`；受控回调输入不是模型决策，D 条件仍 blocked。已运行证据见 `reports/controller-sdk/receipt.json`，实现边界见 `docs/adr/004-planner-host.md`。

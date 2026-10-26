@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "execution_label": "scripted_test_only",
+  "real_agent_experiment": "not_run",
+  "model_calls": 0,
+  "network": "in-process connect blocked; no provider configured",
+  "sdk": "0.1.19.post2",
+  "real_core": true,
+  "cases": [
+    {
+      "scenario": "additional_evidence",
+      "state": "COMPLETED",
+      "run": "additional_evidence/run",
+      "audit_runs": 2,
+      "planner_requests": 2
+    },
+    {
+      "scenario": "clarification",
+      "state": "WAITING_USER",
+      "run": "clarification/run",
+      "audit_runs": 1,
+      "planner_requests": 1
+    }
+  ]
+}

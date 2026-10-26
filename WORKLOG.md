@@ -33,3 +33,5 @@ CI 第二次运行 40384953736：macOS 完整通过；Linux 46 项测试和全�
 M3 本地后续：新增独立持久化模型预算账本（无模型客户端）。decimal 费用、调用前预留、usage 缺失保守结算、超额停止、绑定不变的恢复与无重放恢复均有专项测试。完整回归 59 passed；尚未接入实际 Planner 循环/提供商，不能作为真实 Agent 验收。状态生成脚本首次误用系统 Python 3.9 导入项目失败，已改用项目 Python 3.12，不影响已完成测试。
 
 CI 第三次 40385473497（6f823de）完整通过：Ubuntu 24.04 与 macOS 14 各 59 项测试，新 base+all 真实审计完成且产物上传成功。下载实际产物后，本地再次验证 JUnit、checkpoint/report digest、evidence hash 和四份真实 Core 报告身份。完整证据与校验回执位于 reports/ci-history/40385473497。模型调用仍为 0。
+
+自主推进 / Planner：共用审计操作重构先跑 59 passed；接入循环后新增 18 项真实 Core 控制器验收，完整回归 77 passed。实际 SDK dispatch 的补充取证/澄清脚本场景通过并保留 trace、报告、账本；非真实 Agent 实验。新增 ledger 摘要校验、脚本来源保留、输入变化后撤回 claims/建议、已请求复核首次导入不双扣预算。命令与日志沿用 reports/commands.jsonl。

@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T19:20:04.880371+00:00",
+  "updated_at": "2026-10-26T19:32:24.594281+00:00",
   "project_version": "0.1.0",
-  "code_digest": "10e1b9694e75467039a6c23a57dd46d843b73add2c74c82f33e68fd24f9b65c0",
+  "code_digest": "5a79979072cdddd333ff225ead315c43f5af13ad6553a1a4eaaa400835a4abcd",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -50,18 +50,19 @@
   },
   "M3": {
     "status": "blocked",
-    "reason": "No configured/authorized model provider, data disclosure and spend budget; true model adapter and trajectories are not implemented/verified",
+    "reason": "No selected/authorized model provider, disclosure or spend contract; provider adapter and live trajectories not implemented/verified",
     "subtasks": {
       "M3.1": "passed",
-      "M3.2": "not_run",
-      "M3.3": "passed (scripted structure unit tests only)",
+      "M3.2": "local loop verified with real Core and explicitly scripted callbacks; real model not_run",
+      "M3.3": "passed (scripted controller acceptance only)",
       "M3.4": "blocked",
       "M3.5": "passed (local guard tests)",
       "M3.6": "blocked"
     },
     "local_evidence": [
       "reports/sdk-smoke/receipt.json",
-      "M3-local-gate command log"
+      "M3-local-gate command log",
+      "reports/controller-sdk/receipt.json"
     ]
   },
   "M4": {
@@ -79,13 +80,14 @@
     "research_gain": "not_established"
   },
   "verification": {
-    "test_suite": "autonomous-regression: 59 passed in clean Python environment",
+    "test_suite": "M3-controller-complete-local: 77 passed",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T191658899141-autonomous-regression.log",
+    "final_log": "reports/logs/20261026T192952312126-M3-controller-complete-local.log",
     "ci_evidence": "reports/ci-history/40385473497/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40385473497",
-    "tested_commit": "6f823de810a958f4defd31fb214ce7dc5afce1d3"
+    "tested_commit": "6f823de810a958f4defd31fb214ce7dc5afce1d3",
+    "ci_for_current_code": "pending"
   },
   "next_local_command": ".venv/bin/vli demo --out runs/next-fixture",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
@@ -93,9 +95,8 @@
   "publication_evidence": "reports/publication.json",
   "follow_up": {
     "ci": "passed: Ubuntu 24.04 and macOS 14, 59 tests each, fresh base+all audit and artifacts",
-    "model_accounting": "13 local unit tests only; not wired to provider/planner",
+    "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Production single-planner loop and provider-neutral dispatch integration",
       "Real provider authorization, adapter and live trajectories",
       "Resource measurement and independent evaluation source/partition tooling",
       "Delivery review, license inventory and demo verification",

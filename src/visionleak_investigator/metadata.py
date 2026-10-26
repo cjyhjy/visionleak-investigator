@@ -6,7 +6,7 @@ from .domain import Registry,SPLITS
 from .budget import BudgetExceeded
 from .reporting import ClaimValidator
 
-def interpret(task: dict,registry: Registry,manifest: dict,ledger) -> dict:
+def interpret(task: dict,registry: Registry,manifest: dict,ledger,*,request_questions: bool=True) -> dict:
     """Deterministic interpretation. Context text is data, never instructions."""
     tick=time.monotonic();entry=ledger.reserve('interpret_context')
     result={'evidence':[],'claims':[],'questions':[],'issues':[],'context':[],'metadata':{'state':'not_applicable','issues':[]}}
@@ -62,12 +62,12 @@ def interpret(task: dict,registry: Registry,manifest: dict,ledger) -> dict:
                     result['claims'].append(ClaimValidator().build('declared_entity_overlap',[ev,goal],'metadata',goal['evidence_id']))
                     if task['goal']=='new_entity_generalization':result['claims'].append(ClaimValidator().build('goal_conflict',[ev,goal],'metadata',goal['evidence_id']))
         # Only actual question requests consume the question budget; backlog remains visible.
-        available=int(ledger.remaining('questions'))
+        available=int(ledger.remaining('questions')) if request_questions else len(result['questions'])
         if len(result['questions'])>available:
             result['issues'].append('Clarification budget exhausted');result['questions']=result['questions'][:available]
-        actual={'wall_seconds':time.monotonic()-tick,'questions':len(result['questions'])}
+        actual={'wall_seconds':time.monotonic()-tick,'questions':len(result['questions']) if request_questions else 0}
         # Questions are finite independently of the time reservation.
-        entry['reservation']['questions']=len(result['questions']);ledger.settle(entry,actual)
+        entry['reservation']['questions']=actual['questions'];ledger.settle(entry,actual)
     except Exception as e:
         ledger.settle(entry,{'wall_seconds':time.monotonic()-tick},error=str(e));result['issues'].append(str(e));result['metadata']['state']='partial'
     return result

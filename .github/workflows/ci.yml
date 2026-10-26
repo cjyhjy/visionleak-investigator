@@ -45,11 +45,13 @@ jobs:
         run: |
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
           sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
+          sudo env "PATH=$PATH" unshare --net setpriv --reuid="$(id -u)" --regid="$(id -g)" --init-groups .venv/bin/python scripts/record.py ci-scripted-controller .venv/bin/python scripts/controller_smoke.py --out runs/ci-controller
       - name: Regression and fresh acceptance (macOS)
         if: runner.os == 'macOS'
         run: |
           .venv/bin/python scripts/record.py ci-regression .venv/bin/python -m pytest -q --junitxml=reports/ci/junit.xml
           .venv/bin/python scripts/record.py ci-fresh-audit .venv/bin/python scripts/ci_acceptance.py --out runs/ci-acceptance
+          .venv/bin/python scripts/record.py ci-scripted-controller .venv/bin/python scripts/controller_smoke.py --out runs/ci-controller
       - name: Preserve commands, failures, platform locks and real audit evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -61,4 +63,5 @@ jobs:
             reports/logs/
             reports/commands.jsonl
             runs/ci-acceptance/
+            runs/ci-controller/
             core.runtime.lock.json

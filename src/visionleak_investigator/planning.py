@@ -36,8 +36,9 @@ class StructuredPlanner:
         for attempt in range(2):
             if self.requests>=self.max_requests:raise ValueError('Planner request budget exhausted')
             self.requests+=1
+            # Dispatch/accounting errors are not malformed model output.
+            text=self.request({'observation':observation,'correction_requested':attempt==1})
             try:
-                text=self.request({'observation':observation,'correction_requested':attempt==1})
                 if not isinstance(text,str) or len(text.encode())>16384:raise ValueError('Planner output exceeds structural byte limit (not a token estimate)')
                 def unique(rows):
                     d={}
@@ -52,4 +53,4 @@ class StructuredPlanner:
         raise ValueError('Planner failed bounded correction; guardrail stop')
 
 def observation(report: dict,evidence: list[dict]) -> dict:
-    return {'state':report['state'],'model_execution':report['model_execution'],'evidence':[{'evidence_id':e['evidence_id'],'kind':e['kind']} for e in evidence],'budget_spent':report['budget']['spent'],'profiles':{k:{'complete':v['complete'],'processed_images':v['processed_images']} for k,v in report['coverage']['profiles'].items()},'claim_counts':{s:sum(c['status']==s for c in report['claims']) for s in ('confirmed','candidate','inconclusive')}}
+    return {'state':report['state'],'model_execution':report['model_execution'],'evidence':[{'evidence_id':e['evidence_id'],'kind':e['kind']} for e in evidence[:128]],'evidence_total':len(evidence),'evidence_truncated':len(evidence)>128,'budget_spent':report['budget']['spent'],'profiles':{k:{'complete':v['complete'],'processed_images':v['processed_images'],'audit_id':v.get('audit_id')} for k,v in report['coverage']['profiles'].items()},'claim_counts':{s:sum(c['status']==s for c in report['claims']) for s in ('confirmed','candidate','inconclusive')}}

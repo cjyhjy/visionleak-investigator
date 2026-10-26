@@ -49,15 +49,20 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     write_json(target/(kind+'.input.json'),payload,exclusive=True)
     ledger=BudgetLedger(task['limits'],target/'ledger.json',copy.deepcopy(old['budget']))
     ledger.recover_pending()
-    entry=ledger.reserve('resume_identity_check',{'review_pairs':1} if kind=='review' else {},final=False)
-    ledger.settle(entry,{'wall_seconds':time.monotonic()-tick,**({'review_pairs':1} if kind=='review' else {})})
+    # A pending explicitly requested review was already charged by the host.
+    review_charge=0 if kind=='review' and any(r['pair_ref']==payload['pair_ref'] and r.get('requested') and r['status']=='pending' for r in old['reviews']) else 1
+    entry=ledger.reserve('resume_identity_check',{'review_pairs':review_charge} if kind=='review' else {},final=False)
+    ledger.settle(entry,{'wall_seconds':time.monotonic()-tick,**({'review_pairs':review_charge} if kind=='review' else {})})
     # Reuse only immutable witnesses. Copying their bytes performs no image recomputation.
     shutil.copytree(run/'tools',target/'tools')
+    for name in ('model-ledger.json','planner-trace.json','planner-tools.json','planner-requests.jsonl','planner-actions.jsonl'):
+        if (run/name).exists():shutil.copy2(run/name,target/name)
     before=read_json(run/'input-manifest.json');write_json(target/'input-manifest.json',before,exclusive=True)
     coverage=copy.deepcopy(old['coverage']);issues=[x for x in old['issues'] if not x.startswith(('Goal/','Entity metadata','No registered entity','Metadata has','Clarification budget'))]
     evidence=[e for e in existing if not e['kind'].startswith(('metadata.','user.goal'))]
     claims=[c for c in old['claims'] if c['claim_type'] not in ('goal_conflict','declared_entity_overlap')]
     info=interpret(task,Registry(registry),before,ledger);evidence.extend(info['evidence']);claims.extend(info['claims']);issues.extend(info['issues']);coverage['metadata']=info['metadata']
+    if not info['questions']:issues=[x for x in issues if x!='Required clarification remains unrequested']
     reviews=copy.deepcopy(old['reviews'])
     if human:
         evidence.append(human)
@@ -75,6 +80,9 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     write_json(target/'validation.json',validation,exclusive=True)
     entry=ledger.reserve('finalize',final=True);tick=time.monotonic()
     result={**old,'state':state,'task':task,'claims':claims,'coverage':coverage,'budget':ledger.data,'questions':info['questions'],'reviews':reviews,'issues':issues,'revision':{'kind':kind,'path':str(target),'reused_from':str(run),'core_reexecuted':False}}
+    if old.get('planning'):
+        result['planning']={**old['planning'],'continuation':'host_revision_only_no_new_planning'}
+        result['question_backlog']=[]
     render_report(result);ledger.settle(entry,{'wall_seconds':time.monotonic()-tick})
     write_json(target/'report.json',result,exclusive=True);(target/'report.html').write_text(render_report(result))
     write_json(target/'checkpoint.json',{'state':state,'report_digest':digest(result),'manifest_digest':digest(record)},exclusive=True)
