@@ -1,0 +1,313 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>VisionLeak Investigator</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:0 24px;background:#f5f7f8;color:#182b36}article,section{background:white;padding:20px;margin:16px 0;border:1px solid #ccd5da;border-radius:8px}pre,small{white-space:pre-wrap;overflow-wrap:anywhere}h1{color:#175c72}</style><h1>VisionLeak Investigator</h1><p>确定性本地审计 · 真实 Core 0.6.0 · 模型调用：未运行</p><h2>PARTIAL</h2><p>请检查图像内容及可能的旋转、镜像。</p><p>相似候选不证明同源或实验泄漏。 图像关系不证明模型实际训练使用。 覆盖仅适用于列明的 profile、输入与阈值。 本次未调用模型；不是 Agent 性能实验。</p><section><h2>coverage</h2><pre>{
+  &quot;input_manifest_digest&quot;: &quot;64974f4492dad193f12ebad9b6a76e7114cb7cd7c28d376af3a88ef1826bd7de&quot;,
+  &quot;input_preflight&quot;: {
+    &quot;digest&quot;: &quot;64974f4492dad193f12ebad9b6a76e7114cb7cd7c28d376af3a88ef1826bd7de&quot;,
+    &quot;image_count&quot;: 6,
+    &quot;estimated_source_pixels&quot;: 55296,
+    &quot;header_unknown_count&quot;: 0,
+    &quot;snapshot_guarantee&quot;: &quot;before/after hashes; not an atomic filesystem snapshot&quot;
+  },
+  &quot;profiles&quot;: {
+    &quot;all&quot;: {
+      &quot;audit_id&quot;: &quot;4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d&quot;,
+      &quot;report_ref&quot;: &quot;tools/call-0002/output/report.json&quot;,
+      &quot;report_sha256&quot;: &quot;a3dfd282d1dc30d58a2582b84a2f3eca5f839a47e95ee270627c4fbad26cbc5b&quot;,
+      &quot;complete&quot;: false,
+      &quot;discovered_at_least&quot;: 6,
+      &quot;fingerprinted_images&quot;: 6,
+      &quot;processed_images&quot;: 0,
+      &quot;unprocessed_fingerprints&quot;: [
+        &quot;test/002.png&quot;,
+        &quot;test/004.png&quot;,
+        &quot;train/001.png&quot;,
+        &quot;train/006.png&quot;,
+        &quot;validation/003.png&quot;,
+        &quot;validation/005.png&quot;
+      ],
+      &quot;errors&quot;: [],
+      &quot;reason&quot;: &quot;ComparisonBudget&quot;,
+      &quot;core_coverage&quot;: {
+        &quot;splits&quot;: {
+          &quot;train&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 2
+          },
+          &quot;validation&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 2
+          },
+          &quot;test&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 2
+          },
+          &quot;unknown&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 0,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          }
+        },
+        &quot;budgetExhaustion&quot;: [
+          {
+            &quot;code&quot;: &quot;ComparisonBudget&quot;,
+            &quot;stage&quot;: &quot;core-comparison&quot;,
+            &quot;processedImages&quot;: 0,
+            &quot;emittedPairs&quot;: 0,
+            &quot;atImage&quot;: &quot;test/002.png&quot;
+          }
+        ],
+        &quot;enumerationComplete&quot;: true,
+        &quot;rejectedOrErrorCount&quot;: 0,
+        &quot;ignoredFiles&quot;: 0,
+        &quot;unprocessedKnownFiles&quot;: 6,
+        &quot;summary&quot;: &quot;已审计 train 0 / validation 0 / test 0；拒收/错误 0；忽略 0；已发现但未审计 6；结论只覆盖已审计输入与已完成比较。&quot;
+      },
+      &quot;scope&quot;: {
+        &quot;splits&quot;: [
+          &quot;train&quot;,
+          &quot;validation&quot;,
+          &quot;test&quot;
+        ],
+        &quot;splitDirectories&quot;: {
+          &quot;train&quot;: &quot;train&quot;,
+          &quot;validation&quot;: &quot;validation&quot;,
+          &quot;test&quot;: &quot;test&quot;
+        },
+        &quot;missingSplits&quot;: [],
+        &quot;supportedExtensions&quot;: [
+          &quot;.png&quot;,
+          &quot;.jpg&quot;,
+          &quot;.jpeg&quot;,
+          &quot;.webp&quot;,
+          &quot;.avif&quot;,
+          &quot;.tif&quot;,
+          &quot;.tiff&quot;,
+          &quot;.gif&quot;
+        ],
+        &quot;ignoredFiles&quot;: 0,
+        &quot;entriesScanned&quot;: 6,
+        &quot;discoveredAtLeast&quot;: 6,
+        &quot;acceptedImages&quot;: 6,
+        &quot;totalDecodedPixels&quot;: 55296,
+        &quot;maxDirectoryEntries&quot;: 100000,
+        &quot;source&quot;: &quot;local-files&quot;,
+        &quot;allPairsAreCrossSplit&quot;: true,
+        &quot;perceptualMatchesRequireReview&quot;: true
+      },
+      &quot;cost&quot;: {
+        &quot;comparisons&quot;: 1,
+        &quot;index_operations&quot;: 0,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;wall_seconds&quot;: 0.34095637499999043
+      },
+      &quot;pixel_cost_measurement&quot;: &quot;core-successful-decode-count&quot;
+    }
+  },
+  &quot;metadata&quot;: {
+    &quot;state&quot;: &quot;not_applicable&quot;,
+    &quot;issues&quot;: []
+  },
+  &quot;human_review&quot;: {
+    &quot;state&quot;: &quot;not_run&quot;
+  },
+  &quot;verification&quot;: {
+    &quot;4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d&quot;: {
+      &quot;state&quot;: &quot;passed&quot;,
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;auditId&quot;: &quot;4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d&quot;,
+        &quot;pairs&quot;: [],
+        &quot;counts&quot;: {
+          &quot;valid&quot;: 0,
+          &quot;invalid&quot;: 0,
+          &quot;missing&quot;: 0,
+          &quot;skippedCandidates&quot;: 0
+        },
+        &quot;exitCode&quot;: 0,
+        &quot;verificationScope&quot;: {
+          &quot;evidenceTypes&quot;: [
+            &quot;byte-identical&quot;,
+            &quot;pixel-identical&quot;
+          ],
+          &quot;candidatesRecomputed&quot;: false,
+          &quot;wholeDatasetReaudited&quot;: false
+        }
+      },
+      &quot;candidates_recomputed&quot;: false
+    }
+  },
+  &quot;source_unchanged&quot;: true
+}</pre></section><section><h2>budget</h2><pre>{
+  &quot;schema_version&quot;: 1,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 300000000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;spent&quot;: {
+    &quot;tool_calls&quot;: 5,
+    &quot;audit_runs&quot;: 1,
+    &quot;comparisons&quot;: 1,
+    &quot;index_operations&quot;: 0,
+    &quot;decoded_pixels&quot;: 55296,
+    &quot;wall_seconds&quot;: 0.7340674579999984,
+    &quot;llm_requests&quot;: 0,
+    &quot;review_pairs&quot;: 0,
+    &quot;questions&quot;: 0
+  },
+  &quot;model_usage&quot;: &quot;not_run&quot;,
+  &quot;model_cost_usd&quot;: 0,
+  &quot;entries&quot;: [
+    {
+      &quot;call_id&quot;: &quot;call-0001&quot;,
+      &quot;kind&quot;: &quot;preflight&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:17.544711+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 290
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.20931666699999596
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:17.740243+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.790683333
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0002&quot;,
+      &quot;kind&quot;: &quot;audit&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:17.747407+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.790683333,
+        &quot;comparisons&quot;: 1,
+        &quot;decoded_pixels&quot;: 100000000,
+        &quot;index_operations&quot;: 16,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.34095637499999043,
+        &quot;comparisons&quot;: 1,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;index_operations&quot;: 0,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:18.090980+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.44972695800004,
+        &quot;comparisons&quot;: 0,
+        &quot;decoded_pixels&quot;: 99944704,
+        &quot;index_operations&quot;: 16,
+        &quot;audit_runs&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0003&quot;,
+      &quot;kind&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:18.096858+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.44972695800004,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.1779872910000222,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:18.276640+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.271739667,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0004&quot;,
+      &quot;kind&quot;: &quot;interpret_context&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:18.284623+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.271739667,
+        &quot;questions&quot;: 0
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.0007294170000022859,
+        &quot;questions&quot;: 0
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:18.285335+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.27101025,
+        &quot;questions&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0005&quot;,
+      &quot;kind&quot;: &quot;finalize&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:18.288689+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.27101025
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.005077707999987524
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:18.293751+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.26593254200003
+      },
+      &quot;overrun&quot;: {}
+    }
+  ]
+}</pre></section><section><h2>planning</h2><pre>null</pre></section><section><h2>questions</h2><pre>[]</pre></section><section><h2>question_backlog</h2><pre>null</pre></section><section><h2>reviews</h2><pre>[]</pre></section><section><h2>issues</h2><pre>[
+  &quot;all: incomplete Core scope&quot;
+]</pre></section></html>

@@ -1,0 +1,417 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"><title>VisionLeak Investigator</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:0 24px;background:#f5f7f8;color:#182b36}article,section{background:white;padding:20px;margin:16px 0;border:1px solid #ccd5da;border-radius:8px}pre,small{white-space:pre-wrap;overflow-wrap:anywhere}h1{color:#175c72}</style><h1>VisionLeak Investigator</h1><p>SCRIPTED_TEST_ONLY · 本地脚本决策测试 · 真实 Core · 模型调用：未运行</p><h2>WAITING_USER</h2><p>请检查这个工件分类数据集的划分风险，不修改原始图片；泛化目标需要进一步确认。</p><p>相似候选不证明同源或实验泄漏。 图像关系不证明模型实际训练使用。 覆盖仅适用于列明的 profile、输入与阈值。 本次未调用模型；不是 Agent 性能实验。 SCRIPTED_TEST_ONLY：动作由本地测试脚本产生，非真实模型决策。</p><article><h3>byte_identity · confirmed</h3><p>两文件字节摘要相同且已复验；不据此推断训练使用。</p><small>call-0002:pair:0</small></article><article><h3>pixel_identity · confirmed</h3><p>两文件规范化完整像素相同且已复验。</p><small>call-0002:pair:1</small></article><article><h3>pixel_identity · confirmed</h3><p>两文件规范化完整像素相同且已复验。</p><small>call-0002:pair:2</small></article><section><h2>coverage</h2><pre>{
+  &quot;input_manifest_digest&quot;: &quot;5ee02b3cd2793566711011d47be952e6b2b94c1a31aa1ec8891609369da0018c&quot;,
+  &quot;input_preflight&quot;: {
+    &quot;digest&quot;: &quot;5ee02b3cd2793566711011d47be952e6b2b94c1a31aa1ec8891609369da0018c&quot;,
+    &quot;image_count&quot;: 6,
+    &quot;estimated_source_pixels&quot;: 55296,
+    &quot;header_unknown_count&quot;: 0,
+    &quot;snapshot_guarantee&quot;: &quot;before/after hashes; not an atomic filesystem snapshot&quot;
+  },
+  &quot;profiles&quot;: {
+    &quot;base&quot;: {
+      &quot;audit_id&quot;: &quot;a4d92e532a354fff74be26dd3706b5d541ae622c8a541c4838f55f5c2e3c9474&quot;,
+      &quot;report_ref&quot;: &quot;tools/call-0002/output/report.json&quot;,
+      &quot;report_sha256&quot;: &quot;25c780284947fdf148a03f7b4fe19e87479f844bc39ab3c24dc7c04e2a5e42c2&quot;,
+      &quot;complete&quot;: true,
+      &quot;discovered_at_least&quot;: 6,
+      &quot;fingerprinted_images&quot;: 6,
+      &quot;processed_images&quot;: 6,
+      &quot;unprocessed_fingerprints&quot;: [],
+      &quot;errors&quot;: [],
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;core_coverage&quot;: {
+        &quot;splits&quot;: {
+          &quot;train&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;validation&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;test&quot;: {
+            &quot;audited&quot;: 2,
+            &quot;fingerprinted&quot;: 2,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          },
+          &quot;unknown&quot;: {
+            &quot;audited&quot;: 0,
+            &quot;fingerprinted&quot;: 0,
+            &quot;rejectedByCode&quot;: {},
+            &quot;ignored&quot;: 0,
+            &quot;unprocessed&quot;: 0
+          }
+        },
+        &quot;budgetExhaustion&quot;: [],
+        &quot;enumerationComplete&quot;: true,
+        &quot;rejectedOrErrorCount&quot;: 0,
+        &quot;ignoredFiles&quot;: 0,
+        &quot;unprocessedKnownFiles&quot;: 0,
+        &quot;summary&quot;: &quot;已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。&quot;
+      },
+      &quot;scope&quot;: {
+        &quot;splits&quot;: [
+          &quot;train&quot;,
+          &quot;validation&quot;,
+          &quot;test&quot;
+        ],
+        &quot;splitDirectories&quot;: {
+          &quot;train&quot;: &quot;train&quot;,
+          &quot;validation&quot;: &quot;validation&quot;,
+          &quot;test&quot;: &quot;test&quot;
+        },
+        &quot;missingSplits&quot;: [],
+        &quot;supportedExtensions&quot;: [
+          &quot;.png&quot;,
+          &quot;.jpg&quot;,
+          &quot;.jpeg&quot;,
+          &quot;.webp&quot;,
+          &quot;.avif&quot;,
+          &quot;.tif&quot;,
+          &quot;.tiff&quot;,
+          &quot;.gif&quot;
+        ],
+        &quot;ignoredFiles&quot;: 0,
+        &quot;entriesScanned&quot;: 6,
+        &quot;discoveredAtLeast&quot;: 6,
+        &quot;acceptedImages&quot;: 6,
+        &quot;totalDecodedPixels&quot;: 55296,
+        &quot;maxDirectoryEntries&quot;: 100000,
+        &quot;source&quot;: &quot;local-files&quot;,
+        &quot;allPairsAreCrossSplit&quot;: true,
+        &quot;perceptualMatchesRequireReview&quot;: true
+      },
+      &quot;cost&quot;: {
+        &quot;comparisons&quot;: 16,
+        &quot;index_operations&quot;: 0,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;wall_seconds&quot;: 0.22339825599999585
+      },
+      &quot;pixel_cost_measurement&quot;: &quot;core-successful-decode-count&quot;
+    }
+  },
+  &quot;metadata&quot;: {
+    &quot;state&quot;: &quot;not_applicable&quot;,
+    &quot;issues&quot;: []
+  },
+  &quot;human_review&quot;: {
+    &quot;state&quot;: &quot;not_run&quot;
+  },
+  &quot;verification&quot;: {
+    &quot;a4d92e532a354fff74be26dd3706b5d541ae622c8a541c4838f55f5c2e3c9474&quot;: {
+      &quot;state&quot;: &quot;passed&quot;,
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;auditId&quot;: &quot;a4d92e532a354fff74be26dd3706b5d541ae622c8a541c4838f55f5c2e3c9474&quot;,
+        &quot;pairs&quot;: [
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;train/001.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;train/001.png&quot;,
+            &quot;evidence&quot;: &quot;byte-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;9d081c7c85ef8f4c1f71c3f5e7a8843f7744da6e328441080546169e5f028e9d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;9d081c7c85ef8f4c1f71c3f5e7a8843f7744da6e328441080546169e5f028e9d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;test/002.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;test/002.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;test/002.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;9d081c7c85ef8f4c1f71c3f5e7a8843f7744da6e328441080546169e5f028e9d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;df3e2099ee24458442e29aef71d6a0c08c62128c8375feecc862adb892ac747d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            }
+          },
+          {
+            &quot;pairKey&quot;: &quot;[\&quot;train/001.png\&quot;,\&quot;validation/003.png\&quot;]&quot;,
+            &quot;left&quot;: &quot;train/001.png&quot;,
+            &quot;right&quot;: &quot;validation/003.png&quot;,
+            &quot;evidence&quot;: &quot;pixel-identical&quot;,
+            &quot;status&quot;: &quot;valid&quot;,
+            &quot;leftObservation&quot;: {
+              &quot;id&quot;: &quot;train/001.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;9d081c7c85ef8f4c1f71c3f5e7a8843f7744da6e328441080546169e5f028e9d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            },
+            &quot;rightObservation&quot;: {
+              &quot;id&quot;: &quot;validation/003.png&quot;,
+              &quot;status&quot;: &quot;ok&quot;,
+              &quot;byteDigest&quot;: &quot;df3e2099ee24458442e29aef71d6a0c08c62128c8375feecc862adb892ac747d&quot;,
+              &quot;pixelDigest&quot;: &quot;0110005c087c93b61ec9333c2d3cb1f86b8d0e5a97c55a4932642cb35d22251e&quot;
+            }
+          }
+        ],
+        &quot;counts&quot;: {
+          &quot;valid&quot;: 3,
+          &quot;invalid&quot;: 0,
+          &quot;missing&quot;: 0,
+          &quot;skippedCandidates&quot;: 0
+        },
+        &quot;exitCode&quot;: 0,
+        &quot;verificationScope&quot;: {
+          &quot;evidenceTypes&quot;: [
+            &quot;byte-identical&quot;,
+            &quot;pixel-identical&quot;
+          ],
+          &quot;candidatesRecomputed&quot;: false,
+          &quot;wholeDatasetReaudited&quot;: false
+        }
+      },
+      &quot;candidates_recomputed&quot;: false
+    }
+  },
+  &quot;source_unchanged&quot;: true
+}</pre></section><section><h2>budget</h2><pre>{
+  &quot;schema_version&quot;: 1,
+  &quot;limits&quot;: {
+    &quot;max_agent_steps&quot;: 8,
+    &quot;max_tool_calls&quot;: 16,
+    &quot;max_core_audit_runs&quot;: 3,
+    &quot;max_comparisons_total&quot;: 1000000,
+    &quot;max_images&quot;: 1000,
+    &quot;max_pairs_per_audit&quot;: 2000,
+    &quot;max_questions&quot;: 2,
+    &quot;max_review_pairs&quot;: 30,
+    &quot;max_llm_requests&quot;: 8,
+    &quot;max_tool_wall_seconds&quot;: 300,
+    &quot;remote_budget_usd&quot;: 0,
+    &quot;max_decode_pixels_per_image&quot;: 64000000,
+    &quot;max_sample_pixels_per_image&quot;: 4194304,
+    &quot;max_file_bytes&quot;: 33554432,
+    &quot;max_total_decoded_pixels&quot;: 300000000,
+    &quot;max_index_operations_total&quot;: 16000000,
+    &quot;max_llm_output_tokens&quot;: 1024,
+    &quot;finalization_reserve_tool_calls&quot;: 2,
+    &quot;finalization_reserve_seconds&quot;: 10
+  },
+  &quot;spent&quot;: {
+    &quot;tool_calls&quot;: 6,
+    &quot;audit_runs&quot;: 1,
+    &quot;comparisons&quot;: 16,
+    &quot;index_operations&quot;: 0,
+    &quot;decoded_pixels&quot;: 82944,
+    &quot;wall_seconds&quot;: 0.49759774699987247,
+    &quot;llm_requests&quot;: 0,
+    &quot;review_pairs&quot;: 0,
+    &quot;questions&quot;: 1
+  },
+  &quot;model_usage&quot;: &quot;not_run&quot;,
+  &quot;model_cost_usd&quot;: 0,
+  &quot;entries&quot;: [
+    {
+      &quot;call_id&quot;: &quot;call-0001&quot;,
+      &quot;kind&quot;: &quot;preflight&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:00.729585+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 290
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.1267704939999703
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:00.849783+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.87322950600003
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0002&quot;,
+      &quot;kind&quot;: &quot;audit&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:00.853430+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.87322950600003,
+        &quot;comparisons&quot;: 1000000,
+        &quot;decoded_pixels&quot;: 100000000,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.22339825599999585,
+        &quot;comparisons&quot;: 16,
+        &quot;decoded_pixels&quot;: 55296,
+        &quot;index_operations&quot;: 0,
+        &quot;audit_runs&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:01.078588+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.64983125000003,
+        &quot;comparisons&quot;: 999984,
+        &quot;decoded_pixels&quot;: 99944704,
+        &quot;index_operations&quot;: 16000000,
+        &quot;audit_runs&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0003&quot;,
+      &quot;kind&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:01.081512+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.64983125000003,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.14217443799998364,
+        &quot;decoded_pixels&quot;: 27648
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:01.225478+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.50765681200005,
+        &quot;decoded_pixels&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0004&quot;,
+      &quot;kind&quot;: &quot;request_clarification&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:01.235411+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.50765681200005,
+        &quot;questions&quot;: 1
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 2.6939999884234567e-06,
+        &quot;questions&quot;: 1
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:01.236092+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.50765411800006,
+        &quot;questions&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0005&quot;,
+      &quot;kind&quot;: &quot;interpret_context&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:01.239811+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 289.50765411800006,
+        &quot;questions&quot;: 0
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.0007756659999813564,
+        &quot;questions&quot;: 0
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:01.240583+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 289.5068784520001,
+        &quot;questions&quot;: 0
+      },
+      &quot;overrun&quot;: {}
+    },
+    {
+      &quot;call_id&quot;: &quot;call-0006&quot;,
+      &quot;kind&quot;: &quot;finalize&quot;,
+      &quot;status&quot;: &quot;settled&quot;,
+      &quot;reserved_at&quot;: &quot;2026-10-26T20:00:01.242400+00:00&quot;,
+      &quot;reservation&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 299.5068784520001
+      },
+      &quot;actual&quot;: {
+        &quot;tool_calls&quot;: 1,
+        &quot;wall_seconds&quot;: 0.004476198999952885
+      },
+      &quot;error&quot;: null,
+      &quot;settled_at&quot;: &quot;2026-10-26T20:00:01.246871+00:00&quot;,
+      &quot;refund&quot;: {
+        &quot;tool_calls&quot;: 0,
+        &quot;wall_seconds&quot;: 299.5024022530001
+      },
+      &quot;overrun&quot;: {}
+    }
+  ],
+  &quot;planner_accounting&quot;: {
+    &quot;execution_label&quot;: &quot;scripted_test_only&quot;,
+    &quot;requests_reserved&quot;: 1,
+    &quot;charged_cost_usd&quot;: &quot;0&quot;,
+    &quot;unknown_requests&quot;: 1,
+    &quot;pending_requests&quot;: 0,
+    &quot;halted&quot;: false
+  }
+}</pre></section><section><h2>planning</h2><pre>{
+  &quot;reason_code&quot;: &quot;waiting_user&quot;,
+  &quot;steps&quot;: 1,
+  &quot;questions&quot;: [
+    {
+      &quot;question_code&quot;: &quot;clarify_goal&quot;,
+      &quot;question&quot;: &quot;请确认实验目标。&quot;,
+      &quot;requested&quot;: true,
+      &quot;origin&quot;: &quot;scripted_test_only&quot;
+    }
+  ],
+  &quot;review_refs&quot;: [],
+  &quot;accounting&quot;: {
+    &quot;execution_label&quot;: &quot;scripted_test_only&quot;,
+    &quot;requests_reserved&quot;: 1,
+    &quot;charged_cost_usd&quot;: &quot;0&quot;,
+    &quot;unknown_requests&quot;: 1,
+    &quot;pending_requests&quot;: 0,
+    &quot;halted&quot;: false
+  },
+  &quot;execution_label&quot;: &quot;scripted_test_only&quot;,
+  &quot;sdk_dispatch&quot;: false
+}</pre></section><section><h2>questions</h2><pre>[
+  {
+    &quot;question_code&quot;: &quot;clarify_goal&quot;,
+    &quot;question&quot;: &quot;请确认实验目标。&quot;,
+    &quot;requested&quot;: true,
+    &quot;origin&quot;: &quot;scripted_test_only&quot;
+  }
+]</pre></section><section><h2>question_backlog</h2><pre>[]</pre></section><section><h2>reviews</h2><pre>[]</pre></section><section><h2>issues</h2><pre>[
+  &quot;No registered entity metadata; entity scope is unknown&quot;
+]</pre></section></html>

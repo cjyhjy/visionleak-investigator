@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "data_kind": "self-generated synthetic gate fixtures",
+  "meaning": "Configuration validation only; no independent natural data or model experiment",
+  "model_calls": 0,
+  "commands": [
+    {
+      "name": "validate",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/validate/result.json"
+    },
+    {
+      "name": "freeze",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/freeze/result.json"
+    },
+    {
+      "name": "check-development",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/check-development/result.json"
+    },
+    {
+      "name": "check-validation",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/check-validation/result.json"
+    },
+    {
+      "name": "check-test",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/check-test/result.json"
+    },
+    {
+      "name": "reject-shared-source",
+      "exit_code": 1,
+      "expected_rejection": "crosses benchmark",
+      "record": "commands/reject-shared-source/result.json"
+    },
+    {
+      "name": "reject-cross-task-truth",
+      "exit_code": 1,
+      "expected_rejection": "truth registered",
+      "record": "commands/reject-cross-task-truth/result.json"
+    },
+    {
+      "name": "reject-protocol-drift",
+      "exit_code": 1,
+      "expected_rejection": "Protocol changed",
+      "record": "commands/reject-protocol-drift/result.json"
+    },
+    {
+      "name": "check-after-rejections",
+      "exit_code": 0,
+      "expected_rejection": null,
+      "record": "commands/check-after-rejections/result.json"
+    }
+  ],
+  "freeze_digest": "b6d78db8faf92aba60db24274273c1eb40f8728a395b452c33fc071e3521e0f2"
+}

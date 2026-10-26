@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T19:58:21.678732+00:00",
+  "updated_at": "2026-10-26T20:04:51.476636+00:00",
   "project_version": "0.1.0",
   "code_digest": "c260e40536163dc936046c74e36e439ab38ee2612c36d65c8d61fd4057d94d2c",
   "original_core_modified": false,
@@ -93,24 +93,25 @@
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T195609522986-resource-freeze-regression-final.log",
-    "ci_evidence": "reports/ci-history/40387674329/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40387674329",
-    "tested_commit": "9829ed5e4822af8eede147287fee5a0909f8e682",
-    "ci_for_current_code": "not_run; previous CI evidence applies to 9829ed5"
+    "ci_evidence": "reports/ci-history/40391572151/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40391572151",
+    "tested_commit": "54df5312b2ce9754eab0f560e43f4fae951eac4d",
+    "ci_for_current_code": "passed"
   },
   "next_local_command": ".venv-clean/bin/python scripts/evaluation_gate_smoke.py --out runs/next-gate-check",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Pending for resource/provenance changes; earlier Ubuntu/macOS CI evidence remains unchanged",
+    "ci": "passed: Ubuntu 24.04 and macOS 14, 102 tests each with zero skips; source/freeze CLI and fresh measured A/B/C runs",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
+      "Report summaries, safe evidence navigation, timeline and final visual/demo acceptance",
       "Catalog-driven A/B/C execution and independent source/data preparation",
-      "Report visual verification and reproducible demo verification",
       "Real provider selection/authorization, adapter and live D trajectories",
       "M4 deferred until real Agent stabilizes"
     ],
-    "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned"
+    "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
+    "report_visual_review": "Actual Chrome inspection completed; needs concise summaries, evidence navigation and tool timeline. See reports/visual-review/initial/observations.json"
   }
 }

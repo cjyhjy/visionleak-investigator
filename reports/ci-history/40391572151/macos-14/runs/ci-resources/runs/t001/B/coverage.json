@@ -1,0 +1,150 @@
+{
+  "input_manifest_digest": "64974f4492dad193f12ebad9b6a76e7114cb7cd7c28d376af3a88ef1826bd7de",
+  "input_preflight": {
+    "digest": "64974f4492dad193f12ebad9b6a76e7114cb7cd7c28d376af3a88ef1826bd7de",
+    "image_count": 6,
+    "estimated_source_pixels": 55296,
+    "header_unknown_count": 0,
+    "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+  },
+  "profiles": {
+    "all": {
+      "audit_id": "4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d",
+      "report_ref": "tools/call-0002/output/report.json",
+      "report_sha256": "a3dfd282d1dc30d58a2582b84a2f3eca5f839a47e95ee270627c4fbad26cbc5b",
+      "complete": false,
+      "discovered_at_least": 6,
+      "fingerprinted_images": 6,
+      "processed_images": 0,
+      "unprocessed_fingerprints": [
+        "test/002.png",
+        "test/004.png",
+        "train/001.png",
+        "train/006.png",
+        "validation/003.png",
+        "validation/005.png"
+      ],
+      "errors": [],
+      "reason": "ComparisonBudget",
+      "core_coverage": {
+        "splits": {
+          "train": {
+            "audited": 0,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 2
+          },
+          "validation": {
+            "audited": 0,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 2
+          },
+          "test": {
+            "audited": 0,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 2
+          },
+          "unknown": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          }
+        },
+        "budgetExhaustion": [
+          {
+            "code": "ComparisonBudget",
+            "stage": "core-comparison",
+            "processedImages": 0,
+            "emittedPairs": 0,
+            "atImage": "test/002.png"
+          }
+        ],
+        "enumerationComplete": true,
+        "rejectedOrErrorCount": 0,
+        "ignoredFiles": 0,
+        "unprocessedKnownFiles": 6,
+        "summary": "已审计 train 0 / validation 0 / test 0；拒收/错误 0；忽略 0；已发现但未审计 6；结论只覆盖已审计输入与已完成比较。"
+      },
+      "scope": {
+        "splits": [
+          "train",
+          "validation",
+          "test"
+        ],
+        "splitDirectories": {
+          "train": "train",
+          "validation": "validation",
+          "test": "test"
+        },
+        "missingSplits": [],
+        "supportedExtensions": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".avif",
+          ".tif",
+          ".tiff",
+          ".gif"
+        ],
+        "ignoredFiles": 0,
+        "entriesScanned": 6,
+        "discoveredAtLeast": 6,
+        "acceptedImages": 6,
+        "totalDecodedPixels": 55296,
+        "maxDirectoryEntries": 100000,
+        "source": "local-files",
+        "allPairsAreCrossSplit": true,
+        "perceptualMatchesRequireReview": true
+      },
+      "cost": {
+        "comparisons": 1,
+        "index_operations": 0,
+        "decoded_pixels": 55296,
+        "wall_seconds": 0.34095637499999043
+      },
+      "pixel_cost_measurement": "core-successful-decode-count"
+    }
+  },
+  "metadata": {
+    "state": "not_applicable",
+    "issues": []
+  },
+  "human_review": {
+    "state": "not_run"
+  },
+  "verification": {
+    "4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d": {
+      "state": "passed",
+      "result": {
+        "ok": true,
+        "auditId": "4d969b76ebb4ec794085df5d3054b97a4da4c1c4ab3f105640034f05cd6eb18d",
+        "pairs": [],
+        "counts": {
+          "valid": 0,
+          "invalid": 0,
+          "missing": 0,
+          "skippedCandidates": 0
+        },
+        "exitCode": 0,
+        "verificationScope": {
+          "evidenceTypes": [
+            "byte-identical",
+            "pixel-identical"
+          ],
+          "candidatesRecomputed": false,
+          "wholeDatasetReaudited": false
+        }
+      },
+      "candidates_recomputed": false
+    }
+  },
+  "source_unchanged": true
+}

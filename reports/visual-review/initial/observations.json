@@ -1,0 +1,51 @@
+{
+  "reviewed_at": "2026-10-26T20:04:15.287614+00:00",
+  "status": "needs_improvement",
+  "method": "Actual Chrome rendering, accessibility text and inline screenshot inspection via chrome-browser skill; read-only",
+  "reports": [
+    {
+      "path": "reports/engineering-resources-frozen/runs/t002/C/report.html",
+      "sha256": "db05f7f8e1d75c9d75c1acc7083dccb10ad947011906230d3b022c1b9bdfad89"
+    },
+    {
+      "path": "reports/engineering-resources-frozen/runs/t010/C/report.html",
+      "sha256": "813fbe905456770d21885829caa1329e60e388769a39e892530c0c97d27cd5c3"
+    },
+    {
+      "path": "reports/controller-sdk/clarification/run/report.html",
+      "sha256": "68ad9ac358ecff3b703b1cb4ac804de57bf27a91884f1998db9bf5647006719d"
+    }
+  ],
+  "commands": [
+    ".venv-clean/bin/python -u -m http.server 0 --bind 127.0.0.1 --directory reports",
+    "cua.createBrowserTab(chrome, local report URL, task session)",
+    "tab.getAXState / tab.getScreenshot / tab.scroll / tab.goto",
+    "tab.close; interrupt owned HTTP server"
+  ],
+  "observed": [
+    "COMPLETED, PARTIAL and WAITING_USER are visible on the corresponding pages.",
+    "No-model label is visible; scripted controller also displays SCRIPTED_TEST_ONLY prominently.",
+    "Deterministic byte/pixel statements are distinguished from candidate limitations.",
+    "Desktop top sections render legibly without observed overlap in captured views.",
+    "Coverage and budget are mostly long JSON blocks; budget exhaustion reasons require scrolling.",
+    "Evidence identifiers are plain text; there are no direct evidence jump links or concise tool timeline."
+  ],
+  "remaining": [
+    "Add concise coverage, budget, questions and issue summaries.",
+    "Provide safe evidence navigation and a tool timeline using existing records.",
+    "Recheck final report layout including narrow viewport and report links."
+  ],
+  "scope": "Three saved synthetic reports, desktop Chrome; not a new Core or model experiment. Screenshots were inspected inline in this chat, not saved as standalone files. No mobile/Safari verification.",
+  "server": {
+    "bind": "127.0.0.1",
+    "port": 55345,
+    "initial_sandbox_bind": "PermissionError; no server started",
+    "elevated_local_server": "started and stopped successfully",
+    "page_http_statuses": [
+      200,
+      200,
+      200
+    ]
+  },
+  "model_calls": 0
+}

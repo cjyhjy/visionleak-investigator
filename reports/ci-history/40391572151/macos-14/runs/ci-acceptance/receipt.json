@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "environment": {
+    "status": "passed",
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "platform": "macOS-14.8.9-arm64-arm-64bit",
+    "core_commit": "c69824ee63da3134a1ddb455f9ff9a90ee8d2607",
+    "core_version": "0.6.0",
+    "cli_sha256": "333fa7c4fd0c1f685eb5d60767bf15fc3e6c2f83e0c9fe0bcbd07378b6420d0c",
+    "artifact_sha256": "ad556a709752b9add24a71fed5943442428e277b3b588c1a1692a7c2e4379507",
+    "capabilities": {
+      "ok": true,
+      "schemaVersion": "visionleak-capabilities-v1",
+      "version": "0.6.0",
+      "engine": {
+        "name": "visionleak-moonbit",
+        "artifactSha256": "ad556a709752b9add24a71fed5943442428e277b3b588c1a1692a7c2e4379507"
+      },
+      "runtime": {
+        "node": "v26.7.0",
+        "requiredNode": ">=22",
+        "decoder": {
+          "name": "sharp",
+          "version": "0.35.5",
+          "libvips": "8.18.7"
+        }
+      },
+      "report": {
+        "schemaVersion": "visionleak-report-v1",
+        "identityVersion": "vl-report-sha256-v2"
+      },
+      "input": {
+        "layout": "split-directories",
+        "splitAliases": {
+          "train": [
+            "train",
+            "training"
+          ],
+          "validation": [
+            "validation",
+            "val",
+            "valid",
+            "dev"
+          ],
+          "test": [
+            "test",
+            "testing"
+          ]
+        },
+        "extensions": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".avif",
+          ".tif",
+          ".tiff",
+          ".gif"
+        ],
+        "csvSplitInput": false,
+        "manifestInput": false,
+        "followsSymlinks": false
+      },
+      "commands": [
+        "capabilities",
+        "audit",
+        "verify",
+        "export-html",
+        "export-fixes"
+      ],
+      "features": {
+        "incrementalAudit": false,
+        "pairSubsetAudit": false,
+        "fingerprintCache": false,
+        "endToEndStreamingDecode": false,
+        "combinedFingerprint": true
+      },
+      "profiles": {
+        "normalization": "vl-rgb-v1",
+        "local": {
+          "id": "vl-local-dhash-v1",
+          "experimental": true,
+          "enabledByDefault": false,
+          "windows": 20,
+          "minimumGridContrast": 16,
+          "crossScale": true
+        }
+      },
+      "limits": {
+        "threshold": {
+          "flag": "--threshold",
+          "minimum": 0,
+          "maximum": 64,
+          "default": 6
+        },
+        "maxImages": {
+          "flag": "--max-images",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 1000
+        },
+        "maxDecodePixels": {
+          "flag": "--max-decode-pixels",
+          "minimum": 1,
+          "maximum": 100000000,
+          "default": 64000000
+        },
+        "maxPixels": {
+          "flag": "--max-pixels",
+          "minimum": 1,
+          "maximum": 4194304,
+          "default": 4194304
+        },
+        "maxTotalPixels": {
+          "flag": "--max-total-pixels",
+          "minimum": 1,
+          "maximum": 1000000000,
+          "default": 100000000
+        },
+        "maxFileBytes": {
+          "flag": "--max-file-bytes",
+          "minimum": 1,
+          "maximum": 1073741824,
+          "default": 33554432
+        },
+        "maxComparisons": {
+          "flag": "--max-comparisons",
+          "minimum": 0,
+          "maximum": 10000000,
+          "default": 1000000
+        },
+        "maxPairs": {
+          "flag": "--max-pairs",
+          "minimum": 0,
+          "maximum": 100000,
+          "default": 10000
+        }
+      },
+      "accounting": {
+        "comparisons": "distanceEvaluations + pairChecks",
+        "indexOperations": "separate",
+        "indexOperationLimitMultiplier": 16,
+        "indexStatsMayBeAbsentWhenUnused": true,
+        "decodedPixels": "scope.totalDecodedPixels",
+        "fingerprintedImages": "scope.acceptedImages",
+        "processedImages": "stats.processedImages",
+        "freshBudgetPerInvocation": true,
+        "verifyUsesAuditPixelBudget": false
+      },
+      "verification": {
+        "evidenceTypes": [
+          "byte-identical",
+          "pixel-identical"
+        ],
+        "candidatesRecomputed": false,
+        "wholeDatasetReaudited": false,
+        "skippedCount": "counts.skippedCandidates"
+      },
+      "exitCodes": {
+        "audit": {
+          "complete": 0,
+          "fatal": 1,
+          "incomplete": 2,
+          "failOnHit": 3
+        },
+        "verify": {
+          "noInvalidExactEvidence": 0,
+          "fatal": 1,
+          "invalidOrMissing": 4
+        }
+      }
+    }
+  },
+  "model_calls": 0,
+  "data_kind": "self-generated controlled fixtures",
+  "core_profiles": [
+    "base",
+    "all"
+  ],
+  "runtime_lock_sha256": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1",
+  "source_unchanged": true,
+  "claim_count": 8,
+  "report": "audit/report.html"
+}

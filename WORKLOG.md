@@ -47,3 +47,7 @@ CI 第三次 40385473497（6f823de）完整通过：Ubuntu 24.04 与 macOS 14 �
 frozen-resource-engineering-suite 在固定实现下再跑 12 个合成任务 × A/B/C，共 36 次真实 Core 条件运行：各 10 COMPLETED + 2 PARTIAL，D 12 blocked。每条件 12 次 CPU/RSS 均有实测；A/B/C CPU 总和分别 7.082670/8.157289/10.613831 秒，最大采样树 RSS 分别 121274368/136642560/135528448 字节。只作本机工程资源记录，无自然场景/模型增益结论。新目录 reports/engineering-resources-frozen；先前运行 reports/engineering-resources 及所有旧证据不覆盖。代码快照 reports/source-manifests/resources-and-provenance.json。v3 许可清单增加 psutil 后基础/SDK Python 包为 14/163 项。
 
 当前待办：为登记 catalog 接通真实 A/B/C 运行、独立来源准备、页面视觉验收和演示复验；模型接入/真实 D 等授权，M4 继续后置。跨平台 CI 已加入来源 CLI 和资源评测，尚待此次推送后的实际结果。模型调用 0，原 Core 未改。
+
+资源/来源实现已提交并推送 `54df5312b2ce9754eab0f560e43f4fae951eac4d`。CI 40391572151 在 Ubuntu 24.04/macOS 14 各 102 passed、零 skip，CLI 来源冻结/预期拒绝和每平台 9 次 A/B/C 资源运行通过。两份原始 ZIP 与 GitHub artifact SHA-256 一致；只提取当前 CI 输入、产物和命令日志，保存在 reports/ci-history/40391572151。本地复核 24 份宿主报告及其 Core 身份/claims/input/evidence/model-ledger hash、18 份完整任务资源收据及 18 条来源 CLI 命令，结果 passed。历史绝对 registry 未改写，只在验证器中映射下载路径。
+
+Chrome 页面初验：实际打开完成、预算不足、脚本控制器待澄清三个已保存报告，截图与可访问文本确认状态、模式和局限标识可见。发现覆盖/预算是长 JSON，缺少直接证据导航和简洁工具时间线，状态记 needs_improvement 而不是完成。记录 reports/visual-review/initial/observations.json；仅 127.0.0.1 临时服务，检查后已停止。无模型调用，无自然测试结果；该发现成为下一步本地工作。
