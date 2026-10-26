@@ -79,7 +79,7 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 - M3 已接通共用真实审计操作、脱敏观察、七类白名单动作循环、模型预算预留/结算、结构纠错、停止与保守恢复；这些仅经过明确标注的脚本测试及无模型 SDK 验收。尚无配置并授权的真实模型 provider adapter 或两条真实模型轨迹；D=blocked，M4/E=not_run。
 - 全部评测输入为受控合成工程数据；未建立独立自然图像 test，不宣传泛化或算法收益。
 - 前后 hash 不是原子快照；应用门禁不是对恶意本地管理员的沙箱或数字签名。资源限制主要由 Core 和进程组超时执行，无 OS 硬内存上限。
-- CPU/完整进程树 RSS 未测，报告写 not_measured，不用 Python 母进程数据冒充。
+- 新版逐任务启动独立进程，记录 OS CPU 统计、墙钟和采样进程树 RSS，包含 Python 与 Core 子进程。短命进程和短峰值可能漏采，共享页可能重复计数；权限不足时 RSS 写 null/partial。历史报告的 not_measured 保留。
 - proposal 是新实验版本的建议，保留 test，未移动或删除图片；结构检查不替代重新审计、训练或独立评价。
 - 无模型调用、向模型上传图片、软件包发布或赛事提交。负责人已授权将代码、开发文档、合成测试素材与实际工程日志发布至独立公开仓库；仓库内历史证据保留当时的本地路径，复现请重新生成 registry。
 
@@ -90,3 +90,18 @@ python3 scripts/record.py regression .venv/bin/python -m pytest -q
 `.github/workflows/ci.yml` 在 Ubuntu 24.04 与 macOS 14 的全新 checkout 中安装冻结依赖，下载并验证 Core，显式记录平台锁，运行完整测试和新生成合成图的 base+all 审计。Linux 测试与审计在禁用网络的 namespace 中执行；macOS 不宣称 OS 网络隔离。没有模型凭据或 agent extra。失败时也上传命令、日志、JUnit、平台锁和真实审计证据，保留 14 天。远端完成前仅表示工作流已配置，不表示跨平台通过。
 
 控制器测试（不是 Agent 演示）：`.venv/bin/python scripts/controller_smoke.py --sdk --out runs/new-controller-sdk`。需已安装 agent extra；省略 `--sdk` 可在基础环境验证同一宿主循环。结果醒目标注 `SCRIPTED_TEST_ONLY`；受控回调输入不是模型决策，D 条件仍 blocked。已运行证据见 `reports/controller-sdk/receipt.json`，实现边界见 `docs/adr/004-planner-host.md`。
+
+## 评测来源与冻结校验
+
+`eval-validate` 检查每张图的来源、许可记录、内容摘要、派生关系及任务分区。同一来源、实体、拍摄会话或内容只能属于一个 benchmark_partition；Core 历史照片及候选来源只能用于 development。任务内部的 train/validation/test 与评测平台分区分别处理。全部任务的真值文件均不得进入任一输入 registry，精确复制到数据目录或文档的真值也会被拒绝。
+
+```sh
+.venv/bin/python scripts/evaluation_gate_smoke.py --out runs/new-gate-smoke
+.venv/bin/vli eval-validate --catalog catalog.json --root /absolute/suite --out validated.json
+.venv/bin/vli eval-freeze --catalog catalog.json --root /absolute/suite --protocol protocol.json --out frozen.json
+.venv/bin/vli eval-check --catalog catalog.json --root /absolute/suite --protocol protocol.json --frozen frozen.json --partition test --out checked.json
+```
+
+第一条命令生成三组全新合成素材，实际调用后三个 CLI 并验证来源交叉、跨任务真值暴露和协议变化会被拒绝；这是工具验收，不是独立自然图像测试。它也提供 catalog/protocol 格式示例。冻结绑定输入、真值、登记文档、Core、实现代码、策略、Python 依赖、模型声明和重复次数；声明模型不代表授权或调用模型。已冻结文件不能覆盖。
+
+目前此入口验证数据与配置，尚未执行用户自备 catalog 的 A—D 实验。`evaluate` 仍只支持明确标注的合成工程集，其运行前后检查冻结的代码、策略和运行环境，变化即拒绝汇总。来源身份和许可字段是登记信息，不是自动事实核验；应用层真值隔离不防本地管理员或经过改写的答案泄露。详见 `docs/adr/005-evaluation-provenance-and-resources.md`。

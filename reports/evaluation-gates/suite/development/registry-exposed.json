@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "demo-dataset": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/evaluation-gates/suite/development/images"
+  },
+  "documents": {
+    "leaked-truth": {
+      "path": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/evaluation-gates/suite/development/context.txt",
+      "sha256": "ed45bfdc8a39321df261bddd0f224cb6459189cb29d3d5cec8779ffc7c835bcc"
+    }
+  },
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "local synthetic fixture generator"
+    }
+  }
+}

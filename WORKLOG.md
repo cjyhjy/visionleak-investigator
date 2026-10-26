@@ -39,3 +39,11 @@ CI 第三次 40385473497（6f823de）完整通过：Ubuntu 24.04 与 macOS 14 �
 控制器 CI 40387674329（9829ed5）通过：Ubuntu/macOS 各 77 passed，规则新审计及两个 SCRIPTED_TEST_ONLY 控制器场景通过。实际产物下载到 reports/ci-history/40387674329；M3-ci-artifact-integrity 重核六份宿主报告及其 Core 报告、evidence/model-ledger hash 和 JUnit 通过。
 
 依赖通知清单：基础环境 13、SDK 环境 162 个已安装 Python distribution，Core+Node 依赖 7 项。实际许可证/通知文件摘要、元数据与采集脚本保存在 reports/licenses；保留首次过宽的文件名前缀采集，v2 排除源码扩展名。openJiuwen/docx2txt 缺结构化 license 字段，已核对安装包 LICENSE 文件标题，不推定未知许可；未给 Investigator 新设许可证、未发布依赖包。
+
+资源与评测隔离：新增 psutil 7.2.2 锁、OS CPU 与完整任务进程树 RSS 采样。初次 macOS 沙箱无法枚举进程的失败日志保留；权限不足现明确写 partial/null，不再中断审计。可读进程元数据的本地真实测试通过。新版 eval-validate/freeze/check 绑定来源分组、派生关系、历史 Core 来源、全任务真值隔离、代码/策略/依赖与协议；只做配置门禁，不把合成分区 fixture 说成自然测试集。
+
+本批完整回归先 94 passed；扩展冻结与跨任务真值测试后 101 passed/1 failed（额外数据集测试样本没有图像，先被既有输入门禁拒绝）。补齐真实图像 fixture 后 resource-freeze-regression-final 为 102 passed。evaluation-gate-cli 实际执行 9 条 CLI，包含 3 次预期拒绝；原冻结在负例后仍能校验。全部日志与退出码见 reports/commands.jsonl。
+
+frozen-resource-engineering-suite 在固定实现下再跑 12 个合成任务 × A/B/C，共 36 次真实 Core 条件运行：各 10 COMPLETED + 2 PARTIAL，D 12 blocked。每条件 12 次 CPU/RSS 均有实测；A/B/C CPU 总和分别 7.082670/8.157289/10.613831 秒，最大采样树 RSS 分别 121274368/136642560/135528448 字节。只作本机工程资源记录，无自然场景/模型增益结论。新目录 reports/engineering-resources-frozen；先前运行 reports/engineering-resources 及所有旧证据不覆盖。代码快照 reports/source-manifests/resources-and-provenance.json。v3 许可清单增加 psutil 后基础/SDK Python 包为 14/163 项。
+
+当前待办：为登记 catalog 接通真实 A/B/C 运行、独立来源准备、页面视觉验收和演示复验；模型接入/真实 D 等授权，M4 继续后置。跨平台 CI 已加入来源 CLI 和资源评测，尚待此次推送后的实际结果。模型调用 0，原 Core 未改。

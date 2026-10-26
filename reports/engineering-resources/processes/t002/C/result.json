@@ -1,0 +1,58 @@
+{
+  "argv": [
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/.venv-clean/bin/python3",
+    "-m",
+    "visionleak_investigator.evaluation_worker",
+    "--task",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/engineering-resources/tasks/t002/task.json",
+    "--registry",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/engineering-resources/tasks/t002/registry.json",
+    "--out",
+    "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator/reports/engineering-resources/runs/t002/C",
+    "--condition",
+    "C"
+  ],
+  "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+  "started_at": "2026-10-26T19:45:22.720986+00:00",
+  "timeout_seconds": 330,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.7162820002995431,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.690257,
+    "cpu_system_seconds": 0.40399999999999997,
+    "cpu_seconds": 1.094257,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 100040704,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 133103616,
+    "observed_rss_peak_bytes": 133103616,
+    "root_rss_peak_bytes": 34930688,
+    "sample_interval_seconds": 0.02,
+    "samples": 14,
+    "observed_process_count": 5,
+    "peak_members": [
+      {
+        "pid": 49553,
+        "rss_bytes": 34881536
+      },
+      {
+        "pid": 49566,
+        "rss_bytes": 98222080
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 4,
+    "sampler_wall_seconds": 0.7147512920200825,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

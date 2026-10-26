@@ -7,7 +7,11 @@ name = "visionleak-investigator"
 version = "0.1.0"
 description = "Evidence-bound local image dataset investigator"
 requires-python = ">=3.12,<3.13"
-dependencies = ["jsonschema==4.26.0", "pillow==12.3.0"]
+dependencies = [
+    "jsonschema==4.26.0",
+    "pillow==12.3.0",
+    "psutil==7.2.2",
+]
 
 [project.scripts]
 vli = "visionleak_investigator.cli:main"

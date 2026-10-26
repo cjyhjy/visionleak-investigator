@@ -1,0 +1,53 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+___________________ test_cpu_and_child_tree_rss_are_measured ___________________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-103/test_cpu_and_child_tree_rss_ar0')
+
+    def test_cpu_and_child_tree_rss_are_measured(tmp_path):
+        child = "import time; b=bytearray(32*1024*1024); end=time.monotonic()+0.4\nwhile time.monotonic()<end: sum(range(10000))\ntime.sleep(0.1)"
+        parent = "import subprocess,sys; subprocess.run([sys.executable,'-c',sys.argv[1]],check=True)"
+        result = execute([sys.executable,'-c',parent,child],tmp_path,tmp_path/'call',3)
+>       assert result['exit_code']==0
+E       assert None == 0
+
+tests/acceptance/test_resources.py:15: AssertionError
+________________ test_timeout_is_reaped_and_keeps_measurements _________________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-103/test_timeout_is_reaped_and_kee0')
+
+    def test_timeout_is_reaped_and_keeps_measurements(tmp_path):
+        result=execute([sys.executable,'-c','import time; b=bytearray(16*1024*1024); time.sleep(20)'],tmp_path,tmp_path/'call',0.2)
+>       assert result['error']=='timeout' and result['exit_code']<0
+E       AssertionError: assert ('PermissionError' == 'timeout'
+E         
+E         - timeout
+E         + PermissionError)
+
+tests/acceptance/test_resources.py:26: AssertionError
+_________________ test_real_core_calls_include_node_resources __________________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-103/test_real_core_calls_include_n0')
+
+    def test_real_core_calls_include_node_resources(tmp_path):
+        task,registry=make_task(tmp_path/'fixture')
+        run_task(task,registry,tmp_path/'audit')
+        calls=[read_json(p) for p in (tmp_path/'audit/tools').glob('*/result.json')]
+>       assert calls and all(c['resources']['cpu_seconds']>0 for c in calls)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_resources.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x107a18910>
+
+>   assert calls and all(c['resources']['cpu_seconds']>0 for c in calls)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: 'NoneType' object is not subscriptable
+
+tests/acceptance/test_resources.py:41: TypeError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_resources.py::test_cpu_and_child_tree_rss_are_measured
+FAILED tests/acceptance/test_resources.py::test_timeout_is_reaped_and_keeps_measurements
+FAILED tests/acceptance/test_resources.py::test_real_core_calls_include_node_resources
+3 failed, 1 passed in 2.64s

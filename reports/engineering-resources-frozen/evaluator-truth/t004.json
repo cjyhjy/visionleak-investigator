@@ -1,0 +1,40 @@
+{
+  "exact": [
+    [
+      "test/002.png",
+      "train/001.png"
+    ],
+    [
+      "test/002.png",
+      "validation/003.png"
+    ],
+    [
+      "train/001.png",
+      "validation/003.png"
+    ]
+  ],
+  "related_excluding_exact": [
+    [
+      "test/002.png",
+      "validation/005.png"
+    ],
+    [
+      "test/004.png",
+      "train/001.png"
+    ],
+    [
+      "test/004.png",
+      "validation/003.png"
+    ],
+    [
+      "test/004.png",
+      "validation/005.png"
+    ],
+    [
+      "train/001.png",
+      "validation/005.png"
+    ]
+  ],
+  "source": "generator provenance",
+  "benchmark_partition": "development"
+}

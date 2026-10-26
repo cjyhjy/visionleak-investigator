@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T19:37:11.382762+00:00",
+  "updated_at": "2026-10-26T19:58:21.678732+00:00",
   "project_version": "0.1.0",
-  "code_digest": "5a79979072cdddd333ff225ead315c43f5af13ad6553a1a4eaaa400835a4abcd",
+  "code_digest": "c260e40536163dc936046c74e36e439ab38ee2612c36d65c8d61fd4057d94d2c",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -71,37 +71,46 @@
   },
   "M5": {
     "status": "blocked",
-    "reason": "A/B/C engineering runs completed; D and independent natural-source validation/test remain unrun",
+    "reason": "Engineering A/B/C resources and source/freeze gates passed; catalog-driven experiments, independent natural data and model D remain unfinished",
     "local_status": "passed",
     "evidence": [
       "reports/engineering-suite/metrics.json",
-      "reports/engineering-suite/per_run.jsonl"
+      "reports/engineering-suite/per_run.jsonl",
+      "reports/engineering-resources-frozen/metrics.json",
+      "reports/evaluation-gates/receipt.json"
     ],
-    "research_gain": "not_established"
+    "research_gain": "not_established",
+    "local_subtasks": {
+      "resource_accounting": "passed: 36 actual task runs, all CPU and process-tree RSS measured",
+      "source_and_freeze_gates": "passed: real CLI acceptance and rejection cases; synthetic fixtures only",
+      "catalog_driven_experiment_runner": "not_run",
+      "independent_natural_validation_test": "not_run",
+      "live_model_D": "blocked"
+    }
   },
   "verification": {
-    "test_suite": "M3-controller-complete-local: 77 passed",
+    "test_suite": "resource-freeze-regression-final: 102 passed",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T192952312126-M3-controller-complete-local.log",
+    "final_log": "reports/logs/20261026T195609522986-resource-freeze-regression-final.log",
     "ci_evidence": "reports/ci-history/40387674329/verification.json",
     "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40387674329",
     "tested_commit": "9829ed5e4822af8eede147287fee5a0909f8e682",
-    "ci_for_current_code": "passed"
+    "ci_for_current_code": "not_run; previous CI evidence applies to 9829ed5"
   },
-  "next_local_command": ".venv/bin/vli demo --out runs/next-fixture",
+  "next_local_command": ".venv-clean/bin/python scripts/evaluation_gate_smoke.py --out runs/next-gate-check",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "passed: Ubuntu 24.04 and macOS 14, 77 tests each, fresh rules audit and labelled scripted controller scenarios",
+    "ci": "Pending for resource/provenance changes; earlier Ubuntu/macOS CI evidence remains unchanged",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Real provider authorization, adapter and live trajectories",
-      "Resource measurement and independent evaluation source/partition tooling",
-      "Delivery review, report visual verification and demo verification",
+      "Catalog-driven A/B/C execution and independent source/data preparation",
+      "Report visual verification and reproducible demo verification",
+      "Real provider selection/authorization, adapter and live D trajectories",
       "M4 deferred until real Agent stabilizes"
     ],
-    "licenses": "installed metadata and notice hash inventories collected; Investigator license not assigned"
+    "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned"
   }
 }

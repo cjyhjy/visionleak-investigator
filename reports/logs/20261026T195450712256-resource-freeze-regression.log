@@ -1,0 +1,92 @@
+.............................F.......................................... [ 70%]
+..............................                                           [100%]
+=================================== FAILURES ===================================
+____ test_other_task_truth_cannot_enter_any_registered_input[other_dataset] ____
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-107/test_other_task_truth_cannot_e2')
+exposure = 'other_dataset'
+
+    @pytest.mark.parametrize('exposure',['document','selected_dataset','other_dataset'])
+    def test_other_task_truth_cannot_enter_any_registered_input(tmp_path,exposure):
+        catalog,_=catalog_fixture(tmp_path)
+        truth=tmp_path/catalog['tasks'][2]['truth_path']
+        regpath=tmp_path/'development/registry.json';reg=read_json(regpath)
+        if exposure=='document':
+            path=tmp_path/'development/context.txt';path.write_bytes(truth.read_bytes())
+            reg['documents']['leaked-answer']={'path':str(path),'sha256':file_hash(path)}
+        else:
+            directory=tmp_path/('development/images' if exposure=='selected_dataset' else 'extra-images')
+            directory.mkdir(exist_ok=True)
+            (directory/'notes.json').write_bytes(truth.read_bytes())
+            if exposure=='other_dataset':reg['datasets']['extra']=str(directory)
+        write_json(regpath,reg)
+>       with pytest.raises(ValueError,match='Evaluator truth'):validate_catalog(catalog,tmp_path)
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_evaluation_data.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/visionleak_investigator/evaluation_data.py:136: in validate_catalog
+    registered_input=input_manifest(other,task['limits'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-107/test_other_task_truth_cannot_e2/extra-images')
+limits = {'finalization_reserve_seconds': 10, 'finalization_reserve_tool_calls': 2, 'max_agent_steps': 8, 'max_comparisons_total': 1000000, ...}
+
+    def input_manifest(root: Path, limits: dict) -> dict:
+        no_symlink(root);rows=[];split_images=0
+        for directory,dirs,files in os.walk(root,followlinks=False):
+            for name in sorted(dirs+files):
+                p=Path(directory)/name;no_symlink(p)
+                if len(p.relative_to(root).parts)>64:raise ValueError('Input directory depth limit')
+            for name in sorted(files):
+                p=Path(directory)/name
+                if not p.is_file():raise ValueError('Nonregular input')
+                rel=p.relative_to(root).as_posix();split=SPLITS.get(rel.split('/')[0]);image=p.suffix.lower() in EXTENSIONS
+                if image and not split:raise ValueError('Image outside supported split directories')
+                size=p.stat().st_size
+                # Stream hashes: no whole-file allocation, all source files participate in identity.
+                row={'path':rel,'sha256':file_hash(p),'bytes':size,'image_split':split,'supported_image':image,'pixels':None}
+                if image:
+                    split_images+=1
+                    if size<=limits['max_file_bytes']:
+                        try:
+                            with Image.open(p) as im: row['pixels']=im.width*im.height
+                        except (OSError,ValueError,Image.DecompressionBombError):pass
+                rows.append(row)
+                if len(rows)>100000:raise ValueError('Input manifest entry limit')
+>       if not split_images:raise ValueError('No supported images in split directories')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: No supported images in split directories
+
+src/visionleak_investigator/domain.py:74: ValueError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-107/test_other_task_truth_cannot_e2')
+exposure = 'other_dataset'
+
+    @pytest.mark.parametrize('exposure',['document','selected_dataset','other_dataset'])
+    def test_other_task_truth_cannot_enter_any_registered_input(tmp_path,exposure):
+        catalog,_=catalog_fixture(tmp_path)
+        truth=tmp_path/catalog['tasks'][2]['truth_path']
+        regpath=tmp_path/'development/registry.json';reg=read_json(regpath)
+        if exposure=='document':
+            path=tmp_path/'development/context.txt';path.write_bytes(truth.read_bytes())
+            reg['documents']['leaked-answer']={'path':str(path),'sha256':file_hash(path)}
+        else:
+            directory=tmp_path/('development/images' if exposure=='selected_dataset' else 'extra-images')
+            directory.mkdir(exist_ok=True)
+            (directory/'notes.json').write_bytes(truth.read_bytes())
+            if exposure=='other_dataset':reg['datasets']['extra']=str(directory)
+        write_json(regpath,reg)
+>       with pytest.raises(ValueError,match='Evaluator truth'):validate_catalog(catalog,tmp_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Evaluator truth'
+E         Actual message: 'No supported images in split directories'
+
+tests/acceptance/test_evaluation_data.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_evaluation_data.py::test_other_task_truth_cannot_enter_any_registered_input[other_dataset]
+1 failed, 101 passed in 24.85s

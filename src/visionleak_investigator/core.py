@@ -3,6 +3,7 @@ import json, os, platform, signal, subprocess, time, sys
 from pathlib import Path
 from typing import Any
 from .common import PROJECT, read_json, write_json, file_hash, no_symlink, safe_child, now
+from .resources import measured_wait
 PROFILES={'base':[], 'transform':['--include-mirrors','--include-rotations'], 'local':['--include-crops'], 'all':['--include-mirrors','--include-rotations','--include-crops']}
 KINDS={'byte-identical':'core.byte_identical','pixel-identical':'core.pixel_identical','perceptual-candidate':'core.perceptual_candidate','local-candidate':'core.local_candidate'}
 
@@ -15,15 +16,13 @@ def execute(argv: list[str], cwd: Path, directory: Path, timeout: float) -> dict
     env=child_environment()
     record={'argv':argv,'cwd':str(cwd),'started_at':now(),'timeout_seconds':timeout,'status':'pending'}
     write_json(directory/'invocation.json',record,exclusive=True)
-    code=None;error=None
+    code=None;error=None;resources=None
     with (directory/'stdout.log').open('wb') as out,(directory/'stderr.log').open('wb') as err:
         try:
             p=subprocess.Popen(argv,cwd=cwd,env=env,shell=False,start_new_session=True,stdout=out,stderr=err)
-            try:code=p.wait(timeout=max(0.001,timeout))
-            except subprocess.TimeoutExpired:
-                os.killpg(p.pid,signal.SIGKILL);p.wait();error='timeout'
+            code,error,resources=measured_wait(p,timeout)
         except OSError as e:error=type(e).__name__
-    record.update(exit_code=code,status='failed' if error else 'returned',error=error,wall_seconds=time.monotonic()-start)
+    record.update(exit_code=code,status='failed' if error else 'returned',error=error,wall_seconds=time.monotonic()-start,resources=resources)
     write_json(directory/'result.json',record,exclusive=True)
     return record
 
