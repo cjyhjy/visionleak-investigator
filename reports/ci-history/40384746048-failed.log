@@ -1,0 +1,652 @@
+Real Core / ubuntu-24.04	UNKNOWN STEP	﻿2026-10-26T19:13:11.5181414Z Current runner version: '2.338.0'
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5207630Z ##[group]Runner Image Provisioner
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5208513Z Hosted Compute Agent
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5209207Z Version: 20261021.618
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5209909Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5210747Z Build Date: 2026-10-21T00:45:21Z
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5211542Z Worker ID: {6bb3901a-dffc-4d29-ada0-d4ee591f79f5}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5212311Z Region: northcentralus
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5212961Z Cloud: Azure
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5213571Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5214965Z ##[group]Operating System
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5215942Z Ubuntu
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5216513Z 24.04.5
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5217054Z LTS
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5217692Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5218334Z ##[group]Runner Image
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5219422Z Image: ubuntu-24.04
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5220043Z Version: 20261012.334.1
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5221441Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5223056Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5224108Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5225239Z ##[group]GITHUB_TOKEN Permissions
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5227874Z Contents: read
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5228569Z Metadata: read
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5229151Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5231409Z Secret source: Actions
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5232398Z Cache mode: write
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5233457Z Prepare workflow directory
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5645012Z Prepare all required actions
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.5712249Z Getting action download info
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.8299556Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.9042062Z Download action repository 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:11.9914515Z Download action repository 'astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff' (SHA:d0d8abe699bfb85fec6de9f7adb5ae17292296ff)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.5070847Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.7339851Z Complete job name: Real Core / ubuntu-24.04
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8160684Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8161765Z with:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8162255Z   persist-credentials: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8162874Z   repository: cjyhjy/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8167508Z   token: ***
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8167997Z   ssh-strict: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8168500Z   ssh-user: git
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8168969Z   clean: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8169599Z   sparse-checkout-cone-mode: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8170447Z   fetch-depth: 1
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8171065Z   fetch-tags: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8171735Z   show-progress: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8172483Z   lfs: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8173101Z   submodules: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8173806Z   set-safe-directory: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8174518Z   allow-unsafe-pr-checkout: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.8175663Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9187290Z Syncing repository: cjyhjy/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9190013Z ##[group]Getting Git version info
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9191186Z Working directory is '/home/runner/work/visionleak-investigator/visionleak-investigator'
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9192721Z [command]/usr/bin/git version
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9234288Z git version 2.55.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9256412Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9286742Z Temporarily overriding HOME='/home/runner/work/_temp/8e39f39f-7aa9-49f7-af12-b86d8b5ac95f' before making global git config changes
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9290429Z Adding repository directory to the temporary git global config as a safe directory
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9293332Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9342159Z Deleting the contents of '/home/runner/work/visionleak-investigator/visionleak-investigator'
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9347331Z ##[group]Initializing the repository
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9350972Z [command]/usr/bin/git init /home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9426852Z hint: Using 'master' as the name for the initial branch. This default branch name
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9428852Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9430684Z hint: to use in all of your new repositories, which will suppress this warning,
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9432236Z hint: call:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9433484Z hint:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9434680Z hint: 	git config --global init.defaultBranch <name>
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9436133Z hint:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9437334Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9439561Z hint: 'development'. The just-created branch can be renamed via this command:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9441207Z hint:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9442209Z hint: 	git branch -m <name>
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9443350Z hint:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9444314Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9446441Z Initialized empty Git repository in /home/runner/work/visionleak-investigator/visionleak-investigator/.git/
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9455800Z [command]/usr/bin/git remote add origin https://github.com/cjyhjy/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9486787Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9488453Z ##[group]Disabling automatic garbage collection
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9491380Z [command]/usr/bin/git config --local gc.auto 0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9528566Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9530259Z ##[group]Setting up auth
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9536319Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9572068Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9927737Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:12.9969549Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0208603Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0248370Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0488984Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0531881Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0540732Z ##[group]Fetching the repository
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.0542584Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +23039ddfa11874eb57c605bf1ed671429dd90b1c:refs/remotes/origin/main
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6379523Z From https://github.com/cjyhjy/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6381324Z  * [new ref]         23039ddfa11874eb57c605bf1ed671429dd90b1c -> origin/main
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6392940Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6394969Z ##[group]Determining the checkout info
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6396938Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6397899Z [command]/usr/bin/git sparse-checkout disable
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6445830Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6480695Z ##[group]Checking out the ref
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.6484360Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7617798Z Switched to a new branch 'main'
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7697797Z branch 'main' set up to track 'origin/main'.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7701558Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7704149Z [command]/usr/bin/git log -1 --format=%H
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7717135Z 23039ddfa11874eb57c605bf1ed671429dd90b1c
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7724880Z ##[group]Removing auth
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7729023Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.7767695Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8010371Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8040298Z http.https://github.com/.extraheader
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8047506Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8090291Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8330972Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8367031Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8601344Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8965943Z ##[group]Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8967637Z with:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8968576Z   node-version-file: .node-version
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8969761Z   always-auth: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8970748Z   check-latest: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8980937Z   token: ***
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:13.8981854Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.0336863Z Node version file is not JSON file
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.0338817Z Resolved .node-version as 26.7.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.0358076Z Attempting to download 26.7.0...
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.0471476Z (node:2341) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.0474693Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:14.7767682Z Acquiring 26.7.0 - x64 from https://github.com/actions/node-versions/releases/download/26.7.0-31064755789/node-26.7.0-linux-x64.tar.gz
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:15.2648207Z Extracting ...
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:15.2769093Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/6af2b33a-9d87-4a75-8781-c97f5d2cc6e2 -f /home/runner/work/_temp/91f503e2-337d-4455-ae12-bb2805576c44
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:16.7286998Z Adding to the cache ...
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:18.7348310Z ##[group]Environment details
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:18.9744436Z node: v26.7.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:18.9744895Z npm: 11.19.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:18.9745221Z yarn: 1.22.22
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:18.9746234Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0118784Z ##[group]Run astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0119227Z with:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0119574Z   version: 0.12.13
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0119981Z   enable-cache: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0120357Z   activate-environment: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0120836Z   working-directory: /home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0121339Z   server-url: https://github.com
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0124008Z   github-token: ***
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0124612Z   cache-dependency-glob: **/*requirements*.txt
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/*requirements*.in
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/*constraints*.txt
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/*constraints*.in
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/pyproject.toml
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/uv.lock
+Real Core / ubuntu-24.04	UNKNOWN STEP	**/*.py.lock
+Real Core / ubuntu-24.04	UNKNOWN STEP	
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0125273Z   restore-cache: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0125708Z   save-cache: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0125945Z   prune-cache: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0126200Z   ignore-nothing-to-cache: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0126501Z   ignore-empty-workdir: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0126835Z   add-problem-matchers: true
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.0127108Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.2121362Z (node:2377) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.2122630Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.2258619Z manifest-file not provided, reading from local file.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.2304994Z manifest-file does not contain version 0.12.13, arch x86_64, platform unknown-linux-gnu. Falling back to GitHub releases.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.2307024Z Downloading uv from "https://github.com/astral-sh/uv/releases/download/0.12.13/uv-x86_64-unknown-linux-gnu.tar.gz" ...
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.5578112Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/47bf4131-94af-47e5-9c13-541c40f5c490 -f /home/runner/work/_temp/72370eee-e327-451a-957f-1dff09ef3653
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9710816Z Added /home/runner/.local/bin to the path
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9713606Z Added /opt/hostedtoolcache/uv/0.12.13/x86_64 to the path
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9720874Z Set UV_CACHE_DIR to /home/runner/work/_temp/setup-uv-cache
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9721825Z Successfully installed uv version 0.12.13
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9876216Z ##[group]Run uv sync --frozen
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:19.9876569Z ^[[36;1muv sync --frozen^[[0m
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:20.0126964Z shell: /usr/bin/bash -e {0}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:20.0127241Z env:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:20.0127511Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:20.0127832Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:20.3017265Z Downloading cpython-3.12.14-linux-x86_64-gnu (download) (32.6MiB)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.2103932Z  Downloaded cpython-3.12.14-linux-x86_64-gnu (download)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.3622431Z Using CPython 3.12.14
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.3622982Z Creating virtual environment at: .venv
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.3677846Z    Building visionleak-investigator @ file:///home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.3959951Z Downloading pygments (1.2MiB)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.3977840Z Downloading pillow (6.6MiB)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.4414621Z  Downloaded pygments
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:21.4846367Z  Downloaded pillow
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0021946Z       Built visionleak-investigator @ file:///home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0032652Z Prepared 13 packages in 637ms
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0171747Z Installed 13 packages in 13ms
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0172200Z  + attrs==26.1.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0172648Z  + iniconfig==2.3.1
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0173013Z  + jsonschema==4.26.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0173474Z  + jsonschema-specifications==2025.9.1
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0173946Z  + packaging==26.3
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0174309Z  + pillow==12.3.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0174636Z  + pluggy==1.7.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0194640Z  + pygments==2.21.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0194921Z  + pytest==9.0.3
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0195166Z  + referencing==0.37.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0195604Z  + rpds-py==2026.9.1
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0195983Z  + typing-extensions==4.16.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0196980Z  + visionleak-investigator==0.1.0 (from file:///home/runner/work/visionleak-investigator/visionleak-investigator)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0307845Z ##[group]Run .venv/bin/python scripts/record.py ci-fetch .venv/bin/python scripts/fetch_core.py --out .cache/core.zip
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0308683Z ^[[36;1m.venv/bin/python scripts/record.py ci-fetch .venv/bin/python scripts/fetch_core.py --out .cache/core.zip^[[0m
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0378801Z shell: /usr/bin/bash -e {0}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0379067Z env:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0379329Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.0379657Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.5897836Z {"name": "ci-fetch", "argv": [".venv/bin/python", "scripts/fetch_core.py", "--out", ".cache/core.zip"], "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator", "exit_code": 0, "wall_seconds": 0.5153056779999972, "log": "reports/logs/20261026T191322073720-ci-fetch.log", "recorded_at": "20261026T191322073720"}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.5901170Z {"url": "https://github.com/cjyhjy/moonbit-visionleak/releases/download/v0.6.0/visionleak-0.6.0.zip", "sha256": "c1d3077953c384dc5a8fb4608a3b8157853757ae304403f6f2789c9c29f869a8", "bytes": 26658473, "path": ".cache/core.zip"}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.5902691Z 
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6011518Z ##[group]Run .venv/bin/python scripts/record.py ci-bootstrap .venv/bin/python scripts/bootstrap_core.py --archive .cache/core.zip --migrate-runtime --receipt reports/ci/runtime-migration.json
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6013100Z ^[[36;1m.venv/bin/python scripts/record.py ci-bootstrap .venv/bin/python scripts/bootstrap_core.py --archive .cache/core.zip --migrate-runtime --receipt reports/ci/runtime-migration.json^[[0m
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6083461Z shell: /usr/bin/bash -e {0}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6083732Z env:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6083995Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:22.6084319Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7447989Z {"name": "ci-bootstrap", "argv": [".venv/bin/python", "scripts/bootstrap_core.py", "--archive", ".cache/core.zip", "--migrate-runtime", "--receipt", "reports/ci/runtime-migration.json"], "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator", "exit_code": 1, "wall_seconds": 1.1018455079999967, "log": "reports/logs/20261026T191322642219-ci-bootstrap.log", "recorded_at": "20261026T191322642219"}
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7449405Z 
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7449550Z added 6 packages in 651ms
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7450330Z Symlink rejected: /home/runner/work/visionleak-investigator/visionleak-investigator/.deps/visionleak-core/node_modules/.bin/semver
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7450997Z Traceback (most recent call last):
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7451676Z   File "/home/runner/work/visionleak-investigator/visionleak-investigator/scripts/bootstrap_core.py", line 20, in <module>
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7452510Z     subprocess.run([sys.executable,str(root/'scripts/pin_core.py'),*pin_args],cwd=root,check=True)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7453322Z   File "/home/runner/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7453956Z     raise CalledProcessError(retcode, process.args,
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7456147Z subprocess.CalledProcessError: Command '['/home/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python', '/home/runner/work/visionleak-investigator/visionleak-investigator/scripts/pin_core.py', '--migrate-runtime', '--receipt', '/home/runner/work/visionleak-investigator/visionleak-investigator/reports/ci/runtime-migration.json']' returned non-zero exit status 1.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7457504Z 
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7511654Z ##[error]Process completed with exit code 1.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7608951Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7609363Z with:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7609682Z   name: real-core-ubuntu-24.04-23039ddfa11874eb57c605bf1ed671429dd90b1c
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7610061Z   retention-days: 14
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7610509Z   path: reports/ci/
+Real Core / ubuntu-24.04	UNKNOWN STEP	reports/logs/
+Real Core / ubuntu-24.04	UNKNOWN STEP	reports/commands.jsonl
+Real Core / ubuntu-24.04	UNKNOWN STEP	runs/ci-acceptance/
+Real Core / ubuntu-24.04	UNKNOWN STEP	core.runtime.lock.json
+Real Core / ubuntu-24.04	UNKNOWN STEP	
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7611020Z   if-no-files-found: warn
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7611261Z   compression-level: 6
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7611489Z   overwrite: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7611716Z   include-hidden-files: false
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7611960Z env:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7612200Z   UV_CACHE_DIR: /home/runner/work/_temp/setup-uv-cache
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.7612521Z ##[endgroup]
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9242091Z (node:2450) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9243944Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9398090Z Multiple search paths detected. Calculating the least common ancestor of all paths
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9401599Z The least common ancestor is /home/runner/work/visionleak-investigator/visionleak-investigator. This will be the root directory of the artifact
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9402983Z With the provided path, there will be 43 files uploaded
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9407087Z Artifact name is valid!
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:23.9407949Z Root directory input is valid!
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:24.2005907Z Beginning upload of artifact content to blob storage
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:24.2588068Z (node:2450) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.0796473Z Uploaded bytes 34571
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.1246655Z Finished uploading artifact content to blob storage!
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.1247614Z SHA256 digest of uploaded artifact zip is e6b17d2177adca6680914282ff456af540af96716b6a382c4bb1fb914dd5e936
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.1249752Z Finalizing artifact upload
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.5447047Z Artifact real-core-ubuntu-24.04-23039ddfa11874eb57c605bf1ed671429dd90b1c.zip successfully finalized. Artifact ID 12680290733
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.5448379Z Artifact real-core-ubuntu-24.04-23039ddfa11874eb57c605bf1ed671429dd90b1c has been successfully uploaded! Final size is 34571 bytes. Artifact ID is 12680290733
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.5453584Z Artifact download URL: https://github.com/cjyhjy/visionleak-investigator/actions/runs/40384746048/artifacts/12680290733
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.5666182Z Post job cleanup.
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6519658Z [command]/usr/bin/git version
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6561581Z git version 2.55.0
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6596814Z Temporarily overriding HOME='/home/runner/work/_temp/cea02479-a200-4127-ac48-236f6b19fa4c' before making global git config changes
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6598298Z Adding repository directory to the temporary git global config as a safe directory
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6602487Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6642461Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6678757Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6946809Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.6994586Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.7263376Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.7302437Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.7711306Z Cleaning up orphan processes
+Real Core / ubuntu-24.04	UNKNOWN STEP	2026-10-26T19:13:25.8002826Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Real Core / macos-14	UNKNOWN STEP	﻿2026-10-26T19:13:17.9364550Z Current runner version: '2.338.0'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9382700Z ##[group]Runner Image Provisioner
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9383320Z Hosted Compute Agent
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9383710Z Version: 20260828.587
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9384180Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9384790Z Build Date: 2026-08-28T16:44:25Z
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9385240Z Worker ID: {8b4317e6-b185-43c9-be3a-f6d13bc59b92}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9385720Z Azure Region: westus
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9386100Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9387050Z ##[group]Operating System
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9387450Z macOS
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9387780Z 14.8.9
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9388130Z 23J631
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9388470Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9388840Z ##[group]Runner Image
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9389220Z Image: macos-14-arm64
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9389610Z Version: 20260831.0302.1
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9390560Z Included Software: https://github.com/actions/runner-images/blob/macos-14-arm64/20260831.0302/images/macos/macos-14-arm64-Readme.md
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9391630Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-14-arm64%2F20260831.0302
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9392300Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9393030Z ##[group]GITHUB_TOKEN Permissions
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9394570Z Contents: read
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9394940Z Metadata: read
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9395310Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9396800Z Secret source: Actions
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9397540Z Cache mode: write
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9397990Z Prepare workflow directory
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9733170Z Prepare all required actions
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:17.9823550Z Getting action download info
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:18.3082390Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:18.6389230Z Download action repository 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:18.7617660Z Download action repository 'astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff' (SHA:d0d8abe699bfb85fec6de9f7adb5ae17292296ff)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:19.9281180Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.1908410Z Complete job name: Real Core / macos-14
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2537550Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2538430Z with:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2538830Z   persist-credentials: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2539280Z   repository: cjyhjy/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2542290Z   token: ***
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2542660Z   ssh-strict: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2543030Z   ssh-user: git
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2543380Z   clean: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2543750Z   sparse-checkout-cone-mode: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2544170Z   fetch-depth: 1
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2544540Z   fetch-tags: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2544910Z   show-progress: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2545330Z   lfs: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2545680Z   submodules: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2546050Z   set-safe-directory: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2546470Z   allow-unsafe-pr-checkout: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.2547140Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4177980Z Syncing repository: cjyhjy/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4179770Z ##[group]Getting Git version info
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4180500Z Working directory is '/Users/runner/work/visionleak-investigator/visionleak-investigator'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4198300Z [command]/opt/homebrew/bin/git version
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4497530Z git version 2.55.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4517840Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4525480Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/06bf52fe-d8ad-402d-8736-98cc2d5bc55e/.gitconfig'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4528230Z Temporarily overriding HOME='/Users/runner/work/_temp/06bf52fe-d8ad-402d-8736-98cc2d5bc55e' before making global git config changes
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4529360Z Adding repository directory to the temporary git global config as a safe directory
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4537550Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4671150Z Deleting the contents of '/Users/runner/work/visionleak-investigator/visionleak-investigator'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4687060Z ##[group]Initializing the repository
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4690390Z [command]/opt/homebrew/bin/git init /Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4959010Z hint: Using 'master' as the name for the initial branch. This default branch name
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4961440Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4963960Z hint: to use in all of your new repositories, which will suppress this warning,
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4965780Z hint: call:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4966840Z hint:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4968120Z hint: 	git config --global init.defaultBranch <name>
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4969610Z hint:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4971050Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4973150Z hint: 'development'. The just-created branch can be renamed via this command:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4977270Z hint:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4978390Z hint: 	git branch -m <name>
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4979630Z hint:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4981150Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4984110Z Initialized empty Git repository in /Users/runner/work/visionleak-investigator/visionleak-investigator/.git/
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.4988910Z [command]/opt/homebrew/bin/git remote add origin https://github.com/cjyhjy/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5037760Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5039740Z ##[group]Disabling automatic garbage collection
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5041550Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5093960Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5095910Z ##[group]Setting up auth
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5098690Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5154590Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.5954150Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.6005040Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.6678730Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.6737590Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.7984350Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.8029980Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.8031360Z ##[group]Fetching the repository
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:20.8034720Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +23039ddfa11874eb57c605bf1ed671429dd90b1c:refs/remotes/origin/main
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9291410Z From https://github.com/cjyhjy/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9296060Z  * [new ref]         23039ddfa11874eb57c605bf1ed671429dd90b1c -> origin/main
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9357970Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9359050Z ##[group]Determining the checkout info
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9360120Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:21.9360980Z [command]/opt/homebrew/bin/git sparse-checkout disable
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:22.0109480Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:22.0432510Z ##[group]Checking out the ref
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:22.0435750Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.1900470Z Updating files:   5% (113/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.2422800Z Updating files:   6% (114/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.2432050Z Updating files:   7% (133/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.2466810Z Updating files:   8% (152/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3013740Z Updating files:   9% (171/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3019610Z Updating files:  10% (190/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3069880Z Updating files:  11% (209/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3082820Z Updating files:  12% (228/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3083740Z Updating files:  13% (247/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3100190Z Updating files:  14% (266/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3140580Z Updating files:  15% (285/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3159730Z Updating files:  16% (304/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3176080Z Updating files:  17% (323/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3191750Z Updating files:  18% (342/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3215240Z Updating files:  19% (361/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3235910Z Updating files:  20% (380/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3254470Z Updating files:  21% (399/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3281810Z Updating files:  22% (418/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3305710Z Updating files:  23% (437/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3340120Z Updating files:  24% (456/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3371690Z Updating files:  25% (474/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3395670Z Updating files:  26% (493/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3428900Z Updating files:  27% (512/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3449190Z Updating files:  28% (531/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3464480Z Updating files:  29% (550/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3480660Z Updating files:  30% (569/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3498510Z Updating files:  31% (588/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3514970Z Updating files:  32% (607/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3561410Z Updating files:  33% (626/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3610200Z Updating files:  34% (645/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3610970Z Updating files:  35% (664/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3620820Z Updating files:  36% (683/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3640150Z Updating files:  37% (702/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3677670Z Updating files:  38% (721/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3709750Z Updating files:  39% (740/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3737800Z Updating files:  40% (759/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3777780Z Updating files:  41% (778/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3793900Z Updating files:  42% (797/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3819320Z Updating files:  43% (816/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3854130Z Updating files:  44% (835/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3914140Z Updating files:  45% (854/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3951160Z Updating files:  46% (873/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3980530Z Updating files:  47% (892/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.3985160Z Updating files:  48% (911/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4005840Z Updating files:  49% (930/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4020660Z Updating files:  50% (948/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4036460Z Updating files:  51% (967/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4059850Z Updating files:  52% (986/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4075090Z Updating files:  53% (1005/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4092210Z Updating files:  54% (1024/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4138420Z Updating files:  55% (1043/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4161140Z Updating files:  56% (1062/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4207560Z Updating files:  57% (1081/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4232030Z Updating files:  58% (1100/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4281730Z Updating files:  59% (1119/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4313670Z Updating files:  60% (1138/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4350640Z Updating files:  61% (1157/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4353300Z Updating files:  62% (1176/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4370520Z Updating files:  63% (1195/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4497970Z Updating files:  64% (1214/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4568960Z Updating files:  65% (1233/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4593720Z Updating files:  66% (1252/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4620480Z Updating files:  67% (1271/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4657250Z Updating files:  68% (1290/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4676200Z Updating files:  69% (1309/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4704980Z Updating files:  70% (1328/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4723340Z Updating files:  71% (1347/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4748910Z Updating files:  72% (1366/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4764080Z Updating files:  73% (1385/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4780790Z Updating files:  74% (1404/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4814190Z Updating files:  75% (1422/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4817760Z Updating files:  76% (1441/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4845000Z Updating files:  77% (1460/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4867210Z Updating files:  78% (1479/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4892740Z Updating files:  79% (1498/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4908190Z Updating files:  80% (1517/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4932010Z Updating files:  81% (1536/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4953250Z Updating files:  82% (1555/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.4988980Z Updating files:  83% (1574/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5033240Z Updating files:  84% (1593/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5087210Z Updating files:  85% (1612/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5105360Z Updating files:  86% (1631/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5138150Z Updating files:  87% (1650/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5161220Z Updating files:  88% (1669/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5182410Z Updating files:  89% (1688/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5203280Z Updating files:  90% (1707/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5229600Z Updating files:  91% (1726/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5254290Z Updating files:  92% (1745/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5265400Z Updating files:  93% (1764/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5286290Z Updating files:  94% (1783/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5336600Z Updating files:  95% (1802/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5356860Z Updating files:  96% (1821/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5374150Z Updating files:  97% (1840/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5393790Z Updating files:  98% (1859/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5429600Z Updating files:  99% (1878/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5430140Z Updating files: 100% (1896/1896)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5430440Z Updating files: 100% (1896/1896), done.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5513830Z Switched to a new branch 'main'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5516160Z branch 'main' set up to track 'origin/main'.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5523960Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5614800Z [command]/opt/homebrew/bin/git log -1 --format=%H
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5678400Z 23039ddfa11874eb57c605bf1ed671429dd90b1c
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5687580Z ##[group]Removing auth
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5690080Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.5755110Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.7120840Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.7222480Z http.https://github.com/.extraheader
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.7258350Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.7261170Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.7962330Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8020080Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8765930Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8993480Z ##[group]Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8993840Z with:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8994030Z   node-version-file: .node-version
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8994240Z   always-auth: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8994420Z   check-latest: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.8996520Z   token: ***
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:23.9008190Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.0253080Z Node version file is not JSON file
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.0253840Z Resolved .node-version as 26.7.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.0276780Z Attempting to download 26.7.0...
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.0417370Z (node:1179) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.0496480Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:24.9167120Z Acquiring 26.7.0 - arm64 from https://github.com/actions/node-versions/releases/download/26.7.0-31064755789/node-26.7.0-darwin-arm64.tar.gz
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:25.6784960Z Extracting ...
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:25.6907320Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/0afc881d-0f6d-4aaf-b1b7-a60fc847bff4 -f /Users/runner/work/_temp/8e47dfcd-b77a-43d6-87fe-ee88f6aca0f0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:26.8925160Z Adding to the cache ...
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.3497510Z ##[group]Environment details
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7625120Z node: v26.7.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7625720Z npm: 11.19.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7627710Z yarn: 1.22.22
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7628590Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7915010Z ##[group]Run astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7915470Z with:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7915740Z   version: 0.12.13
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7915940Z   enable-cache: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7916260Z   activate-environment: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7916800Z   working-directory: /Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7917230Z   server-url: https://github.com
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7919580Z   github-token: ***
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7920140Z   cache-dependency-glob: **/*requirements*.txt
+Real Core / macos-14	UNKNOWN STEP	**/*requirements*.in
+Real Core / macos-14	UNKNOWN STEP	**/*constraints*.txt
+Real Core / macos-14	UNKNOWN STEP	**/*constraints*.in
+Real Core / macos-14	UNKNOWN STEP	**/pyproject.toml
+Real Core / macos-14	UNKNOWN STEP	**/uv.lock
+Real Core / macos-14	UNKNOWN STEP	**/*.py.lock
+Real Core / macos-14	UNKNOWN STEP	
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7920740Z   restore-cache: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7921080Z   save-cache: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7921340Z   prune-cache: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7921600Z   ignore-nothing-to-cache: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7921850Z   ignore-empty-workdir: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7922290Z   add-problem-matchers: true
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:29.7922530Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.0956510Z (node:1247) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.0958480Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.0965450Z manifest-file not provided, reading from local file.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.0998120Z manifest-file does not contain version 0.12.13, arch aarch64, platform apple-darwin. Falling back to GitHub releases.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.1000640Z Downloading uv from "https://github.com/astral-sh/uv/releases/download/0.12.13/uv-aarch64-apple-darwin.tar.gz" ...
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.7165370Z [command]/usr/bin/tar xz -C /Users/runner/work/_temp/44c1445e-9427-41bd-9618-75cb1ad9e65b -f /Users/runner/work/_temp/bde4b701-9073-4214-b7ca-4713117bbf00
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9499920Z Added /Users/runner/.local/bin to the path
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9523160Z Added /Users/runner/hostedtoolcache/uv/0.12.13/aarch64 to the path
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9541560Z Set UV_CACHE_DIR to /Users/runner/work/_temp/setup-uv-cache
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9542240Z Successfully installed uv version 0.12.13
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9702300Z ##[group]Run uv sync --frozen
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9702660Z ^[[36;1muv sync --frozen^[[0m
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9854110Z shell: /bin/bash -e {0}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9854320Z env:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9854520Z   UV_CACHE_DIR: /Users/runner/work/_temp/setup-uv-cache
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:30.9854760Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:33.5650800Z Downloading cpython-3.12.14-macos-aarch64-none (download) (23.8MiB)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.1552220Z  Downloaded cpython-3.12.14-macos-aarch64-none (download)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.7454730Z Using CPython 3.12.14
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.7457150Z Creating virtual environment at: .venv
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.7553230Z    Building visionleak-investigator @ file:///Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.8832650Z Downloading pygments (1.2MiB)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.8834200Z Downloading pillow (4.6MiB)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.9693920Z  Downloaded pygments
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:34.9785730Z  Downloaded pillow
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.4736270Z       Built visionleak-investigator @ file:///Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.4767670Z Prepared 13 packages in 725ms
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5048240Z Installed 13 packages in 23ms
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5049210Z  + attrs==26.1.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5049640Z  + iniconfig==2.3.1
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5050050Z  + jsonschema==4.26.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5050510Z  + jsonschema-specifications==2025.9.1
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5050920Z  + packaging==26.3
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5054380Z  + pillow==12.3.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5080070Z  + pluggy==1.7.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5080850Z  + pygments==2.21.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5084270Z  + pytest==9.0.3
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5085170Z  + referencing==0.37.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5085680Z  + rpds-py==2026.9.1
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5086160Z  + typing-extensions==4.16.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5089440Z  + visionleak-investigator==0.1.0 (from file:///Users/runner/work/visionleak-investigator/visionleak-investigator)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5232170Z ##[group]Run .venv/bin/python scripts/record.py ci-fetch .venv/bin/python scripts/fetch_core.py --out .cache/core.zip
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5233020Z ^[[36;1m.venv/bin/python scripts/record.py ci-fetch .venv/bin/python scripts/fetch_core.py --out .cache/core.zip^[[0m
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5449260Z shell: /bin/bash -e {0}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5449500Z env:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5449740Z   UV_CACHE_DIR: /Users/runner/work/_temp/setup-uv-cache
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:35.5450240Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5021740Z {"name": "ci-fetch", "argv": [".venv/bin/python", "scripts/fetch_core.py", "--out", ".cache/core.zip"], "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator", "exit_code": 0, "wall_seconds": 0.9026520839999961, "log": "reports/logs/20261026T191335596802-ci-fetch.log", "recorded_at": "20261026T191335596802"}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5027620Z {"url": "https://github.com/cjyhjy/moonbit-visionleak/releases/download/v0.6.0/visionleak-0.6.0.zip", "sha256": "c1d3077953c384dc5a8fb4608a3b8157853757ae304403f6f2789c9c29f869a8", "bytes": 26658473, "path": ".cache/core.zip"}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5029430Z 
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5106210Z ##[group]Run .venv/bin/python scripts/record.py ci-bootstrap .venv/bin/python scripts/bootstrap_core.py --archive .cache/core.zip --migrate-runtime --receipt reports/ci/runtime-migration.json
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5109010Z ^[[36;1m.venv/bin/python scripts/record.py ci-bootstrap .venv/bin/python scripts/bootstrap_core.py --archive .cache/core.zip --migrate-runtime --receipt reports/ci/runtime-migration.json^[[0m
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5176770Z shell: /bin/bash -e {0}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5176990Z env:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5177210Z   UV_CACHE_DIR: /Users/runner/work/_temp/setup-uv-cache
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:36.5177470Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0624420Z {"name": "ci-bootstrap", "argv": [".venv/bin/python", "scripts/bootstrap_core.py", "--archive", ".cache/core.zip", "--migrate-runtime", "--receipt", "reports/ci/runtime-migration.json"], "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator", "exit_code": 1, "wall_seconds": 1.4642371669999932, "log": "reports/logs/20261026T191336596924-ci-bootstrap.log", "recorded_at": "20261026T191336596924"}
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0625930Z 
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0626160Z added 6 packages in 862ms
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0627000Z Symlink rejected: /Users/runner/work/visionleak-investigator/visionleak-investigator/.deps/visionleak-core/node_modules/.bin/semver
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0627640Z Traceback (most recent call last):
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0628360Z   File "/Users/runner/work/visionleak-investigator/visionleak-investigator/scripts/bootstrap_core.py", line 20, in <module>
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0629140Z     subprocess.run([sys.executable,str(root/'scripts/pin_core.py'),*pin_args],cwd=root,check=True)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0630020Z   File "/Users/runner/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/subprocess.py", line 571, in run
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0631320Z     raise CalledProcessError(retcode, process.args,
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0633830Z subprocess.CalledProcessError: Command '['/Users/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python', '/Users/runner/work/visionleak-investigator/visionleak-investigator/scripts/pin_core.py', '--migrate-runtime', '--receipt', '/Users/runner/work/visionleak-investigator/visionleak-investigator/reports/ci/runtime-migration.json']' returned non-zero exit status 1.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0635150Z 
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0681730Z ##[error]Process completed with exit code 1.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0795820Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0796560Z with:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0796930Z   name: real-core-macos-14-23039ddfa11874eb57c605bf1ed671429dd90b1c
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0797400Z   retention-days: 14
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0797890Z   path: reports/ci/
+Real Core / macos-14	UNKNOWN STEP	reports/logs/
+Real Core / macos-14	UNKNOWN STEP	reports/commands.jsonl
+Real Core / macos-14	UNKNOWN STEP	runs/ci-acceptance/
+Real Core / macos-14	UNKNOWN STEP	core.runtime.lock.json
+Real Core / macos-14	UNKNOWN STEP	
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0798380Z   if-no-files-found: warn
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0798620Z   compression-level: 6
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0798930Z   overwrite: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0799280Z   include-hidden-files: false
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0799550Z env:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0800490Z   UV_CACHE_DIR: /Users/runner/work/_temp/setup-uv-cache
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.0801460Z ##[endgroup]
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.2932280Z (node:1349) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.2933400Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.3058390Z Multiple search paths detected. Calculating the least common ancestor of all paths
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.3060820Z The least common ancestor is /Users/runner/work/visionleak-investigator/visionleak-investigator. This will be the root directory of the artifact
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.3061650Z With the provided path, there will be 43 files uploaded
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.3067990Z Artifact name is valid!
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.3070150Z Root directory input is valid!
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.6314190Z Beginning upload of artifact content to blob storage
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.6833820Z (node:1349) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.8687410Z Uploaded bytes 34569
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.9157200Z Finished uploading artifact content to blob storage!
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.9159600Z SHA256 digest of uploaded artifact zip is c4d0483be0f83f0869341794311901ce6646b2ac777cec72036cbfb7fb0cbf44
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:38.9161700Z Finalizing artifact upload
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.3618200Z Artifact real-core-macos-14-23039ddfa11874eb57c605bf1ed671429dd90b1c.zip successfully finalized. Artifact ID 12680007716
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.3620970Z Artifact real-core-macos-14-23039ddfa11874eb57c605bf1ed671429dd90b1c has been successfully uploaded! Final size is 34569 bytes. Artifact ID is 12680007716
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.3624180Z Artifact download URL: https://github.com/cjyhjy/visionleak-investigator/actions/runs/40384746048/artifacts/12680007716
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.3759990Z Post job cleanup.
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4649570Z [command]/opt/homebrew/bin/git version
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4738290Z git version 2.55.0
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4757600Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/978c8de9-b59a-40dd-ad6c-8aa9814cb910/.gitconfig'
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4764370Z Temporarily overriding HOME='/Users/runner/work/_temp/978c8de9-b59a-40dd-ad6c-8aa9814cb910' before making global git config changes
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4765310Z Adding repository directory to the temporary git global config as a safe directory
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4767770Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/visionleak-investigator/visionleak-investigator
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4830540Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.4881350Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.5555940Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.5611380Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.6266050Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.6456720Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:39.7299310Z Cleaning up orphan processes
+Real Core / macos-14	UNKNOWN STEP	2026-10-26T19:13:40.1609600Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

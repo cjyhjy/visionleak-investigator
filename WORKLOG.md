@@ -25,3 +25,5 @@ M5：12 个合成任务 x A/B/C = 36 次真实 Core 条件运行（30 COMPLETED�
 公开推送完成：实现提交 `2a7bfb5222e24e3e247566fe6182fb4d4bb53c79` 已推送 main；GitHub API 返回 PUBLIC，远端 refs/heads/main 与本地提交一致。命令与回执见 reports/publication.json。本条为后续文档记录，不改变代码与测试结果。原始设计快照及历史原始日志保留其空白格式，实现文件的 diff whitespace 检查通过。
 
 自主推进 / 复现与 CI：显式平台运行锁迁移、SHA 验证下载、双平台无模型 CI 已实现。本地 platform-regression 46 passed；platform-current-lock 确认旧运行锁未变化。Linux/macOS 远端结果待实际运行；模型仍为 not_run。
+
+CI 首次运行 40384746048：Linux/macOS 均在安装后被 symlink 门禁拒绝。实际 npm ci 会创建未使用的 .bin/semver 软链接，而早期本地 staging 副本未带此链接。安装增加 --bin-links=false，保留原有禁止 symlink 的运行边界；原始失败日志存 reports/ci-history/40384746048-failed.log。真实契约测试尚未在该次 CI 执行，不记通过。
