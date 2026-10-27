@@ -1,0 +1,97 @@
+{
+  "status": "passed_for_recorded_tool_accounting_scope",
+  "created_at": "2026-10-26T23:55:38.176602+00:00",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "gap": "reports/finalization-accounting-gap-v1/receipt.json",
+  "commands": [
+    {
+      "name": "finalization-red",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/acceptance/test_finalization_accounting.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 1,
+      "wall_seconds": 3.720803917,
+      "log": "reports/logs/20261026T234503641336-finalization-red.log",
+      "recorded_at": "20261026T234503641336"
+    },
+    {
+      "name": "finalization-targeted",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/acceptance/test_finalization_accounting.py",
+        "tests/acceptance/test_revision_budget.py",
+        "tests/acceptance/test_revision_provenance.py",
+        "tests/acceptance/test_rules_routing.py",
+        "tests/acceptance/test_report_presentation.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 23.492631625,
+      "log": "reports/logs/20261026T234729911244-finalization-targeted.log",
+      "recorded_at": "20261026T234729911244"
+    },
+    {
+      "name": "publication-failure-targeted",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/acceptance/test_finalization_accounting.py"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 5.8856002499999995,
+      "log": "reports/logs/20261026T234856876349-publication-failure-targeted.log",
+      "recorded_at": "20261026T234856876349"
+    },
+    {
+      "name": "finalization-local-smoke",
+      "argv": [
+        ".venv-clean/bin/python",
+        "scripts/finalization_smoke.py",
+        "--out",
+        "reports/finalization-v1"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 4.886063292,
+      "log": "reports/logs/20261026T235055695928-finalization-local-smoke.log",
+      "recorded_at": "20261026T235055695928"
+    },
+    {
+      "name": "finalization-regression",
+      "argv": [
+        ".venv-clean/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "/Users/cjy/Documents/VisionLeak Investigator/visionleak-investigator",
+      "exit_code": 0,
+      "wall_seconds": 114.38204225,
+      "log": "reports/logs/20261026T235150644662-finalization-regression.log",
+      "recorded_at": "20261026T235150644662"
+    }
+  ],
+  "regression": {
+    "tests": 204,
+    "skipped": 0,
+    "log": "reports/logs/20261026T235150644662-finalization-regression.log"
+  },
+  "smoke": "reports/finalization-v1/receipt.json",
+  "ci_status": "pending",
+  "model_calls": 0,
+  "scope": "One full render, staged HTML/JSON-body writes under reservation; revision assembly charged; overrun and publication failures preserve cost and unaccepted outputs. Accounting commit boundary explicitly recorded; whole-worker receipts include commit I/O.",
+  "remaining_local": [
+    "Complete clause-by-clause contract and delivery audit."
+  ]
+}

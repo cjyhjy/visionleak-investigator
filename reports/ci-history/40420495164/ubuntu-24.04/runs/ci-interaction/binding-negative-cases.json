@@ -1,0 +1,1035 @@
+[
+  {
+    "case": "task_id",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "controlled-other-task",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "new_entity_generalization",
+      "goal_confirmed": true,
+      "goal_evidence_refs": [
+        "user.local-task"
+      ],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 2,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.local-task": {
+          "kind": "user.goal_confirmation",
+          "goal": "new_entity_generalization",
+          "actor": "synthetic initial task contract"
+        },
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "controlled-other-task",
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t000/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "controlled-other-task",
+      "truth_digest": "71543bf62139935051002fd7e93f43f9255c3532f9c854a361745668a22ee7d1",
+      "initial_task_digest": "aa5bb1bea463c1dd8a16b590e4eb7ad8bd4dc967808269c4f3ab27e78d28ab86",
+      "initial_registry_digest": "23261a60027e90447d8f7ba39d9a8bfbd7ca2679f663a25a594d4e27c8bddf3f",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "usable_output": false,
+      "failure": "Interaction task/limits differ from frozen inputs",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 0,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  },
+  {
+    "case": "limits",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "new_entity_generalization",
+      "goal_confirmed": true,
+      "goal_evidence_refs": [
+        "user.local-task"
+      ],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 1,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.local-task": {
+          "kind": "user.goal_confirmation",
+          "goal": "new_entity_generalization",
+          "actor": "synthetic initial task contract"
+        },
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t000/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "t000",
+      "truth_digest": "9580bd2974ba62f27c72060bc8d4878c5fd3c0f17a5ef2719c7eb264203e0022",
+      "initial_task_digest": "dcc260faf29be79388d2c40c69c07e1bca055910e28711b0d167ddab11a9ba53",
+      "initial_registry_digest": "23261a60027e90447d8f7ba39d9a8bfbd7ca2679f663a25a594d4e27c8bddf3f",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "usable_output": false,
+      "failure": "Interaction task/limits differ from frozen inputs",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 0,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  },
+  {
+    "case": "registry",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "new_entity_generalization",
+      "goal_confirmed": true,
+      "goal_evidence_refs": [
+        "user.local-task"
+      ],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 2,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        },
+        "additional": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.local-task": {
+          "kind": "user.goal_confirmation",
+          "goal": "new_entity_generalization",
+          "actor": "synthetic initial task contract"
+        },
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t000/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "t000",
+      "truth_digest": "9580bd2974ba62f27c72060bc8d4878c5fd3c0f17a5ef2719c7eb264203e0022",
+      "initial_task_digest": "02dc5e8f8fac9e8e5126aeaee14f88d691fbb0c01f7afcb36badd8b3f81dc7dc",
+      "initial_registry_digest": "a8b78da096afcc5ea904d169a1615b3d1c452724e96508ff18698ce868f1e4b0",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "usable_output": false,
+      "failure": "Interaction registry differs from frozen inputs",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 0,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  },
+  {
+    "case": "input",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "new_entity_generalization",
+      "goal_confirmed": true,
+      "goal_evidence_refs": [
+        "user.local-task"
+      ],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 2,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t001/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.local-task": {
+          "kind": "user.goal_confirmation",
+          "goal": "new_entity_generalization",
+          "actor": "synthetic initial task contract"
+        },
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_manifest_digest": "ccbd10d3117c912aac0ba4a90531e10d16533d6513aa74d4e9977d778104c581",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t000/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "t000",
+      "truth_digest": "45d1280a97ae75ba0c72165dda210f8dfddba6465a20be97bc66a504dc29e5a0",
+      "initial_task_digest": "02dc5e8f8fac9e8e5126aeaee14f88d691fbb0c01f7afcb36badd8b3f81dc7dc",
+      "initial_registry_digest": "628af9cc8d6531f9141a31ed630da189f0edf09f983a79b9fb8dab57f656399d",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "ccbd10d3117c912aac0ba4a90531e10d16533d6513aa74d4e9977d778104c581",
+      "usable_output": false,
+      "failure": "Interaction input differs from frozen inputs",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 0,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  },
+  {
+    "case": "initial_goal",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "unspecified",
+      "goal_confirmed": false,
+      "goal_evidence_refs": [],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 2,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [
+        "clarify_goal"
+      ],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t000/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "t000",
+      "truth_digest": "ec3abdb486032220387eed9de111b87fe72848bf644e92fe31a676db860388c6",
+      "initial_task_digest": "5ad71f103d3ee64e9693e74bcfca78343c60b374177b7943d6805f6ac55dff4a",
+      "initial_registry_digest": "597bb69e0adfa642a0c7f9c49e94e530ede99d03ec7affcafc421ee0e90b96d8",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "usable_output": false,
+      "failure": "Interaction initial task/registry differs from frozen inputs",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 1,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [
+        "clarify_goal"
+      ],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  },
+  {
+    "case": "foreign_transcript",
+    "scope": "controlled direct API negative check, not a benchmark outcome",
+    "task": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_ref": "demo-dataset",
+      "request_text": "检查登记数据，并在必要时确认实验目标或字段含义。",
+      "goal": "new_entity_generalization",
+      "goal_confirmed": true,
+      "goal_evidence_refs": [
+        "user.local-task"
+      ],
+      "metadata_ref": "metadata",
+      "context_refs": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "entity_key_evidence_refs": [
+        "user.entity"
+      ],
+      "protect_eval_split": true,
+      "limits": {
+        "max_agent_steps": 8,
+        "max_tool_calls": 16,
+        "max_core_audit_runs": 3,
+        "max_comparisons_total": 1000000,
+        "max_images": 1000,
+        "max_pairs_per_audit": 2000,
+        "max_questions": 2,
+        "max_review_pairs": 2,
+        "max_llm_requests": 8,
+        "max_tool_wall_seconds": 300,
+        "remote_budget_usd": 0,
+        "max_decode_pixels_per_image": 64000000,
+        "max_sample_pixels_per_image": 4194304,
+        "max_file_bytes": 33554432,
+        "max_total_decoded_pixels": 300000000,
+        "max_index_operations_total": 16000000,
+        "max_llm_output_tokens": 1024,
+        "finalization_reserve_tool_calls": 2,
+        "finalization_reserve_seconds": 10
+      },
+      "privacy": {
+        "remote_model_allowed": false,
+        "disclosure": "none",
+        "consent_ref": null,
+        "approved_context_refs": [],
+        "remote_images_allowed": false
+      }
+    },
+    "registry": {
+      "datasets": {
+        "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/images"
+      },
+      "documents": {
+        "metadata": {
+          "path": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/suite/tasks/t000/samples.csv",
+          "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a"
+        }
+      },
+      "confirmations": {
+        "user.local-task": {
+          "kind": "user.goal_confirmation",
+          "goal": "new_entity_generalization",
+          "actor": "synthetic initial task contract"
+        },
+        "user.entity": {
+          "kind": "user.entity_key_confirmation",
+          "entity_key": "entity_id",
+          "actor": "synthetic initial field contract"
+        }
+      }
+    },
+    "truth": {
+      "schema_version": 1,
+      "task_id": "t000",
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "goal": "new_entity_generalization",
+      "entity_key": "entity_id",
+      "basis": {
+        "kind": "synthetic_generation",
+        "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+      },
+      "necessary_questions": [],
+      "answerable_questions": {
+        "clarify_goal": {
+          "goal": "new_entity_generalization"
+        },
+        "clarify_entity_key": {
+          "entity_key": "entity_id"
+        }
+      },
+      "risk_positive_pairs": [
+        [
+          "test/002.png",
+          "train/001.png"
+        ],
+        [
+          "test/002.png",
+          "validation/003.png"
+        ],
+        [
+          "test/002.png",
+          "validation/005.png"
+        ],
+        [
+          "test/004.png",
+          "train/001.png"
+        ],
+        [
+          "test/004.png",
+          "validation/003.png"
+        ],
+        [
+          "test/004.png",
+          "validation/005.png"
+        ],
+        [
+          "train/001.png",
+          "validation/003.png"
+        ],
+        [
+          "train/001.png",
+          "validation/005.png"
+        ]
+      ]
+    },
+    "supplied_run": "results/development/runs/t000/r01/C/run",
+    "supplied_transcript": "results/development/runs/t003/r01/C/transcript.jsonl",
+    "score": {
+      "metric_definition": "interaction-v1",
+      "task_id": "t000",
+      "truth_digest": "9580bd2974ba62f27c72060bc8d4878c5fd3c0f17a5ef2719c7eb264203e0022",
+      "initial_task_digest": "02dc5e8f8fac9e8e5126aeaee14f88d691fbb0c01f7afcb36badd8b3f81dc7dc",
+      "initial_registry_digest": "23261a60027e90447d8f7ba39d9a8bfbd7ca2679f663a25a594d4e27c8bddf3f",
+      "accepted_output": null,
+      "question_history_usable": false,
+      "dataset_manifest_digest": "0a344b79fcd61ab0b461587dbafcfc8d8d7257d4d7c97ad423f6564e1b37c57a",
+      "usable_output": false,
+      "failure": "Interaction transcript does not cover the accepted revision chain",
+      "state": "FAILED",
+      "goal_correct": false,
+      "field_correct": false,
+      "necessary_questions": 0,
+      "necessary_questions_asked": 0,
+      "necessary_questions_missed": [],
+      "questions_asked": 0,
+      "excessive_questions": 0,
+      "unanswerable_questions": 0,
+      "answers_delivered": 0,
+      "risk": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 8,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0,
+        "truth_denominator": 8,
+        "predicted_pairs": 0
+      },
+      "unsupported_confirmed_claims": null,
+      "question_budget_spent": null,
+      "review_budget_spent": null,
+      "pending_review_pairs": null,
+      "budget_respected": false,
+      "coverage": null,
+      "human_participants": 0,
+      "human_time_saved_seconds": null,
+      "model_calls": 0,
+      "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment."
+    }
+  }
+]

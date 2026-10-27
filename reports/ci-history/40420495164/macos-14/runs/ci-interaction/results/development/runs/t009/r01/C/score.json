@@ -1,0 +1,331 @@
+{
+  "metric_definition": "interaction-v1",
+  "task_id": "t009",
+  "truth_digest": "c3d5035e122baa386ecd8247ae192d3f3cc2d236951235725a6564376c1f0238",
+  "initial_task_digest": "cfbab52815c94a5912ff84a4ec2f0883910979e7643694dba3029e3deb536f89",
+  "initial_registry_digest": "a3ca3a8ecb1d3ab8c0e94237ef1547d9d3a57f6160f0f95deadef984d5e2fe5c",
+  "accepted_output": {
+    "report_digest": "f1158533c695cca477a01780f7071fddc64e80ef5d5c54cd20e35ba6ace59b31",
+    "run_manifest_digest": "f43ef93da3c1a0382b498b973c9773c40082f3cbfd22bbbeef19ca07ba9714ab",
+    "initial_report_digest": "f1158533c695cca477a01780f7071fddc64e80ef5d5c54cd20e35ba6ace59b31",
+    "verified_revision_count": 0
+  },
+  "question_history_usable": true,
+  "dataset_manifest_digest": "dc6572d0f5356234499daf69042b57756e2d67ea96645089e7e61b99edb68958",
+  "usable_output": true,
+  "failure": null,
+  "state": "PARTIAL",
+  "goal_correct": true,
+  "field_correct": true,
+  "necessary_questions": 0,
+  "necessary_questions_asked": 0,
+  "necessary_questions_missed": [],
+  "questions_asked": 0,
+  "excessive_questions": 0,
+  "unanswerable_questions": 0,
+  "answers_delivered": 0,
+  "risk": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.625,
+    "f1": 0.7692307692307693,
+    "truth_denominator": 8,
+    "predicted_pairs": 5
+  },
+  "unsupported_confirmed_claims": 0,
+  "question_budget_spent": 0,
+  "review_budget_spent": 0,
+  "pending_review_pairs": 0,
+  "budget_respected": true,
+  "coverage": {
+    "input_manifest_digest": "dc6572d0f5356234499daf69042b57756e2d67ea96645089e7e61b99edb68958",
+    "input_preflight": {
+      "digest": "dc6572d0f5356234499daf69042b57756e2d67ea96645089e7e61b99edb68958",
+      "image_count": 7,
+      "estimated_source_pixels": 55296,
+      "header_unknown_count": 1,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "base": {
+        "audit_id": "e19060d06ab7916c8a0135ac69e390f2c32657c489debfff2df49b479b9d9a8c",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "9392daceb89c77f58fa7ee46febcb89687edecc6430516088b4494e66989fd64",
+        "complete": false,
+        "discovered_at_least": 7,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [
+          {
+            "code": "DECODE_ERROR",
+            "message": "Image metadata could not be decoded",
+            "path": "test/007.png"
+          }
+        ],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {
+                "DECODE_ERROR": 1
+              },
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 1,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 1；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 7,
+          "discoveredAtLeast": 7,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 15,
+          "index_operations": 0,
+          "decoded_pixels": 100000000,
+          "wall_seconds": 0.17109829099996432
+        },
+        "pixel_cost_measurement": "conservative-reservation"
+      }
+    },
+    "metadata": {
+      "state": "partial",
+      "sha256": "ba475bfa09448d4b8444b330d0502f9a14f6c1635c1aecb136af87c27acaf061",
+      "rows": 6,
+      "mapped_rows": 6,
+      "unmapped_image_count": 1,
+      "unmapped_images": [
+        "test/004.png"
+      ],
+      "missing_entity_rows": 0,
+      "issues": [],
+      "entity_key": "entity_id",
+      "entity_key_confirmed": true,
+      "trust": "user-declared metadata, not independently verified physical identity",
+      "columns": [
+        "file_id",
+        "relative_path",
+        "image_split",
+        "entity_id",
+        "category"
+      ],
+      "missing_optional_columns": [
+        "capture_session_id",
+        "provenance_ref"
+      ],
+      "field_coverage": {
+        "file_id": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "relative_path": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "image_split": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "entity_id": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "capture_session_id": {
+          "column_present": false,
+          "nonempty_rows": 0,
+          "absent_value_rows": 6,
+          "empty_value_rows": 0,
+          "missing_rows": 6,
+          "state": "missing_column"
+        },
+        "provenance_ref": {
+          "column_present": false,
+          "nonempty_rows": 0,
+          "absent_value_rows": 6,
+          "empty_value_rows": 0,
+          "missing_rows": 6,
+          "state": "missing_column"
+        }
+      },
+      "field_coverage_scope": "All parsed CSV rows before mapping validation; presence only, not provenance or physical-identity verification."
+    },
+    "human_review": {
+      "state": "not_applicable",
+      "total_records": 0,
+      "unique_pairs": 0,
+      "requested_records": 0,
+      "pending_records": 0,
+      "confirmed_records": 0,
+      "rejected_records": 0,
+      "unsure_records": 0,
+      "resolved_pairs": 0,
+      "unresolved_pairs": 0,
+      "scope": "Review applies to its bound Core witness; duplicate witnesses and unsure/conflicting decisions remain unresolved."
+    },
+    "verification": {
+      "e19060d06ab7916c8a0135ac69e390f2c32657c489debfff2df49b479b9d9a8c": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "e19060d06ab7916c8a0135ac69e390f2c32657c489debfff2df49b479b9d9a8c",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "36b84730b885fb37b635ec8433a71c9095bab657aba653abf3b5af82f41e335f",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "36b84730b885fb37b635ec8433a71c9095bab657aba653abf3b5af82f41e335f",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "36b84730b885fb37b635ec8433a71c9095bab657aba653abf3b5af82f41e335f",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "51d20f2c226649651bebda3205917bccf4b383d4062e1dc05a974b338a90d73a",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "36b84730b885fb37b635ec8433a71c9095bab657aba653abf3b5af82f41e335f",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "51d20f2c226649651bebda3205917bccf4b383d4062e1dc05a974b338a90d73a",
+                "pixelDigest": "f796e317d80609a6afe1b240a6e9d5dab199bc959faf374b14693e529d6ea970"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 0
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "human_participants": 0,
+  "human_time_saved_seconds": null,
+  "model_calls": 0,
+  "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment.",
+  "truth_sha256": "ade9ea114bc15a03f7bce770c153dda3213fec573337988a4d3cac0a9ae7f359"
+}

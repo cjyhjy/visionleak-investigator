@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T23:36:58.078479+00:00",
+  "task_digest": "b67aaa6cbc3c70ca0314f7ecd84bd0e2af7342fedd6afafc4818e55c6c936f14",
+  "registry_digest": "c61c55428b59a6f3837f3ea3ccab48ec0d31c8dbc9bb13c56c3b61cadf4383d6",
+  "dataset_manifest_digest": "1ac5195ea3913c1a1565e045a53dff867efaa7e31fe94465ef7a736376fd2b80",
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1",
+  "policy": {
+    "name": "rules-v2",
+    "mandatory_profiles": [
+      "base"
+    ],
+    "supplemental_selection": "after_base_and_registered_interpretation",
+    "config_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+    "initial_task_digest": "b67aaa6cbc3c70ca0314f7ecd84bd0e2af7342fedd6afafc4818e55c6c936f14",
+    "config_sha256": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+    "max_audits": 3
+  },
+  "mode": "rules",
+  "model_execution": "not_run",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955"
+}

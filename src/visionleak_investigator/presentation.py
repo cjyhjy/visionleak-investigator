@@ -125,6 +125,8 @@ def render(report: dict,evidence: list[dict]) -> str:
 
     dimensions=[('tool_calls','max_tool_calls','工具调用'),('audit_runs','max_core_audit_runs','审计扫描调用'),('comparisons','max_comparisons_total','比较次数'),('index_operations','max_index_operations_total','索引操作'),('decoded_pixels','max_total_decoded_pixels','解码源像素'),('wall_seconds','max_tool_wall_seconds','累计工具时间 / 秒'),('questions','max_questions','澄清请求'),('review_pairs','max_review_pairs','复核请求')]
     costs='<p>累计已扣账 / 上限。各维度独立计量，不换算为未定价的金额。</p><div class="budget-grid">'+''.join(metric(label,number(budget.get('spent',{}).get(key))+' / '+number(budget.get('limits',{}).get(limit))) for key,limit,label in dimensions)+'</div>'
+    if report.get('_publication_snapshot'):
+        costs='<p class="notice">本页是结案结算前的预算快照，当前结案条目尚未计入已扣账值。最终预算和结算时间见 <a href="ledger.json">预算账本</a> 与 <a href="report.json">报告 JSON</a>；pending 是生成页面时的快照状态。</p>'+costs
     costs+='<p>模型执行：'+esc(report.get('model_execution','未记录'))+'。脚本规划请求不作为真实模型调用。</p>'
     unknown=sum(e.get('status')=='unknown' for e in budget.get('entries',[]))
     if unknown:costs+='<p class="notice">'+esc(f'{unknown} 条调用缺少完整用量，已按预留保守扣账；累计值不全是实测开销。')+'</p>'

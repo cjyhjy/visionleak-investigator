@@ -1,0 +1,320 @@
+{
+"mode": "rules",
+  "model_execution": "not_run",
+  "task": {
+    "schema_version": 1,
+    "task_id": "fp002",
+    "dataset_ref": "demo-dataset",
+    "request_text": "请检查这个工件分类数据集的划分风险，不修改原始图片；泛化目标需要进一步确认。",
+    "goal": "content_audit",
+    "goal_confirmed": true,
+    "goal_evidence_refs": [
+      "user.local-task"
+    ],
+    "metadata_ref": null,
+    "context_refs": [],
+    "entity_key": null,
+    "entity_key_confirmed": false,
+    "entity_key_evidence_refs": [],
+    "protect_eval_split": true,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "privacy": {
+      "remote_model_allowed": false,
+      "disclosure": "none",
+      "consent_ref": null,
+      "approved_context_refs": [],
+      "remote_images_allowed": false
+    }
+  },
+  "claims": [],
+  "coverage": {
+    "input_manifest_digest": "0725b6d5c7ca3bb5fbfb62bb9b0113bc1e0f861cc238fa27058ec67b224ea711",
+    "profiles": {},
+    "metadata": {
+      "state": "not_run"
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {},
+    "source_unchanged": true,
+    "unaccepted_raw_reports": [
+      "tools/call-0002/output/report.json"
+    ]
+  },
+  "questions": [],
+  "reviews": [],
+  "limitations": [
+    "相似候选不证明同源或实验泄漏。",
+    "图像关系不证明模型实际训练使用。",
+    "覆盖仅适用于列明的 profile、输入与阈值。",
+    "本次未调用模型；不是 Agent 性能实验。"
+  ],
+  "unique_candidate_pairs": 0,
+  "recovery": {
+    "schema_version": 1,
+    "kind": "conservative_recovery",
+    "created_at": "2026-10-26T23:50:58.220969+00:00",
+    "original_manifest_digest": "8acfa800feeeb1d23e11a12a4b9552c161eee33d053ad0653787332ce9bed7e0",
+    "original_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+    "processor_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+    "core_reexecuted": false,
+    "accepted_image_evidence_count": 0,
+    "preserved_files": [
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/evidence.jsonl",
+        "sha256": "5db23c2c5c92a5ef326818c2e06d1589a156eb5ec80dc71b0e34e8a38f4f3a60"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/coverage.json",
+        "sha256": "d43b40ec2c3de89845d689ed1db9bedaa0b34610273294091cf8d860cf824127"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/claims.json",
+        "sha256": "467bf2849ae7df27b4308aefe774dc3ebd13fec8f1437896fa9a3ca1a54818d9"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/validation.json",
+        "sha256": "87cc27b270d6bf8524239128f91100e0b7dc89074b521b29a41ad57954afc163"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/questions.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/reviews.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/proposal.json",
+        "sha256": "dea2c48d8fe98a4557edf97b7db24a10a7e5051640aa3a1932cc14e7a57f3057"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/report.html",
+        "sha256": "4d619dab08c1ed4e156d8989589a3b69d72fa2cb2f79e4c44b24ff2788751947"
+      },
+      {
+        "path": "pre-recovery/57f68bef231e34a1ee44d93f9dd194ab2664bc2096083bce40e2aee396dfcc2d/checkpoint.json",
+        "sha256": "8b6e9bce7b7184239f82ab54d4c555f43cc483e84cb51c97a929404460d9d387"
+      }
+    ]
+  },
+"issues": ["Process interrupted. Pending reservations conservatively charged; raw reports retained. Start a new run for additional image checks."],
+"state": "PARTIAL",
+"budget": {
+  "schema_version": 1,
+  "limits": {
+    "max_agent_steps": 8,
+    "max_tool_calls": 16,
+    "max_core_audit_runs": 3,
+    "max_comparisons_total": 1000000,
+    "max_images": 1000,
+    "max_pairs_per_audit": 2000,
+    "max_questions": 2,
+    "max_review_pairs": 30,
+    "max_llm_requests": 8,
+    "max_tool_wall_seconds": 300,
+    "remote_budget_usd": 0,
+    "max_decode_pixels_per_image": 64000000,
+    "max_sample_pixels_per_image": 4194304,
+    "max_file_bytes": 33554432,
+    "max_total_decoded_pixels": 300000000,
+    "max_index_operations_total": 16000000,
+    "max_llm_output_tokens": 1024,
+    "finalization_reserve_tool_calls": 2,
+    "finalization_reserve_seconds": 10
+  },
+  "spent": {
+    "tool_calls": 6,
+    "audit_runs": 1,
+    "comparisons": 16,
+    "index_operations": 0,
+    "decoded_pixels": 82944,
+    "wall_seconds": 0.6193300425074995,
+    "llm_requests": 0,
+    "review_pairs": 0,
+    "questions": 0
+  },
+  "model_usage": "not_run",
+  "model_cost_usd": 0,
+  "entries": [
+    {
+      "call_id": "call-0001",
+      "kind": "preflight",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:57.858569+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 290
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.10466491617262363
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:57.958508+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.8953350838274
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0002",
+      "kind": "audit",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:57.960940+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.8953350838274,
+        "comparisons": 1000000,
+        "decoded_pixels": 100000000,
+        "index_operations": 16000000,
+        "audit_runs": 1
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.1344944997690618,
+        "comparisons": 16,
+        "decoded_pixels": 55296,
+        "index_operations": 0,
+        "audit_runs": 1
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:58.096115+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.7608405840583,
+        "comparisons": 999984,
+        "decoded_pixels": 99944704,
+        "index_operations": 16000000,
+        "audit_runs": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0003",
+      "kind": "verify",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:58.097988+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.7608405840583,
+        "decoded_pixels": 27648
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.11077279224991798,
+        "decoded_pixels": 27648
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:58.209438+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.6500677918084,
+        "decoded_pixels": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0004",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:58.212909+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.6500677918084,
+        "questions": 0
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.00028412509709596634,
+        "questions": 0
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:58.213182+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.6497836667113,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0005",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:58.213983+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.6497836667113
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0035959589295089245
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:58.217581+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.6461877077818
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0006",
+      "kind": "recovery_finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-26T23:50:58.220501+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.6461877077818
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.26551775028929114
+      },
+      "error": null,
+      "settled_at": "2026-10-26T23:50:58.484763+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.3806699574925
+      },
+      "overrun": {}
+    }
+  ]
+},
+"publication": {
+  "schema_version": 1,
+  "finalization_call_id": "call-0006",
+  "full_render_calls": 1,
+  "html_budget_snapshot": "before_finalization_settlement",
+  "measured_scope": "Caller assembly, one full HTML render, JSON body serialization, staged content writes/fsync and HTML hashing.",
+  "accounting_commit_scope": "Recording this measurement in the ledger/JSON tail, exclusive file publication and checkpoint. Included in whole-worker resources; excluded from its self-recorded tool interval.",
+  "measured_wall_seconds": 0.26551775028929114,
+  "measurement_ended_at": "2026-10-26T23:50:58.484745+00:00",
+  "staged_html_sha256": "dad1509b74c58b34f71a40e214c2a67a81325e7056ff281f54e746d1f490d548",
+  "html_kind": "audit_snapshot",
+  "html_sha256": "dad1509b74c58b34f71a40e214c2a67a81325e7056ff281f54e746d1f490d548"
+}
+}

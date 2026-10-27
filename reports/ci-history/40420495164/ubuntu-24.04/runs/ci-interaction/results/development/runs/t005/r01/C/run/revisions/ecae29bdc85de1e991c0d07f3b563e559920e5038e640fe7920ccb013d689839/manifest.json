@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-26T23:36:06.537130+00:00",
+  "task_digest": "8bc4f28b2e8a1aebc6480c4e9e3d6ea305f56f36ebc3bee2b7309fbb9a9cdefc",
+  "registry_digest": "c0cf6a167972c180a69f24099dc9f4ed16f6d1bfece467c3cc099e5e5a980630",
+  "dataset_manifest_digest": "13f2b20b7443d4813c26844cf97761e63eb67dea3201641dc3a7b2a4c4138910",
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7",
+  "policy": {
+    "name": "rules-v2",
+    "mandatory_profiles": [
+      "base"
+    ],
+    "supplemental_selection": "after_base_and_registered_interpretation",
+    "config_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+    "initial_task_digest": "c680f8b6d3914317d5532063dfdb3cc2f7a6e89a7b07f6dde5a149d230f934b7",
+    "config_sha256": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+    "max_audits": 3
+  },
+  "mode": "rules",
+  "model_execution": "not_run",
+  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+  "image_evidence_origin": {
+    "manifest_digest": "34c717543f7546b302f676723245e37ec529a0a6584aa45fad825428ecdb4988",
+    "investigator_code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+    "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+    "runtime_lock_digest": "7141ea6fae219e62cd672a8ee5b8e33f6ab66fcd3707d819b295cc3cd45eaaa7"
+  },
+  "parent_report_digest": "be4540e8be101fe9b0e4fa9e6f377ee5ccaffefbf5cf4d4fd7be415094aa3e3d",
+  "evidence_reused_from": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t005/r01/C/run",
+  "parent_manifest_digest": "34c717543f7546b302f676723245e37ec529a0a6584aa45fad825428ecdb4988",
+  "revision_kind": "answers",
+  "supersedes_risk_interpretation": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t005/r01/C/run",
+  "core_reexecuted": false
+}

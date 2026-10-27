@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-26T23:31:54.703741+00:00",
+  "updated_at": "2026-10-26T23:55:38.176602+00:00",
   "project_version": "0.1.0",
-  "code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
   "original_core_modified": false,
   "model_calls": 0,
   "paid_model_calls": 0,
@@ -21,24 +21,27 @@
     ]
   },
   "M1": {
-    "status": "failed",
+    "status": "passed",
     "tests": [
       "M1-verified",
       "final-regression",
       "half-written-core-report",
-      "revision-budget-regression"
+      "revision-budget-regression",
+      "finalization-regression"
     ],
     "evidence": [
       "reports/demo-rules/report.json",
       "reports/demo-rules/ledger.json",
       "reports/delivery-demo/report.json",
       "reports/partial-report-v1/receipt.json",
-      "reports/finalization-accounting-gap-v1/receipt.json"
+      "reports/finalization-accounting-gap-v1/receipt.json",
+      "reports/finalization-v1/receipt.json",
+      "reports/delivery-audit-v1/finalization-resolution.json"
     ],
-    "reason": "Later contract audit reproduced uncharged second-render latency in finalization; existing real Core/ledger tests remain passed for their scopes."
+    "reason": "Reproduced identity-reservation and finalization gaps repaired for the documented cooperative tool-accounting scope; accounting commit is separately included in whole-worker resource measurements."
   },
   "M2": {
-    "status": "failed",
+    "status": "passed",
     "tests": [
       "M2-first",
       "recovery-check",
@@ -49,7 +52,8 @@
       "review-consistency-targeted",
       "contract-binding-final-regression",
       "rules-v2-regression",
-      "revision-budget-regression"
+      "revision-budget-regression",
+      "finalization-regression"
     ],
     "evidence": [
       "reports/interaction-demo/receipt.json",
@@ -60,13 +64,15 @@
       "reports/interaction-contract-binding-v1/receipt.json",
       "reports/rules-routing-v2/receipt.json",
       "reports/revision-budget-v1/receipt.json",
-      "reports/delivery-audit-v1/revision-budget-resolution.json"
+      "reports/delivery-audit-v1/revision-budget-resolution.json",
+      "reports/finalization-v1/receipt.json",
+      "reports/delivery-audit-v1/finalization-resolution.json"
     ],
     "limitations": [
       "Crash recovery closes conservatively as PARTIAL; it does not resume Core scanning.",
       "Review backlog is visible; import requires bound audit/input/reviewer."
     ],
-    "reason": "Revision identity reservation is locally fixed and verified; common finalization and remaining revision assembly timing do not yet satisfy the full total-accounting requirement."
+    "reason": "Reproduced identity-reservation and finalization gaps repaired for the documented cooperative tool-accounting scope; accounting commit is separately included in whole-worker resource measurements."
   },
   "M3": {
     "status": "blocked",
@@ -112,7 +118,10 @@
       "reports/delivery-audit-v1/rules-routing-resolution.json",
       "reports/ci-history/40417761044/verification.json",
       "reports/delivery-audit-v1/revision-budget-resolution.json",
-      "reports/finalization-accounting-gap-v1/receipt.json"
+      "reports/finalization-accounting-gap-v1/receipt.json",
+      "reports/ci-history/40420495164/verification.json",
+      "reports/delivery-audit-v1/finalization-resolution.json",
+      "reports/finalization-v1/receipt.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -129,25 +138,24 @@
     "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
   },
   "verification": {
-    "test_suite": "revision-budget-regression: 196 passed, zero skipped",
+    "test_suite": "finalization-regression: 204 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
-    "final_log": "reports/logs/20261026T232825120507-revision-budget-regression.log",
-    "ci_evidence": "reports/ci-history/40417761044/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40417761044",
-    "tested_commit": "cee32090384c192ab171c321336876eea2c95083",
-    "ci_for_current_code": "pending for revision-budget changes; recorded rules-v2 CI passed for the preceding code digest"
+    "final_log": "reports/logs/20261026T235150644662-finalization-regression.log",
+    "ci_evidence": "reports/ci-history/40420495164/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40420495164",
+    "tested_commit": "b5f9e8c8968ab187698ba9adebadef70e4643670",
+    "ci_for_current_code": "pending for finalization changes; prior revision-budget CI passed for its preceding digest"
   },
-  "next_local_command": "python3 scripts/record.py finalization-targeted .venv-clean/bin/python -m pytest -q tests/acceptance/test_revision_budget.py tests/acceptance/test_loop.py",
+  "next_local_command": "cat reports/delivery-audit-v1/requirements.json",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "Rules-v2 CI 40417761044 passed and artifacts reverified: 142 reports, 82 rules records, 42 metadata field reports, 28 rules smoke reports, and prior catalog/interaction/resource/lifecycle evidence.",
+    "ci": "CI 40420495164 passed on both platforms, each 196 tests and zero skips. Downloaded ZIP digests matched; 156 reports, 14 revision-budget reports and prior rules/catalog/interaction/resource/lifecycle evidence reverified.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Finalization and revision assembly timing scope: reports/finalization-accounting-gap-v1/receipt.json",
-      "Complete clause-by-clause delivery audit.",
+      "Complete clause-by-clause contract and delivery audit.",
       "Authorized independent natural data experiments and real provider/D trajectories.",
       "Owner-selected project license and external submission decisions.",
       "M4 deferred until real Agent stabilizes."
@@ -155,5 +163,5 @@
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
   },
-  "next_local_work": "Fix the reproduced finalization timing gap and charge revision assembly, then complete all remaining contract/delivery clauses; verify revision-budget CI after push."
+  "next_local_work": "Verify finalization cross-platform CI and finish the full clause-by-clause contract/delivery audit. No model authorization is implied."
 }

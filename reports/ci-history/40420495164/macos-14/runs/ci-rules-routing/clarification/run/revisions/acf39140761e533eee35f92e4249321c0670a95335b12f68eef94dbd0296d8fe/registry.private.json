@@ -1,0 +1,29 @@
+{
+  "datasets": {
+    "demo-dataset": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/clarification/fixture/images"
+  },
+  "documents": {
+    "description": {
+      "path": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/clarification/fixture/description.md",
+      "sha256": "1cb12b2055a8380c4b05ad6dafef4f241212e8f7aa1a2a9669dbb016001c6330"
+    },
+    "metadata": {
+      "path": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/clarification/fixture/samples.csv",
+      "sha256": "132ae9b68b780e85fa16665c5173a7f2420bba85f82d10896ef3481017c0e37a"
+    }
+  },
+  "confirmations": {
+    "user.answer:ab5dea081fd27f2e92c87970ba059bdfd9000a911dac7e1edb9c84ee508897c2": {
+      "kind": "user.goal_confirmation",
+      "goal": "new_entity_generalization",
+      "actor": "scripted acceptance; no human participant",
+      "confirmed_at": "2026-10-26T23:37:00.987860+00:00"
+    },
+    "user.answer:921994925a71f80751c806b2dcf76f16f80e89aac83aec7e25ef758c13f9b1a5": {
+      "kind": "user.entity_key_confirmation",
+      "entity_key": "entity_id",
+      "actor": "scripted acceptance; no human participant",
+      "confirmed_at": "2026-10-26T23:37:00.988020+00:00"
+    }
+  }
+}

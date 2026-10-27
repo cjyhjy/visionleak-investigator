@@ -27,6 +27,12 @@ def verify_run(run: Path, *,check_input: bool=True,recompute_identity: bool=Fals
     if checkpoint.get('report_digest')!=digest(report):raise ValueError('Report changed')
     if checkpoint.get('manifest_digest')!=digest(manifest):raise ValueError('Manifest changed')
     if read_json(run/'ledger.json')!=report['budget']:raise ValueError('Ledger changed')
+    if report.get('publication'):
+        publication=report['publication']
+        final=next((e for e in report['budget']['entries'] if e['call_id']==publication['finalization_call_id']),None)
+        if (not final or final['status']!='settled' or final['actual']['wall_seconds']!=publication['measured_wall_seconds']
+                or file_hash(run/'report.html')!=publication['html_sha256'] or checkpoint['state']!=report['state']):
+            raise ValueError('Report publication accounting or HTML changed')
     if 'rules_decision_sha256' in validation or 'rules_policy_sha256' in validation or 'rules' in report:
         if file_hash(run/'rules-decision.json')!=validation['rules_decision_sha256'] or file_hash(run/'rules-policy.json')!=validation['rules_policy_sha256']:
             raise ValueError('Rules routing record changed')

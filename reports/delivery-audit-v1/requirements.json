@@ -281,11 +281,13 @@
     "reports/ci-history/40417761044/verification.json",
     "reports/revision-budget-gap-v1/receipt.json",
     "reports/delivery-audit-v1/revision-budget-resolution.json",
-    "reports/finalization-accounting-gap-v1/receipt.json"
+    "reports/finalization-accounting-gap-v1/receipt.json",
+    "reports/ci-history/40420495164/verification.json",
+    "reports/delivery-audit-v1/finalization-resolution.json",
+    "reports/finalization-v1/receipt.json"
   ],
   "remaining_local": [
-    "Finalization and revision assembly timing scope: reports/finalization-accounting-gap-v1/receipt.json",
-    "Complete clause-by-clause delivery audit."
+    "Complete clause-by-clause contract and delivery audit."
   ],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
@@ -293,8 +295,8 @@
     "Owner-selected Investigator license and any competition submission authorization.",
     "M4/E deferred until the real Agent is stable."
   ],
-  "reviewed_code_commit": "cee32090384c192ab171c321336876eea2c95083",
-  "latest_ci_tests_per_platform": 191,
-  "reviewed_worktree_code_digest": "c55322faab11f9a1151f39cefefb1341c999f2cf4013330dfefc5c66f9318955",
-  "current_code_ci": "pending for revision-budget changes; preceding rules-v2 CI passed"
+  "reviewed_code_commit": "b5f9e8c8968ab187698ba9adebadef70e4643670",
+  "latest_ci_tests_per_platform": 196,
+  "reviewed_worktree_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "current_code_ci": "pending for finalization; prior revision-budget CI passed"
 }

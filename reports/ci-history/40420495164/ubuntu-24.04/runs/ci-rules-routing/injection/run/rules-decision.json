@@ -1,0 +1,67 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "045fa2dacbb27a92372598e49e7bb286282e2d82e508a30c2f72736a8441d253",
+  "dataset_manifest_digest": "521d0dc9ad6502e8e527b4440f029eb1462ec030113c12352aafbc2000f27a74",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "run",
+  "reason_code": "positive_registered_clues",
+  "selected_profile": "all",
+  "hints": {
+    "selected_profile": "all",
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "dd3f5b0e123ec5a748fefa057e1e5a7a3f3818c719136e57a27e4a96a957c2e2",
+        "characters": 16,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      },
+      {
+        "source": "registered_context",
+        "context_ref": "description",
+        "sha256": "a2f58b367f77afdf7ad5e5a8955fd603a6cf21dc9e166c94998470387e2cad9b",
+        "truncated": false,
+        "excerpt_digest": "c3da22098a476f9e72c0e1b8e6ddd6fe9dc9fb2dc254644b1d131432bd310e21",
+        "characters": 97,
+        "positive_terms": {
+          "transform": [
+            "mirror"
+          ],
+          "local": [
+            "crop"
+          ]
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 999984,
+    "index_operations": 16000000,
+    "decoded_pixels": 299917056,
+    "wall_seconds": 299.56505571199995
+  },
+  "base_complete": true,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "accepted",
+  "model_calls": 0,
+  "supplement_complete": true
+}

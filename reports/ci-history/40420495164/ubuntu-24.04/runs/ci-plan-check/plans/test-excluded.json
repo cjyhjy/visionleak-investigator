@@ -1,0 +1,35 @@
+{
+  "source_manifest_digest": "0e87e4c20feda7ee22f68e706543d163c5f10be22db82f30b92e160eb2569a4e",
+  "new_manifest": [
+    {
+      "path": "test/002.png",
+      "image_split": "test",
+      "included": false
+    },
+    {
+      "path": "test/004.png",
+      "image_split": "test",
+      "included": true
+    },
+    {
+      "path": "train/001.png",
+      "image_split": "train",
+      "included": false
+    },
+    {
+      "path": "train/006.png",
+      "image_split": "train",
+      "included": true
+    },
+    {
+      "path": "validation/003.png",
+      "image_split": "validation",
+      "included": true
+    },
+    {
+      "path": "validation/005.png",
+      "image_split": "validation",
+      "included": true
+    }
+  ]
+}

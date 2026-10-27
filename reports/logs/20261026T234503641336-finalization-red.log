@@ -1,0 +1,203 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+__________ test_one_render_and_staged_html_write_are_charged[initial] __________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_one_render_and_staged_htm0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bcf4830>
+mode = 'initial'
+
+    @pytest.mark.parametrize('mode', ['initial','revision','recovery'])
+    def test_one_render_and_staged_html_write_are_charged(tmp_path, monkeypatch, mode):
+        task,registry=make_task(tmp_path/'fixture',seed=83400)
+        run=tmp_path/'run'
+        if mode!='initial':workflow.run_task(task,registry,run,profiles=['base'])
+        if mode=='recovery':(run/'report.json').unlink()
+        module={'initial':workflow,'revision':interaction,'recovery':recovery}[mode]
+        original=module.render_report;calls=[]
+        def render(*args,**kwargs):
+            started=time.monotonic();time.sleep(.12)
+            value=original(*args,**kwargs)
+            calls.append(time.monotonic()-started)
+            return value
+        original_open=Path.open;writes=[]
+        @contextmanager
+        def slow_html(path,*args,**kwargs):
+            started=time.monotonic()
+            with original_open(path,*args,**kwargs) as stream:yield stream
+            time.sleep(.12);writes.append(time.monotonic()-started)
+        def opening(path,*args,**kwargs):
+            if path.name in ('report.html','report.pending.html') and args and args[0] in ('x','w'):
+                return slow_html(path,*args,**kwargs)
+            return original_open(path,*args,**kwargs)
+        monkeypatch.setattr(module,'render_report',render);monkeypatch.setattr(Path,'open',opening)
+        if mode=='initial':report=workflow.run_task(task,registry,run,profiles=['base']);target=run
+        elif mode=='revision':
+            report=interaction.resume_run(run,{'actor':'scripted accounting acceptance','goal':'content_audit'})
+            target=Path(report['revision']['path'])
+        else:report=recovery.recover_interrupted(run);target=run
+>       assert len(calls)==len(writes)==1
+E       assert 2 == 1
+E        +  where 2 = len([0.1344734998419881, 0.12962849996984005])
+E        +  and   1 = len([0.25878404127433896])
+
+tests/acceptance/test_finalization_accounting.py:44: AssertionError
+_________ test_one_render_and_staged_html_write_are_charged[revision] __________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_one_render_and_staged_htm1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bd1d250>
+mode = 'revision'
+
+    @pytest.mark.parametrize('mode', ['initial','revision','recovery'])
+    def test_one_render_and_staged_html_write_are_charged(tmp_path, monkeypatch, mode):
+        task,registry=make_task(tmp_path/'fixture',seed=83400)
+        run=tmp_path/'run'
+        if mode!='initial':workflow.run_task(task,registry,run,profiles=['base'])
+        if mode=='recovery':(run/'report.json').unlink()
+        module={'initial':workflow,'revision':interaction,'recovery':recovery}[mode]
+        original=module.render_report;calls=[]
+        def render(*args,**kwargs):
+            started=time.monotonic();time.sleep(.12)
+            value=original(*args,**kwargs)
+            calls.append(time.monotonic()-started)
+            return value
+        original_open=Path.open;writes=[]
+        @contextmanager
+        def slow_html(path,*args,**kwargs):
+            started=time.monotonic()
+            with original_open(path,*args,**kwargs) as stream:yield stream
+            time.sleep(.12);writes.append(time.monotonic()-started)
+        def opening(path,*args,**kwargs):
+            if path.name in ('report.html','report.pending.html') and args and args[0] in ('x','w'):
+                return slow_html(path,*args,**kwargs)
+            return original_open(path,*args,**kwargs)
+        monkeypatch.setattr(module,'render_report',render);monkeypatch.setattr(Path,'open',opening)
+        if mode=='initial':report=workflow.run_task(task,registry,run,profiles=['base']);target=run
+        elif mode=='revision':
+            report=interaction.resume_run(run,{'actor':'scripted accounting acceptance','goal':'content_audit'})
+            target=Path(report['revision']['path'])
+        else:report=recovery.recover_interrupted(run);target=run
+>       assert len(calls)==len(writes)==1
+E       assert 2 == 0
+E        +  where 2 = len([0.13109308388084173, 0.12988608283922076])
+E        +  and   0 = len([])
+
+tests/acceptance/test_finalization_accounting.py:44: AssertionError
+_________ test_one_render_and_staged_html_write_are_charged[recovery] __________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_one_render_and_staged_htm2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bd75550>
+mode = 'recovery'
+
+    @pytest.mark.parametrize('mode', ['initial','revision','recovery'])
+    def test_one_render_and_staged_html_write_are_charged(tmp_path, monkeypatch, mode):
+        task,registry=make_task(tmp_path/'fixture',seed=83400)
+        run=tmp_path/'run'
+        if mode!='initial':workflow.run_task(task,registry,run,profiles=['base'])
+        if mode=='recovery':(run/'report.json').unlink()
+        module={'initial':workflow,'revision':interaction,'recovery':recovery}[mode]
+        original=module.render_report;calls=[]
+        def render(*args,**kwargs):
+            started=time.monotonic();time.sleep(.12)
+            value=original(*args,**kwargs)
+            calls.append(time.monotonic()-started)
+            return value
+        original_open=Path.open;writes=[]
+        @contextmanager
+        def slow_html(path,*args,**kwargs):
+            started=time.monotonic()
+            with original_open(path,*args,**kwargs) as stream:yield stream
+            time.sleep(.12);writes.append(time.monotonic()-started)
+        def opening(path,*args,**kwargs):
+            if path.name in ('report.html','report.pending.html') and args and args[0] in ('x','w'):
+                return slow_html(path,*args,**kwargs)
+            return original_open(path,*args,**kwargs)
+        monkeypatch.setattr(module,'render_report',render);monkeypatch.setattr(Path,'open',opening)
+        if mode=='initial':report=workflow.run_task(task,registry,run,profiles=['base']);target=run
+        elif mode=='revision':
+            report=interaction.resume_run(run,{'actor':'scripted accounting acceptance','goal':'content_audit'})
+            target=Path(report['revision']['path'])
+        else:report=recovery.recover_interrupted(run);target=run
+>       assert len(calls)==len(writes)==1
+E       assert 2 == 0
+E        +  where 2 = len([0.13038358418270946, 0.12561120791360736])
+E        +  and   0 = len([])
+
+tests/acceptance/test_finalization_accounting.py:44: AssertionError
+_____ test_revision_proposal_assembly_runs_under_finalization_reservation ______
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_revision_proposal_assembl0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bcf6d50>
+
+    def test_revision_proposal_assembly_runs_under_finalization_reservation(tmp_path, monkeypatch):
+        task,registry=make_task(tmp_path/'fixture');run=tmp_path/'run'
+        workflow.run_task(task,registry,run,profiles=['base'])
+        original=interaction.proposal;observed=[]
+        def assemble(*args,**kwargs):
+            target=Path(read_json(run/'pending-revision.json')['path'])
+            entry=read_json(target/'ledger.json')['entries'][-1]
+            assert entry['kind']=='finalize' and entry['status']=='pending'
+            started=time.monotonic();time.sleep(.12)
+            value=original(*args,**kwargs);observed.append(time.monotonic()-started)
+            return value
+        monkeypatch.setattr(interaction,'proposal',assemble)
+>       report=interaction.resume_run(run,{'actor':'scripted accounting acceptance','goal':'content_audit'})
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/acceptance/test_finalization_accounting.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/visionleak_investigator/interaction.py:166: in resume_run
+    def resume_run(run: Path,answers: dict) -> dict:return _locked_revision(run,answers,'answers')
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/interaction.py:155: in _locked_revision
+    return revise(run,payload,kind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+src/visionleak_investigator/interaction.py:107: in revise
+    for name,value in [('coverage.json',coverage),('claims.json',claims),('context.json',info['context']),('questions.json',info['questions']),('reviews.json',reviews),('proposal.json',proposal(task,evidence,before))]:write_json(target/name,value,exclusive=True)
+                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ({'context_refs': [], 'dataset_ref': 'demo-dataset', 'entity_key': None, 'entity_key_confirmed': False, ...}, [{'core_...155, 'image_split': 'validation', 'path': 'validation/005.png', 'pixels': 9216, ...}], 'header_unknown_count': 0, ...})
+kwargs = {}
+target = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_revision_proposal_assembl0/run/revisions/f4f8d5c8f8089c4c158bea5c9182242eed30d59f49dec06b468f27870c1719b2')
+entry = {'actual': {'questions': 0, 'tool_calls': 1, 'wall_seconds': 0.0003359578549861908}, 'call_id': 'call-0007', 'error': None, 'kind': 'interpret_context', ...}
+@py_assert1 = ["'interpret_context' == 'finalize'\n~\n~- finalize\n~+ interpret_context"]
+@py_assert2 = 'interpret_context', @py_assert5 = 'finalize', @py_assert4 = False
+@py_assert0 = False
+
+    def assemble(*args,**kwargs):
+        target=Path(read_json(run/'pending-revision.json')['path'])
+        entry=read_json(target/'ledger.json')['entries'][-1]
+>       assert entry['kind']=='finalize' and entry['status']=='pending'
+E       AssertionError: assert ('interpret_context' == 'finalize'
+E         
+E         - finalize
+E         + interpret_context)
+
+tests/acceptance/test_finalization_accounting.py:61: AssertionError
+_________ test_render_overrun_is_partial_without_a_second_full_render __________
+
+tmp_path = PosixPath('/private/var/folders/sm/v6v7286s07j8z7x50805469c0000gn/T/pytest-of-cjy/pytest-140/test_render_overrun_is_partial0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bd756d0>
+
+    def test_render_overrun_is_partial_without_a_second_full_render(tmp_path, monkeypatch):
+        task,registry=make_task(tmp_path/'fixture');run=tmp_path/'run'
+        reserve=BudgetLedger.reserve;original=workflow.render_report;calls=[]
+        def bounded(self,kind,allocation=None,**kwargs):
+            if kind=='finalize':allocation={**(allocation or {}),'wall_seconds':.05}
+            return reserve(self,kind,allocation,**kwargs)
+        def delayed(*args,**kwargs):
+            time.sleep(.12);calls.append(True);return original(*args,**kwargs)
+        monkeypatch.setattr(BudgetLedger,'reserve',bounded);monkeypatch.setattr(workflow,'render_report',delayed)
+        report=workflow.run_task(task,registry,run,profiles=['base'])
+>       assert len(calls)==1 and report['state']=='PARTIAL'
+E       assert (2 == 1)
+E        +  where 2 = len([True, True])
+
+tests/acceptance/test_finalization_accounting.py:80: AssertionError
+=========================== short test summary info ============================
+FAILED tests/acceptance/test_finalization_accounting.py::test_one_render_and_staged_html_write_are_charged[initial]
+FAILED tests/acceptance/test_finalization_accounting.py::test_one_render_and_staged_html_write_are_charged[revision]
+FAILED tests/acceptance/test_finalization_accounting.py::test_one_render_and_staged_html_write_are_charged[recovery]
+FAILED tests/acceptance/test_finalization_accounting.py::test_revision_proposal_assembly_runs_under_finalization_reservation
+FAILED tests/acceptance/test_finalization_accounting.py::test_render_overrun_is_partial_without_a_second_full_render
+5 failed in 3.56s

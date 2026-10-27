@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "demo-dataset": "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-lifecycle/recovery/fixture/images"
+  },
+  "documents": {},
+  "confirmations": {
+    "user.local-task": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "local synthetic fixture generator"
+    },
+    "user.answer:ef928f96952ebfd5f2280241e22f35ea13339b106f40c3ffcfa51beec16155ae": {
+      "kind": "user.goal_confirmation",
+      "goal": "content_audit",
+      "actor": "scripted recovery fixture",
+      "confirmed_at": "2026-10-26T23:35:49.582253+00:00"
+    }
+  }
+}

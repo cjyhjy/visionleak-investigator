@@ -73,6 +73,9 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
         for name in ('rules-decision.json','rules-policy.json'):shutil.copy2(run/name,target/name)
     if (run/'recovery-receipt.json').exists() and (run/'pre-recovery').exists():shutil.copytree(run/'pre-recovery',target/'pre-recovery')
     ledger.settle(entry,{'wall_seconds':time.monotonic()-tick,**allocation})
+    info=interpret(task,Registry(registry),before,ledger)
+    tick=time.monotonic();entry=ledger.reserve('finalize',final=True)
+    write_json(target/'checkpoint.json',{'state':'FINALIZING','manifest_digest':digest(record),'pending_action':entry['call_id']})
     coverage=copy.deepcopy(old['coverage']);issues=[x for x in old['issues'] if not x.startswith(('Goal/','Entity metadata','No registered entity','Metadata has','Clarification budget'))]
     current_reviews={r['pair_ref']:r for r in old['reviews']}
     superseded=set()
@@ -84,7 +87,7 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     evidence=[e for e in existing if not e['kind'].startswith(('metadata.','user.goal'))]
     evidence=[e for e in evidence if e['evidence_id'] not in superseded]
     claims=[c for c in old['claims'] if c['claim_type'] not in ('goal_conflict','declared_entity_overlap') and not (set(c['evidence_refs'])&superseded)]
-    info=interpret(task,Registry(registry),before,ledger);evidence.extend(info['evidence']);claims.extend(info['claims']);issues.extend(info['issues']);coverage['metadata']=info['metadata']
+    evidence.extend(info['evidence']);claims.extend(info['claims']);issues.extend(info['issues']);coverage['metadata']=info['metadata']
     if not info['questions']:issues=[x for x in issues if x!='Required clarification remains unrequested']
     accepted_refs={e['evidence_id'] for e in evidence}
     reviews=[copy.deepcopy(r) for r in old['reviews'] if r['pair_ref'] in accepted_refs]
@@ -112,14 +115,14 @@ def revise(run: Path, payload: dict,kind: str) -> dict:
     validation={**read_json(run/'validation.json'),'evidence_sha256':file_hash(target/'evidence.jsonl'),'claim_count':len(claims)}
     validation.update(human_review_coverage_digest=digest(coverage['human_review']),review_inputs=review_inputs)
     write_json(target/'validation.json',validation,exclusive=True)
-    entry=ledger.reserve('finalize',final=True);tick=time.monotonic()
     result={**old,'state':state,'task':task,'claims':claims,'coverage':coverage,'budget':ledger.data,'questions':info['questions'],'reviews':reviews,'issues':issues,'revision':{'kind':kind,'path':str(target),'reused_from':str(run),'core_reexecuted':False,'processor_code_digest':record['code_digest'],'image_evidence_code_digest':origin['investigator_code_digest'],'image_evidence_reused':bool(reused_core_evidence_count),'reused_core_evidence_count':reused_core_evidence_count}}
     result['revision']['superseded_review_evidence_refs']=sorted(superseded)
     if old.get('planning'):
         result['planning']={**old['planning'],'continuation':'host_revision_only_no_new_planning'}
         result['question_backlog']=[]
-    render_report(result,evidence);ledger.settle(entry,{'wall_seconds':time.monotonic()-tick})
-    write_json(target/'report.json',result,exclusive=True);(target/'report.html').write_text(render_report(result,evidence))
+    from .publication import publish_report
+    publish_report(target,result,evidence,ledger,entry,tick,render_report)
+    state=result['state']
     checkpoint={'state':state,'report_digest':digest(result),'manifest_digest':digest(record)}
     if result.get('recovery'):checkpoint['recovery_receipt_digest']=digest(result['recovery'])
     write_json(target/'checkpoint.json',checkpoint)

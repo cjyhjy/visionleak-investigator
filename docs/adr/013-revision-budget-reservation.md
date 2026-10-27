@@ -9,3 +9,5 @@ Exceptions preserve the failed attempt and conservatively settle its pending res
 Successful answers and reviews retain their existing behavior, original reports remain immutable, and image-audit counts do not increase. Recovery of an interrupted revision records its path/kind and explicitly says that this revision accepted no image evidence. The attempt's implementation identity and recovery processor identity are separate. These are local host guarantees tested with real Core and controlled failures; they are not real model or human experiments.
 
 The earlier finalization accounting limitation is not resolved by this change: report publication includes a second render/write after the timed render, and some revision assembly falls outside its reserved phases. This remains an explicit delivery-audit follow-up, not a claim that every host I/O byte is now measured or hard-time-limited.
+
+Follow-up: [ADR-014](014-single-pass-finalization.md) records the subsequent single-pass finalization fix and its explicit accounting-commit measurement boundary. The preceding paragraph describes the scope of ADR-013 at implementation time.

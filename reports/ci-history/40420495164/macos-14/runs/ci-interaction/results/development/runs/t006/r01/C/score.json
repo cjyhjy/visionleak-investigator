@@ -1,0 +1,323 @@
+{
+  "metric_definition": "interaction-v1",
+  "task_id": "t006",
+  "truth_digest": "06c7fd1a2c13bcc9d011c75ae55fb11adbe9c28af1aa500abd1e761f651de7f3",
+  "initial_task_digest": "eb940fd7a1e6cb8077a232ae96615f76f38742cea9ebfac6b189d6887048f48f",
+  "initial_registry_digest": "8dae61d8588a0dd537fa11d39c5ea694c2ca89e1822cfeb65884486766696465",
+  "accepted_output": {
+    "report_digest": "e01f5e914ac17b5f9355adebfd7baccc87df24801d558042767f96ae28144b84",
+    "run_manifest_digest": "e6e42f1e398cb59d9b6fe2236fe315a5f4f56b22e09b1148b644220f6649802b",
+    "initial_report_digest": "210fa74e325d0d7d55361b65003a6bda35a9d1b81c1812a35f07ddab490b5f07",
+    "verified_revision_count": 1
+  },
+  "question_history_usable": true,
+  "dataset_manifest_digest": "29960ddc31a11da9a287bd561bb6d0429ef128dc93634856811dc27072a946ca",
+  "usable_output": true,
+  "failure": null,
+  "state": "PARTIAL",
+  "goal_correct": true,
+  "field_correct": false,
+  "necessary_questions": 2,
+  "necessary_questions_asked": 1,
+  "necessary_questions_missed": [
+    "clarify_entity_key"
+  ],
+  "questions_asked": 1,
+  "excessive_questions": 0,
+  "unanswerable_questions": 0,
+  "answers_delivered": 1,
+  "risk": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 8,
+    "precision": null,
+    "recall": 0.0,
+    "f1": 0.0,
+    "truth_denominator": 8,
+    "predicted_pairs": 0
+  },
+  "unsupported_confirmed_claims": 0,
+  "question_budget_spent": 1,
+  "review_budget_spent": 0,
+  "pending_review_pairs": 0,
+  "budget_respected": true,
+  "coverage": {
+    "input_manifest_digest": "29960ddc31a11da9a287bd561bb6d0429ef128dc93634856811dc27072a946ca",
+    "input_preflight": {
+      "digest": "29960ddc31a11da9a287bd561bb6d0429ef128dc93634856811dc27072a946ca",
+      "image_count": 6,
+      "estimated_source_pixels": 55296,
+      "header_unknown_count": 0,
+      "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+    },
+    "profiles": {
+      "base": {
+        "audit_id": "59034ecf0debc0023b6c8a8e95aaf275f2170798ace59402263a98bef0a2b6d2",
+        "report_ref": "tools/call-0002/output/report.json",
+        "report_sha256": "3b4002553d667e1ddfddaac439dd69d390cce2a70117451148a1e01f913ab67b",
+        "complete": true,
+        "discovered_at_least": 6,
+        "fingerprinted_images": 6,
+        "processed_images": 6,
+        "unprocessed_fingerprints": [],
+        "errors": [],
+        "reason": "",
+        "core_coverage": {
+          "splits": {
+            "train": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "validation": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "test": {
+              "audited": 2,
+              "fingerprinted": 2,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            },
+            "unknown": {
+              "audited": 0,
+              "fingerprinted": 0,
+              "rejectedByCode": {},
+              "ignored": 0,
+              "unprocessed": 0
+            }
+          },
+          "budgetExhaustion": [],
+          "enumerationComplete": true,
+          "rejectedOrErrorCount": 0,
+          "ignoredFiles": 0,
+          "unprocessedKnownFiles": 0,
+          "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+        },
+        "scope": {
+          "splits": [
+            "train",
+            "validation",
+            "test"
+          ],
+          "splitDirectories": {
+            "train": "train",
+            "validation": "validation",
+            "test": "test"
+          },
+          "missingSplits": [],
+          "supportedExtensions": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".webp",
+            ".avif",
+            ".tif",
+            ".tiff",
+            ".gif"
+          ],
+          "ignoredFiles": 0,
+          "entriesScanned": 6,
+          "discoveredAtLeast": 6,
+          "acceptedImages": 6,
+          "totalDecodedPixels": 55296,
+          "maxDirectoryEntries": 100000,
+          "source": "local-files",
+          "allPairsAreCrossSplit": true,
+          "perceptualMatchesRequireReview": true
+        },
+        "cost": {
+          "comparisons": 16,
+          "index_operations": 0,
+          "decoded_pixels": 55296,
+          "wall_seconds": 0.1874355420000029
+        },
+        "pixel_cost_measurement": "core-successful-decode-count"
+      }
+    },
+    "metadata": {
+      "state": "partial",
+      "sha256": "f576a6cf9377266859038e6e86ca804f408506f92809f0ce306dcafa6825337a",
+      "rows": 6,
+      "mapped_rows": 6,
+      "unmapped_image_count": 0,
+      "unmapped_images": [],
+      "missing_entity_rows": 6,
+      "issues": [],
+      "entity_key": null,
+      "entity_key_confirmed": false,
+      "trust": "user-declared metadata, not independently verified physical identity",
+      "columns": [
+        "file_id",
+        "relative_path",
+        "image_split",
+        "entity_id",
+        "category"
+      ],
+      "missing_optional_columns": [
+        "capture_session_id",
+        "provenance_ref"
+      ],
+      "field_coverage": {
+        "file_id": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "relative_path": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "image_split": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "entity_id": {
+          "column_present": true,
+          "nonempty_rows": 6,
+          "absent_value_rows": 0,
+          "empty_value_rows": 0,
+          "missing_rows": 0,
+          "state": "complete"
+        },
+        "capture_session_id": {
+          "column_present": false,
+          "nonempty_rows": 0,
+          "absent_value_rows": 6,
+          "empty_value_rows": 0,
+          "missing_rows": 6,
+          "state": "missing_column"
+        },
+        "provenance_ref": {
+          "column_present": false,
+          "nonempty_rows": 0,
+          "absent_value_rows": 6,
+          "empty_value_rows": 0,
+          "missing_rows": 6,
+          "state": "missing_column"
+        }
+      },
+      "field_coverage_scope": "All parsed CSV rows before mapping validation; presence only, not provenance or physical-identity verification."
+    },
+    "human_review": {
+      "state": "not_applicable",
+      "total_records": 0,
+      "unique_pairs": 0,
+      "requested_records": 0,
+      "pending_records": 0,
+      "confirmed_records": 0,
+      "rejected_records": 0,
+      "unsure_records": 0,
+      "resolved_pairs": 0,
+      "unresolved_pairs": 0,
+      "scope": "Review applies to its bound Core witness; duplicate witnesses and unsure/conflicting decisions remain unresolved."
+    },
+    "verification": {
+      "59034ecf0debc0023b6c8a8e95aaf275f2170798ace59402263a98bef0a2b6d2": {
+        "state": "passed",
+        "result": {
+          "ok": true,
+          "auditId": "59034ecf0debc0023b6c8a8e95aaf275f2170798ace59402263a98bef0a2b6d2",
+          "pairs": [
+            {
+              "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+              "left": "test/002.png",
+              "right": "train/001.png",
+              "evidence": "byte-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "f0a5401228eb90b8886dc7e20d83df1c77e1818ea98804f901fd0f348651d67c",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              },
+              "rightObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "f0a5401228eb90b8886dc7e20d83df1c77e1818ea98804f901fd0f348651d67c",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              }
+            },
+            {
+              "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+              "left": "test/002.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "test/002.png",
+                "status": "ok",
+                "byteDigest": "f0a5401228eb90b8886dc7e20d83df1c77e1818ea98804f901fd0f348651d67c",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "d73e9a08bec5c64c79460b8878131eb22a20e48d9d97d7418ee7f443decc1267",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              }
+            },
+            {
+              "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+              "left": "train/001.png",
+              "right": "validation/003.png",
+              "evidence": "pixel-identical",
+              "status": "valid",
+              "leftObservation": {
+                "id": "train/001.png",
+                "status": "ok",
+                "byteDigest": "f0a5401228eb90b8886dc7e20d83df1c77e1818ea98804f901fd0f348651d67c",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              },
+              "rightObservation": {
+                "id": "validation/003.png",
+                "status": "ok",
+                "byteDigest": "d73e9a08bec5c64c79460b8878131eb22a20e48d9d97d7418ee7f443decc1267",
+                "pixelDigest": "590f8c560482787b2d1246af47432a796d1cf2f709dbf4a479c2d693ceba85bb"
+              }
+            }
+          ],
+          "counts": {
+            "valid": 3,
+            "invalid": 0,
+            "missing": 0,
+            "skippedCandidates": 0
+          },
+          "exitCode": 0,
+          "verificationScope": {
+            "evidenceTypes": [
+              "byte-identical",
+              "pixel-identical"
+            ],
+            "candidatesRecomputed": false,
+            "wholeDatasetReaudited": false
+          }
+        },
+        "candidates_recomputed": false
+      }
+    },
+    "source_unchanged": true
+  },
+  "human_participants": 0,
+  "human_time_saved_seconds": null,
+  "model_calls": 0,
+  "interpretation": "Fixed scripted answers and exhaustive declared entity-risk labels; not a human or live Agent experiment.",
+  "truth_sha256": "762a0b55ed951cda28ff2fc002c712549cfa30cbbf96e66c3a5cd6f8db5ddf33"
+}

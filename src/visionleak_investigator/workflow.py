@@ -228,7 +228,10 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     event('FINALIZING')
     entry=None;tick=time.monotonic()
     try:entry=ledger.reserve('finalize',final=True)
-    except BudgetExceeded as e:issues.append(str(e));state='PARTIAL'
+    except BudgetExceeded as e:
+        write_json(out/'publication-failure.json',{'state':'FAILED','reason':str(e),'raw_outputs_preserved':True})
+        event('FAILED',reason='No finalization allowance remains')
+        raise
     for e in evidence:append_json(out/'evidence.jsonl',e)
     if not evidence:(out/'evidence.jsonl').touch(exist_ok=False)
     coverage['source_unchanged']=stable
@@ -248,14 +251,8 @@ def _execute_task(task: dict, registry_data: dict, out: Path, *,mode: str='rules
     if planned:
         report['planning']=planning;report['question_backlog']=question_backlog
         report['limitations']=[*LIMITATIONS,'SCRIPTED_TEST_ONLY：动作由本地测试脚本产生，非真实模型决策。']
-    # Render is included in the finalization reservation; report is committed only once.
-    html=render_report(report,evidence)
-    if entry is not None:
-        elapsed=time.monotonic()-tick
-        ledger.settle(entry,{'wall_seconds':elapsed})
-        if elapsed>entry['reservation']['wall_seconds']:report['state']='PARTIAL';report['issues'].append('Finalization time exceeded reservation')
-    write_json(out/'report.json',report,exclusive=True)
-    with (out/'report.html').open('x') as f:f.write(render_report(report,evidence))
+    from .publication import publish_report
+    publish_report(out,report,evidence,ledger,entry,tick,render_report)
     event(report['state'],report_digest=digest(report));return report
 
 def code_digest() -> str:

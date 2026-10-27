@@ -23,7 +23,11 @@ def _recover_interrupted(run: Path) -> dict:
     started=time.monotonic()
     if (run/'report.json').exists():
         from .integrity import verify_run
-        return verify_run(run)
+        try:return verify_run(run)
+        except (ValueError,OSError):
+            checkpoint=read_json(run/'checkpoint.json') if (run/'checkpoint.json').exists() else {}
+            if checkpoint.get('report_digest'):raise
+            # A partially published, never-accepted report is quarantined below.
     task=read_json(run/'task.json');registry=read_json(run/'registry.private.json');manifest=read_json(run/'manifest.json')
     if digest(task)!=manifest['task_digest'] or digest(registry)!=manifest['registry_digest']:raise ValueError('Interrupted task/registry identity changed')
     root=Registry(registry).dataset(task['dataset_ref']);current=input_manifest(root,task['limits'])
@@ -45,7 +49,8 @@ def _recover_interrupted(run: Path) -> dict:
     # later host revision cannot accidentally resurrect an unaccepted record.
     for name in ('evidence.jsonl','coverage.json','claims.json','validation.json','questions.json',
                  'reviews.json','proposal.json','report.html','checkpoint.json','recovery-receipt.json',
-                 'rules-decision.json','rules-policy.json'):
+                 'rules-decision.json','rules-policy.json','report.json','report.pending.json','report.pending.html',
+                 'report.before-overrun.html','publication-failure.json'):
         path=no_symlink(run/name)
         if path.exists():
             dest=no_symlink(backup/name);dest.parent.mkdir(parents=True,exist_ok=True)
@@ -75,10 +80,9 @@ def _recover_interrupted(run: Path) -> dict:
         write_json(run/name,value,exclusive=True)
     if input_manifest(root,task['limits'])['digest']!=manifest['dataset_manifest_digest']:
         raise ValueError('Input changed during recovery; no recovered report published')
-    render_report(report)
-    ledger.settle(closing,{'wall_seconds':time.monotonic()-started})
-    write_json(run/'report.json',report,exclusive=True)
-    (run/'report.html').write_text(render_report(report))
+    write_json(run/'checkpoint.json',{'state':'FINALIZING','manifest_digest':digest(manifest),'pending_action':closing['call_id']})
+    from .publication import publish_report
+    publish_report(run,report,[],ledger,closing,started,render_report)
     write_json(run/'checkpoint.json',{'state':'PARTIAL','report_digest':digest(report),'manifest_digest':digest(manifest),
                                      'recovery':'conservative','recovery_receipt_digest':digest(receipt)})
     append_json(run/'events.jsonl',{'state':'PARTIAL','recovery':True,'time':now(),'reexecuted_tools':0,

@@ -1,0 +1,48 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "a0d52bc8c9ff18163ee0efc39c50876e32c1df7dd9dd6730f7afa008c266cf68",
+  "dataset_manifest_digest": "63d166b5cc716106976d6c0a617142e325f7312f7b78e5c728d237510dddfc2e",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "stop",
+  "reason_code": "no_positive_clues",
+  "selected_profile": null,
+  "hints": {
+    "selected_profile": null,
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "30094f12d2afc46596aa035586304ac96b03aa1d03660d57f38ee589ff890460",
+        "characters": 24,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 2,
+    "comparisons": 999983,
+    "index_operations": 16000000,
+    "decoded_pixels": 299917056,
+    "wall_seconds": 299.48949383199994
+  },
+  "base_complete": true,
+  "metadata_state": "complete",
+  "requested_questions": [
+    "clarify_goal"
+  ],
+  "outcome": "not_run",
+  "model_calls": 0
+}

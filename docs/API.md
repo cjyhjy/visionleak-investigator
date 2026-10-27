@@ -97,3 +97,5 @@ CSV 的可变文本单元格统一使用 `text:` 加 JSON 字符串的可还原�
 # Revision attempt accounting
 
 An answer/review revision reserves its Core identity work before launching it. `pending-revision.json` binds an unfinished attempt to the original run; subsequent `resume`/`review-import` first conservatively recovers that attempt and carries its consumed budget forward. A failed attempt may leave `revision-failure.json` and no published report until recovery. Repeating a recovered payload returns its PARTIAL report without a new Core call. See [ADR-013](adr/013-revision-budget-reservation.md).
+
+New reports include `publication` with the measured finalization interval, accepted HTML hash, snapshot scope and accounting-commit boundary. Full content is rendered/written once under reservation; `report.pending.*` is unaccepted until final publication/checkpoint. A failed publication records `publication-failure.json`; `recover` may quarantine an unaccepted partial publication, but rejects tampering with an already accepted report. See [ADR-014](adr/014-single-pass-finalization.md).
