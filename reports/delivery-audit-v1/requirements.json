@@ -1,5 +1,5 @@
 {
-  "audit_status": "in_progress",
+  "audit_status": "review_complete_with_explicit_exceptions",
   "completion_claim": false,
   "basis": "Read current implementation plan/revision notes, implementation, test assertions, full local regression and actual receipts. This index is not a substitute for those artifacts.",
   "matrix": [
@@ -284,19 +284,21 @@
     "reports/finalization-accounting-gap-v1/receipt.json",
     "reports/ci-history/40420495164/verification.json",
     "reports/delivery-audit-v1/finalization-resolution.json",
-    "reports/finalization-v1/receipt.json"
+    "reports/finalization-v1/receipt.json",
+    "reports/delivery-audit-v1/clauses.json",
+    "reports/ci-history/40423567851/verification.json"
   ],
-  "remaining_local": [
-    "Complete clause-by-clause contract and delivery audit."
-  ],
+  "remaining_local": [],
   "external_or_deferred": [
     "Provider/model/disclosure/spend authorization and real D trajectories.",
     "Authorized independent natural validation/test sources and experiments.",
     "Owner-selected Investigator license and any competition submission authorization.",
     "M4/E deferred until the real Agent is stable."
   ],
-  "reviewed_code_commit": "b5f9e8c8968ab187698ba9adebadef70e4643670",
-  "latest_ci_tests_per_platform": 196,
+  "reviewed_code_commit": "3146889f60274866955845dfcdbaef183628a139",
+  "latest_ci_tests_per_platform": 204,
   "reviewed_worktree_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
-  "current_code_ci": "pending for finalization; prior revision-budget CI passed"
+  "current_code_ci": "passed: 40423567851, two platforms, zero skips",
+  "clause_audit": "reports/delivery-audit-v1/clauses.json",
+  "review_summary": "reports/delivery-audit-v1/README.md"
 }

@@ -115,3 +115,9 @@ rules-context-targeted 首次 53 passed/1 failed，失败为测试读取错误�
 结案计时修复：先保存五项失败验收，再将普通审计、修订和恢复统一为单次完整渲染、暂存内容写出/fsync、结算和独占发布；修订最终装配现在在 finalize 预留内。追加发布故障和 HTML 摘要绑定后，专项 40 passed 与 8 passed，完整 finalization-regression 204 passed、零 skip。reports/finalization-v1 保存六个真实 Core 工作进程、六份可验证报告及实际资源；受控延迟/失败均显式标注，非生产事故或模型实验。
 
 计量范围明确保留在 publication 字段和 ADR-014：业务装配、一次 HTML 渲染、JSON 内容序列化与暂存写出进入工具时间；把计量值本身记入账本/JSON 尾部并提交名称/checkpoint 是 accounting commit，由完整工作进程资源计量覆盖，不冒充 OS 硬时间/I/O 沙箱。HTML 明确是结案结算前快照，最终 JSON 与 ledger 完全一致；不再重复整页渲染来展示其自身耗时。超时保留原快照并发布 PARTIAL 状态页，失败保留消耗与未接纳产物；未形成接受摘要的半发布记录可保守恢复。M1/M2 已复现的计账缺口在该明示范围内闭环，整体条款审计仍在进行。当前实现等待推送后的 CI；模型调用 0、源图片未改。
+
+## 本地交付审查与最终 CI 归档 · 2026-10-27T00:09:38.067345+00:00
+
+实际代码提交 `3146889f60274866955845dfcdbaef183628a139`，源码摘要 `2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c`。CI 40423567851 在 Ubuntu/macOS 各 204 passed、零跳过；下载 ZIP 与 GitHub SHA-256 匹配，独立复核 168 份报告、12 份 finalization 报告及此前评分/资源/修订证据，退出码 0。命令 `python3 scripts/record.py finalization-ci-extract .venv-clean/bin/python reports/ci-history/40423567851/extract-artifacts.py` 与 `finalization-ci-integrity` 的原始日志保留在 commands.jsonl。
+
+`clause-delivery-audit` 退出 0：70 组人工式源码/测试/回执审查、525 行内容定位，T01–T35 引用核验；只是可追溯审查索引，不是新增 525 个测试或独立真人审查。记录 6 类实现差异；当前未留下已识别的本地实现待办。M3.4/.6、M5 自然数据/D、许可证及正式提交仍未完成，M4/E 后置。模型调用 0，源数据及原 Core 不改。下一阶段按 reports/delivery-audit-v1/README.md 的前提执行。

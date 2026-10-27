@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T23:55:38.176602+00:00",
+  "updated_at": "2026-10-27T00:09:38.067345+00:00",
   "project_version": "0.1.0",
   "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
   "original_core_modified": false,
@@ -98,7 +98,7 @@
   "M5": {
     "status": "blocked",
     "reason": "Catalog A/B/C execution and scoring passed on fresh synthetic partitions; independent natural data and live model D remain unfinished",
-    "local_status": "in_progress",
+    "local_status": "passed_for_reviewed_scope",
     "evidence": [
       "reports/engineering-suite/metrics.json",
       "reports/engineering-suite/per_run.jsonl",
@@ -121,7 +121,9 @@
       "reports/finalization-accounting-gap-v1/receipt.json",
       "reports/ci-history/40420495164/verification.json",
       "reports/delivery-audit-v1/finalization-resolution.json",
-      "reports/finalization-v1/receipt.json"
+      "reports/finalization-v1/receipt.json",
+      "reports/delivery-audit-v1/clauses.json",
+      "reports/ci-history/40423567851/verification.json"
     ],
     "research_gain": "not_established",
     "local_subtasks": {
@@ -133,29 +135,29 @@
       "static_report": "passed_with_scope: readable coverage/budget/tasks, evidence anchors/thumbnails and ledger timeline; actual fresh Core reports, no model",
       "reproducible_demo": "passed: report_smoke generates 5 reports; controller smoke labelled scripted; no video recorded",
       "interaction_evaluation": "passed with scope: expected task/input/registry/limits and exact revision/question/answer history bound; 12 new synthetic C runs and 6 rejected direct API substitutions, D blocked; no human time measurement",
-      "strong_rule_context_routing": "passed with scope: frozen rules-v2, registered MD/TXT and request clues, metadata clarification, base/verification/budget gates; 13 real CLI cases and 14 reports; bounded lexical policy, no semantic understanding"
+      "strong_rule_context_routing": "passed with scope: frozen rules-v2, registered MD/TXT and request clues, metadata clarification, base/verification/budget gates; 13 real CLI cases and 14 reports; bounded lexical policy, no semantic understanding",
+      "delivery_audit": "review_complete_with_explicit_exceptions: 70 range assessments, 525 content-line references, T01–T35; reference checking is not 525 runtime tests."
     },
-    "local_acceptance_status": "passed for recorded implemented scopes; not all local delivery requirements complete"
+    "local_acceptance_status": "Local delivery review complete with explicit scope exceptions; whole M5 remains blocked on natural data and real D."
   },
   "verification": {
     "test_suite": "finalization-regression: 204 passed, zero skipped",
     "clean_python_env": "passed, no agent extra",
     "commands": "reports/commands.jsonl",
     "final_log": "reports/logs/20261026T235150644662-finalization-regression.log",
-    "ci_evidence": "reports/ci-history/40420495164/verification.json",
-    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40420495164",
-    "tested_commit": "b5f9e8c8968ab187698ba9adebadef70e4643670",
-    "ci_for_current_code": "pending for finalization changes; prior revision-budget CI passed for its preceding digest"
+    "ci_evidence": "reports/ci-history/40423567851/verification.json",
+    "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40423567851",
+    "tested_commit": "3146889f60274866955845dfcdbaef183628a139",
+    "ci_for_current_code": "passed: Ubuntu/macOS each 204 tests, zero skipped; downloaded SHA-matched artifacts and 168 reports independently reverified"
   },
-  "next_local_command": "cat reports/delivery-audit-v1/requirements.json",
+  "next_local_command": "cat reports/delivery-audit-v1/README.md",
   "next_model_step": "User must select and authorize provider/model/endpoint/disclosure/call and spending limits before implementing and measuring a live provider adapter; do not search for credentials.",
   "repository": "https://github.com/cjyhjy/visionleak-investigator",
   "publication_evidence": "reports/publication.json",
   "follow_up": {
-    "ci": "CI 40420495164 passed on both platforms, each 196 tests and zero skips. Downloaded ZIP digests matched; 156 reports, 14 revision-budget reports and prior rules/catalog/interaction/resource/lifecycle evidence reverified.",
+    "ci": "CI 40423567851 passed on both platforms: 204 tests each, zero skips; original ZIP hashes matched, 168 reports and 12 finalization reports independently verified.",
     "model_accounting": "wired to controller; scripted tests only, no provider",
     "remaining": [
-      "Complete clause-by-clause contract and delivery audit.",
       "Authorized independent natural data experiments and real provider/D trajectories.",
       "Owner-selected project license and external submission decisions.",
       "M4 deferred until real Agent stabilizes."
@@ -163,5 +165,11 @@
     "licenses": "14 base / 163 optional SDK installed Python distributions; v3 inventories include psutil 7.2.2; Investigator license not assigned",
     "report_visual_review": "passed_with_scope: actual local HTTP Chrome desktop and 390x844 viewport, screenshots and DOM saved; direct file protocol unverified"
   },
-  "next_local_work": "Verify finalization cross-platform CI and finish the full clause-by-clause contract/delivery audit. No model authorization is implied."
+  "next_local_work": "Reviewed independently executable local scope complete. No provider calls, new natural-data experiments, license selection or M4 implied.",
+  "local_delivery_review": {
+    "status": "review_complete_with_explicit_exceptions",
+    "index": "reports/delivery-audit-v1/clauses.json",
+    "remaining": "reports/delivery-audit-v1/README.md",
+    "not_a_full_project_completion": true
+  }
 }

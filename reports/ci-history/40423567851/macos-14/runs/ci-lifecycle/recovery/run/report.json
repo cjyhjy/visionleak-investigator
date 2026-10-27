@@ -1,0 +1,328 @@
+{
+"mode": "rules",
+  "model_execution": "not_run",
+  "task": {
+    "schema_version": 1,
+    "task_id": "demo-task-001",
+    "dataset_ref": "demo-dataset",
+    "request_text": "受控合成中断恢复验收；删除本次新建的最终报告以注入故障，无真实业务事故或模型参与。",
+    "goal": "content_audit",
+    "goal_confirmed": true,
+    "goal_evidence_refs": [
+      "user.local-task"
+    ],
+    "metadata_ref": null,
+    "context_refs": [],
+    "entity_key": null,
+    "entity_key_confirmed": false,
+    "entity_key_evidence_refs": [],
+    "protect_eval_split": true,
+    "limits": {
+      "max_agent_steps": 8,
+      "max_tool_calls": 16,
+      "max_core_audit_runs": 3,
+      "max_comparisons_total": 1000000,
+      "max_images": 1000,
+      "max_pairs_per_audit": 2000,
+      "max_questions": 2,
+      "max_review_pairs": 30,
+      "max_llm_requests": 8,
+      "max_tool_wall_seconds": 300,
+      "remote_budget_usd": 0,
+      "max_decode_pixels_per_image": 64000000,
+      "max_sample_pixels_per_image": 4194304,
+      "max_file_bytes": 33554432,
+      "max_total_decoded_pixels": 300000000,
+      "max_index_operations_total": 16000000,
+      "max_llm_output_tokens": 1024,
+      "finalization_reserve_tool_calls": 2,
+      "finalization_reserve_seconds": 10
+    },
+    "privacy": {
+      "remote_model_allowed": false,
+      "disclosure": "none",
+      "consent_ref": null,
+      "approved_context_refs": [],
+      "remote_images_allowed": false
+    }
+  },
+  "claims": [],
+  "coverage": {
+    "input_manifest_digest": "6eebb481ac14e936cbfc434c4fb0d52b06efd14b8fd522f235f07974f1ee2ee8",
+    "profiles": {},
+    "metadata": {
+      "state": "not_run"
+    },
+    "human_review": {
+      "state": "not_run"
+    },
+    "verification": {},
+    "source_unchanged": true,
+    "unaccepted_raw_reports": [
+      "tools/call-0002/output/report.json"
+    ]
+  },
+  "questions": [],
+  "reviews": [],
+  "limitations": [
+    "相似候选不证明同源或实验泄漏。",
+    "图像关系不证明模型实际训练使用。",
+    "覆盖仅适用于列明的 profile、输入与阈值。",
+    "本次未调用模型；不是 Agent 性能实验。"
+  ],
+  "unique_candidate_pairs": 0,
+  "recovery": {
+    "schema_version": 1,
+    "kind": "conservative_recovery",
+    "created_at": "2026-10-27T00:05:16.698178+00:00",
+    "original_manifest_digest": "854c99f233696446882ac3db672fa9544fe64cec0fc0e4abed1f0bda87af0306",
+    "original_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+    "processor_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+    "core_reexecuted": false,
+    "accepted_image_evidence_count": 0,
+    "preserved_files": [
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/evidence.jsonl",
+        "sha256": "91a20be09bd94855eacca205e483982ef1ace36572b9e6daad41ce5ff5553c2c"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/coverage.json",
+        "sha256": "ac302e5f683d5fa33518ebf2b28c2ec6ae5bbb40bcdab5f832f7efab5dac6c8e"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/claims.json",
+        "sha256": "467bf2849ae7df27b4308aefe774dc3ebd13fec8f1437896fa9a3ca1a54818d9"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/validation.json",
+        "sha256": "53de13b99e93bd7bef86b15721878ce44d2c0e223de1c9712e2444648776c043"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/questions.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/reviews.json",
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/proposal.json",
+        "sha256": "dee3d4765a72d89b10bf57499ea6c0d84307f3cb0b40afa74aae3a3efdca8002"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/report.html",
+        "sha256": "c6b9702480f9cde219862767b5ce0d6192e91c83b4a2525e26b20e3431cbc358"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/checkpoint.json",
+        "sha256": "b191fc599292108d4ac2015758d59f96825559491090bf638e2e1bddc7b8014e"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/rules-decision.json",
+        "sha256": "3f59fe0f3d00801af6caddaabd8e69ddcb4cb588331f779285c77b9850d7eb8c"
+      },
+      {
+        "path": "pre-recovery/55e8d79a667c21c6b9518cf1c5692535431d2c57829fdac7a74ba6c0549dd301/rules-policy.json",
+        "sha256": "7752bef0b7fddb5f58b54c64d82d202247d8958344760161db0aa8d089cbe86c"
+      }
+    ]
+  },
+"issues": ["Process interrupted. Pending reservations conservatively charged; raw reports retained. Start a new run for additional image checks."],
+"state": "PARTIAL",
+"budget": {
+  "schema_version": 1,
+  "limits": {
+    "max_agent_steps": 8,
+    "max_tool_calls": 16,
+    "max_core_audit_runs": 3,
+    "max_comparisons_total": 1000000,
+    "max_images": 1000,
+    "max_pairs_per_audit": 2000,
+    "max_questions": 2,
+    "max_review_pairs": 30,
+    "max_llm_requests": 8,
+    "max_tool_wall_seconds": 300,
+    "remote_budget_usd": 0,
+    "max_decode_pixels_per_image": 64000000,
+    "max_sample_pixels_per_image": 4194304,
+    "max_file_bytes": 33554432,
+    "max_total_decoded_pixels": 300000000,
+    "max_index_operations_total": 16000000,
+    "max_llm_output_tokens": 1024,
+    "finalization_reserve_tool_calls": 2,
+    "finalization_reserve_seconds": 10
+  },
+  "spent": {
+    "tool_calls": 6,
+    "audit_runs": 1,
+    "comparisons": 14,
+    "index_operations": 0,
+    "decoded_pixels": 82944,
+    "wall_seconds": 0.6767633329999398,
+    "llm_requests": 0,
+    "review_pairs": 0,
+    "questions": 0
+  },
+  "model_usage": "not_run",
+  "model_cost_usd": 0,
+  "entries": [
+    {
+      "call_id": "call-0001",
+      "kind": "preflight",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.005374+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 290
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.13418412499999022
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.130920+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.865815875
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0002",
+      "kind": "audit",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.134521+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.865815875,
+        "comparisons": 1000000,
+        "decoded_pixels": 100000000,
+        "index_operations": 16000000,
+        "audit_runs": 1
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.273230749999982,
+        "comparisons": 14,
+        "decoded_pixels": 55296,
+        "index_operations": 0,
+        "audit_runs": 1
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.409232+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.592585125,
+        "comparisons": 999986,
+        "decoded_pixels": 99944704,
+        "index_operations": 16000000,
+        "audit_runs": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0003",
+      "kind": "verify",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.411866+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.592585125,
+        "decoded_pixels": 27648
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.24279837500000667,
+        "decoded_pixels": 27648
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.656250+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.34978675,
+        "decoded_pixels": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0004",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.669796+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.34978675,
+        "questions": 0
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0015960829999812631,
+        "questions": 0
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.671384+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.34819066700004,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0005",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.681274+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.34819066700004
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.007886374999998225
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.689169+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.34030429200004
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0006",
+      "kind": "recovery_finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:05:16.697243+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.34030429200004
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.01706762499998149
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:05:16.712150+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.32323666700006
+      },
+      "overrun": {}
+    }
+  ]
+},
+"publication": {
+  "schema_version": 1,
+  "finalization_call_id": "call-0006",
+  "full_render_calls": 1,
+  "html_budget_snapshot": "before_finalization_settlement",
+  "measured_scope": "Caller assembly, one full HTML render, JSON body serialization, staged content writes/fsync and HTML hashing.",
+  "accounting_commit_scope": "Recording this measurement in the ledger/JSON tail, exclusive file publication and checkpoint. Included in whole-worker resources; excluded from its self-recorded tool interval.",
+  "measured_wall_seconds": 0.01706762499998149,
+  "measurement_ended_at": "2026-10-27T00:05:16.712134+00:00",
+  "staged_html_sha256": "db4e3afcf5f0c817af8e75ae9fe7c6a3e61cd5675b9268e3965de26834d17376",
+  "html_kind": "audit_snapshot",
+  "html_sha256": "db4e3afcf5f0c817af8e75ae9fe7c6a3e61cd5675b9268e3965de26834d17376"
+}
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "task_id": "rb001",
+  "dataset_ref": "demo-dataset",
+  "request_text": "请检查这个工件分类数据集的划分风险，不修改原始图片；泛化目标需要进一步确认。",
+  "goal": "content_audit",
+  "goal_confirmed": true,
+  "goal_evidence_refs": [
+    "user.local-task"
+  ],
+  "metadata_ref": null,
+  "context_refs": [],
+  "entity_key": null,
+  "entity_key_confirmed": false,
+  "entity_key_evidence_refs": [],
+  "protect_eval_split": true,
+  "limits": {
+    "max_agent_steps": 8,
+    "max_tool_calls": 16,
+    "max_core_audit_runs": 3,
+    "max_comparisons_total": 1000000,
+    "max_images": 1000,
+    "max_pairs_per_audit": 2000,
+    "max_questions": 2,
+    "max_review_pairs": 30,
+    "max_llm_requests": 8,
+    "max_tool_wall_seconds": 300,
+    "remote_budget_usd": 0,
+    "max_decode_pixels_per_image": 64000000,
+    "max_sample_pixels_per_image": 4194304,
+    "max_file_bytes": 33554432,
+    "max_total_decoded_pixels": 300000000,
+    "max_index_operations_total": 16000000,
+    "max_llm_output_tokens": 1024,
+    "finalization_reserve_tool_calls": 2,
+    "finalization_reserve_seconds": 10
+  },
+  "privacy": {
+    "remote_model_allowed": false,
+    "disclosure": "none",
+    "consent_ref": null,
+    "approved_context_refs": [],
+    "remote_images_allowed": false
+  }
+}

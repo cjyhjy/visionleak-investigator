@@ -1,0 +1,57 @@
+{
+  "argv": [
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/.venv/bin/python",
+    "-m",
+    "visionleak_investigator.cli",
+    "run",
+    "--task",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/negated/fixture/task.json",
+    "--registry",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/negated/fixture/registry.json",
+    "--out",
+    "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-rules-routing/negated/run"
+  ],
+  "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-27T00:06:19.835305+00:00",
+  "timeout_seconds": 90,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.8752457500000332,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.703271,
+    "cpu_system_seconds": 0.160491,
+    "cpu_seconds": 0.8637619999999999,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 96075776,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 97550336,
+    "observed_rss_peak_bytes": 97550336,
+    "root_rss_peak_bytes": 32342016,
+    "sample_interval_seconds": 0.02,
+    "samples": 8,
+    "observed_process_count": 5,
+    "peak_members": [
+      {
+        "pid": 11674,
+        "rss_bytes": 31850496
+      },
+      {
+        "pid": 11678,
+        "rss_bytes": 65699840
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 3,
+    "sampler_wall_seconds": 0.87316737499998,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "argv": [
+    "node",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/.deps/visionleak-core/tools/cli.mjs",
+    "verify",
+    "--report",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/results/validation/runs/t001/r01/C/tools/call-0005/output/report.json",
+    "--root",
+    "/home/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-catalog-execution/suite/tasks/t001/images"
+  ],
+  "cwd": "/home/runner/work/visionleak-investigator/visionleak-investigator",
+  "started_at": "2026-10-27T00:04:06.472695+00:00",
+  "timeout_seconds": 299.21455504000005,
+  "status": "returned",
+  "exit_code": 0,
+  "error": null,
+  "wall_seconds": 0.15530122699999538,
+  "resources": {
+    "schema_version": 1,
+    "cpu_method": "os.wait4",
+    "cpu_user_seconds": 0.189388,
+    "cpu_system_seconds": 0.028509999999999997,
+    "cpu_seconds": 0.217898,
+    "cpu_scope": "OS child accounting including reaped descendants; not detached/unreaped descendants",
+    "wait4_maxrss_bytes": 89784320,
+    "wait4_maxrss_scope": "OS child maximum RSS; not simultaneous process-tree sum",
+    "tree_rss_method": "psutil recursive children; sampled sum RSS",
+    "tree_rss_status": "sampled",
+    "tree_rss_peak_bytes": 88915968,
+    "observed_rss_peak_bytes": 88915968,
+    "root_rss_peak_bytes": 88915968,
+    "sample_interval_seconds": 0.02,
+    "samples": 8,
+    "observed_process_count": 1,
+    "peak_members": [
+      {
+        "pid": 14547,
+        "rss_bytes": 88915968
+      }
+    ],
+    "access_denied_samples": 0,
+    "process_exit_races": 0,
+    "sampler_wall_seconds": 0.15481536100000426,
+    "limitations": [
+      "Short-lived processes or peaks between samples may be missed.",
+      "Summed RSS can count shared pages more than once.",
+      "This is measurement, not an OS memory limit."
+    ]
+  }
+}

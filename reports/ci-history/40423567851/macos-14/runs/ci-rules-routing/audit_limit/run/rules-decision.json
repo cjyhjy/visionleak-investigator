@@ -1,0 +1,64 @@
+{
+  "policy_version": "rules-v2",
+  "policy_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+  "initial_task_digest": "453442e723c9c4b797c2d79cfcd1907e7e6eb742e2789301d2ea78d1e5e98868",
+  "dataset_manifest_digest": "45bae365d5dff4290adbb8d6d5ce0947abe1167a2166989b894adf7394f2c5da",
+  "scope": "Initial image-audit routing; goal-only revisions do not rerun rules or Core.",
+  "decision": "defer",
+  "reason_code": "max_core_audit_runs",
+  "selected_profile": "transform",
+  "hints": {
+    "selected_profile": "transform",
+    "inputs": [
+      {
+        "source": "request_text",
+        "context_ref": null,
+        "sha256": null,
+        "truncated": false,
+        "excerpt_digest": "dd3f5b0e123ec5a748fefa057e1e5a7a3f3818c719136e57a27e4a96a957c2e2",
+        "characters": 16,
+        "positive_terms": {
+          "transform": [],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      },
+      {
+        "source": "registered_context",
+        "context_ref": "description",
+        "sha256": "68eb90fa809e72cc1386996bb964fa979d95fc3f3c102e9b12d5b98f57c0c604",
+        "truncated": false,
+        "excerpt_digest": "b3af7b91142147bc412df3da3cc13fcc54a44e2549ae45fe176947a2f3b358a2",
+        "characters": 2,
+        "positive_terms": {
+          "transform": [
+            "旋转"
+          ],
+          "local": []
+        },
+        "negated_terms": {
+          "transform": [],
+          "local": []
+        }
+      }
+    ],
+    "ignored_contexts": [],
+    "method": "Literal registered clues with limited local negation; not semantic understanding or proof of a transform."
+  },
+  "remaining_before_decision": {
+    "tool_calls": 12,
+    "audit_runs": 0,
+    "comparisons": 999986,
+    "index_operations": 16000000,
+    "decoded_pixels": 299917056,
+    "wall_seconds": 299.18463554199997
+  },
+  "base_complete": true,
+  "metadata_state": "not_applicable",
+  "requested_questions": [],
+  "outcome": "not_run",
+  "model_calls": 0
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "kind": "controlled failure after real Core inspection",
+    "real_core": true,
+    "production_incident": false,
+    "wall_seconds": 0.059049682000022585,
+    "timeout_seconds": 10,
+    "pending_entry": {
+      "call_id": "call-0006",
+      "kind": "resume_identity_check",
+      "status": "pending",
+      "reserved_at": "2026-10-27T00:05:11.577341+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.508041574
+      }
+    },
+    "report_sha256": "c8802e923746dd25871d48928b73527c0a7dc910c733cf9f9765b45007b1ad50",
+    "inspection": {
+      "auditId": "b7358d5385329614eacad2e1fa8e8b8dbd91baefa15e79313e7a1e77a469ff84",
+      "report_identity": "valid",
+      "verification_ids": [
+        "test/002.png",
+        "train/001.png",
+        "validation/003.png"
+      ]
+    }
+  }
+]

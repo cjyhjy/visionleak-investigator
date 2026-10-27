@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "limits": {
+    "max_agent_steps": 8,
+    "max_tool_calls": 16,
+    "max_core_audit_runs": 3,
+    "max_comparisons_total": 1,
+    "max_images": 1000,
+    "max_pairs_per_audit": 2000,
+    "max_questions": 2,
+    "max_review_pairs": 2,
+    "max_llm_requests": 8,
+    "max_tool_wall_seconds": 300,
+    "remote_budget_usd": 0,
+    "max_decode_pixels_per_image": 64000000,
+    "max_sample_pixels_per_image": 4194304,
+    "max_file_bytes": 33554432,
+    "max_total_decoded_pixels": 300000000,
+    "max_index_operations_total": 16000000,
+    "max_llm_output_tokens": 1024,
+    "finalization_reserve_tool_calls": 2,
+    "finalization_reserve_seconds": 10
+  },
+  "spent": {
+    "tool_calls": 8,
+    "audit_runs": 1,
+    "comparisons": 1,
+    "index_operations": 0,
+    "decoded_pixels": 55296,
+    "wall_seconds": 0.8217756669999403,
+    "llm_requests": 0,
+    "review_pairs": 0,
+    "questions": 2
+  },
+  "model_usage": "not_run",
+  "model_cost_usd": 0,
+  "entries": [
+    {
+      "call_id": "call-0001",
+      "kind": "preflight",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:03.012280+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 290
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.16251458299996102
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:03.162695+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.83748541700004
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0002",
+      "kind": "audit",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:03.166765+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.83748541700004,
+        "comparisons": 1,
+        "decoded_pixels": 100000000,
+        "index_operations": 16,
+        "audit_runs": 1
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.36189970899999935,
+        "comparisons": 1,
+        "decoded_pixels": 55296,
+        "index_operations": 0,
+        "audit_runs": 1
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:03.530098+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.47558570800004,
+        "comparisons": 0,
+        "decoded_pixels": 99944704,
+        "index_operations": 16,
+        "audit_runs": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0003",
+      "kind": "verify",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:03.533240+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.47558570800004,
+        "decoded_pixels": 0
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.1424544579999747,
+        "decoded_pixels": 0
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:03.677232+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.33313125000006,
+        "decoded_pixels": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0004",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:03.681847+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.33313125000006,
+        "questions": 2
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0019487079999862544,
+        "questions": 2
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:03.683781+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.3311825420001,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0005",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:03.690640+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.3311825420001
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.007324583000013263
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:03.697991+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.32385795900007
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0006",
+      "kind": "resume_identity_check",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:04.154174+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.32385795900007
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.13561616700002332
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:04.277133+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.18824179200004
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0007",
+      "kind": "interpret_context",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:04.278096+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 289.18824179200004,
+        "questions": 0
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.002496042000018406,
+        "questions": 0
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:04.280575+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 289.18574575,
+        "questions": 0
+      },
+      "overrun": {}
+    },
+    {
+      "call_id": "call-0008",
+      "kind": "finalize",
+      "status": "settled",
+      "reserved_at": "2026-10-27T00:06:04.281241+00:00",
+      "reservation": {
+        "tool_calls": 1,
+        "wall_seconds": 299.18574575
+      },
+      "actual": {
+        "tool_calls": 1,
+        "wall_seconds": 0.0075214169999640035
+      },
+      "error": null,
+      "settled_at": "2026-10-27T00:06:04.288775+00:00",
+      "refund": {
+        "tool_calls": 0,
+        "wall_seconds": 299.17822433300006
+      },
+      "overrun": {}
+    }
+  ]
+}

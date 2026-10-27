@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "data_kind": "self-generated controlled synthetic fixtures",
+  "audit_manifest_digest": "979b606b97d1d869584c4b9d8a28a7ef1a260a83b200be303628b251d69a0904",
+  "cases": [
+    {
+      "case": "remaining",
+      "exit_code": 2,
+      "status": "passed",
+      "command": "commands/remaining/result.json",
+      "candidate_manifest": "plans/remaining.json",
+      "result": "checks/remaining.json"
+    },
+    {
+      "case": "cleared",
+      "exit_code": 0,
+      "status": "passed",
+      "command": "commands/cleared/result.json",
+      "candidate_manifest": "plans/cleared.json",
+      "result": "checks/cleared.json"
+    },
+    {
+      "case": "test-excluded",
+      "exit_code": 1,
+      "status": "passed",
+      "command": "commands/test-excluded/result.json",
+      "candidate_manifest": "plans/test-excluded.json",
+      "result": null
+    },
+    {
+      "case": "unknown-path",
+      "exit_code": 1,
+      "status": "passed",
+      "command": "commands/unknown-path/result.json",
+      "candidate_manifest": "plans/unknown-path.json",
+      "result": null
+    }
+  ],
+  "source_unchanged": true,
+  "original_audit_files_unchanged": true,
+  "image_reaudit": "not_run"
+}

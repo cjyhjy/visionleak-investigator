@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-27T00:05:35.318653+00:00",
+  "task_digest": "2de20c08740c5f4521020252b13245ddfd5098f06b3357f04c3a2567b20901b5",
+  "registry_digest": "1ba7a99a0c0f81c781e1152bbf05488e660ca2b7a490280a4d394f631fdaf92a",
+  "dataset_manifest_digest": "33a7541875e5a0f990803031f5fddaa944d69918c7e81e92ff5688da53098a94",
+  "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+  "runtime_lock_digest": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1",
+  "policy": {
+    "name": "rules-v2",
+    "mandatory_profiles": [
+      "base"
+    ],
+    "supplemental_selection": "after_base_and_registered_interpretation",
+    "config_digest": "3dbf9f5d80b71b8a5a1f9aa11ab7ad512a6db7b5120b5fb903747770946a7f57",
+    "initial_task_digest": "189bc200ff527b166b04918b0f16bc2e7408c6dbca8957869ae714d5534987b9",
+    "config_sha256": "ae8bb21a2a5c01e875819b0b1c6fd7bc6ae304cb6906ed8c688c582dc41d5375",
+    "max_audits": 3
+  },
+  "mode": "rules",
+  "model_execution": "not_run",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "image_evidence_origin": {
+    "manifest_digest": "6fb4735ad71ef480bf6371251800f8d3b43640d418590287b488a02eeba2e72b",
+    "investigator_code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+    "core_lock_digest": "0174cdf501ac3adaaa091fa80e0bd4d87ff21fc4d9e36641aeb604d11d790514",
+    "runtime_lock_digest": "aeea65ae20813d5da41d54b408897cac57063724e37721beeab9ad9d888dcfc1"
+  },
+  "parent_report_digest": "5f71c1a87e59cb0d08743887de8a08918561ecc305e99e6eb1aa357ae87baf38",
+  "evidence_reused_from": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t003/r01/C/run",
+  "parent_manifest_digest": "6fb4735ad71ef480bf6371251800f8d3b43640d418590287b488a02eeba2e72b",
+  "revision_kind": "answers",
+  "supersedes_risk_interpretation": "/Users/runner/work/visionleak-investigator/visionleak-investigator/runs/ci-interaction/results/development/runs/t003/r01/C/run",
+  "core_reexecuted": false
+}

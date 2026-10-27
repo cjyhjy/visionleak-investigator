@@ -1,0 +1,84 @@
+{
+  "status": "engineering_only",
+  "tasks": 3,
+  "independent_photographic_sources": 0,
+  "synthetic_source_groups": 3,
+  "runs": {
+    "A": {
+      "COMPLETED": 1,
+      "PARTIAL": 2,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0
+    },
+    "B": {
+      "COMPLETED": 1,
+      "PARTIAL": 2,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0
+    },
+    "C": {
+      "COMPLETED": 1,
+      "PARTIAL": 2,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 0
+    },
+    "D": {
+      "COMPLETED": 0,
+      "PARTIAL": 0,
+      "WAITING_USER": 0,
+      "FAILED": 0,
+      "blocked": 3
+    }
+  },
+  "real_agent_experiment": "not_run",
+  "research_gain": "not_established",
+  "cpu_seconds": "measured per isolated task; see resources_by_condition and per_run.jsonl",
+  "peak_rss": "sampled process-tree sum, not parent-only; shared pages may be counted twice and short peaks missed",
+  "limitations": [
+    "Controlled procedural images only.",
+    "No independent validation/test partition collected.",
+    "No statistical significance or natural leakage claim.",
+    "D/E not run, so no Agent-vs-rule comparison."
+  ],
+  "resources_by_condition": {
+    "A": {
+      "attempted_runs": 3,
+      "cpu_measured_runs": 3,
+      "cpu_seconds": 2.0149799999999995,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 3,
+      "max_sampled_tree_rss_bytes": 129630208,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "B": {
+      "attempted_runs": 3,
+      "cpu_measured_runs": 3,
+      "cpu_seconds": 2.469283,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 3,
+      "max_sampled_tree_rss_bytes": 138346496,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "C": {
+      "attempted_runs": 3,
+      "cpu_measured_runs": 3,
+      "cpu_seconds": 2.094686,
+      "cpu_total_complete": true,
+      "rss_sampled_runs": 3,
+      "max_sampled_tree_rss_bytes": 126763008,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    },
+    "D": {
+      "attempted_runs": 0,
+      "cpu_measured_runs": 0,
+      "cpu_seconds": null,
+      "cpu_total_complete": false,
+      "rss_sampled_runs": 0,
+      "max_sampled_tree_rss_bytes": null,
+      "scope": "whole isolated task process including Python and child Core tools; RSS sampling limitations apply"
+    }
+  }
+}

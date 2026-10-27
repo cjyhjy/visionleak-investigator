@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-27T00:04:21.614608+00:00",
+  "metric_definition": "interaction-v1",
+  "freeze_digest": "34fe61ab2798ffe4388f74aff562ba0fa8c983378b79226e20edb158859f096a",
+  "benchmark_partition": "development",
+  "schedule": [
+    {
+      "task_id": "t000",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t000",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t001",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t001",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t002",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t002",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t003",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t003",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t004",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t004",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t005",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t005",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t006",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t006",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t007",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t007",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t008",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t008",
+      "condition": "D",
+      "repetition": 1
+    },
+    {
+      "task_id": "t009",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t009",
+      "condition": "D",
+      "repetition": 1
+    }
+  ],
+  "status": "completed",
+  "model_calls": 0,
+  "evaluation_role": "evaluation",
+  "replay_of": null,
+  "answer_policy": "Identical frozen answerable questions for C and future D; broker releases only answers to actually requested questions.",
+  "truth_isolation": "Workers receive task/registry or a requested answer payload only; scorer receives truth. Application boundary, not OS secrecy.",
+  "human_inputs": "scripted contract, no human participants",
+  "review_policy": "Backlog and actual review charges recorded; no unsolicited simulated reviews supplied.",
+  "cache": "fresh Core process per task; no shared fingerprints; OS cache not flushed",
+  "finished_at": "2026-10-27T00:04:44.538951+00:00",
+  "rejection": null
+}

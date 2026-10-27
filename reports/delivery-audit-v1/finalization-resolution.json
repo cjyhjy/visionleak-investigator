@@ -88,10 +88,12 @@
     "log": "reports/logs/20261026T235150644662-finalization-regression.log"
   },
   "smoke": "reports/finalization-v1/receipt.json",
-  "ci_status": "pending",
+  "ci_status": "passed",
   "model_calls": 0,
   "scope": "One full render, staged HTML/JSON-body writes under reservation; revision assembly charged; overrun and publication failures preserve cost and unaccepted outputs. Accounting commit boundary explicitly recorded; whole-worker receipts include commit I/O.",
-  "remaining_local": [
-    "Complete clause-by-clause contract and delivery audit."
-  ]
+  "remaining_local": [],
+  "ci_evidence": "reports/ci-history/40423567851/verification.json",
+  "ci_url": "https://github.com/cjyhjy/visionleak-investigator/actions/runs/40423567851",
+  "tested_commit": "3146889f60274866955845dfcdbaef183628a139",
+  "delivery_audit": "reports/delivery-audit-v1/clauses.json"
 }

@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "reports": [
+    {
+      "case": "original",
+      "run": "run",
+      "report_sha256": "a96ff8be083ba251bb84bb907e6d74e2bda45ebd7657edbcfc12d23ec894b29f",
+      "manifest_sha256": "a4144d70f8987789ea576e8578920ab795b28b6f7e49488f821f00d8abba43d0"
+    },
+    {
+      "case": "confirmed",
+      "run": "run/revisions/dae96e5c48de13e3538d02eab0771875d41f0c044f1b9e696061324474444b6d",
+      "report_sha256": "be3bf57118c8a4198087c6c991ad5025e5b9d1ab1a19749d559b035984800aea",
+      "manifest_sha256": "81146251e301374bb3e8541caf7f841293796e7394e90546fe73f964aaa47bc5"
+    },
+    {
+      "case": "rejected",
+      "run": "run/revisions/06ffd739970412dc4b771238ce76f1afa417d021573ad2291332efd681a076c6",
+      "report_sha256": "393fa3ddcec9dbe995acc90a66e6a49078544b2dff132110da43d5d9cb914c53",
+      "manifest_sha256": "d762fa43f4444a6a2439d61f92893187624351da14cef94efac4d04e275fd7fe"
+    },
+    {
+      "case": "goal_revision",
+      "run": "run/revisions/cf005747930cd857ad3340e399cd25d16e9d98e3ba2fd9153088028ca337bec1",
+      "report_sha256": "36ff9ce726bb61b3f8628d628d14a2ffe89d38e6504deae0be6978b9d72f176c",
+      "manifest_sha256": "7cb10cf8b35b0ec9f03417f72b759b096fc5a50d63cc848ec53a4530137f8150"
+    }
+  ],
+  "legacy": null,
+  "model_calls": 0,
+  "real_agent_experiment": "not_run",
+  "human_participants": 0,
+  "data_kind": "controlled synthetic image and review lifecycle fixtures",
+  "source_review_history_preserved": true,
+  "image_reaudit_for_revisions": false
+}

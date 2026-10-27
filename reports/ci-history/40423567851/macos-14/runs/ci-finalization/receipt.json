@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "code_digest": "2b54f7d28d22a5df850fc72b7e2e4d9eda0a8c334e13b05e1f4887f7ebc59a2c",
+  "cases": [
+    {
+      "case": "initial",
+      "receipt": "initial/case.json",
+      "process": "processes/initial/result.json"
+    },
+    {
+      "case": "revision",
+      "receipt": "revision/case.json",
+      "process": "processes/revision/result.json"
+    },
+    {
+      "case": "recovery",
+      "receipt": "recovery/case.json",
+      "process": "processes/recovery/result.json"
+    },
+    {
+      "case": "overrun",
+      "receipt": "overrun/case.json",
+      "process": "processes/overrun/result.json"
+    },
+    {
+      "case": "publication_failure",
+      "receipt": "publication_failure/case.json",
+      "process": "processes/publication_failure/result.json"
+    },
+    {
+      "case": "renderer_failure",
+      "receipt": "renderer_failure/case.json",
+      "process": "processes/renderer_failure/result.json"
+    }
+  ],
+  "reports": [
+    {
+      "run": "initial/run",
+      "report_sha256": "41a7f12a9309e82f504b1b5336a780672e256ac18e0998610821df742ea34b7d",
+      "manifest_sha256": "afee40ea1a4fc2372b7bd68162b999a251399f5da028d5abe80c02d19abfedeb"
+    },
+    {
+      "run": "revision/run",
+      "report_sha256": "a1522afe50fd9b82c9f0c71b296582bb2cb3314b2dc0f19440cce6ca471e6007",
+      "manifest_sha256": "b6bf2ee67d78837db4b308bcf28f6fc34270325c8f1ebe9935a1e44609bcfcac"
+    },
+    {
+      "run": "revision/run/revisions/30cd0c85602066d3abe6bab0ea42a3d83aa8b9825af7dc8bf3b114a514f4e133",
+      "report_sha256": "c5772af089df172233ed91ff6c3faf94ea939eb4f637da3048681cd8bb24794c",
+      "manifest_sha256": "35d1561b70ebe6fa1e17d8d05112cd59b349f606c42cfb8fd980c15a80bca448"
+    },
+    {
+      "run": "recovery/run",
+      "report_sha256": "99f566d0e1c3686936835b47d5a2bcf0827fffb883391de6d4c7ef333484c934",
+      "manifest_sha256": "5e3a8004f149af9a5d5faa16a900e782145287506c2f3bd663a6c8d0d0fe9b13"
+    },
+    {
+      "run": "overrun/run",
+      "report_sha256": "3ea1486472174e13eb3a1a02bc7e73f0695d6b8f938a717dcf4cb37815cf8419",
+      "manifest_sha256": "1d1641b32387ccb1c09bc81fabd2999b629096b123f6f4b6fb536249ff01e2df"
+    },
+    {
+      "run": "publication_failure/run",
+      "report_sha256": "f1bd85103effca22f4bb419047ac952b7a25188ebc6d083c18c5c14c728e93bf",
+      "manifest_sha256": "5f66452851ba74365bc0bd683ad5c4fe3836d08fe4b31741c8c7249bccfa57f4"
+    }
+  ],
+  "model_calls": 0,
+  "human_participants": 0,
+  "scope": "Real Core in six measured worker processes; controlled engineering acceptance only."
+}

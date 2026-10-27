@@ -1,0 +1,203 @@
+{
+  "input_manifest_digest": "9d43a179b727a8e3def19d80bbf5ec153e8cbc1aa2581186d886cde8b310c504",
+  "input_preflight": {
+    "digest": "9d43a179b727a8e3def19d80bbf5ec153e8cbc1aa2581186d886cde8b310c504",
+    "image_count": 6,
+    "estimated_source_pixels": 55296,
+    "header_unknown_count": 0,
+    "snapshot_guarantee": "before/after hashes; not an atomic filesystem snapshot"
+  },
+  "profiles": {
+    "base": {
+      "audit_id": "371d69ee260066f0d620eab959a2c07afc3da109ce5c52a5a86eeaabf70ed666",
+      "report_ref": "tools/call-0002/output/report.json",
+      "report_sha256": "5143cffc20d6720147c483cee377f84c93041e2f3d005bdc58b3ca404beffabe",
+      "complete": true,
+      "discovered_at_least": 6,
+      "fingerprinted_images": 6,
+      "processed_images": 6,
+      "unprocessed_fingerprints": [],
+      "errors": [],
+      "reason": "",
+      "core_coverage": {
+        "splits": {
+          "train": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "validation": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "test": {
+            "audited": 2,
+            "fingerprinted": 2,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          },
+          "unknown": {
+            "audited": 0,
+            "fingerprinted": 0,
+            "rejectedByCode": {},
+            "ignored": 0,
+            "unprocessed": 0
+          }
+        },
+        "budgetExhaustion": [],
+        "enumerationComplete": true,
+        "rejectedOrErrorCount": 0,
+        "ignoredFiles": 0,
+        "unprocessedKnownFiles": 0,
+        "summary": "已审计 train 2 / validation 2 / test 2；拒收/错误 0；忽略 0；已发现但未审计 0；结论只覆盖已审计输入与已完成比较。"
+      },
+      "scope": {
+        "splits": [
+          "train",
+          "validation",
+          "test"
+        ],
+        "splitDirectories": {
+          "train": "train",
+          "validation": "validation",
+          "test": "test"
+        },
+        "missingSplits": [],
+        "supportedExtensions": [
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".avif",
+          ".tif",
+          ".tiff",
+          ".gif"
+        ],
+        "ignoredFiles": 0,
+        "entriesScanned": 6,
+        "discoveredAtLeast": 6,
+        "acceptedImages": 6,
+        "totalDecodedPixels": 55296,
+        "maxDirectoryEntries": 100000,
+        "source": "local-files",
+        "allPairsAreCrossSplit": true,
+        "perceptualMatchesRequireReview": true
+      },
+      "cost": {
+        "comparisons": 15,
+        "index_operations": 0,
+        "decoded_pixels": 55296,
+        "wall_seconds": 0.2144462460000227
+      },
+      "pixel_cost_measurement": "core-successful-decode-count"
+    }
+  },
+  "metadata": {
+    "state": "not_applicable",
+    "issues": []
+  },
+  "human_review": {
+    "state": "not_applicable",
+    "total_records": 0,
+    "unique_pairs": 0,
+    "requested_records": 0,
+    "pending_records": 0,
+    "confirmed_records": 0,
+    "rejected_records": 0,
+    "unsure_records": 0,
+    "resolved_pairs": 0,
+    "unresolved_pairs": 0,
+    "scope": "Review applies to its bound Core witness; duplicate witnesses and unsure/conflicting decisions remain unresolved."
+  },
+  "verification": {
+    "371d69ee260066f0d620eab959a2c07afc3da109ce5c52a5a86eeaabf70ed666": {
+      "state": "passed",
+      "result": {
+        "ok": true,
+        "auditId": "371d69ee260066f0d620eab959a2c07afc3da109ce5c52a5a86eeaabf70ed666",
+        "pairs": [
+          {
+            "pairKey": "[\"test/002.png\",\"train/001.png\"]",
+            "left": "test/002.png",
+            "right": "train/001.png",
+            "evidence": "byte-identical",
+            "status": "valid",
+            "leftObservation": {
+              "id": "test/002.png",
+              "status": "ok",
+              "byteDigest": "4cba5c988299f066df30b48b8110f3009e6f1e41cb6a4137092b45a0a45d2b98",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            },
+            "rightObservation": {
+              "id": "train/001.png",
+              "status": "ok",
+              "byteDigest": "4cba5c988299f066df30b48b8110f3009e6f1e41cb6a4137092b45a0a45d2b98",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            }
+          },
+          {
+            "pairKey": "[\"test/002.png\",\"validation/003.png\"]",
+            "left": "test/002.png",
+            "right": "validation/003.png",
+            "evidence": "pixel-identical",
+            "status": "valid",
+            "leftObservation": {
+              "id": "test/002.png",
+              "status": "ok",
+              "byteDigest": "4cba5c988299f066df30b48b8110f3009e6f1e41cb6a4137092b45a0a45d2b98",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            },
+            "rightObservation": {
+              "id": "validation/003.png",
+              "status": "ok",
+              "byteDigest": "c2f22b00bfd8071eff5444b0b1bb6ad3484b54838f2f732f41a86a7713aa3a20",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            }
+          },
+          {
+            "pairKey": "[\"train/001.png\",\"validation/003.png\"]",
+            "left": "train/001.png",
+            "right": "validation/003.png",
+            "evidence": "pixel-identical",
+            "status": "valid",
+            "leftObservation": {
+              "id": "train/001.png",
+              "status": "ok",
+              "byteDigest": "4cba5c988299f066df30b48b8110f3009e6f1e41cb6a4137092b45a0a45d2b98",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            },
+            "rightObservation": {
+              "id": "validation/003.png",
+              "status": "ok",
+              "byteDigest": "c2f22b00bfd8071eff5444b0b1bb6ad3484b54838f2f732f41a86a7713aa3a20",
+              "pixelDigest": "c6f3270c7d7d6ded4c5f50cc026c61621ff5ca2108c71385b91f88ebb8b0690a"
+            }
+          }
+        ],
+        "counts": {
+          "valid": 3,
+          "invalid": 0,
+          "missing": 0,
+          "skippedCandidates": 0
+        },
+        "exitCode": 0,
+        "verificationScope": {
+          "evidenceTypes": [
+            "byte-identical",
+            "pixel-identical"
+          ],
+          "candidatesRecomputed": false,
+          "wholeDatasetReaudited": false
+        }
+      },
+      "candidates_recomputed": false
+    }
+  },
+  "source_unchanged": true
+}

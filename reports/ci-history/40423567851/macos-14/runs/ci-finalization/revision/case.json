@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "case": "revision",
+  "reports": [
+    {
+      "run": "run",
+      "report_sha256": "a1522afe50fd9b82c9f0c71b296582bb2cb3314b2dc0f19440cce6ca471e6007",
+      "manifest_sha256": "b6bf2ee67d78837db4b308bcf28f6fc34270325c8f1ebe9935a1e44609bcfcac"
+    },
+    {
+      "run": "run/revisions/30cd0c85602066d3abe6bab0ea42a3d83aa8b9825af7dc8bf3b114a514f4e133",
+      "report_sha256": "c5772af089df172233ed91ff6c3faf94ea939eb4f637da3048681cd8bb24794c",
+      "manifest_sha256": "35d1561b70ebe6fa1e17d8d05112cd59b349f606c42cfb8fd980c15a80bca448"
+    }
+  ],
+  "render_durations": [
+    0.12525104200000214
+  ],
+  "staged_html_write_durations": [
+    0.12882641699997066
+  ],
+  "assembly_durations": [
+    0.1594692500000292
+  ],
+  "controlled_error": null,
+  "source_unchanged": true,
+  "model_calls": 0,
+  "scope": "Actual Core/renderer. 0.12-second delays and publication failures are controlled fixtures, not production incidents."
+}

@@ -1,0 +1,262 @@
+[
+  {
+    "name": "ci-fetch",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/fetch_core.py",
+      "--out",
+      ".cache/core.zip"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 0.8073878750000176,
+    "log": "reports/logs/20261027T000105602412-ci-fetch.log",
+    "recorded_at": "20261027T000105602412"
+  },
+  {
+    "name": "ci-bootstrap",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/bootstrap_core.py",
+      "--archive",
+      ".cache/core.zip",
+      "--migrate-runtime",
+      "--receipt",
+      "reports/ci/runtime-migration.json"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 1.427059000000014,
+    "log": "reports/logs/20261027T000106492753-ci-bootstrap.log",
+    "recorded_at": "20261027T000106492753"
+  },
+  {
+    "name": "ci-regression",
+    "argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "--junitxml=reports/ci/junit.xml"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 204.212725625,
+    "log": "reports/logs/20261027T000107990435-ci-regression.log",
+    "recorded_at": "20261027T000107990435"
+  },
+  {
+    "name": "ci-fresh-audit",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/ci_acceptance.py",
+      "--out",
+      "runs/ci-acceptance"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 1.7748932079999804,
+    "log": "reports/logs/20261027T000432362774-ci-fresh-audit.log",
+    "recorded_at": "20261027T000432362774"
+  },
+  {
+    "name": "ci-scripted-controller",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/controller_smoke.py",
+      "--out",
+      "runs/ci-controller"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 2.4768210000000295,
+    "log": "reports/logs/20261027T000434164296-ci-scripted-controller.log",
+    "recorded_at": "20261027T000434164296"
+  },
+  {
+    "name": "ci-evaluation-gates",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/evaluation_gate_smoke.py",
+      "--out",
+      "runs/ci-evaluation-gates"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 2.8785333339999966,
+    "log": "reports/logs/20261027T000436665383-ci-evaluation-gates.log",
+    "recorded_at": "20261027T000436665383"
+  },
+  {
+    "name": "ci-resources",
+    "argv": [
+      ".venv/bin/vli",
+      "evaluate",
+      "--tasks",
+      "3",
+      "--out",
+      "runs/ci-resources"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 7.851398125000003,
+    "log": "reports/logs/20261027T000439567384-ci-resources.log",
+    "recorded_at": "20261027T000439567384"
+  },
+  {
+    "name": "ci-report-demo",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/report_smoke.py",
+      "--out",
+      "runs/ci-report-demo"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 4.2815188750000175,
+    "log": "reports/logs/20261027T000447451962-ci-report-demo.log",
+    "recorded_at": "20261027T000447451962"
+  },
+  {
+    "name": "ci-catalog-execution",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/catalog_smoke.py",
+      "--tasks",
+      "3",
+      "--out",
+      "runs/ci-catalog-execution"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 22.226057666999964,
+    "log": "reports/logs/20261027T000451765785-ci-catalog-execution.log",
+    "recorded_at": "20261027T000451765785"
+  },
+  {
+    "name": "ci-lifecycle",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/lifecycle_smoke.py",
+      "--out",
+      "runs/ci-lifecycle"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 4.495403333000013,
+    "log": "reports/logs/20261027T000514052087-ci-lifecycle.log",
+    "recorded_at": "20261027T000514052087"
+  },
+  {
+    "name": "ci-plan-check",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/plan_check_smoke.py",
+      "--out",
+      "runs/ci-plan-check"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 2.38031675000002,
+    "log": "reports/logs/20261027T000518575260-ci-plan-check.log",
+    "recorded_at": "20261027T000518575260"
+  },
+  {
+    "name": "ci-partial-report",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/partial_report_smoke.py",
+      "--out",
+      "runs/ci-partial-report"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 0.6586073749999741,
+    "log": "reports/logs/20261027T000520986728-ci-partial-report.log",
+    "recorded_at": "20261027T000520986728"
+  },
+  {
+    "name": "ci-proposal-export",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/proposal_export_smoke.py",
+      "--out",
+      "runs/ci-proposal-export"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 1.2355950410000105,
+    "log": "reports/logs/20261027T000521672372-ci-proposal-export.log",
+    "recorded_at": "20261027T000521672372"
+  },
+  {
+    "name": "ci-interaction",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/interaction_smoke.py",
+      "--out",
+      "runs/ci-interaction"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 45.15179416700005,
+    "log": "reports/logs/20261027T000522936075-ci-interaction.log",
+    "recorded_at": "20261027T000522936075"
+  },
+  {
+    "name": "ci-review-lifecycle",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/review_lifecycle_smoke.py",
+      "--out",
+      "runs/ci-review-lifecycle"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 3.2714092499999765,
+    "log": "reports/logs/20261027T000608141437-ci-review-lifecycle.log",
+    "recorded_at": "20261027T000608141437"
+  },
+  {
+    "name": "ci-rules-routing",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/rules_smoke.py",
+      "--out",
+      "runs/ci-rules-routing"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 19.827582167000003,
+    "log": "reports/logs/20261027T000611442315-ci-rules-routing.log",
+    "recorded_at": "20261027T000611442315"
+  },
+  {
+    "name": "ci-revision-budget",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/revision_budget_smoke.py",
+      "--out",
+      "runs/ci-revision-budget"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 6.660593042000016,
+    "log": "reports/logs/20261027T000631315872-ci-revision-budget.log",
+    "recorded_at": "20261027T000631315872"
+  },
+  {
+    "name": "ci-finalization",
+    "argv": [
+      ".venv/bin/python",
+      "scripts/finalization_smoke.py",
+      "--out",
+      "runs/ci-finalization"
+    ],
+    "cwd": "/Users/runner/work/visionleak-investigator/visionleak-investigator",
+    "exit_code": 0,
+    "wall_seconds": 8.52292004200001,
+    "log": "reports/logs/20261027T000638015941-ci-finalization.log",
+    "recorded_at": "20261027T000638015941"
+  }
+]

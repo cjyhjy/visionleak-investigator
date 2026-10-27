@@ -1,0 +1,243 @@
+{
+  "status": "passed",
+  "data_kind": "fresh self-generated synthetic engineering catalog",
+  "tasks": 3,
+  "real_task_runs": 9,
+  "models_called": 0,
+  "real_agent_experiment": "not_run",
+  "source_unchanged": true,
+  "commands": [
+    {
+      "name": "freeze",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/freeze/result.json"
+    },
+    {
+      "name": "run-development",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-development/result.json"
+    },
+    {
+      "name": "run-validation",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-validation/result.json"
+    },
+    {
+      "name": "run-test",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "record": "commands/run-test/result.json"
+    },
+    {
+      "name": "reject-test-repeat",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "record": "commands/reject-test-repeat/result.json"
+    }
+  ],
+  "states": {
+    "development": {
+      "A": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 1,
+        "not_run": 0
+      }
+    },
+    "validation": {
+      "A": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 1,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 1,
+        "not_run": 0
+      }
+    },
+    "test": {
+      "A": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "B": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "C": {
+        "COMPLETED": 0,
+        "PARTIAL": 1,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 0,
+        "not_run": 0
+      },
+      "D": {
+        "COMPLETED": 0,
+        "PARTIAL": 0,
+        "WAITING_USER": 0,
+        "FAILED": 0,
+        "blocked": 1,
+        "not_run": 0
+      }
+    }
+  },
+  "scores": [
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/A",
+      "score_sha256": "73dd3d52ab861bc3519df07d4ba6c95b7fa9d28d2556c8c2be184b9e335af01e",
+      "cpu_seconds": 0.828851,
+      "tree_rss_peak_bytes": 127057920
+    },
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/B",
+      "score_sha256": "bdf9a27a26c8905eb3b63fc4401895583115e78a6da7cb0bf9f6f29c71e864bd",
+      "cpu_seconds": 0.793514,
+      "tree_rss_peak_bytes": 135462912
+    },
+    {
+      "partition": "development",
+      "task_id": "t000",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/development/runs/t000/r01/C",
+      "score_sha256": "c0e107baab7d2ab46a00119b3b167666490e6fc811d682dd4e3db373de113fa2",
+      "cpu_seconds": 1.4325709999999998,
+      "tree_rss_peak_bytes": 126271488
+    },
+    {
+      "partition": "validation",
+      "task_id": "t001",
+      "condition": "A",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t001/r01/A",
+      "score_sha256": "8f81c1a8dd54e5d58a69d5d42880ba6d018847d75899f0bafb98b1e383dd12b6",
+      "cpu_seconds": 0.690466,
+      "tree_rss_peak_bytes": 122060800
+    },
+    {
+      "partition": "validation",
+      "task_id": "t001",
+      "condition": "B",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t001/r01/B",
+      "score_sha256": "86a1782a6d179b9ea474af22846ceaa39f3a395f9cccfbd25e4d908f1b30a5cd",
+      "cpu_seconds": 0.8524619999999999,
+      "tree_rss_peak_bytes": 133021696
+    },
+    {
+      "partition": "validation",
+      "task_id": "t001",
+      "condition": "C",
+      "state": "COMPLETED",
+      "run": "results/validation/runs/t001/r01/C",
+      "score_sha256": "a0a4c4b342f45df4290c2f0a50fb8ed3d393e4e3929e8b07ef7043fed3eabcd7",
+      "cpu_seconds": 1.4643849999999998,
+      "tree_rss_peak_bytes": 127156224
+    },
+    {
+      "partition": "test",
+      "task_id": "t002",
+      "condition": "A",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t002/r01/A",
+      "score_sha256": "282abd35c05e0981268509ca787e3ccc070f6524b3d3589e5b33a5615a6b515a",
+      "cpu_seconds": 0.68036,
+      "tree_rss_peak_bytes": 124813312
+    },
+    {
+      "partition": "test",
+      "task_id": "t002",
+      "condition": "B",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t002/r01/B",
+      "score_sha256": "2307a6dd72e7685c7a031e8a82f29368bab7381925fbc6e9d5e78c838bbee6d0",
+      "cpu_seconds": 0.8276269999999999,
+      "tree_rss_peak_bytes": 132939776
+    },
+    {
+      "partition": "test",
+      "task_id": "t002",
+      "condition": "C",
+      "state": "PARTIAL",
+      "run": "results/test/runs/t002/r01/C",
+      "score_sha256": "efa733886247843ca9a7f2f35f26a11109c456e02da23f2fc24e28b8d0b11499",
+      "cpu_seconds": 0.6996290000000001,
+      "tree_rss_peak_bytes": 95584256
+    }
+  ],
+  "freeze_digest": "dfc07864dbc806c115f4ba00bbdb4f52e5865c1cff76826728533f47feeb6331",
+  "limitations": [
+    "Synthetic validation/test partition labels exercise execution gates only; no independent natural-scene experiment.",
+    "No actual human participant or measured human time savings.",
+    "D blocked; E not_run."
+  ]
+}

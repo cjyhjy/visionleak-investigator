@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-27T00:04:02.692742+00:00",
+  "freeze_digest": "0d434a6a52ee9f299dc3c93c31c067028df96124951c988be60976fb9a4f3ec8",
+  "benchmark_partition": "validation",
+  "evaluation_role": "evaluation",
+  "replay_of": null,
+  "metric_definition": "catalog-pairs-v1",
+  "schedule": [
+    {
+      "task_id": "t001",
+      "condition": "A",
+      "repetition": 1
+    },
+    {
+      "task_id": "t001",
+      "condition": "B",
+      "repetition": 1
+    },
+    {
+      "task_id": "t001",
+      "condition": "C",
+      "repetition": 1
+    },
+    {
+      "task_id": "t001",
+      "condition": "D",
+      "repetition": 1
+    }
+  ],
+  "model_execution": "not_run",
+  "truth_isolation": "Only scorer subprocess receives truth paths; worker receives task/registry/output/condition only. Application boundary, not an OS read sandbox.",
+  "cache": "Fresh task and Core processes; no shared fingerprint cache; OS caches are not flushed.",
+  "status": "completed_no_model",
+  "finished_at": "2026-10-27T00:04:07.363347+00:00",
+  "rejection": null
+}

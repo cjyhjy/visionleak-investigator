@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "task_id": "t009",
+  "dataset_manifest_digest": "dc6572d0f5356234499daf69042b57756e2d67ea96645089e7e61b99edb68958",
+  "goal": "new_entity_generalization",
+  "entity_key": "entity_id",
+  "basis": {
+    "kind": "synthetic_generation",
+    "description": "Controlled source lineage defines object-a across views; target-goal risk labels and scripted answers fixed before execution. No natural source or human participant."
+  },
+  "necessary_questions": [],
+  "answerable_questions": {
+    "clarify_goal": {
+      "goal": "new_entity_generalization"
+    },
+    "clarify_entity_key": {
+      "entity_key": "entity_id"
+    }
+  },
+  "risk_positive_pairs": [
+    [
+      "test/002.png",
+      "train/001.png"
+    ],
+    [
+      "test/002.png",
+      "validation/003.png"
+    ],
+    [
+      "test/002.png",
+      "validation/005.png"
+    ],
+    [
+      "test/004.png",
+      "train/001.png"
+    ],
+    [
+      "test/004.png",
+      "validation/003.png"
+    ],
+    [
+      "test/004.png",
+      "validation/005.png"
+    ],
+    [
+      "train/001.png",
+      "validation/003.png"
+    ],
+    [
+      "train/001.png",
+      "validation/005.png"
+    ]
+  ]
+}
